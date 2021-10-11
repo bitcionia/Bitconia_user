@@ -1,0 +1,52 @@
+product {
+    width: 130px;
+    margin: 30px;
+  }
+  
+  .form-group-quantity {
+    width:130px;
+   
+    position: relative;
+    left:80px;top: -40px
+  }
+  .form-group .glyphicon {
+    color: #ff00cc;
+  }
+  .input-group {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      width: 100%;
+     
+  }
+  input:not([type="radio"]), textarea {
+      padding:0px;
+      margin-left:5px;
+      border: transparent;
+      width: 100%;
+      background-color: transparent;
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+   color: #ffffff; 
+  }
+  .form-control {
+      height: 20px;
+      color: #ffffff;
+  }
+  .quantity {
+      color: #ffffff;
+      position: relative;
+      top: -20px;
+      padding: 20px;
+     background-color: #12023e;
+      width: 250px;
+      height: 70px;
+      border-radius: 7px;
+  }

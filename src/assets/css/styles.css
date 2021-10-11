@@ -3,6 +3,8 @@
 
 /* for user settings icon in top menu bar */
 
+.modal { overflow: auto !important; }
+
 .text-yellow{
 	color: #d78108;
 }
@@ -19,12 +21,29 @@
 }
 
 .text-icons{
-	 font-size: 80px; 
-	
+	font-size: 80px; 
 	color: #ffffff;
 }
 
 
+
+.tophead{
+        position: relative;
+		top:0px;
+    }
+
+.borderbottom
+{
+	border-bottom: 1px solid #c4a1f8;
+}
+	
+
+@media (max-width: 575px) {
+    .tophead{
+        position: relative;
+		top: 30px;
+    }
+}
 input[type="date"] { 
   background: transparent;
   color: #897edb;
@@ -526,4 +545,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
  .how-to-play{
 	margin-top: 150px;
  }
+ 
  

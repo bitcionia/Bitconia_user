@@ -3997,7 +3997,7 @@ span.is-active:after {
 /* contest section css start */
 .bg-el {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 0;
     z-index: -1;
 }
@@ -4005,6 +4005,13 @@ span.is-active:after {
 .bg-el img {
     height: 100%;
 }
+
+@media (max-width: 575px) {
+    .bg-el  img{
+        display: none;
+    }
+}
+
 
 .nav-tabs:not(.winner-tab-nav) li {
     margin: 5px 15px;
@@ -5167,7 +5174,7 @@ span.is-active:after {
 }
 
 .winner-card__content .content-bottom {
-    padding: 10px 10px 10px 50px;
+    padding: 20px 10px 20px 50px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -5182,7 +5189,7 @@ span.is-active:after {
 }
 
 .winner-card__content .content-bottom .number-list-wrapper {
-    width: 75%;
+    width: 55%;
 }
 
 @media (max-width: 767px) {
@@ -5213,9 +5220,9 @@ span.is-active:after {
 }
 
 .winner-card__content .content-bottom .number-list li, .winner-card__content .content-bottom .number-list input {
-    width: 60px;
-    min-height: 60px;
-    height: 60px;
+    width: 36px;
+    min-height: 36px;
+    height: 36px;
     background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
     background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
     background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
@@ -5229,7 +5236,7 @@ span.is-active:after {
     color: #ffffff;
     border: none;
     padding: 2px;
-	padding-top:15px;
+	/* padding-top:15px; */
     text-align: center;
     margin-top: 3px;
 }
@@ -5241,7 +5248,7 @@ span.is-active:after {
 }
 
 .winner-card__content .content-bottom .right {
-    width: 25%;
+    width: 45%;
     text-align: center;
 }
 
@@ -5812,7 +5819,7 @@ span.is-active:after {
 }
 
 .feature-card__icon {
-    margin-bottom: 25px;
+    margin-bottom: 3px;
 }
 
 .feature-card__content p {
@@ -7146,7 +7153,7 @@ span.is-active:after {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     align-items: center;
-    padding: 50px 40px;
+    padding: 10px 40px;
     background-color: #5a4bcc;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -7162,12 +7169,12 @@ span.is-active:after {
 }
 
 .lottery-wrapper .action-header .left {
-    width: 50%;
+    width: 40%;
 }
 
 @media (max-width: 1199px) {
     .lottery-wrapper .action-header .left {
-        width: 41%;
+        width: 31%;
     }
 }
 
@@ -7187,12 +7194,12 @@ span.is-active:after {
 }
 
 .lottery-wrapper .action-header .right {
-    width: 50%;
+    width: 60%;
 }
 
 @media (max-width: 1199px) {
     .lottery-wrapper .action-header .right {
-        width: 59%;
+        width: 69%;
     }
 }
 
@@ -7240,6 +7247,7 @@ span.is-active:after {
 }
 
 .clock2 {
+	color: #ffffff;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -7586,6 +7594,60 @@ span.is-active:after {
     box-shadow: 0px 17px 40px 0px rgba(124, 78, 25, 0.35);
 }
 
+.lottery-package-list-small {
+    text-align: center;
+    margin: -10px -15px;
+}
+
+.lottery-package-list-small a {
+    padding: 7px 7px;
+    background-image: -moz-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    background-image: -webkit-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    background-image: -ms-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    color: #ffffff;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin: 10px 15px;
+}
+
+.lottery-package-list-small a:hover {
+    background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    box-shadow: 0px 17px 40px 0px rgba(124, 78, 25, 0.35);
+}
+
+.lottery-package-list-small-org {
+    text-align: center;
+    margin: -10px -15px;
+}
+
+.lottery-package-list-small-org a {
+    background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+    box-shadow: 0px 17px 40px 0px rgba(124, 78, 25, 0.35);
+}
+
+.lottery-package-list-small-org a:hover {
+    padding: 5px 5px;
+    background-image: -moz-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    background-image: -webkit-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    background-image: -ms-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 10px 15px;
+}
+
+
+
 /* lottery-details css end */
 /* cart section css start */
 .cart-wrapper {
@@ -7762,7 +7824,7 @@ span.is-active:after {
 }
 
 .checkout-wrapper__header {
-    padding: 30px 20px 30px 20px;
+    padding: 26px 20px 25px 20px;
     background-color: #4939c1;
 }
 
@@ -7772,7 +7834,7 @@ span.is-active:after {
 }
 
 .checkout-wrapper__body .price li {
-    padding: 30px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #867cd5;
     display: -ms-flexbox;
     display: flex;
@@ -7802,8 +7864,8 @@ span.is-active:after {
 
 .checkout-wrapper__btn {
     text-align: center;
-    margin-bottom: -40px;
-    margin-top: 50px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 /* cart section css end */
@@ -8150,6 +8212,7 @@ span.is-active:after {
 /* affiliate partner section css start */
 .affiliate-card {
     padding: 40px 30px;
+	height: 350px;
     background-image: -moz-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);
     background-image: -webkit-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);
     background-image: -ms-linear-gradient(90deg, #c165dd 0%, #5c27fe 100%);

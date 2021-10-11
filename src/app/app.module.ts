@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +29,7 @@ import { ForgetpassComponent } from './components/setting/forgetpass/forgetpass.
 import { ChangepasswordComponent } from './components/setting/changepassword/changepassword.component';
 import { PirvacyComponent } from './components/setting/pirvacy/pirvacy.component';
 import { TermsComponent } from './components/setting/terms/terms.component';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { TermsComponent } from './components/setting/terms/terms.component';
     FooterComponent,
     IndexComponent,
     SignupComponent,
+    
     UserpanelComponent,
     BuyticketsComponent,
     HowtoplayComponent,
@@ -46,6 +47,7 @@ import { TermsComponent } from './components/setting/terms/terms.component';
     FAQComponent,
     BuynowComponent,
     AccountsecurityComponent,
+  
     TransactionsComponent,
     TwofactorsComponent,
     OurfeaturesComponent,
@@ -67,6 +69,8 @@ import { TermsComponent } from './components/setting/terms/terms.component';
     AppRoutingModule,
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   providers:[{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
