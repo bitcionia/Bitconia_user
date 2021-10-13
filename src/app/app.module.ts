@@ -29,7 +29,7 @@ import { ForgetpassComponent } from './components/setting/forgetpass/forgetpass.
 import { ChangepasswordComponent } from './components/setting/changepassword/changepassword.component';
 import { PirvacyComponent } from './components/setting/pirvacy/pirvacy.component';
 import { TermsComponent } from './components/setting/terms/terms.component';
-import { RecaptchaModule } from 'ng-recaptcha';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { RecaptchaModule } from 'ng-recaptcha';
     FooterComponent,
     IndexComponent,
     SignupComponent,
-    
     UserpanelComponent,
     BuyticketsComponent,
     HowtoplayComponent,
@@ -67,7 +66,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    NgxCaptchaModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

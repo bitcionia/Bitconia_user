@@ -9,9 +9,7 @@ import { version } from 'process';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public resolved(captchaResponse: string): void {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
-  }
+  siteKey:string="6LeB_cUcAAAAAOvGthvHU_Yk6q0f8_QOwPi7X8_a"
   constructor(
 
 

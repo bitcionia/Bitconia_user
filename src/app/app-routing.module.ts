@@ -25,6 +25,7 @@ import { IndexComponent } from './components/site/index/index.component';
 import { OurfeaturesComponent } from './components/site/ourfeatures/ourfeatures.component';
 import { SignupComponent } from './components/site/signup/signup.component';
 import { UserpanelComponent } from './components/site/userpanel/userpanel.component';
+
 const routes: Routes = [
   { path: 'index', component: IndexComponent},
   { path: 'header', component: HeaderComponent},
@@ -65,7 +66,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), 
+   ],
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
