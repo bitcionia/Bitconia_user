@@ -30,7 +30,7 @@
                <h4>Tickets </h4>
                </div>
                 <div class="col-md-4 hero__btn my-1">
-                     <button class="cmn-btn btn-sm">Quick pick</button>
+                     <button class="cmn-btn btn-sm"(click)="generatenumber()">Quick pick</button>
                  </div>
                </div>
            </div>
@@ -42,77 +42,74 @@
               <div class="col-lg-4 mb-30">
               
                 <div class="lottery-single my-4">
-                  <button class="lottery-single__close"><i class="las la-times"></i></button>
+                  <button class="lottery-single__close"(click)=" closetick()"><i class="las la-times" ></i></button>
                   <div class="lottery-single__header">
                   
                   
-                    <span class="titcket-number">Ticket #1</span>
-                    <ul class="lottery-single__selected-number">
-                      <li class="active">15</li>
-                      <li class="active">37</li>
-                      <li class="active">10</li>
-                      <li class="active">32</li>
-                      <li class="active">19</li>
-                      <li class="active">10</li>
+                    <div class="titcket-number">Ticket #1</div>
+                    <!-- -->
+                    <ul class="lottery-single__selected-number" *ngFor="let item of data" >
+                      <li class="active">{{item}}</li>
+                      
                       <!-- <li class="active">7</li> -->
                     </ul>
                   </div><!-- lottery-single__header end -->
                   <div class="lottery-single__body">
                     <ul class="lottery-single__number">
-                      <li>1</li>
-                      <li>2</li>
-                      <li>3</li>
-                      <li>4</li>
-                      <li>5</li>
-                      <li>6</li>
-                      <li>7</li>
-                      <li>8</li>
-                      <li>9</li>
-                      <li class="active">10</li>
-                      <li>11</li>
-                      <li>12</li>
-                      <li>13</li>
-                      <li>14</li>
-                      <li class="active">15</li>
-                      <li>16</li>
-                      <li>17</li>
-                      <li>18</li>
-                      <li class="active">19</li>
-                      <li>20</li>
-                      <li>21</li>
-                      <li>22</li>
-                      <li>23</li>
-                      <li>24</li>
-                      <li>25</li>
-                      <li>26</li>
-                      <li>27</li>
-                      <li>28</li>
-                      <li>29</li>
-                      <li>30</li>
-                      <li>31</li>
-                      <li class="active">32</li>
-                      <li>33</li>
-                      <li>34</li>
-                      <li>35</li>
-                      <li>36</li>
-                      <li class="active">37</li>
-                      <li>38</li>
-                      <li>39</li>
-                      <li>40</li>
-                      <li>41</li>
-                      <li>42</li>
-                      <li>43</li>
-                      <li>44</li>
-                      <li>45</li>
-                      <li>46</li>
-                      <li>47</li>
-                      <li>48</li>
-                      <li>49</li>
+                      <li  [class]="data.indexOf(1)==-1 ? '' : 'active'" (click)="Quickpick(1)">1</li>
+                      <li [class]="data.indexOf(2)==-1 ? '' : 'active'" (click)="Quickpick(2)">2</li>
+                      <li  [class]="data.indexOf(3)==-1 ? '' : 'active'"(click)="Quickpick(3)">3</li>
+                      <li [class]="data.indexOf(4)==-1 ? '' : 'active'" (click)="Quickpick(4)">4</li>
+                      <li [class]="data.indexOf(5)==-1 ? '' : 'active'" (click)="Quickpick(5)">5</li>
+                      <li  [class]="data.indexOf(6)==-1 ? '' : 'active'"(click)="Quickpick(6)">6</li>
+                      <li [class]="data.indexOf(7)==-1 ? '' : 'active'" (click)="Quickpick(7)">7</li>
+                      <li [class]="data.indexOf(8)==-1 ? '' : 'active'" (click)="Quickpick(8)">8</li>
+                      <li  [class]="data.indexOf(9)==-1 ? '' : 'active'" (click)="Quickpick(9)">9</li>
+                      <li [class]="data.indexOf(10)==-1 ? '' : 'active'" (click)="Quickpick(10)">10</li>
+                      <li  [class]="data.indexOf(11)==-1 ? '' : 'active'"(click)="Quickpick(11)">11</li>
+                      <li  [class]="data.indexOf(12)==-1 ? '' : 'active'"(click)="Quickpick(12)">12</li>
+                      <li [class]="data.indexOf(13)==-1 ? '' : 'active'" (click)="Quickpick(13)">13</li>
+                      <li  [class]="data.indexOf(14)==-1 ? '' : 'active'"(click)="Quickpick(14)">14</li>
+                      <li [class]="data.indexOf(15)==-1 ? '' : 'active'" (click)="Quickpick(15)">15</li>
+                      <li [class]="data.indexOf(16)==-1 ? '' : 'active'" (click)="Quickpick(16)">16</li>
+                      <li [class]="data.indexOf(17)==-1 ? '' : 'active'" (click)="Quickpick(17)">17</li>
+                      <li  [class]="data.indexOf(18)==-1 ? '' : 'active'"(click)="Quickpick(18)">18</li>
+                      <li [class]="data.indexOf(19)==-1 ? '' : 'active'" (click)="Quickpick(19)">19</li>
+                      <li  [class]="data.indexOf(20)==-1 ? '' : 'active'"(click)="Quickpick(20)">20</li>
+                      <li [class]="data.indexOf(21)==-1 ? '' : 'active'"(click)="Quickpick(21)">21</li>
+                      <li  [class]="data.indexOf(22)==-1 ? '' : 'active'"(click)="Quickpick(22)">22</li>
+                       <li [class]="data.indexOf(23)==-1 ? '' : 'active'" (click)="Quickpick(23)">23</li>
+                      <li  [class]="data.indexOf(24)==-1 ? '' : 'active'" (click)="Quickpick(24)">24</li>
+                      <li [class]="data.indexOf(25)==-1 ? '' : 'active'" (click)="Quickpick(25)">25</li>
+                      <li [class]="data.indexOf(26)==-1 ? '' : 'active'" (click)="Quickpick(26)">26</li>
+                      <li  [class]="data.indexOf(27)==-1 ? '' : 'active'" (click)="Quickpick(27)">27</li>
+                      <li  [class]="data.indexOf(28)==-1 ? '' : 'active'" (click)="Quickpick(28)">28</li>
+                      <li [class]="data.indexOf(29)==-1 ? '' : 'active'" (click)="Quickpick(29)">29</li>
+                      <li [class]="data.indexOf(30)==-1 ? '' : 'active'" (click)="Quickpick(30)">30</li>
+                      <li [class]="data.indexOf(31)==-1 ? '' : 'active'" (click)="Quickpick(31)">31</li>
+                      <li [class]="data.indexOf(32)==-1 ? '' : 'active'" (click)="Quickpick(32)">32</li>
+                      <li [class]="data.indexOf(33)==-1 ? '' : 'active'" (click)="Quickpick(33)">33</li>
+                      <li [class]="data.indexOf(34)==-1 ? '' : 'active'" (click)="Quickpick(34)">34</li>
+                      <li [class]="data.indexOf(35)==-1 ? '' : 'active'" (click)="Quickpick(35)">35</li>
+                      <li [class]="data.indexOf(36)==-1 ? '' : 'active'" (click)="Quickpick(36)">36</li>
+                      <li [class]="data.indexOf(37)==-1 ? '' : 'active'" (click)="Quickpick(37)">37</li>
+                      <li [class]="data.indexOf(38)==-1 ? '' : 'active'" (click)="Quickpick(38)">38</li>
+                      <li [class]="data.indexOf(39)==-1 ? '' : 'active'" (click)="Quickpick(39)">39</li>
+                      <li [class]="data.indexOf(40)==-1 ? '' : 'active'" (click)="Quickpick(40)">40</li>
+                      <li [class]="data.indexOf(41)==-1 ? '' : 'active'" (click)="Quickpick(41)">41</li>
+                      <li [class]="data.indexOf(42)==-1 ? '' : 'active'" (click)="Quickpick(42)">42</li>
+                      <li [class]="data.indexOf(43)==-1 ? '' : 'active'" (click)="Quickpick(43)">43</li>
+                      <li [class]="data.indexOf(44)==-1 ? '' : 'active'" (click)="Quickpick(44)">44</li>
+                      <li [class]="data.indexOf(45)==-1 ? '' : 'active'" (click)="Quickpick(45)">45</li>
+                      <li [class]="data.indexOf(46)==-1 ? '' : 'active'" (click)="Quickpick(46)">46</li>
+                      <li [class]="data.indexOf(47)==-1 ? '' : 'active'" (click)="Quickpick(47)">47</li>
+                      <li [class]="data.indexOf(48)==-1 ? '' : 'active'" (click)="Quickpick(48)">48</li>
+                      <li [class]="data.indexOf(49)==-1 ? '' : 'active'" (click)="Quickpick(49)">49</li>
                      
                     </ul>
                   </div><!-- lottery-single__body end -->
                   <div class="hero__btn lottery-single__footer row justify-content-center">
-                   <button class="cmn-btn btn-sm">Quick pick</button>
+                   <button class="cmn-btn btn-sm" (click)="generatenumber()">Quick pick</button>
                   </div><!-- lottery-single__footer end -->
                 </div><!-- lottery-single end -->
               </div>

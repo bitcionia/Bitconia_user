@@ -1,0 +1,39 @@
+.card-body {
+    background-color: #0e0e23;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .howto_video_popup.active {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    left:49%;
+    top: -36%;
+    // // top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    padding: 48px 35px 35px 35px;
+    width: 545px;
+    max-width: 100%;
+    background: #5A4BCC;
+    border-radius: 5px;
+    box-shadow: 0px 0px 35px #00000021;
+}
+.custom-card {
+  margin-bottom: 20px;
+  border: 0;
+  // box-shadow: -7.829px 11.607px 20px 0px #e4e3f5;
+}
+.card {
+  // border-radius:px;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid #e8e8f7;
+}

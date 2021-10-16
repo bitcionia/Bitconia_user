@@ -30,6 +30,11 @@ import { ChangepasswordComponent } from './components/setting/changepassword/cha
 import { PirvacyComponent } from './components/setting/pirvacy/pirvacy.component';
 import { TermsComponent } from './components/setting/terms/terms.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { CreateaccountComponent } from './components/popup/createaccount/createaccount.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -60,13 +65,20 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     ChangepasswordComponent,
     PirvacyComponent,
     TermsComponent,
+    CreateaccountComponent,
     
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule ,
+    MatTabsModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

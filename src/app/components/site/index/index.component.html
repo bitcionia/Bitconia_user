@@ -38,9 +38,9 @@
       <!-- hero start -->
       
         <!-- counter section start -->
-    <section class="position-relative pt-120 mt-5">
+    <section class="position-relative pt-120 mt-5" >
       <div class="counter-section">
-        <div class="container">
+        <div class="container"*ngIf="!showDatafound">
           <div class="row counter-wrapper mx-0 justify-content-center">
             <div class="col-lg-4 col-sm-6 mb-30">
               <div class="counter-item">
@@ -78,9 +78,25 @@
           </div>
         </div>
       </div>
+    
    </section>
+   <section class="position-relative pt-120 mt-5" >
+    <div class="counter-section">
+      <div class="container"*ngIf="showDatafound">
+        <div class="row counter-wrapper mx-0 justify-content-center">
+            <iframe width="900" height="290"style="margin-bottom: 25px;"
+              [src]="displayURL">
+            </iframe>       
+        
+        </div>
+      </div>
+    </div>
+  
+ </section>
+  
       <!-- counter section end -->
-      
+      <!-- <iframe width="100%" height="100%" frameBorder="0" [src]="urlSafe"></iframe> -->
+     
       
        <!-- countdown section start -->
       <section class="position-relative pt-120 mt-2">
@@ -89,16 +105,17 @@
        <div class="countdown countdown-container container">
       <div class="clock row mt-3">
           <div class="clock-item clock-days countdown-time-value col-sm-12 col-md-3">
-              <div class="wrap">
-                  <div class="innertimer justify-content-center">
-                      <div id="canvas-days" class="clock-canvas"></div>
-  
-                      <div class="text">
-                          <div class="val">{{days}}</div>
-                          <div class="type-days type-time">DAYS</div>
-                      </div><!-- /.text -->
-                  </div><!-- /.innertimer -->
-              </div><!-- /.wrap -->
+            <div class="wrap">
+              <div class="innertimer">
+                  <div id="canvas-hours" class="clock-canvas"></div>
+
+                  <div class="text">
+                      <p class="val">{{days}}</p>
+                      <p class="type-hours type-time">DAYS</p>
+                  </div><!-- /.text -->
+              </div><!-- /.innertimer -->
+          </div><!-- /.wrap -->
+             
           </div><!-- /.clock-item -->
   
           <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
@@ -189,7 +206,6 @@
                               <input type="text" name="text4" id="text4" placeholder="00">
                               <input type="text" name="text5" id="text5" placeholder="00">
                               <input type="text" name="text6" id="text6" placeholder="00">
-                              <input type="text" name="text7" id="text7" placeholder="00">
                             </div><!-- number-list end -->
                             <select class="nice-select">
                               <option>Last 7 days</option>

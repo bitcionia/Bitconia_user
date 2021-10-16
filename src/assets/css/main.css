@@ -9159,7 +9159,7 @@ span.is-active:after {
 .account-form-area {
     padding: 30px 20px 20px 20px;
     background-color: #5a4bcc;
-    box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5); */
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -9167,7 +9167,17 @@ span.is-active:after {
     -o-border-radius: 20px;
     position: relative;
 }
-
+/* .account-form-area {
+    padding: 30px 20px 20px 20px;
+    background-color: #5a4bcc;
+    box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    position: relative;
+} */
 .account-form-area .close-btn {
     position: absolute;
     top: 27px;

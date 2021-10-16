@@ -5,6 +5,7 @@ import { HistoryComponent } from './components/Draw/history/history.component';
 import { PastdrawComponent } from './components/Draw/pastdraw/pastdraw.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { CreateaccountComponent } from './components/popup/createaccount/createaccount.component';
 import { AccountsecurityComponent } from './components/setting/accountsecurity/accountsecurity.component';
 import { ChangepasswordComponent } from './components/setting/changepassword/changepassword.component';
 import { ContactusComponent } from './components/setting/contactus/contactus.component';
@@ -54,6 +55,8 @@ const routes: Routes = [
   { path: 'Changepassword', component:ChangepasswordComponent},
   { path: 'pirvacy', component:PirvacyComponent},
   { path: 'terms', component:TermsComponent},
+//popup
+{ path: 'createacc', component:CreateaccountComponent},
 
   {
     path: '',

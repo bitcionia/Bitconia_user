@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { version } from 'process';
+import { CreateaccountComponent } from '../../popup/createaccount/createaccount.component';
 
 
 @Component({
@@ -12,6 +14,7 @@ export class HeaderComponent implements OnInit {
   siteKey:string="6LeB_cUcAAAAAOvGthvHU_Yk6q0f8_QOwPi7X8_a"
   constructor(
 
+    public dialog: MatDialog,
 
   ) {
     var arr = [];
@@ -24,6 +27,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
  
+  }
+  createaccount() {
+    const dialogRef = this.dialog.open(CreateaccountComponent, {
+      // width: '500px',
+      // height: '700px',
+      // data: { data: drawEdit, }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+    });
   }
   
 }
