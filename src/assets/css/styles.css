@@ -3,7 +3,6 @@
 
 /* for user settings icon in top menu bar */
 
-.modal { overflow: auto !important; }
 
 .text-yellow{
 	color: #d78108;
@@ -25,6 +24,29 @@
 	color: #ffffff;
 }
 
+.text-icons-30{
+	font-size: 30px; 
+	color: #ffffff;
+}
+.text-icons-org{
+	font-size: 35px; 
+	color: #ff5800;
+}
+
+
+
+.btc-wallet
+{
+	background-color: #3c3192;
+	
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  
+    padding: 30px;
+}
 
 
 .tophead{
@@ -546,4 +568,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	margin-top: 150px;
  }
  
+ .modal-dialog-scrollable {
  
+  overflow-y: auto;
+  direction: ltr;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+  
+}
+
+.modal-dialog-scrollable::-webkit-scrollbar {
+  width: 20px;
+}
+
+.modal-dialog-scrollable::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.modal-dialog-scrollable::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 5px solid transparent;
+  background-clip: content-box;
+  background-color: #8070d4;
+}
+
+.modal { overflow: auto !important; }

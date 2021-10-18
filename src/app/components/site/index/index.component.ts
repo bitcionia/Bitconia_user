@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
   displayURL: any;
 
   constructor(private Sanitizer : DomSanitizer) {
-    this.displayURL = Sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/d6xn5uflUjg');
+    this.displayURL = Sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/d6xn5uflUjg?autoplay=1');
   }
   
 
@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
 
     // this.urlSafe = this.domSanitizer.bypassSecurityTrustResourceUrl('https://youtu.be/VDZkBusrvgg');
 
-    let countDown = new Date('oct 17, 2021, 02:15:00').getTime();
+    let countDown = new Date('oct 18, 2021, 00:24:00').getTime();
     let time = setInterval(()=>{
       let now = new Date().getTime();
       let distance = countDown - now;

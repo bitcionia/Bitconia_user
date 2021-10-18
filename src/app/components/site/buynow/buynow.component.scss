@@ -50,3 +50,11 @@ product {
       height: 70px;
       border-radius: 7px;
   }
+  .lottery-single__selected-number {
+    display: -ms-flexbox;
+    display:  inline-flex;;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -3px;
+    padding-left: 3%;
+}

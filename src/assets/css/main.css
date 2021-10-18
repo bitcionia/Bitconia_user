@@ -5076,7 +5076,7 @@ span.is-active:after {
 
 .winner-card__thumb {
     padding: 30px 10px;
-    width: 30%;
+    width: 22%;
     background-image: -moz-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
     background-image: -webkit-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
     background-image: -ms-linear-gradient(90deg, #e82a7a 0%, #360354 100%);
@@ -5095,7 +5095,7 @@ span.is-active:after {
 }
 
 .winner-card__content {
-    width: 70%;
+    width: 78%;
     position: relative;
 }
 
@@ -5169,7 +5169,7 @@ span.is-active:after {
     }
 }
 
-.winner-card__content .content-top .right span {
+.winner-card__content .content-bottom .right span {
     color: #27ff5a;
 }
 
@@ -5185,6 +5185,7 @@ span.is-active:after {
     .winner-card__content .content-bottom {
         text-align: center;
         padding: 20px;
+		margin-top: 30px;
     }
 }
 
@@ -5318,7 +5319,7 @@ span.is-active:after {
 }
 
 .winner-tab-nav li a .icon-thumb {
-    height: 115px;
+    height: 30px;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -7605,12 +7606,12 @@ span.is-active:after {
     background-image: -webkit-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
     background-image: -ms-linear-gradient(0deg, #e9388e 0%, #b9217a 43%, #880965 100%);
     color: #ffffff;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -ms-border-radius: 7px;
-    -o-border-radius: 7px;
-    margin: 10px 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 5px 7px 20px 7px;
 }
 
 .lottery-package-list-small a:hover {
@@ -9159,17 +9160,6 @@ span.is-active:after {
 .account-form-area {
     padding: 30px 20px 20px 20px;
     background-color: #5a4bcc;
-    /* box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5); */
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    position: relative;
-}
-/* .account-form-area {
-    padding: 30px 20px 20px 20px;
-    background-color: #5a4bcc;
     box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -9177,7 +9167,8 @@ span.is-active:after {
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     position: relative;
-} */
+}
+
 .account-form-area .close-btn {
     position: absolute;
     top: 27px;
@@ -9202,7 +9193,7 @@ span.is-active:after {
     font-size: 28px;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .account-form-area .account-form-wrapper {
@@ -9749,7 +9740,7 @@ span.is-active:after {
 }
 
 .past-draw-wrapper table td:last-child {
-    text-align: right;
+    text-align: center;
     padding-right: 30px;
 }
 
@@ -10016,7 +10007,7 @@ span.is-active:after {
 
 .transaction-balance-wrapper .transaction-balance span {
     font-size: 18px;
-    color: #22b868;
+    color: #eb6623;
     margin-top: 5px;
 }
 
@@ -10056,7 +10047,7 @@ span.is-active:after {
 .transaction-balance-wrapper .transaction-action-btn span {
     width: 100%;
     font-size: 18px;
-    color: #22b868;
+    color: #eb6623;
 }
 
 .all-transaction {
@@ -10066,7 +10057,7 @@ span.is-active:after {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     padding-top: 30px;
 }
 
@@ -10762,6 +10753,28 @@ span.is-active:after {
 
 .small-post-slider .slick-arrow.prev {
     right: 30px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  padding:20px;margin-right:-20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4e40b9; 
 }
 
 /* sidebar css end */

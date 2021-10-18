@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CartComponent } from './components/Draw/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     PirvacyComponent,
     TermsComponent,
     CreateaccountComponent,
+    CartComponent,
     
     
   ],

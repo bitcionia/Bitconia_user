@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './components/Draw/cart/cart.component';
 import { CurrentdrawComponent } from './components/Draw/currentdraw/currentdraw.component';
 import { HistoryComponent } from './components/Draw/history/history.component';
 import { PastdrawComponent } from './components/Draw/pastdraw/pastdraw.component';
@@ -46,6 +47,8 @@ const routes: Routes = [
   { path: 'fuardaware', component:FraudawarenComponent},
   { path: 'history', component:HistoryComponent},
   { path: 'buytickets', component:BuyticketsComponent},
+
+  { path: 'cart', component:CartComponent},
 
   { path: 'currentdraw', component:CurrentdrawComponent},
   // { path: 'customsupp', component:CustomersuppComponent},
