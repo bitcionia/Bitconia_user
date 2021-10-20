@@ -15,6 +15,7 @@ import { PirvacyComponent } from './components/setting/pirvacy/pirvacy.component
 import { TermsComponent } from './components/setting/terms/terms.component';
 import { TransactionsComponent } from './components/setting/transactions/transactions.component';
 import { TwofactorsComponent } from './components/setting/twofactors/twofactors.component';
+import { WalletComponent } from './components/setting/wallet/wallet.component';
 import { BuynowComponent } from './components/site/buynow/buynow.component';
 import { BuyticketsComponent } from './components/site/buytickets/buytickets.component';
 import { CustomersuppComponent } from './components/site/customersupp/customersupp.component';
@@ -22,6 +23,7 @@ import { FAQComponent } from './components/site/faq/faq.component';
 import { FraudawarenComponent } from './components/site/fraudawaren/fraudawaren.component';
 import { HowtoaddcerditComponent } from './components/site/howtoaddcerdit/howtoaddcerdit.component';
 import { HowtoplayComponent } from './components/site/howtoplay/howtoplay.component';
+import { HowtoplaydetailsComponent } from './components/site/howtoplaydetails/howtoplaydetails.component';
 import { HowtowithdrawComponent } from './components/site/howtowithdraw/howtowithdraw.component';
 import { IndexComponent } from './components/site/index/index.component';
 import { OurfeaturesComponent } from './components/site/ourfeatures/ourfeatures.component';
@@ -35,11 +37,15 @@ const routes: Routes = [
   // { path: 'signup', component: SignupComponent},
   { path: 'user', component: UserpanelComponent},
   { path: 'howtoplay', component: HowtoplayComponent},
+  { path: 'howtoplaydetails', component: HowtoplaydetailsComponent},
+
   { path: 'howtoaddcerdit', component: HowtoaddcerditComponent},
   { path: 'howtowithdraw', component: HowtowithdrawComponent},
   { path: 'faq', component: FAQComponent},
   { path: 'buynow', component: BuynowComponent},
   { path: 'accountsecurity', component: AccountsecurityComponent},
+  { path: 'wallet', component: WalletComponent},
+
   { path: 'transaction', component: TransactionsComponent},
   { path: 'twofactor', component: TwofactorsComponent},
   { path: 'ourfeatures', component:OurfeaturesComponent},

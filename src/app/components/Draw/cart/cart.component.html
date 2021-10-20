@@ -30,7 +30,7 @@
                     <button type="button">clear all</button>
                   </div>
                   <div class="ticket-wrapper__body">
-                    <div class="single-row">
+                    <div class="single-row" *ngIf="let item of quickdata">
                       <ul class="numbers">
                         <li>23</li>
                         <li>22</li>
@@ -41,7 +41,7 @@
                       
                       </ul>
                       <div class="action-btns">
-                         <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
+                         <button type="button"(click)="gototicket()" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
                     </div><!-- single-row end -->
@@ -87,7 +87,7 @@
                       
                       </ul>
                       <div class="action-btns">
-                         <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
+                         <button type="button" (click)="gototicket()"class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
                     </div><!-- single-row end -->
@@ -165,7 +165,7 @@
                       </li>
                     </ul>
                     <div class="checkout-wrapper__btn">
-                      <button type="submit" class="cmn-btn btn--sm">buy tickets</button>
+                      <button type="submit" class="cmn-btn btn--sm" routerLink="/buynow">buy tickets</button>
                     </div>
                   </div>
                 </div><!-- checkout-wrapper end -->

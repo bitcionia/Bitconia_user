@@ -17,12 +17,12 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
 
   ) {
-    var arr = [];
-    while(arr.length < 6){
-        var r = Math.floor(Math.random() * 50) + 1;
-        if(arr.indexOf(r) === -1) arr.push(r);
-    }
-    console.log(arr);
+    // var arr = [];
+    // while(arr.length < 6){
+    //     var r = Math.floor(Math.random() * 50) + 1;
+    //     if(arr.indexOf(r) === -1) arr.push(r);
+    // }
+    // console.log(arr);
    }
 
   ngOnInit(): void {

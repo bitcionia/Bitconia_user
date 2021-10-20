@@ -36,6 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CartComponent } from './components/Draw/cart/cart.component';
+import { HowtoplaydetailsComponent } from './components/site/howtoplaydetails/howtoplaydetails.component';
+import { WalletComponent } from './components/setting/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { CartComponent } from './components/Draw/cart/cart.component';
     TermsComponent,
     CreateaccountComponent,
     CartComponent,
+    HowtoplaydetailsComponent,
+    WalletComponent,
     
     
   ],
