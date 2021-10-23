@@ -27,7 +27,7 @@
                 <div class="ticket-wrapper">
                   <div class="ticket-wrapper__header">
                     <h3>Your tickets:</h3>
-                    <button type="button">clear all</button>
+                    <button type="button" (click)="clearall()">clear all</button>
                   </div>
                   <div class="ticket-wrapper__body" >
                     <div class="single-row" *ngFor="let value of quickdata.keys()">

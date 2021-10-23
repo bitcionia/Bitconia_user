@@ -223,7 +223,94 @@ console.log(getValueArray)
     
   }
   quickfast(quickfastlength){
-    this.router.navigateByUrl('/cart')
+    // this.router.navigateByUrl('/cart')
+
+    for (let idx = 1; idx <= quickfastlength; idx++) {
+      this.data1 = [];
+      for (let idex = this.data1.length; idex < 6; idex++) {
+        var temp = this.getrandom();
+        while (this.data1.indexOf(temp) != -1) {
+          temp = this.getrandom();
+        }
+        this.data1.push(temp);
+        this.quick.set(idx, this.data1)
+        
+
+        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
+
+      }
+      console.log(this.quick)
+      this.count1.push(this.quick)
+      var getKeysArray = Object.keys( this.count1);
+      var getValueArray = Object.values( this.count1);
+    //   console.log(this.count1)
+    // // this.sharedata.activity(this.data)
+
+    //   // this.sharedata.countdata(getValueArray)
+    this.sharedata.activity(getValueArray)
+    }
+
+  }
+  quickfast2(quickfastlength){
+    // this.router.navigateByUrl('/cart')
+
+    for (let idx = 1; idx <= quickfastlength; idx++) {
+      this.data1 = [];
+      for (let idex = this.data1.length; idex < 6; idex++) {
+        var temp = this.getrandom();
+        while (this.data1.indexOf(temp) != -1) {
+          temp = this.getrandom();
+        }
+        this.data1.push(temp);
+        this.quick.set(idx, this.data1)
+        
+
+        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
+
+      }
+      console.log(this.quick)
+      this.count1.push(this.quick)
+      var getKeysArray = Object.keys( this.count1);
+      var getValueArray = Object.values( this.count1);
+    //   console.log(this.count1)
+    // // this.sharedata.activity(this.data)
+
+    //   // this.sharedata.countdata(getValueArray)
+    this.sharedata.activity(getValueArray)
+    }
+
+  }
+  quickfast3(quickfastlength){
+    // this.router.navigateByUrl('/cart')
+
+    for (let idx = 1; idx <= quickfastlength; idx++) {
+      this.data1 = [];
+      for (let idex = this.data1.length; idex < 6; idex++) {
+        var temp = this.getrandom();
+        while (this.data1.indexOf(temp) != -1) {
+          temp = this.getrandom();
+        }
+        this.data1.push(temp);
+        this.quick.set(idx, this.data1)
+        
+
+        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
+
+      }
+      console.log(this.quick)
+      this.count1.push(this.quick)
+      var getKeysArray = Object.keys( this.count1);
+      var getValueArray = Object.values( this.count1);
+    //   console.log(this.count1)
+    // // this.sharedata.activity(this.data)
+
+    //   // this.sharedata.countdata(getValueArray)
+    this.sharedata.activity(getValueArray)
+    }
+
+  }
+  quickfast4(quickfastlength){
+    // this.router.navigateByUrl('/cart')
 
     for (let idx = 1; idx <= quickfastlength; idx++) {
       this.data1 = [];

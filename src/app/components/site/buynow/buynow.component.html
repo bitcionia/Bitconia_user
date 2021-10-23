@@ -374,10 +374,10 @@
           <div class="pick-lottery-package">
             <h2 class="title">Choose a Quick Pick</h2>
             <div class="lottery-package-list">
-              <button (click)="quickfast(3)">3 Quick Picks For $14.97</button>
-              <a href=""routerLink="/cart">5 Quick Picks For $24.95</a>
-              <a href=""routerLink="/cart">10 Quick Picks For $49.90</a>
-              <a href=""routerLink="/cart">20 Quick Picks For $99.80</a>
+              <a href=""routerLink="/cart"(click)="quickfast(3)">3 Quick Picks For $14.97</a>
+              <a href=""routerLink="/cart"(click)="quickfast(5)">5 Quick Picks For $24.95</a>
+              <a href=""routerLink="/cart"(click)="quickfast(10)">10 Quick Picks For $49.90</a>
+              <a href=""routerLink="/cart"(click)="quickfast(20)">20 Quick Picks For $99.80</a>
             </div>
           </div>
         </div><!-- col-lg-12 -->

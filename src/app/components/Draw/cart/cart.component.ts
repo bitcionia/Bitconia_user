@@ -28,6 +28,7 @@ export class CartComponent implements OnInit {
           // console.log(msg[i-1].get(i))
           
           this.quickdata.set(i,msg[i-1].get(i))
+          
 console.log(this.quickdata)
   // this.quickdatall.push(quickdata)
   // console.log(this.quickdatall[i-1])
@@ -44,5 +45,9 @@ console.log(this.quickdata)
   }
 gototicket(){
   this.router.navigateByUrl('/buynow')
+}
+clearall(){
+  debugger
+  this.quickdata.clear();
 }
 }
