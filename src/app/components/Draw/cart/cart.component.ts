@@ -8,28 +8,39 @@ import { CommondataService } from '../../service/commondata.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  quickdata:any=[{}];
-  quickdatall: any=[{}];
+  count:any=[];
+  quickdatall: any=[];
+  ticketnum:any=[];
+  tickdata: any;
+  log: string;
+  quickdata=new Map();
   constructor(    private router: Router,public sharedata:CommondataService,
 
     ) {
 
       this.sharedata.activityLogShare.subscribe((msg: any) => {
-        // getScripInformation(msg);
-        if (msg != "") {
+        if (msg !== "") {
+          // console.log(msg)
+          for(let i=1;i<=msg.length;i++){
+            // var getKeysArray = Object.keys( msg[i]);
+          // var getValueArray = Object.values( msg[i]);
+          // console.log(getKeysArray)
+          // console.log(msg[i-1].get(i))
           
-          console.log(msg);
+          this.quickdata.set(i,msg[i-1].get(i))
+console.log(this.quickdata)
+  // this.quickdatall.push(quickdata)
+  // console.log(this.quickdatall[i-1])
+          }
         }
-        // this.greekDetails();
-        
       });
-     }
+   this.sharedata.countdata
+   console.log(this.sharedata.countdata);
+    }
+     
 
   ngOnInit(): void {
-     this.quickdata = JSON.stringify(localStorage.getItem("key"));
-     this.quickdatall = JSON.parse(localStorage.getItem("quickdatall"));
-
-console.log(this.quickdata)
+   
   }
 gototicket(){
   this.router.navigateByUrl('/buynow')

@@ -147,6 +147,15 @@ a:hover {
 
 /* reset css end */
 /* global css strat */
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
 .mb-30 {
     margin-bottom: 30px;
 }
@@ -2285,7 +2294,7 @@ input:focus, input:active, textarea:focus, textarea:active {
 }
 
 .header__top .right .user__btn {
-    margin-left: 38px;
+    margin-left: 15px;
     width: 40px;
     height: 40px;
     background-color: #5a4bcc;
@@ -5319,7 +5328,7 @@ span.is-active:after {
 }
 
 .winner-tab-nav li a .icon-thumb {
-    height: 30px;
+    height: 40px;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -5369,9 +5378,9 @@ span.is-active:after {
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #ffffff;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 @media (max-width: 991px) {
@@ -9158,7 +9167,7 @@ span.is-active:after {
 }
 
 .account-form-area {
-    padding: 30px 20px 20px 20px;
+    padding: 10px 20px 10px 20px;
     background-color: #5a4bcc;
     box-shadow: 0px 0px 29.4px 0.6px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
@@ -9171,16 +9180,16 @@ span.is-active:after {
 
 .account-form-area .close-btn {
     position: absolute;
-    top: 27px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    top: 15px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 15px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -9190,20 +9199,21 @@ span.is-active:after {
 }
 
 .account-form-area .title {
-    font-size: 28px;
+    font-size: 23px;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+	 margin-top: 15px;
 }
 
 .account-form-area .account-form-wrapper {
     background-color: #4e40b9;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    padding: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 10px;
 }
 
 .account-form-area form .form-group {
@@ -9370,7 +9380,7 @@ span.is-active:after {
 }
 
 .user-card__id {
-    color: #22b868;
+    color: #d78108;
     font-size: 18px;
     margin-top: 3px;
 }

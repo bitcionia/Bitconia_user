@@ -367,14 +367,14 @@
                 <span>${{addticket.toFixed(2)}}</span>
               </div>
             </div>
-            <div class="right"><a href="" (click)="gotocart()" class="cmn-btn">Checkout</a></div>
+            <div class="right"><a href="" routerLink="/cart" class="cmn-btn">Checkout</a></div>
           </div>
         </div><!-- col-lg-12 -->
         <div class="col-lg-12 pt-120">
           <div class="pick-lottery-package">
             <h2 class="title">Choose a Quick Pick</h2>
             <div class="lottery-package-list">
-              <a href="" routerLink="/cart">3 Quick Picks For $14.97</a>
+              <button (click)="quickfast(3)">3 Quick Picks For $14.97</button>
               <a href=""routerLink="/cart">5 Quick Picks For $24.95</a>
               <a href=""routerLink="/cart">10 Quick Picks For $49.90</a>
               <a href=""routerLink="/cart">20 Quick Picks For $99.80</a>

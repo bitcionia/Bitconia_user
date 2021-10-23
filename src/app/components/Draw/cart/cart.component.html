@@ -29,24 +29,30 @@
                     <h3>Your tickets:</h3>
                     <button type="button">clear all</button>
                   </div>
-                  <div class="ticket-wrapper__body">
-                    <div class="single-row" *ngIf="let item of quickdata">
+                  <div class="ticket-wrapper__body" >
+                    <div class="single-row" *ngFor="let value of quickdata.keys()">
                       <ul class="numbers">
-                        <li>23</li>
-                        <li>22</li>
+                        <li>{{quickdata.get(value)[0]}}</li>
+                        <li>{{quickdata.get(value)[1]}}</li>
+                        <li>{{quickdata.get(value)[2]}}</li>
+                        <li>{{quickdata.get(value)[3]}}</li>
+                        <li>{{quickdata.get(value)[4]}}</li>
+                        <li>{{quickdata.get(value)[5]}}</li>
+
+                        <!-- <li>22</li>
                         <li>19</li>
                         <li>9</li>
                         <li>50</li>
-                        <li>11</li>
+                        <li>11</li> -->
                       
                       </ul>
                       <div class="action-btns">
                          <button type="button"(click)="gototicket()" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div>
                    
-                    <div class="single-row">
+                    <!-- <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
                         <li>22</li>
@@ -60,7 +66,7 @@
                          <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div>
                     <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
@@ -75,8 +81,8 @@
                          <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
-                    <div class="single-row">
+                    </div> -->
+                    <!-- <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
                         <li>22</li>
@@ -90,7 +96,7 @@
                          <button type="button" (click)="gototicket()"class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div>
                     <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
@@ -105,7 +111,7 @@
                          <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div>
                     <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
@@ -120,7 +126,7 @@
                          <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div>
                     <div class="single-row">
                       <ul class="numbers">
                         <li>23</li>
@@ -135,8 +141,9 @@
                          <button type="button" class="edit-btn"><i class="las la-pen"></i></button>
                          <button type="button" class="del-btn"><i class="las la-trash-alt"></i></button>
                       </div>
-                    </div><!-- single-row end -->
+                    </div> -->
                   </div>
+                  
                 </div>
               </div>
               <div class="col-lg-4 mt-lg-0 mt-5">

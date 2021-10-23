@@ -38,6 +38,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CartComponent } from './components/Draw/cart/cart.component';
 import { HowtoplaydetailsComponent } from './components/site/howtoplaydetails/howtoplaydetails.component';
 import { WalletComponent } from './components/setting/wallet/wallet.component';
+import { AccountactivityComponent } from './components/setting/accountactivity/accountactivity.component';
+import { NotificationComponent } from './components/setting/notification/notification.component';
+import { AnnouncementsComponent } from './components/setting/announcements/announcements.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +75,9 @@ import { WalletComponent } from './components/setting/wallet/wallet.component';
     CartComponent,
     HowtoplaydetailsComponent,
     WalletComponent,
+    AccountactivityComponent,
+    NotificationComponent,
+    AnnouncementsComponent,
     
     
   ],

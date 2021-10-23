@@ -7,10 +7,13 @@ import { PastdrawComponent } from './components/Draw/pastdraw/pastdraw.component
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { CreateaccountComponent } from './components/popup/createaccount/createaccount.component';
+import { AccountactivityComponent } from './components/setting/accountactivity/accountactivity.component';
 import { AccountsecurityComponent } from './components/setting/accountsecurity/accountsecurity.component';
+import { AnnouncementsComponent } from './components/setting/announcements/announcements.component';
 import { ChangepasswordComponent } from './components/setting/changepassword/changepassword.component';
 import { ContactusComponent } from './components/setting/contactus/contactus.component';
 import { ForgetpassComponent } from './components/setting/forgetpass/forgetpass.component';
+import { NotificationComponent } from './components/setting/notification/notification.component';
 import { PirvacyComponent } from './components/setting/pirvacy/pirvacy.component';
 import { TermsComponent } from './components/setting/terms/terms.component';
 import { TransactionsComponent } from './components/setting/transactions/transactions.component';
@@ -44,6 +47,8 @@ const routes: Routes = [
   { path: 'faq', component: FAQComponent},
   { path: 'buynow', component: BuynowComponent},
   { path: 'accountsecurity', component: AccountsecurityComponent},
+  { path: 'accountactivity', component: AccountactivityComponent},
+
   { path: 'wallet', component: WalletComponent},
 
   { path: 'transaction', component: TransactionsComponent},
@@ -64,6 +69,9 @@ const routes: Routes = [
   { path: 'Changepassword', component:ChangepasswordComponent},
   { path: 'pirvacy', component:PirvacyComponent},
   { path: 'terms', component:TermsComponent},
+  { path: 'notifi', component:NotificationComponent},
+  { path: 'announcements', component:AnnouncementsComponent},
+
 //popup
 { path: 'createacc', component:CreateaccountComponent},
 

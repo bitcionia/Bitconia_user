@@ -18,14 +18,18 @@ export class BuynowComponent implements OnInit {
   data1: any = [];
   emptyarry: any = [];
   // quick:any={};
-  quickdata: any = [];
-  quick: Map<number, []> = new Map<number, []>();
+  count:any=[];
 
+  quickdata: any = [];
+  // quick: Map<number, []> = new Map<number, []>();
+  quick=new Map([]);
+  temp:any={};
   counterValue = 0;
   @Output() counterChange = new EventEmitter();
   languages: any;
   values: any=[];
   addticket: number;
+  count1: any=[];
 
   @Input()
   get counter() {
@@ -76,6 +80,7 @@ export class BuynowComponent implements OnInit {
     //   this.counter=idx
 
     // }
+    
     console.log(this.counter)
 
     console.log(this.quick.size)
@@ -145,12 +150,19 @@ debugger
     }
     // console.log(this.data)
     this.quick.set(i, data)
-      this.sharedata.activity(this.quick)
+    // this.temp.push(this.quick)
+    this.count.push(this.quick)
 
-    localStorage.setItem("key", JSON.stringify(this.quick));
+    var getKeysArray = Object.keys( this.count);
+      var getValueArray = Object.values( this.count);
+    // this.sharedata.activity(this.data)
 
+      this.sharedata.activity(getValueArray)
+// this.sharedata.data=this.count
+    // localStorage.setItem("count", JSON.stringify(this.count));
 
-console.log(this.quick)
+    console.log(getKeysArray)
+console.log(getValueArray)
   }
   closetick(data, i) {
 
@@ -176,13 +188,23 @@ console.log(this.quick)
         }
         this.data1.push(temp);
         this.quick.set(idx, this.data1)
-        localStorage.setItem("quickdatall", JSON.stringify( this.data1));
+        
+
+        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
 
       }
+      console.log(this.quick)
+      this.count1.push(this.quick)
+      var getKeysArray = Object.keys( this.count1);
+      var getValueArray = Object.values( this.count1);
+    //   console.log(this.count1)
+    // // this.sharedata.activity(this.data)
 
-
+    //   // this.sharedata.countdata(getValueArray)
+    this.sharedata.activity(getValueArray)
     }
     // console.log(this.data)
+   
 
 
   }
@@ -198,7 +220,35 @@ console.log(this.quick)
     this.values.push({value: ""});
   }
   gotocart(){
+    
+  }
+  quickfast(quickfastlength){
     this.router.navigateByUrl('/cart')
+
+    for (let idx = 1; idx <= quickfastlength; idx++) {
+      this.data1 = [];
+      for (let idex = this.data1.length; idex < 6; idex++) {
+        var temp = this.getrandom();
+        while (this.data1.indexOf(temp) != -1) {
+          temp = this.getrandom();
+        }
+        this.data1.push(temp);
+        this.quick.set(idx, this.data1)
+        
+
+        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
+
+      }
+      console.log(this.quick)
+      this.count1.push(this.quick)
+      var getKeysArray = Object.keys( this.count1);
+      var getValueArray = Object.values( this.count1);
+    //   console.log(this.count1)
+    // // this.sharedata.activity(this.data)
+
+    //   // this.sharedata.countdata(getValueArray)
+    this.sharedata.activity(getValueArray)
+    }
 
   }
 }
