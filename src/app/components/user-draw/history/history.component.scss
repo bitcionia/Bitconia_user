@@ -1,0 +1,33 @@
+.winner-tab-nav li {
+    width: calc(100% / 4);  
+     text-align: center;
+ }
+ .winner-tab-nav li a .icon-thumb {
+     height: 115px;
+     position: relative;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     color: #ffffff;
+     font-size: 20px;
+ }
+ .winner-tab-nav li a span {
+     font-size: 18px;
+     font-weight: 600;
+     text-transform: uppercase;
+     margin-top: 40px;
+     color: #ffffff;
+     padding-bottom: 10px;
+ }
+ .number-check-wrapper {
+     padding: 40px 30px;
+     background-color: #4939c1;
+     border-radius: 20px;
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+ }

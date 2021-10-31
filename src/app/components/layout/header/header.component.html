@@ -10,9 +10,10 @@
 
  <!-- login modal -->
 <div class="modal fade" id="loginModal" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
+  <div class=" scrollbarcustom">
         <div class="account-form-area">
           <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
           <h3 class="title">Login</h3>
@@ -37,7 +38,7 @@
               </a>
             </li>
           </ul>
-          <div class="tab-content mt-50" id="winnerTabContent">
+          <div class="tab-content mt-15 mb-15" id="winnerTabContent">
     
     <!-- Phone tab -->
             <div class="tab-pane fade show active" id="phone" role="tabpanel" aria-labelledby="phone-tab">
@@ -62,10 +63,10 @@
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div>
-                <a routerLink="forgetpass" class="link">Forgot Password?</a>
+                <a href=""routerLink="/user-control/forgetpass" class="link">Forgot Password?</a>
               </div>
-               <div class="form-group text-center mt-5">
-                <a routerLink="/twofactor"class="cmn-btn" data-toggle="modal" data-target="#recaptcha" >log in</a>
+               <div class="form-group text-center mt-2">
+                <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a>
               </div>
             </form>
             <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
@@ -101,10 +102,10 @@
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div>
-                <a routerLink="/forgetpass" class="link">Forgot Password?</a>
+                <a href="forgotpassword.html" class="link">Forgot Password?</a>
               </div>
-               <div class="form-group text-center mt-5">
-                <a routerLink="/twofactor"data-toggle="modal" data-target="#recaptcha" class="cmn-btn">log in</a>
+               <div class="form-group text-center mt-2">
+                <a href="securityverification.html" class="cmn-btn btn--sm">log in</a>
               </div>
             </form>
             <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
@@ -121,8 +122,9 @@
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
             <form>
-     
+      
              <img src="assets/images/qrcode.jpg" alt="QR Code" width="200" height="150">
+             
             </form>
             <p class="text-center mt-4">Open bitcoin app and scan the QR code to login</p>
           
@@ -137,29 +139,48 @@
         </div>
           
 </div>	 <!--  account- form- area -->
-    
+    </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
-  <div style="height: 200px;background-color: aquamarine;"></div>
-  <xfu-slide-control [controlInput]="controlInput" (successMatch)="successMatch($event)" style="text-align:-webkit-center"></xfu-slide-control>
-  <!-- <p>reCAPTCHA</p> -->
-  <!-- <small>Privacy - Terms</small> -->
+<!-- login modal --> 
 
+<!-- recaptcha modal starts -->
+ <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
+ 
+
+  <div class="puzzleMask" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"></div>
+  <div class="slideWhole" style="margin-top:27%;
+  padding-left: 40%;
+">
+      <div class="puzzleBox"style=" display :block;margin-top: 26%; background-color: bisque;">
+          <div class="puzzleBase"><img width="310" height="155" src="assets/images/logo.png"></div>
+          <div class="refreshIcon" (click)="reset()"></div>
+          <div class="puzzleBefore"><img width="62" height="62" src="assets/images/logo.png"></div>
+      </div>
+      <div class="sliderContainer">
+          <div class="sliderMask">
+              <div class="slider" (touchstart)="touchStart($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"
+                  (mousedown)="touchStart($event)" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)"> 
+                  <span class="sliderIcon"></span>
+              </div>
+          </div> 
+          <span class="sliderText">Slide right to fill the puzzle</span>
+      </div>
   </div>
+</div>
 
     <!-- recaptcha modal end-->
 <!-- Sign Up modal starts -->
 <div class="modal fade" id="signupModal" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
     <div class="account-form-area">
           <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-          <h3 class="title">Open Free Account</h3>
+          <h3 class="sub-title">Open Free Account</h3>
      <div class="col-lg-12">
           <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -176,7 +197,7 @@
             </li>
            
           </ul>
-          <div class="tab-content mt-50" id="winnerTabContent">
+          <div class="tab-content mt-15 mb-15" id="winnerTabContent">
     
     <!-- Phone tab -->
             <div class="tab-pane fade show active" id="signupphone" role="tabpanel" aria-labelledby="phone-tab">
@@ -216,7 +237,7 @@
                 </div>
                </div>
               <div class="form-group text-center mt-2">
-                <button class="cmn-btn" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
+                <button class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
               </div>
        <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive SMS?</a>
             </form>
@@ -267,7 +288,7 @@
                 <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
               </div>
               <div class="form-group text-center mt-2">
-                <button class="cmn-btn" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
+                <button class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
               </div>
       <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
             </form>
@@ -291,7 +312,6 @@
 
 <!-- Sign Up modal ends-->
 
-
  <!-- header-section start  -->
 <header class="header">
   <div class="header__top">
@@ -299,7 +319,7 @@
       <div class="row align-items-center">
         <div class="col-sm-5">
           <div class="left d-flex align-items-center">
-            <a href="customersupport.html"><i class="las la-phone-volume"></i> Customer Support</a>
+            <a href="" routerLink="/user-control/customsupp"><i class="las la-phone-volume"></i> Customer Support</a>
             <div class="language">
               <i class="las la-globe-europe"></i>
               <select>
@@ -313,82 +333,85 @@
           </div>
         </div>
         <div class="col-sm-7">
-          <div class="right my-2">
+          <div class="right my-2 mx-2">
      <a href="signup.html" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
-                  <div class="product__cart">
-                <a href="cart.html"  class="amount__btn">
-               <i class="las la-shopping-basket"></i> 
-                <span class="cart__num">08</span>
-              </a>
-            </div>
-           <a href="wallet.html" class="user__btn" ><i class="las la-wallet"></i></a> 
-    
-   <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a> 
-      <div class="dropdown-menu">
-   <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a> 
-  
-     <a href=""routerLink ="/user" class="dropdown-item">User panel</a> 
-   <a href="#" class="dropdown-item">Logout</a> 
-      
-       </div>
-    
-<div class="dropdown">
-<a href="#" class="amount__btn mt-1 ml-4"><i class="las la-bell"></i> <span class="cart__num">04</span></a>
+     
+      <div class="dropdown">
+<a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bell"></i> <span class="cart__num">04</span></a>
 <div class="dropdown-content">
         <div href="#" class="dropdown-firstlistitem" style="float:left;">
-          <div class="row">
-            <span class="col-lg-6 text-bold">4 pending Notifications</span><span class="col-lg-3 text-red p-0 m-0"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
-            <span class="col-lg-3 justify-content-center"><a href="" routerLink="/notifi" style="float:left;">View all</a><i class="las la-angle-right"></i></span>
+          <div class="row ">
+            <span class="col-lg-12 text-bold">4 pending Notifications</span>
+            <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
+            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/notifi"  style="float:left;">View all</a><i class="las la-angle-right"></i></span>
           </div>
         </div>
         <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>login attempted from new IP
-          <div class="menudesc">The system has detected that your account is...</div>
+          <div class="menudesc">The system has detected that ...</div>
           <div class="menudesc">1 day ago</div>
         </a> 
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Start trasding FIDA today at 12.00 UTC!
-          <div class="menudesc">you can start trasding FIDA today at 12.00(UTC)!...</div>
+        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Start trading FIDA ...
+          <div class="menudesc">you can start trasding FIDA...</div>
           <div class="menudesc">19 day ago</div>
         </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Beta token sale on Bitconia Launchpad
-          <div class="menudesc">Bitconia is excited to announce the 21st project...</div>
+        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Beta token sale on Bitconia... 
+          <div class="menudesc">Bitconia is excited to announce the...</div>
           <div class="menudesc">20 day ago</div>
         </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Bitconia spot Trading System Upgrade(2021-09...
-          <div class="menudesc">spot Trading System Upgrade will start at 2021-09-29...</div>
+        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Bitconia spot Trading System ...
+          <div class="menudesc">spot Trading System Upgrade will start...</div>
           <div class="menudesc">23 day ago</div>
         </a> 
 
 </div>
 </div>
 <div class="dropdown">
-  <a href="#" class="amount__btn mt-1 ml-4"><i class="las la-volume-up"></i><span class="cart__num">04</span></a>
-  <div class="dropdown-content">
-					<div href="#" class="dropdown-firstlistitem" style="float:left;">
-						<div class="row">
-							<span class="col-lg-6 text-bold">4 pending Notifications</span><span class="col-lg-3 text-red p-0 m-0"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
-							<span class="col-lg-3 justify-content-center"><a href=""routerLink="/announcements"  style="float:left;">View all</a><i class="las la-angle-right"></i></span>
-						</div>
-					</div>
-         <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Beta token sale on Bitconia Launchpad
-          <div class="menudesc">Bitconia is excited to announce the 21st project...</div>
+<a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bullhorn"></i><span class="cart__num">04</span></a>
+<div class="dropdown-content">
+        <div href="#" class="dropdown-firstlistitem" style="float:left;">
+          <div class="row">
+            <span class="col-lg-12 text-bold">4 pending Annoucements</span>
+            <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
+            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/announcements"   style="float:left;">View all</a><i class="las la-angle-right"></i></span>
+          </div>
+        </div>
+         <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Beta token sale on Bitconia
+          <div class="menudesc">Bitconia is excited to announce the...</div>
           <div class="menudesc">20 day ago</div>
         </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Bitconia spot Trading System Upgrade(2021-09...
-          <div class="menudesc">spot Trading System Upgrade will start at 2021-09-29...</div>
+        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Bitconia spot Trading System
+          <div class="menudesc">spot Trading System Upgrade will start...</div>
           <div class="menudesc">23 day ago</div>
         </a> 
 
         <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i> <span>.</span>login attempted from new IP
-          <div class="menudesc">The system has detected that your account is...</div>
+          <div class="menudesc">The system has detected that ...</div>
           <div class="menudesc">1 day ago</div>
         </a> 
-        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Start trasding FIDA today at 12.00 UTC!
-          <div class="menudesc">you can start trasding FIDA today at 12.00(UTC)!...</div>
+        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Start trasding FIDA today at
+          <div class="menudesc">you can start trasding FIDA today...</div>
           <div class="menudesc">19 day ago</div>
         </a>
         
 </div>
 </div>
+ <div class="product__cart">
+               <a href=""routerLink="user-Draw/cart"  class="amount__btn">
+        <i class="las la-shopping-basket"></i> 
+        <span class="cart__num">08</span>
+      </a>
+            </div>
+           <a href=""routerLink="/user-Draw/wallet" class="user__btn" ><i class="las la-wallet"></i></a> 
+    
+   <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a> 
+      <div class="dropdown-menu">
+   <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a> 
+  
+     <a href=""routerLink="/user-Draw/myticket" class="dropdown-item">User panel</a> 
+   <a href="#" class="dropdown-item">Logout</a> 
+      
+       </div>
+
   <div class="dropdown">
 <a href="#" class="topmenulink mt-1 ml-4">Download</a>
 <div class="dropdown-content">
@@ -403,61 +426,58 @@
     </div>
   </div><!-- header__top end -->
   <div class="header__bottom">
-    <div class="container">
-     <nav class="navbar navbar-expand-xl p-0 align-items-center">
-       <a routerLink="/index">
-   <img src="assets/images/logo.png" alt="Bitconia" class="img=fluid">
-   </a>
-       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="menu-toggle"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav main-menu ml-auto">
+     <div class="container">
+      <nav class="navbar navbar-expand-xl p-0 align-items-center">
+        <a href=""routerLink="index">
+    <img src="assets/images/logo.png" alt="Bitconia" class="img=fluid">
+    </a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="menu-toggle"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav main-menu ml-auto">
+            <li class="menu_has_children">
+              <a href="#">Play</a>
+              <ul class="sub-menu">
+                <li><a href=""routerLink="/user-Draw/buynow">Buy Now</a></li>
+                <li><a href=""routerLink="/user-setting/howtoplay">How to play</a></li>
+                <li><a href=""routerLink="/user-setting/howtoaddcerdit">How to add credit</a></li>
+                <li><a href=""routerLink="/user-setting/howtowithdraw">How to withdraw</a></li>
+                <li><a href=""routerLink="/user-setting/faq">FAQ</a></li> 
+              </ul>
+            </li>
            <li class="menu_has_children">
-             <a href="#">Play</a>
-             <ul class="sub-menu">
-               <li><a routerLink="/buynow">Buy Now</a></li>
-               <li><a routerLink="/howtoplay">How to play</a></li>
-               <li><a routerLink="/howtoaddcerdit">How to add credit</a></li>
-               <li><a routerLink="/howtowithdraw">How to withdraw</a></li>
-               <li><a routerLink="/faq">FAQ</a></li> 
-             </ul>
-           </li>
-          <li class="menu_has_children">
-             <a href="#">Communities</a>
-             <ul class="sub-menu">
-     <li><a routerLink="/ourfeatures">Our Features</a></li>
-               <li><a routerLink="/customsupp">Customer Support</a></li>
-               <li><a routerLink="/fuardaware">Fraud Awareness</a></li>
-               <!-- <li><a routerLink="/contactus">Contact Us</a></li>
-               <li><a routerLink="/Changepassword">Change password</a></li>
-               <li><a routerLink="/pirvacy">Pirvacy</a></li>
-               <li><a routerLink="/terms">Terms</a></li> -->
-             </ul>
-           </li>
-           <!-- <li><a href="#">Draw</a></li> -->
-      <li class="menu_has_children">
-             <a href="#">Draw</a>
-             <ul class="sub-menu">
-     <li><a routerLink="/currentdraw">Current Draw</a></li>
-               <li><a routerLink="/history">History</a></li>
-               <!-- <li><a routerLink="/pastdraw">Past Draw</a></li> -->
-             </ul>
-           </li>
-         </ul>
-         <div class="nav-right">
-       <a routerLink="/buynow" class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a>
-     <!-- <div class="hero__btn wow fadeInUp"> -->
-             <!-- <a href="buytickets.html" class="cmn-btn btn-sm"><img src="assets/images/tag.png" alt="icon" class="mr-2">Buy Tickets</a> -->
-         
-           <!-- </div> -->
-         </div>
-       </div>
-     </nav>
-   </div>
- </div><!-- header__bottom end --> 
-
+              <a href="#">Communities</a>
+              <ul class="sub-menu">
+                <li><a routerLink="user-control/ourfeatures">Our Features</a></li>
+                <li><a routerLink="user-control/customsupp">Customer Support</a></li>
+                <li><a routerLink="user-control/fraudaware">Fraud Awareness</a></li>
+ 
+                
+              </ul>
+            </li>
+            <!-- <li><a href="#">Draw</a></li> -->
+       <li class="menu_has_children">
+              <a href="#">Draw</a>
+              <ul class="sub-menu">
+                <li><a routerLink="user-Draw/currentdraw">Current Draw</a></li>
+                <li><a routerLink="user-Draw/history">History</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="nav-right">
+        <a href=""routerLink="/user-Draw/buynow" class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a>
+      <!-- <div class="hero__btn wow fadeInUp"> -->
+              <!-- <a href="buytickets.html" class="cmn-btn btn-sm"><img src="assets/images/tag.png" alt="icon" class="mr-2">Buy Tickets</a> -->
+          
+            <!-- </div> -->
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div><!-- header__bottom end -->
 </header>
+
 <div class="modal fade" id="clearModal" tabindex="1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -466,13 +486,13 @@
           <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
             <h5 class="title">Clear all?</h5>
           <div class="account-form-wrapper">
-    
+          
          <p>You can't see these pending notifications here. However you have all the notifications in the page by clicking "view all" </p>
 
-    <div class="justify-content-between mt-2">
+          <div class="justify-content-between mt-2">
              <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Cancel </a>
-        <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
-       </div>
+              <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
+             </div>
           </div>
         </div>
       </div>

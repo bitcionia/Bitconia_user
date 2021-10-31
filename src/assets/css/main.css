@@ -807,7 +807,7 @@ input {
     font-weight: 500;
     width: 45px;
     height: 45px;
-    border: 1px solid #e\5e5e5;
+    border: 1px solid;
     text-align: center;
     line-height: 28px;
 }
@@ -11031,4 +11031,3 @@ span.is-active:after {
 
 /* footer section css end */
 
-/*# sourceMappingURL=main.css.map */
