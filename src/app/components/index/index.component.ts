@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
 
     // this.urlSafe = this.domSanitizer.bypassSecurityTrustResourceUrl('https://youtu.be/VDZkBusrvgg');
 
-    let countDown = new Date('oct 31, 2021, 05:51:00').getTime();
+    let countDown = new Date('nov 1, 2021, 15:58:00').getTime();
     let time = setInterval(()=>{
       let now = new Date().getTime();
       let distance = countDown - now;

@@ -67,6 +67,7 @@ addcount:any;
       console.log(this.quick)
      this.addticket= this.counter*4.99
      this.addcount=(this.addticket.toFixed(2))
+     
     }
 
   }

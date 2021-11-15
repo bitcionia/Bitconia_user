@@ -5,6 +5,7 @@ import { CartComponent } from './cart/cart.component';
 import { CurrentdrawComponent } from './currentdraw/currentdraw.component';
 import { HistoryComponent } from './history/history.component';
 import { MyticketComponent } from './myticket/myticket.component';
+import { PastdrawComponent } from './pastdraw/pastdraw.component';
 import { TranscationComponent } from './transcation/transcation.component';
 import { WalletComponent } from './wallet/wallet.component';
 
@@ -18,6 +19,7 @@ const routes: Routes =[
   { path: 'currentdraw', component: CurrentdrawComponent},
   { path: 'history', component: HistoryComponent},
   { path: 'wallet', component: WalletComponent},
+  { path: 'pastdraw', component: PastdrawComponent},
 
     // canActivate:[AuthencationGuard],
 

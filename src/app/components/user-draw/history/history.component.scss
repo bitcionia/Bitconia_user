@@ -1,5 +1,5 @@
 .winner-tab-nav li {
-    width: calc(100% / 4);  
+    width: calc(100% / 4); 
      text-align: center;
  }
  .winner-tab-nav li a .icon-thumb {
@@ -14,6 +14,26 @@
      color: #ffffff;
      font-size: 20px;
  }
+ 
+ .winner-tab-nav {
+     background-color: transparent !important;
+     border-color: transparent !important;
+     border-bottom: 4px solid #ff5800 !important;
+ }
+ 
+ .winner-tab-nav li a.active, .winner-tab-nav li a:hover{
+     background-color: transparent !important;
+     border-color: transparent !important;
+     border-bottom: transparent!important;
+ }
+ 
+ @media (max-width: 575px){
+ .winner-tab-nav li a .icon-thumb {
+     width: 120px;
+     height: 120px;
+     margin: auto;
+ }
+ }
  .winner-tab-nav li a span {
      font-size: 18px;
      font-weight: 600;
@@ -23,11 +43,42 @@
      padding-bottom: 10px;
  }
  .number-check-wrapper {
-     padding: 40px 30px;
+     padding: 65px 10px;
      background-color: #4939c1;
      border-radius: 20px;
      -webkit-border-radius: 20px;
      -moz-border-radius: 20px;
      -ms-border-radius: 20px;
      -o-border-radius: 20px;
+ }
+ 
+ .latest-winner-section{
+ margin-top: 300px;
+ }
+ 
+ @media (max-width: 575px){
+ .winner-tab-nav li a .icon-thumb {
+     height: 115px;
+     position: relative;
+     left:-30px;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     color: #ffffff;
+     font-size: 20px;
+ }
+ .latest-winner-section .el-1 {
+    display:none;
+ }
+ 
+ .latest-winner-section .el-2 {
+      display:none;
+ }
+ 
+ .latest-winner-section .el-3 {
+       display:none;
+ }
  }

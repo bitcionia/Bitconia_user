@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { BuynowComponent } from './buynow/buynow.component';
 import { MyticketComponent } from './myticket/myticket.component';
 import { TranscationComponent } from './transcation/transcation.component';
+import { PastdrawComponent } from './pastdraw/pastdraw.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { TranscationComponent } from './transcation/transcation.component';
        BuynowComponent,
        MyticketComponent,
        TranscationComponent,
+       PastdrawComponent,
   ],
   imports: [
     CommonModule,

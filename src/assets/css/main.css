@@ -184,6 +184,14 @@ a:hover {
     margin-bottom: 50px;
 }
 
+.mt-none-30 {
+    margin-top: -30px !important;
+}
+
+.mt-none-50 {
+    margin-top: -50px !important;
+}
+
 .mb-none-30 {
     margin-bottom: -30px !important;
 }
@@ -195,6 +203,15 @@ a:hover {
 .position-140{
 	position:relative;
 	top:200px;
+}
+
+.pt-30{
+	padding-top:30px;
+	
+}
+.pt-60{
+	padding-top:60px;
+	
 }
 
 
@@ -212,6 +229,9 @@ a:hover {
 
 .pt-140 {
     padding-top: 200px;
+}
+.pt-250{
+	 padding-top: 250px;
 }
 
 
@@ -467,11 +487,18 @@ input {
     font-family: "Josefin Sans", sans-serif;
     color: #ffb200;
     margin-bottom: 13px;
+	margin-top: 20px;
 }
 
 @media (max-width: 767px) {
     .section-sub-title {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .section-sub-title {
+      margin-top: 45px;
     }
 }
 
@@ -807,7 +834,7 @@ input {
     font-weight: 500;
     width: 45px;
     height: 45px;
-    border: 1px solid;
+    border: 1px solid #e5e5e5;
     text-align: center;
     line-height: 28px;
 }
@@ -1579,6 +1606,7 @@ a:hover {
 
 .cmn-btn.btn--sm {
     padding: 10px 22px;
+	margin: 5px;
     font-size: 14px;
 }
 
@@ -3533,6 +3561,25 @@ span.is-active:after {
     overflow: hidden;
 }
 
+@media (max-width: 575px) {
+	.inner-hero-section-plain{
+	padding-top: 135px; 
+	padding-bottom: 10px; 
+   
+}
+  
+}
+
+/* @media (max-width: 991px) { */
+	/* .inner-hero-section-plain{ */
+	/* padding-top: 155px;  */
+	/* padding-bottom: 10px;  */
+   
+/* } */
+  
+/* } */
+
+
 .inner-hero-section {
     padding-top: 230px;
     padding-bottom: 375px;
@@ -4020,7 +4067,12 @@ span.is-active:after {
         display: none;
     }
 }
-
+@media (min-width: 768px) and (max-width: 991px) {
+	/* for ipad */
+	.bg-el  img{
+        display: none;
+    }
+}	
 
 .nav-tabs:not(.winner-tab-nav) li {
     margin: 5px 15px;
@@ -4920,6 +4972,29 @@ span.is-active:after {
         display: none;
     }
 }
+.latest-winner-section {
+    position: relative;
+	top: -150px;
+	
+}
+@media (max-width: 567px) {
+.latest-winner-section {
+    position: relative;
+	top: -250px;
+}
+}
+
+.index-latest-winner-section {
+    position: relative;
+	top: -250px;
+	
+}
+@media (max-width: 567px) {
+.index-latest-winner-section {
+    position: relative;
+	top: -200px;
+}
+}
 
 /* winner details section css end */
 /* latest winner section css start */
@@ -4966,7 +5041,7 @@ span.is-active:after {
 
 @media (max-width: 991px) {
     .check-number-form .number-list-wrapper .number-list {
-        justify-content: flex-start;
+        justify-content: center;
     }
 }
 
@@ -4993,7 +5068,7 @@ span.is-active:after {
 
 @media (max-width: 991px) {
     .check-number-form .number-list-wrapper .number-list input {
-        margin-right: 15px;
+        margin-right: 8px;
     }
 }
 
@@ -5399,6 +5474,14 @@ span.is-active:after {
 /* overview section css start */
 .overview-section {
     position: relative;
+	top:-150px;
+}
+
+@media (max-width: 575px) {
+    .overview-section {
+    position: relative;
+	top:-250px;
+}
 }
 
 .overview-section::before {
@@ -5467,6 +5550,26 @@ span.is-active:after {
     top: 5%;
     right: 5%;
 }
+
+@media (max-width: 575px) {
+	
+	.overview-section .obj-1 {
+   display: none;
+}
+
+.overview-section .obj-2 {
+    display: none;
+}
+
+.overview-section .obj-3 {
+    display: none;
+}
+
+.overview-section .obj-4 {
+   display: none;
+}
+}
+
 
 .map-pointer {
     height: 285px;
@@ -5970,7 +6073,7 @@ span.is-active:after {
 /* testimonial section css start */
 .has-bg--shape {
     position: relative;
-	top: 120px;
+	top: 0px;
 }
 
 .has-bg--shape .bg-shape {
@@ -6097,6 +6200,11 @@ span.is-active:after {
     .testimonial-area {
         padding: 30px 30px;
     }
+	.has-bg--shape{
+		margin-top:-180px
+	}
+	
+	
 }
 
 .testimonial-single {
@@ -7112,7 +7220,7 @@ span.is-active:after {
 
 @media (max-width: 575px) {
     .lottery-wrapper {
-        padding: 70px 30px 50px 30px;
+        padding: 70px 10px 50px 10px;
     }
 }
 
@@ -9380,7 +9488,7 @@ span.is-active:after {
 }
 
 .user-card__id {
-    color: #d78108;
+    color: #eb6623;;
     font-size: 18px;
     margin-top: 3px;
 }
@@ -9844,6 +9952,7 @@ span.is-active:after {
 
 @media (max-width: 575px) {
     .user-info-card {
+		margin-top:20px;
         padding: 20px;
     }
 }
@@ -11028,6 +11137,22 @@ span.is-active:after {
     background-color: #686fc5;
     margin-top: -9px;
 }
+@media (max-width: 567px) {
+.short-links {
+   
+    display: block;
+   
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+.short-links li:first-child a {
+    padding-left: 25px;
+}
 
+.short-links li:first-child a::before {
+    display: block;
+}
+}
 /* footer section css end */
 
+/*# sourceMappingURL=main.css.map */

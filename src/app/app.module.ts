@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { HttpClientModule } from '@angular/common/http';
-import { IndexComponent } from './index/index.component';
+import { IndexComponent } from './components/index/index.component';
 @NgModule({
   declarations: [
     AppComponent,
