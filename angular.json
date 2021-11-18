@@ -22,7 +22,6 @@
           "options": {
             "outputPath": "dist/Bitconia-user",
             "index": "src/index.html",
-            "extractCss": false,
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -34,13 +33,8 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
-              
             ],
-            "scripts": [
-                "src/engine1/jquery.js",
-  "src/engine1/wowslider.js",
-	"src/engine1/script.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

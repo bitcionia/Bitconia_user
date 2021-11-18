@@ -33,7 +33,7 @@
             </li>
            <li class="nav-item" role="presentation">
               <a class="nav-link" id="qrcode-tab" data-toggle="tab" href="#qrcode" role="tab" aria-controls="qrcode" aria-selected="false">
-                <div class="icon-thumb"><img src="assets/images/icon/contact/3.png" alt="image"></div>
+                <div class="icon-thumb"><i class="las la-qrcode text-icons-qrcode"></i></div>
                 <span>QR code</span>
               </a>
             </li>
@@ -45,16 +45,16 @@
               <div class="row mb-none-30">
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
-            <form>
+                    <form [formGroup]="mobileform" (ngSubmit)="mobilelogin()" novalidate>
              
       <div class="form-group">
                 <label>Phone <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name" placeholder="phone number" required>
+                <input type="number" formControlName="mobile" name="signup_name" id="signup_name" placeholder="phone number" required>
               </div>
       
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass" placeholder="password" required>
+                <input type="password" formControlName="password" name="signup_pass" id="signup_pass" placeholder="password" required>
               </div>
             
             <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -66,7 +66,9 @@
                 <a href=""routerLink="/user-control/forgetpass" class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
-                <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a>
+                <!-- <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a> -->
+                <button class="cmn-btn btn--sm btn-block not-allowed"
+                >log in</button>
               </div>
             </form>
             <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
@@ -84,16 +86,16 @@
                  <div class="row mb-none-30">
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
-            <form>
-              <div class="form-group">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                      <div class="form-group">
                 <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name" id="signup_name" placeholder="Enter your Email" required>
+                <input type="email" formControlName="email"name="signup_name" id="signup_name" placeholder="Enter your Email" required>
               </div>
       
       
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass" placeholder="password" required>
+                <input type="password"formControlName="password" name="signup_pass" id="signup_pass" placeholder="password" required>
               </div>
             
               <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -102,10 +104,12 @@
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div>
-                <a href="forgotpassword.html" class="link">Forgot Password?</a>
+                <a href=""routerLink="/user-control/forgetpass" class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
-                <a href="securityverification.html" class="cmn-btn btn--sm">log in</a>
+                <!-- <a href=""class="cmn-btn btn--sm">log in</a> -->
+                <button class="cmn-btn btn--sm btn-block not-allowed" [disabled]="!loginForm.valid"
+                >log in</button>
               </div>
             </form>
             <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
@@ -117,23 +121,21 @@
        </div>
     </div>
            <!-- QR code tab -->
-            <div class="tab-pane fade" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab">
-                 <div class="row mb-none-30">
-                <div class="col-lg-12 mb-30">
-                   <div class="account-form-wrapper">
-            <form>
-      
-             <img src="assets/images/qrcode.jpg" alt="QR Code" width="200" height="150">
-             
-            </form>
-            <p class="text-center mt-4">Open bitcoin app and scan the QR code to login</p>
-          
-        </div>  <!--account - form-wrapper end -->
-       
-                </div>
-             
-       </div>
-    </div>
+           <div class="tab-pane fade" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab">
+            <div class="row mb-none-30">
+           <div class="col-lg-12 mb-30">
+              <div class="account-form-wrapper">
+       <form>
+        <img src="assets/images/qrcode.jpg"  class="center"alt="QR Code" width="200" height="150">
+       </form>
+       <p class="text-center mt-4">Open bitcoin app and scan the QR code to login</p>
+     
+   </div>  <!--account - form-wrapper end -->
+  
+           </div>
+        
+  </div>
+</div>
            
      </div><!-- tab-content end -->
         </div>
@@ -151,7 +153,7 @@
  <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
  
 
-  <div class="puzzleMask" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"></div>
+  <!-- <div class="puzzleMask" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"></div>
   <div class="slideWhole" style="margin-top:27%;
   padding-left: 40%;
 ">
@@ -169,7 +171,7 @@
           </div> 
           <span class="sliderText">Slide right to fill the puzzle</span>
       </div>
-  </div>
+  </div> -->
 </div>
 
     <!-- recaptcha modal end-->
@@ -204,11 +206,11 @@
               <div class="row mb-none-30">
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
-            <form>
+                    <form [formGroup]="mobileform" (ngSubmit)="openaccountemail()" novalidate>
              
       <div class="form-group">
                 <label>Phone <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name" placeholder="phone number">
+                <input type="number"formControlName="mobile" name="signup_name" id="signup_name" placeholder="phone number">
               </div>
        <div class="d-flex flex-wrap justify-content-between mt-2">
        <label></label>
@@ -216,7 +218,7 @@
       </div>
       <div class="form-group">
                 <label>phone verification code <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name" placeholder="phone verification code">
+                <input type="number" name="signup_name" id="signup_name" placeholder="phone verification code">
               </div>
       <div class="d-flex flex-wrap justify-content-between mt-2">
       <label></label>
@@ -224,7 +226,7 @@
        </div>
               <div class="form-group">
                 <label>Set login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass" placeholder="password">
+                <input type="password"formControlName="password" name="signup_pass" id="signup_pass" placeholder="password">
               </div>
             
              <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -237,7 +239,9 @@
                 </div>
                </div>
               <div class="form-group text-center mt-2">
-                <button class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
+                <button type="submit" class="cmn-btn btn--sm" >Sign Up</button>
+
+                <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
               </div>
        <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive SMS?</a>
             </form>
@@ -319,7 +323,15 @@
       <div class="row align-items-center">
         <div class="col-sm-5">
           <div class="left d-flex align-items-center">
-            <a href="" routerLink="/user-control/customsupp"><i class="las la-phone-volume"></i> Customer Support</a>
+            <!-- <a href="customersupport.html"><i class="las la-phone-volume"></i> Customer Support</a> -->
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="las la-tags"></i> Bitconia Token</a> 
+      <div class="dropdown-menu">
+    <a href="#" class="dropdown-item">Sub menu1</a> 
+  
+     <a href="#" class="dropdown-item">Sub menu2</a> 
+   <a href="#" class="dropdown-item">Sub menu3</a> 
+      
+      </div>
             <div class="language">
               <i class="las la-globe-europe"></i>
               <select>
@@ -372,7 +384,7 @@
           <div class="row">
             <span class="col-lg-12 text-bold">4 pending Annoucements</span>
             <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
-            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/announcements"   style="float:left;">View all</a><i class="las la-angle-right"></i></span>
+            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/announcements"  style="float:left;">View all</a><i class="las la-angle-right"></i></span>
           </div>
         </div>
          <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Beta token sale on Bitconia
@@ -396,26 +408,38 @@
 </div>
 </div>
  <div class="product__cart">
-               <a href=""routerLink="user-Draw/cart"  class="amount__btn">
+               <a href="cart.html"  class="amount__btn">
         <i class="las la-shopping-basket"></i> 
         <span class="cart__num">08</span>
       </a>
             </div>
-           <a href=""routerLink="/user-Draw/wallet" class="user__btn" ><i class="las la-wallet"></i></a> 
+           <a href=""routerLink= "/user-Draw/wallet" class="user__btn" ><i class="las la-wallet"></i></a> 
     
-   <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a> 
-      <div class="dropdown-menu">
-   <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a> 
+   <!-- <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>  -->
+      <!-- <div class="dropdown-menu"> -->
+   <!-- <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>  -->
   
-     <a href=""routerLink="/user-Draw/myticket" class="dropdown-item">User panel</a> 
-   <a href="#" class="dropdown-item">Logout</a> 
+     <!-- <a href="userpanel.html" class="dropdown-item">User panel</a>  -->
+   <!-- <a href="#" class="dropdown-item">Logout</a>  -->
       
-       </div>
+       <!-- </div> -->
+   
+  <div class="dropdown">
+<a href="#" class="topmenulink mt-1 ml-4 user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>
+<div class="dropdown-content">
+<a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>
+<a href=""routerLink="/user-Draw/myticket" class="dropdown-item">User panel</a>
+<a href="#" class="dropdown-item" (click)="logoutUser()">Logout</a>
+<!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
+<!-- </button> -->
+</div>
+</div> 
+   
 
   <div class="dropdown">
 <a href="#" class="topmenulink mt-1 ml-4">Download</a>
 <div class="dropdown-content">
-<img src="assets/images/qrcode.jpg" alt="QR Code" width="300" height="200">
+<img src="assets/images/qrcode.jpg" class="center" alt="QR Code" width="100" height="100">
 <div class="desc">Scan here</div>
 </div>
 </div>

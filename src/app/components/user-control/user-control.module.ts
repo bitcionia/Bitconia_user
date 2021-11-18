@@ -8,6 +8,9 @@ import { FraudawareComponent } from './fraudaware/fraudaware.component';
 import { TwofactorsComponent } from './twofactors/twofactors.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
@@ -18,11 +21,14 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
        FraudawareComponent,
        TwofactorsComponent,
        ChangepasswordComponent,
-       ForgetpasswordComponent
+       ForgetpasswordComponent,
+       ResetpasswordComponent
   ],
   imports: [
     CommonModule,
-    UserControlRoutingModule
+    UserControlRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserControlModule { }

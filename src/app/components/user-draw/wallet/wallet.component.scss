@@ -24,4 +24,28 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+  }  .winner-tab-nav li {
+    width: calc(100% / 1);  
+     text-align: center;
+ }
+    .input-icons i {
+             position: absolute;
+             right:60px;
+             color: #c4cbf9;;
+         }
+          .input-icons span {
+             position: absolute;
+             right:100px;
+             color: #c4cbf9;;
+         }
+         
+          .input-icons img {
+             position: absolute;
+             right:100px;
+             color: #c4cbf9;;
+         }
+          .input-icons span+span {
+             position: absolute;
+             right:60px;
+             color: #ff5800;;
+         }

@@ -1,13 +1,15 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { version } from 'process';
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
-import { SlideControlComponent } from 'ng-spc';
+// import { SlideControlComponent } from 'ng-spc';
 import { ControlService, ControlInput, Result, VertifyQuery  } from '../../service/control.service';
 
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommondataService } from '../../service/commondata.service';
-
+import { HttpService } from '../../service/http.service';
+import { ActivatedRoute, Router } from '@angular/router';
+// import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,6 +20,7 @@ export class HeaderComponent implements OnInit {
   // @ViewChild(SlideControlComponent, {static: true})
   // slide: SlideControlComponent;
   counterValue = 0;
+  public loginForm: FormGroup;
 
 data:any;
   private query: VertifyQuery;
@@ -50,12 +53,24 @@ data:any;
   quickdata=new Map();
   number: any=1;
   upcomdata: any;
-  constructor(
+  submitted: boolean;
+  userId: any;
+  public mobileform: FormGroup;
+  ipAddress: any;
 
+  constructor(
+    // public toastr: ToastrService,
+
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private routeTo: Router,
     public dialog: MatDialog,
     private el: ElementRef,
     private controlService: ControlService,
     public sharedata:CommondataService,
+    public httpService: HttpService,
+    public http:HttpClient
 
   ) {
     // var arr = [];
@@ -84,6 +99,8 @@ data:any;
       }
     });
     this.upcomdata = JSON.parse(localStorage.getItem("count"))
+    this.createForm();
+this.mobileForm();
    }
 
   ngOnInit(): void {
@@ -105,8 +122,22 @@ data:any;
     window.onresize = () => {
       this.resetWindow();
     };
+    this.getIPAddress();
+
   }
-  
+  createForm() {
+    this.loginForm = this.formBuilder.group({
+      'email': ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      'password': ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+  mobileForm() {
+    this.mobileform = this.formBuilder.group({
+      'mobile': ['', [Validators.required,Validators.minLength(10)]],
+      'password': ['', [Validators.required, Validators.minLength(6)]]
+
+    });
+  }
   // createaccount() {
   //   const dialogRef = this.dialog.open(CreateaccountComponent, {
   //     // width: '500px',
@@ -229,6 +260,154 @@ data:any;
       }
     );
   }
+  mobilelogin() {
+  debugger
+    localStorage.clear();
+    this.submitted=true;
+    let jsonData = {
+      mobile: this.mobileform.value.mobile,
+      password: this.mobileform.value.password
+    }
+    this.httpService.userLogin(jsonData).subscribe((res: any) => {
+      
+      if (res['success'] == true) {
+        this.userId = this.loginForm.value.userid;
+        // ls.set('userPass', { data: this.loginForm.value.password });
+        console.log(res);
+        localStorage.setItem("userid", JSON.stringify(res['admin']['mobile']));
+        localStorage.setItem("data", JSON.stringify(res['data']));
+        localStorage.setItem("loginState", JSON.stringify(true));
 
+        this.userId = res['admin']['mobile'];
+        // localStorage.setItem("userid", JSON.stringify(this.loginForm.value.userid));
+        localStorage.setItem("userdetails", JSON.stringify(res));
+        // this.httpService.toastr.success(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
+        // });
+
+        this.router.navigate(['/user-control/twofactor']);
+        // this.router.navigate(['/dashboard/dashboard']);
+
+
+      }
+       else if (res['success'] == false) {
+      
+        // this.httpService.toastr.error(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+        // });
+      }
+    }, (err) => {
+      // this.toastr.error("invalid_credentials");
+    });
+    
+
+  }
+  onSubmit() {
+    debugger
+      localStorage.clear();
+      this.submitted=true;
+      let jsonData = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+      this.httpService.userLogin(jsonData).subscribe((res: any) => {
+        
+        if (res['success'] == true) {
+          this.userId = this.loginForm.value.userid;
+          // ls.set('userPass', { data: this.loginForm.value.password });
+          console.log(res);
+          localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
+          localStorage.setItem("data", JSON.stringify(res['data']));
+          localStorage.setItem("loginState", JSON.stringify(true));
+  
+          this.userId = res['admin']['email'];
+          // localStorage.setItem("userid", JSON.stringify(this.loginForm.value.userid));
+          localStorage.setItem("userdetails", JSON.stringify(res));
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
+          // });
+  
+          this.router.navigate(['/user-control/twofactor']);
+          // this.router.navigate(['/dashboard/dashboard']);
+  
+  
+        }
+         else if (res['success'] == false) {
+        
+          // this.httpService.toastr.error(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+          // });
+        }
+      }, (err) => {
+        // this.toastr.error("invalid_credentials");
+      });
+      
+  
+    }
+  logoutUser() {
+  debugger
+    if (
+      localStorage.getItem("userid") != null ||
+      localStorage.getItem("userid") != undefined
+    ) {
+      var userNumber = JSON.parse(localStorage.getItem("userid"));
+      sessionStorage.setItem("previousLogin", JSON.stringify(userNumber));
+console.log(userNumber );
+      // this.loader.stop();
+      let jsonObj = {
+        userid: userNumber,
+      };
+      this.httpService.logoutSession(jsonObj).subscribe((resp) => {
+        localStorage.clear();
+        // this.toastr.success("User has been logged off", "", {
+        //   positionClass: "toast-bottom-right",
+        //   closeButton: true,
+        //   timeOut: 5000,
+        // });
+        this.router.navigateByUrl("/index");
+      });
+    }
+  }
+  getIPAddress()
+  {
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.ipAddress = res.ip;
+      console.log(this.ipAddress)
+    });
+  }
+  openaccountemail() {
+    debugger
+      this.submitted=true;
+      let jsonData = {
+        mobile: this.mobileform.value.mobile,
+        password: this.mobileform.value.password,
+                device:'1',
+        location:'Chennai',
+        ip:this.ipAddress,
+      }
+      this.httpService.createuser(jsonData).subscribe(( res: any) => {
+        
+        if (res['success'] == true) {
+          // ls.set('userPass', { data: this.loginForm.value.password });
+          console.log(res);
+         
+  
+          this.router.navigate(['/user-control/twofactor']);
+          // this.router.navigate(['/dashboard/dashboard']);
+  
+  
+        }
+         else if (res['success'] == false) {
+        
+          // this.httpService.toastr.error(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+          // });
+        }
+      }, (err) => {
+        // this.toastr.error("invalid_credentials");
+      });
+      
+  
+    }
 }
 

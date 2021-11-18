@@ -15,6 +15,8 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { PirvacyComponent } from './pirvacy/pirvacy.component';
 import { TermsComponent } from './terms/terms.component';
 
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { TermsComponent } from './terms/terms.component';
   ],
   imports: [
     CommonModule,
-    UserSettingRoutingModule
+    UserSettingRoutingModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserSettingModule { }

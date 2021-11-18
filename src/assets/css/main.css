@@ -1550,7 +1550,7 @@ a {
 
 a:hover {
     text-decoration: none;
-}
+	}
 
 /* button css start */
 .cmn-btn {
@@ -7847,7 +7847,7 @@ span.is-active:after {
 }
 
 .ticket-wrapper__body .single-row:last-child {
-    padding-bottom: 0;
+    padding-bottom: 10px;
     border-bottom: none;
 }
 
@@ -11155,4 +11155,3 @@ span.is-active:after {
 }
 /* footer section css end */
 
-/*# sourceMappingURL=main.css.map */

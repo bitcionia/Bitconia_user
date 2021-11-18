@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BuynowComponent } from './buynow/buynow.component';
 import { CartComponent } from './cart/cart.component';
+import { ClaimprizeComponent } from './claimprize/claimprize.component';
 import { CurrentdrawComponent } from './currentdraw/currentdraw.component';
 import { HistoryComponent } from './history/history.component';
 import { MyticketComponent } from './myticket/myticket.component';
@@ -20,6 +21,7 @@ const routes: Routes =[
   { path: 'history', component: HistoryComponent},
   { path: 'wallet', component: WalletComponent},
   { path: 'pastdraw', component: PastdrawComponent},
+  { path: 'claimprize', component: ClaimprizeComponent},
 
     // canActivate:[AuthencationGuard],
 

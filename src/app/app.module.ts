@@ -7,7 +7,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 
-import { NgxCaptchaModule } from 'ngx-captcha';
+// import { NgxCaptchaModule } from 'ngx-captcha';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,13 +28,15 @@ import { IndexComponent } from './components/index/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxCaptchaModule,
+    // NgxCaptchaModule,
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule ,
     MatTabsModule,
     HttpClientModule,
+    
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   // providers:[],

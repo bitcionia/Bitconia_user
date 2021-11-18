@@ -67,64 +67,41 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>Date</th>
-                      <th>Source</th>
-                      <th>Status</th>
-                      <th>IP Address</th>
+                      
+                        <th ><span>User</span></th>
+                        <!-- <th ><span></span></th> -->
+                        <th ><span>Created</span></th>
+                        <!-- <th ><span>Location</span></th> -->
+                        <th ><span>Text</span></th>
+                        <th >Type</th>
+                    
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><div class="text-white">2021-10-19 09:45:39</div></td>
-                      <td><div class="text-white">web</div></td>
+                    <tr *ngFor="let item of data | paginate:{
+                      itemsPerPage:5,
+                       currentPage:p,
+                       item:item,
+                      totalitem:totalLength }">
+                      <td><div class="text-white">{{item['user_id']['email']}}</div></td>
+
+                      <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
+                      <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                       <td>
-                       <div class="text-green">Completed</div>
+                       <div class="text-green"> {{item['text']}}</div>
                       </td>
-                      <td><div class="text-white">45.251.35.12</div></td>
+                      <td><div class="text-white"> {{item['type']}}</div></td>
                     </tr>
 					 <tr>
-                      <td><div class="text-white">2021-10-19 09:25:34</div></td>
-                      <td><div class="text-white">web</div></td>
-                      <td>
-                       <div class="text-green">Completed</div>
-                      </td>
-                      <td><div class="text-white">45.251.35.12</div></td>
-                    </tr>
-					 <tr>
-                      <td><div class="text-white">2021-10-19 09:56:12</div></td>
-                      <td><div class="text-white">web</div></td>
-                      <td>
-                       <div class="text-green">Completed</div>
-                      </td>
-                      <td><div class="text-white">45.251.35.27</div></td>
-                    </tr>
-					 <tr>
-                      <td><div class="text-white">2021-09-19 09:07:47</div></td>
-                      <td><div class="text-white">web</div></td>
-                      <td>
-                       <div class="text-green">Completed</div>
-                      </td>
-                      <td><div class="text-white">45.251.35.27</div></td>
-                    </tr>
-					 <tr>
-                      <td><div class="text-white">2021-09-19 09:45:39</div></td>
-                      <td><div class="text-white">web</div></td>
-                      <td>
-                       <div class="text-green">Completed</div>
-                      </td>
-                      <td><div class="text-white">45.251.35.45</div></td>
-                    </tr>
-					 <tr>
-                      <td><div class="text-white">2021-09-19 09:45:39</div></td>
-                      <td><div class="text-white">web</div></td>
-                      <td>
-                       <div class="text-green">Completed</div>
-                      </td>
-                      <td><div class="text-white">45.251.35.45</div></td>
-                    </tr>
+                    
 					</tbody>
                 </table>
               </div>
+              <div class="center" *ngIf="!showDatafound">
+                <span>NO DATA FOUND </span>
+              </div>
+            <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
+            <br>
               <div class="text-right mt-4">
             
 <span>Suspicious account activity? <a href="#" data-toggle="modal" data-target="#disableaccountModal"> Disable account.</a></span>

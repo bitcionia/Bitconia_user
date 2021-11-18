@@ -5,6 +5,7 @@ import { CustomersupportComponent } from './customersupport/customersupport.comp
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { FraudawareComponent } from './fraudaware/fraudaware.component';
 import { OurfeatureComponent } from './ourfeature/ourfeature.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { TwofactorsComponent } from './twofactors/twofactors.component';
 
 const routes: Routes = [ {
@@ -14,6 +15,7 @@ const routes: Routes = [ {
    { path: 'forgetpass', component:ForgetpasswordComponent},
   { path: 'Changepassword', component:ChangepasswordComponent},
   { path: 'twofactor', component: TwofactorsComponent},
+  { path: 'restpassword', component: ResetpasswordComponent},
 
 ];
 
