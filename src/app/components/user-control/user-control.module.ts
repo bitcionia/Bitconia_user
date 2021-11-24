@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,12 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     UserControlRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxIntlTelInputModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 1000
+      }
+    ),
   ]
 })
 export class UserControlModule { }

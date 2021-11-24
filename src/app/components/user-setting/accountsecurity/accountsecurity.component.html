@@ -153,18 +153,18 @@
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Security Verification</h3>
               <div class="account-form-wrapper">
-                <form>
+                <form action="#"[formGroup]="g2faForm" (ngSubmit)="g2faenabled()"method="post" data-parsley-validate="" novalidate="">
                
                <div class="form-group">
                     <label class="mb-3">SMS Verification code <sup>*</sup></label>
-                    <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
+                    <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
                   </div>
           <div class="d-flex flex-wrap justify-content-end mt-3">
                <a href="#" class="link">Get code</a>
            </div>
           
                    <div class="form-group text-center">
-                     <button class="cmn-btn style--three btn--sm centered m-2" data-toggle="modal" data-target="#gogleverify" data-dismiss="modal">Next</button>
+                     <button type="submit" class="cmn-btn style--three btn--sm centered m-2">Next</button>
             </div>
                 </form>
                

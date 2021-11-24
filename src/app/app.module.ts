@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {APP_BASE_HREF} from '@angular/common';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 // import { NgxCaptchaModule } from 'ngx-captcha';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -15,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,12 @@ import { IndexComponent } from './components/index/index.component';
     ReactiveFormsModule ,
     MatTabsModule,
     HttpClientModule,
-    
+    NgxIntlTelInputModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 1000
+      }
+    ),
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

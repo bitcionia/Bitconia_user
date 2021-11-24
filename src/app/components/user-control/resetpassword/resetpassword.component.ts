@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { HttpService } from '../../service/http.service';
+import { PasswordStrengthService } from '../../service/password-strength.service';
 
 @Component({
   selector: 'app-resetpassword',
@@ -13,13 +15,16 @@ export class ResetpasswordComponent implements OnInit {
   submitted: boolean;
   public loginForm: FormGroup;
   ipAddress: any;
+  error: any;
+  errorMessage: any;
   constructor(
     public httpService: HttpService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private routeTo: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public toastr: ToastrService,
 
   ) { 
     this.createForm();
@@ -30,8 +35,10 @@ export class ResetpasswordComponent implements OnInit {
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
-      'newPass': ['', [Validators.required, Validators.minLength(10)]],
-      'confirmPass': ['', [Validators.required, Validators.minLength(10)]],
+      'newPass': ['', [Validators.required, Validators.minLength(6),PasswordStrengthService]],
+
+      'confirmPass':['', [Validators.required, Validators.minLength(6),PasswordStrengthService]],
+
     });
   }
   getIPAddress()
@@ -53,8 +60,9 @@ export class ResetpasswordComponent implements OnInit {
       this.httpService.resetPassword(jsonData).subscribe(( res: any) => {
         
         if (res['success'] == true) {
-          // ls.set('userPass', { data: this.loginForm.value.password });
-          console.log(res);
+this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+          });          console.log(res);
          
   
           this.router.navigate(['/index']);
@@ -68,9 +76,17 @@ export class ResetpasswordComponent implements OnInit {
           //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
           // });
         }
-      }, (err) => {
-        // this.toastr.error("invalid_credentials");
-      });
+      },  (error) => {                              //Error callback
+        console.log(error)
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     })
       
   
     }

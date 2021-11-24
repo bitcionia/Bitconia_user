@@ -47,14 +47,35 @@
                    <div class="account-form-wrapper">
                     <form [formGroup]="mobileform" (ngSubmit)="mobilelogin()" novalidate>
              
-      <div class="form-group">
+      <!-- <div class="form-group">
                 <label>Phone <sup>*</sup></label>
-                <input type="number" formControlName="mobile" name="signup_name" id="signup_name" placeholder="phone number" required>
-              </div>
-      
+                <input type="number"  name="signup_name" id="signup_name" placeholder="phone number" required>
+              </div> -->
+              <div class="form-group">
+                <label>Phone <sup>*</sup></label>
+                <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
+              </ngx-intl-tel-input>            </div>
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password" formControlName="password" name="signup_pass" id="signup_pass" placeholder="password" required>
+                <input type="password"  name="signup_pass" id="signup_pass"formControlName="password" placeholder="password" required>
+                <div class="errors"
+                                *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
+
+                                <div *ngIf="mobileform.get('password').hasError('required')">
+                                  password is required
+                                </div>
+
+                                <div *ngIf="mobileform.get('password').errors.minlength">
+                                  Password must be at least 8 characters
+                                </div>
+
+                                <div class="error-text" *ngIf="mobileform.get('password').hasError('passwordStrength')">
+                                  {{mobileform.get('password').errors['passwordStrength']}}
+                                </div>
+                              </div>
               </div>
             
             <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -63,11 +84,11 @@
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div>
-                <a href=""routerLink="/user-control/forgetpass" class="link">Forgot Password?</a>
+                <a href=""routerLink="/user-control/forgetpass" data-dismiss="modal"class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
                 <!-- <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a> -->
-                <button class="cmn-btn btn--sm btn-block not-allowed"
+                <button  type="submit"  class="cmn-btn btn--sm btn-block "data-dismiss="modal"(click)="mobilelogin()"
                 >log in</button>
               </div>
             </form>
@@ -87,15 +108,43 @@
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                      
                       <div class="form-group">
                 <label>Email <sup>*</sup></label>
-                <input type="email" formControlName="email"name="signup_name" id="signup_name" placeholder="Enter your Email" required>
+                <input type="email" name="signup_name" id="signup_name" formControlName="email" placeholder="Enter your Email" required>
+                <div class="errors"
+              *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
+
+              <div *ngIf="loginForm.get('email').hasError('required')">
+                Email is required
+              </div>
+
+              <div *ngIf="loginForm.get('email').errors.email">
+                This is not a valid Email!!! </div>
+
+
+            </div>
               </div>
       
       
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password"formControlName="password" name="signup_pass" id="signup_pass" placeholder="password" required>
+                <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required>
+                <div class="errors"
+                *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+
+                <div *ngIf="loginForm.get('password').hasError('required')">
+                  password is required
+                </div>
+
+                <div *ngIf="loginForm.get('password').errors.minlength">
+                  Password must be at least 8 characters
+                </div>
+
+                <div class="error-text" *ngIf="loginForm.get('password').hasError('passwordStrength')">
+                  {{loginForm.get('password').errors['passwordStrength']}}
+                </div>
+              </div>
               </div>
             
               <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -104,11 +153,11 @@
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div>
-                <a href=""routerLink="/user-control/forgetpass" class="link">Forgot Password?</a>
+                <a href=""routerLink="/user-control/forgetpass"data-dismiss="modal" class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
                 <!-- <a href=""class="cmn-btn btn--sm">log in</a> -->
-                <button class="cmn-btn btn--sm btn-block not-allowed" [disabled]="!loginForm.valid"
+                <button  type="submit" class="cmn-btn btn--sm btn-block"data-dismiss="modal"(click)="onSubmit()"
                 >log in</button>
               </div>
             </form>
@@ -206,27 +255,69 @@
               <div class="row mb-none-30">
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
-                    <form [formGroup]="mobileform" (ngSubmit)="openaccountemail()" novalidate>
+                    <form [formGroup]="mobileform" (ngSubmit)="openaccountmob()" novalidate>
              
       <div class="form-group">
                 <label>Phone <sup>*</sup></label>
-                <input type="number"formControlName="mobile" name="signup_name" id="signup_name" placeholder="phone number">
+                <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
+              </ngx-intl-tel-input>            </div>
+              <div class="errors"
+              *ngIf="mobileform.get('phone').invalid && (mobileform.get('phone').touched || mobileform.get('phone').dirty)">
+
+              <div *ngIf="mobileform.get('phone').hasError('required')">
+                mobile is required
               </div>
+
+              <div *ngIf="mobileform.get('phone').errors.phone">
+                This is not a valid number!!! </div>
+
+
+            </div>  
        <div class="d-flex flex-wrap justify-content-between mt-2">
        <label></label>
-      <a href="#0" class="link m-1">Send Code to phone</a>
+      <a href="javascript:;" (click)="signupotp()" class="link m-1">Send Code to phone</a>
       </div>
       <div class="form-group">
                 <label>phone verification code <sup>*</sup></label>
-                <input type="number" name="signup_name" id="signup_name" placeholder="phone verification code">
+                <input type="text" name="signup_name"formControlName="code" id="signup_name" placeholder="phone verification code">
+                <div class="errors"
+              *ngIf="mobileform.get('code').invalid && (mobileform.get('code').touched || mobileform.get('code').dirty)">
+
+              <div *ngIf="mobileform.get('code').hasError('required')">
+                Code is required
+              </div>
+
+              <div *ngIf="mobileform.get('code').errors.code">
+                This is not a valid Code!!! </div>
+
+
+            </div> 
               </div>
       <div class="d-flex flex-wrap justify-content-between mt-2">
       <label></label>
-       <a href="#0" class="link m-1">Verify Code</a>
+       <!-- <a href="#0" class="link m-1">Verify Code</a> -->
        </div>
               <div class="form-group">
                 <label>Set login password <sup>*</sup></label>
-                <input type="password"formControlName="password" name="signup_pass" id="signup_pass" placeholder="password">
+                <input type="password" formControlName="password"name="signup_pass" id="signup_pass" placeholder="password">
+                <div class="errors"
+                                *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
+
+                                <div *ngIf="mobileform.get('password').hasError('required')">
+                                  password is required
+                                </div>
+
+                                <div *ngIf="mobileform.get('password').errors.minlength">
+                                  Password must be at least 8 characters
+                                </div>
+
+                                <div class="error-text" *ngIf="mobileform.get('password').hasError('passwordStrength')">
+                                  {{mobileform.get('password').errors['passwordStrength']}}
+                                </div>
+                              </div>
               </div>
             
              <div class="d-flex flex-wrap justify-content-between mt-2">
@@ -239,7 +330,7 @@
                 </div>
                </div>
               <div class="form-group text-center mt-2">
-                <button type="submit" class="cmn-btn btn--sm" >Sign Up</button>
+                <button type="submit" class="cmn-btn btn--sm" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
 
                 <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
               </div>
@@ -261,26 +352,68 @@
                  <div class="row mb-none-30">
                 <div class="col-lg-12 mb-30">
                    <div class="account-form-wrapper">
-            <form>
-              <div class="form-group">
+                    <form [formGroup]="loginForm" novalidate>
+                      <div class="form-group">
                 <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name" id="signup_name" placeholder="Enter your Email">
+                <input type="email" name="signup_name" id="signup_name" formControlName="email"placeholder="Enter your Email">
+                <div class="errors"
+              *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
+
+              <div *ngIf="loginForm.get('email').hasError('required')">
+                Email is required
+              </div>
+
+              <div *ngIf="loginForm.get('email').errors.email">
+                This is not a valid Email!!! </div>
+
+
+            </div> 
               </div>
        <div class="d-flex flex-wrap justify-content-between mt-2">
        <label></label>
-      <a href="#0" class="link m-1">Send Code to Email</a>
+      <a href="javascript:;"  type="submit"  (click)="signupemailotp()" class="link m-1">Send Code to Email</a>
+      <!-- <button  type="submit" class="link-btn" (click)="signupemailotp()">Send Code to Email</button> -->
+      <!-- <button  (click) ="signupemailotp()"class="link-btn">Send Code to Email</button > -->
+
       </div>
       <div class="form-group">
                 <label>Email verification code <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name" placeholder="Email verification code">
+                <input type="text" name="signup_name" id="signup_name"formControlName="code" placeholder="Email verification code">
+                <div class="errors"
+                *ngIf="loginForm.get('code').invalid && (loginForm.get('code').touched || loginForm.get('code').dirty)">
+  
+                <div *ngIf="loginForm.get('code').hasError('required')">
+                  Code is required
+                </div>
+  
+                <div *ngIf="loginForm.get('code').errors.code">
+                  This is not a valid Code!!! </div>
+  
+  
+              </div> 
               </div>
        <div class="d-flex flex-wrap justify-content-between mt-2">
        <label></label>
-      <a href="#0" class="link m-1">Verify Code</a>
+      <!-- <a href="#0" class="link m-1">Verify Code</a> -->
       </div>
               <div class="form-group">
                 <label>Set login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass" placeholder="password">
+                <input type="password" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                <div class="errors"
+                *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+
+                <div *ngIf="loginForm.get('password').hasError('required')">
+                  password is required
+                </div>
+
+                <div *ngIf="loginForm.get('password').errors.minlength">
+                  Password must be at least 8 characters
+                </div>
+
+                <div class="error-text" *ngIf="loginForm.get('password').hasError('passwordStrength')">
+                  {{loginForm.get('password').errors['passwordStrength']}}
+                </div>
+              </div>
               </div>
             
               <div class="d-flex flex-wrap mt-2">
@@ -292,7 +425,7 @@
                 <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
               </div>
               <div class="form-group text-center mt-2">
-                <button class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button>
+                <button type ="submit"  class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
               </div>
       <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
             </form>
@@ -425,7 +558,7 @@
        <!-- </div> -->
    
   <div class="dropdown">
-<a href="#" class="topmenulink mt-1 ml-4 user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>
+<a href="#" class="topmenulink mt-1 ml-4 user__btn" ><i class="las la-user"></i></a>
 <div class="dropdown-content">
 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>
 <a href=""routerLink="/user-Draw/myticket" class="dropdown-item">User panel</a>

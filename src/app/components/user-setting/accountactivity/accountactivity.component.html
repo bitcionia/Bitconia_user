@@ -68,12 +68,12 @@
                   <thead>
                     <tr>
                       
-                        <th ><span>User</span></th>
+                        <th ><span>Date</span></th>
                         <!-- <th ><span></span></th> -->
-                        <th ><span>Created</span></th>
+                        <th ><span>Source</span></th>
                         <!-- <th ><span>Location</span></th> -->
                         <th ><span>Text</span></th>
-                        <th >Type</th>
+                        <th >IP</th>
                     
                     </tr>
                   </thead>
@@ -83,14 +83,14 @@
                        currentPage:p,
                        item:item,
                       totalitem:totalLength }">
-                      <td><div class="text-white">{{item['user_id']['email']}}</div></td>
-
                       <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
+
+                      <td><div class="text-white">{{item['type']}}</div></td>
                       <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                       <td>
                        <div class="text-green"> {{item['text']}}</div>
                       </td>
-                      <td><div class="text-white"> {{item['type']}}</div></td>
+                      <td><div class="text-white"> {{item['ip']}}</div></td>
                     </tr>
 					 <tr>
                     

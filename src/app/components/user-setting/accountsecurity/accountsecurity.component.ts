@@ -13,7 +13,11 @@ export class AccountsecurityComponent implements OnInit {
   userDetails: any =[];
   userID: any;
   public loginForm: FormGroup;
+  public g2faForm: FormGroup;
+
    submitted= false;
+  error: any;
+  errorMessage: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,7 +30,15 @@ export class AccountsecurityComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-
+this.gfen();
+this.g2faathu();
+  }
+  gfen(){
+    
+    this.g2faForm = this.formBuilder.group({
+      'otp': ['', [Validators.required, Validators.minLength(10)]],
+ 
+    });
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
@@ -38,7 +50,7 @@ export class AccountsecurityComponent implements OnInit {
   get loginFormControl(){
     return this.changepass.controls;
   }
- 
+  
   changepassword() {
     this.submitted = true;
 
@@ -65,7 +77,19 @@ export class AccountsecurityComponent implements OnInit {
       //     '', {
       //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       //   });
-      })
+      },
+      (error) => {                              //Error callback
+        console.log(error)
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     });
+      
     } else {
       // this.httpService.toastr.error("Password didn't match");
       // this.httpService.toastr.error("Password didn't match",
@@ -74,4 +98,90 @@ export class AccountsecurityComponent implements OnInit {
       // });
     }
   }
+  g2faenabled() {
+    this.submitted = true;
+
+    debugger
+      let JsonData = {
+        "otp": this.g2faForm.value.otp,
+      
+      }
+      this.httpService.g2faenable(JsonData).subscribe(res => {
+        // ////debugger
+        if (res['success'] == true) {
+          // this.toastr.success("Password changed Successfully");
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          // });
+          // this.routeTo.navigateByUrl('/index');
+        }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+      })
+     {
+      // this.httpService.toastr.error("Password didn't match");
+      // this.httpService.toastr.error("Password didn't match",
+      //   '', {
+      //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      // });
+    }
+  }
+  g2faverify() {
+    this.submitted = true;
+
+    debugger
+      let JsonData = {
+        "otp": this.g2faForm.value.otp,
+      
+      }
+      this.httpService.g2fverify(JsonData).subscribe(res => {
+        // ////debugger
+        if (res['success'] == true) {
+          // this.toastr.success("Password changed Successfully");
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          // });
+          // this.routeTo.navigateByUrl('/index');
+        }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+      })
+     {
+    }
+  }
+  g2faathu() {
+    this.submitted = true;
+
+    debugger
+      
+      this.httpService.g2fa().subscribe(res => {
+        // ////debugger
+        console.log(res['data']['img'])
+
+        if (res['success'] == true) {
+          // this.toastr.success("Password changed Successfully");
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          // });
+          // this.routeTo.navigateByUrl('/index');
+        }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+      })
+     {
+    }
+  }
+  
 }

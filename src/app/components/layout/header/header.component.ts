@@ -10,12 +10,25 @@ import { CommondataService } from '../../service/commondata.service';
 import { HttpService } from '../../service/http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { ToastrService } from 'ngx-toastr';
+import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { PasswordStrengthService } from '../../service/password-strength.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  
+  separateDialCode = false;
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  preferredCountries: CountryISO[] =[CountryISO.UnitedArabEmirates, CountryISO.India];
+	// phoneForm = new FormGroup({
+	// 	phone: new FormControl(undefined, [Validators.required])
+  // });
+
   siteKey:string="6LeB_cUcAAAAAOvGthvHU_Yk6q0f8_QOwPi7X8_a"
   // @ViewChild(SlideControlComponent, {static: true})
   // slide: SlideControlComponent;
@@ -57,9 +70,19 @@ data:any;
   userId: any;
   public mobileform: FormGroup;
   ipAddress: any;
+  phoneNumber: any;
+  dailcode: any;
+  phnumber: any;
+  code: any;
+  mobile: any;
+  countrycode: any;
+  errorMessage: any;
+  cls: HTMLElement;
+  email: any;
+  error: any;
 
   constructor(
-    // public toastr: ToastrService,
+    public toastr: ToastrService,
 
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -101,6 +124,7 @@ data:any;
     this.upcomdata = JSON.parse(localStorage.getItem("count"))
     this.createForm();
 this.mobileForm();
+
    }
 
   ngOnInit(): void {
@@ -124,20 +148,44 @@ this.mobileForm();
     };
     this.getIPAddress();
 
+   
+  
   }
+ 
   createForm() {
     this.loginForm = this.formBuilder.group({
-      'email': ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      'password': ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-  mobileForm() {
-    this.mobileform = this.formBuilder.group({
-      'mobile': ['', [Validators.required,Validators.minLength(10)]],
-      'password': ['', [Validators.required, Validators.minLength(6)]]
+      'email': ['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      'password': [null, Validators.compose([
+        Validators.required, Validators.minLength(8), PasswordStrengthService])],
+        'code':['', Validators.compose([Validators.required,Validators.pattern(
+          '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})'
+            )])]
 
     });
   }
+ 
+  // checkNumber(){
+  //   if(this.phoneNumber != null){
+  //     let Data:any = this.phoneNumber;
+  //     console.log("Number :- ",Data.number);
+  //     console.log("Code :- ",Data.internationalNumber);
+  //     console.log("dialCode :- ",Data.dialCode);
+  //   }
+  
+
+   
+  mobileForm() {
+    this.mobileform = this.formBuilder.group({
+      
+      'code':[''],
+                'password': ['', [Validators.required, Validators.minLength(6),PasswordStrengthService]],
+     'phone': [''],
+
+    });
+  }
+  //  get loginFormControl(){
+  //   return this.loginForm.controls;
+  // }
   // createaccount() {
   //   const dialogRef = this.dialog.open(CreateaccountComponent, {
   //     // width: '500px',
@@ -232,7 +280,9 @@ this.mobileForm();
     );
 
   }
+  
 
+  
 
   reset() {
     this.slider.style.left = 0;
@@ -264,10 +314,29 @@ this.mobileForm();
   debugger
     localStorage.clear();
     this.submitted=true;
-    let jsonData = {
-      mobile: this.mobileform.value.mobile,
-      password: this.mobileform.value.password
-    }
+    debugger
+    console.log(this.mobileform.value);
+    this.code = this.mobileform.value;
+    console.log( this.code['phone']);
+this.phoneNumber=this.code['phone']
+
+        this.mobile =  this.code['phone']['number'];
+        // this.country =  idex['countryCode'];
+        this.countrycode =  this.code['phone']['dialCode'];
+        localStorage.setItem("countrycode", JSON.stringify( this.countrycode));
+        localStorage.setItem("mobile", JSON.stringify(this.mobile));
+        console.log( this.countrycode);
+        console.log( this.mobile);
+      debugger
+      this.submitted=true;
+      let jsonData = {
+        mobile: this.mobile,
+        password: this.mobileform.value.password,
+        country_code:this.countrycode,
+                device:'1',
+        location:'Chennai',
+        ip:'162.198.5.46',
+      }
     this.httpService.userLogin(jsonData).subscribe((res: any) => {
       
       if (res['success'] == true) {
@@ -281,11 +350,13 @@ this.mobileForm();
         this.userId = res['admin']['mobile'];
         // localStorage.setItem("userid", JSON.stringify(this.loginForm.value.userid));
         localStorage.setItem("userdetails", JSON.stringify(res));
-        // this.httpService.toastr.success(res['message'], '', {
-        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
-        // });
+        this.httpService.toastr.success(res['message'], '', {
+          positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
+        });
+        var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
+    this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+        // this.router.navigate(['/user-control/twofactor']);
 
-        this.router.navigate(['/user-control/twofactor']);
         // this.router.navigate(['/dashboard/dashboard']);
 
 
@@ -296,9 +367,21 @@ this.mobileForm();
         //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
         // });
       }
-    }, (err) => {
-      // this.toastr.error("invalid_credentials");
-    });
+    },(error) => {                              //Error callback
+      console.log(error)
+      // console.log(error)
+      //   this.httpService.toastr.error(error,'',  {
+      //     positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+      //   });
+      this.error = error.status;
+      console.log(this.error)
+
+      this.errorMessage = error.error.message;
+      console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+        positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+      });
+   })
     
 
   }
@@ -308,14 +391,19 @@ this.mobileForm();
       this.submitted=true;
       let jsonData = {
         email: this.loginForm.value.email,
-        password: this.loginForm.value.password
+        password: this.loginForm.value.password,
+        device:'1',
+        location:'Chennai',
+        ip:'162.198.5.46',
       }
-      this.httpService.userLogin(jsonData).subscribe((res: any) => {
-        
+      this.httpService.userLogin(jsonData).subscribe( res => {
+        console.log(res);
+
         if (res['success'] == true) {
           this.userId = this.loginForm.value.userid;
           // ls.set('userPass', { data: this.loginForm.value.password });
           console.log(res);
+          this.email=res['admin']['email'];
           localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
           localStorage.setItem("data", JSON.stringify(res['data']));
           localStorage.setItem("loginState", JSON.stringify(true));
@@ -323,11 +411,12 @@ this.mobileForm();
           this.userId = res['admin']['email'];
           // localStorage.setItem("userid", JSON.stringify(this.loginForm.value.userid));
           localStorage.setItem("userdetails", JSON.stringify(res));
-          // this.httpService.toastr.success(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
-          // });
-  
-          this.router.navigate(['/user-control/twofactor']);
+          this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
+          var json={key:1,value:this.email}
+          this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+          // this.router.navigate(['/user-control/twofactor']);
           // this.router.navigate(['/dashboard/dashboard']);
   
   
@@ -338,9 +427,21 @@ this.mobileForm();
           //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
           // });
         }
-      }, (err) => {
-        // this.toastr.error("invalid_credentials");
-      });
+      }, 
+      (error) => {                              //Error callback
+        // console.log(error)
+        // this.httpService.toastr.error(error,'',  {
+        //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        // });
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     })
       
   
     }
@@ -359,11 +460,11 @@ console.log(userNumber );
       };
       this.httpService.logoutSession(jsonObj).subscribe((resp) => {
         localStorage.clear();
-        // this.toastr.success("User has been logged off", "", {
-        //   positionClass: "toast-bottom-right",
-        //   closeButton: true,
-        //   timeOut: 5000,
-        // });
+        this.toastr.success("User has been logged off", "", {
+          positionClass: "toast-bottom-right",
+          closeButton: true,
+          timeOut: 5000,
+        });
         this.router.navigateByUrl("/index");
       });
     }
@@ -375,39 +476,263 @@ console.log(userNumber );
       console.log(this.ipAddress)
     });
   }
-  openaccountemail() {
-    debugger
+  openaccountmob() {
+  debugger
+    console.log(this.mobileform.value);
+    this.code = this.mobileform.value;
+    console.log( this.code['phone']);
+this.phoneNumber=this.code['phone']
+
+        this.mobile =  this.code['phone']['number'];
+        // this.country =  idex['countryCode'];
+        this.countrycode =  this.code['phone']['dialCode'];
+        
+
+        console.log( this.countrycode);
+        console.log( this.mobile);
       this.submitted=true;
       let jsonData = {
-        mobile: this.mobileform.value.mobile,
+        email:"",
+        mobile: this.mobile,
         password: this.mobileform.value.password,
+        country_code:this.countrycode,
+        pin:this.mobileform.value.code,
                 device:'1',
         location:'Chennai',
-        ip:this.ipAddress,
+        ip:'162.198.5.46',
       }
-      this.httpService.createuser(jsonData).subscribe(( res: any) => {
-        
-        if (res['success'] == true) {
+      this.httpService.createuser(jsonData).subscribe( res => {
+        debugger
+        console.log(res);
+
+        if (res['success'] === true) {
           // ls.set('userPass', { data: this.loginForm.value.password });
           console.log(res);
          
-  
-          this.router.navigate(['/user-control/twofactor']);
+  this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+          });
+          this.router.navigate(['/index']);
           // this.router.navigate(['/dashboard/dashboard']);
   
   
         }
-         else if (res['success'] == false) {
+         else if (res['success'] === false) {
         
-          // this.httpService.toastr.error(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
-          // });
+          this.httpService.toastr.error(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+          });
         }
-      }, (err) => {
-        // this.toastr.error("invalid_credentials");
-      });
+      }, 
+      (error) => {                              //Error callback
+        // console.log(error)
+        // this.httpService.toastr.error(error,'',  {
+        //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        // });    
+            this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage, '', {
+          positionClass: 'toast-bottom-right', closeButton: true, timeOut:5000
+        });
+     });
       
-  
     }
+    openaccountemail() {
+      debugger
+        this.submitted=true;
+        let jsonData = {
+          email: this.loginForm.value.email,
+          password: this.loginForm.value.password,
+          pin:this.loginForm.value.code,
+                  device:'1',
+          location:'Chennai',
+          ip:'162.198.5.46',
+        }
+        this.httpService.createuser(jsonData).subscribe(( res: any) => {
+          
+          if (res['success'] == true) {
+            // ls.set('userPass', { data: this.loginForm.value.password });
+            console.log(res);
+           this.httpService.toastr.success(res['message'], '', {
+              positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+            });
+    
+            this.router.navigate(['/index']);
+            // this.router.navigate(['/dashboard/dashboard']);
+    
+    
+          }
+           else if (res['success'] == false) {
+          
+            // this.httpService.toastr.error(res['message'], '', {
+            //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+            // });
+          }
+        }, (error) => {                              //Error callback
+          // console.log(error)
+          // this.httpService.toastr.error(error,'',  {
+          //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+          // });    
+                this.error = error.status;
+          console.log(this.error)
+  
+          this.errorMessage = error.error.message;
+          console.log(this.errorMessage)
+  this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+            positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+          });
+       })
+        
+    
+      }
+      verifyemail() {
+        debugger
+          // this.submitted=true;
+          let jsonData = {
+            email: this.loginForm.value.email,
+            device:'1',
+            location:'Chennai',
+            ip:this.ipAddress,
+          }
+          this.httpService.forgetPassword(jsonData).subscribe(( res: any) => {
+            
+            if (res['success'] == true) {
+              // ls.set('userPass', { data: this.loginForm.value.password });
+              console.log(res);
+             
+              this.httpService.toastr.success(res['message'], '', {
+                positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+              });
+              // this.router.navigate(['/user-control/twofactor']);
+              // this.router.navigate(['/dashboard/dashboard']);
+      
+      
+            }
+             else if (res['success'] == false) {
+            
+              // this.httpService.toastr.error(res['message'], '', {
+              //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+              // });
+            }
+          }, (error) => {                              //Error callback
+            // console.log(error)
+            // this.httpService.toastr.error(error,'',  {
+            //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+            // });    
+                    this.error = error.status;
+            console.log(this.error)
+    
+            this.errorMessage = error.error.message;
+            console.log(this.errorMessage)
+    this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+              positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+            });
+         })
+      
+        }
+        signupotp() {
+          console.log(this.mobileform.value);
+    this.code = this.mobileform.value;
+    console.log( this.code['phone']);
+this.phoneNumber=this.code['phone']
+
+        this.mobile =  this.code['phone']['number'];
+        // this.country =  idex['countryCode'];
+        this.countrycode =  this.code['phone']['dialCode'];
+      
+        console.log( this.countrycode);
+        console.log( this.mobile);
+          debugger
+            // this.submitted=true;
+            let jsonData = {
+              email:'',
+              mobile: this.mobile,
+              country_code:this.countrycode,
+              
+            }
+            this.httpService.signupotp(jsonData).subscribe( res => {
+              
+              if (res['success'] == true) {
+                // ls.set('userPass', { data: this.loginForm.value.password });
+                console.log(res);
+               
+                this.httpService.toastr.success(res['message'], '', {
+                  positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                });
+                // this.router.navigate(['/user-control/twofactor']);
+                // this.router.navigate(['/dashboard/dashboard']);
+        
+        
+              }
+               else if (res['success'] == false) {
+              
+                // this.httpService.toastr.error(res['message'], '', {
+                //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+                // });
+              }
+            }, (error) => {                              //Error callback
+              // console.log(error)
+              // this.httpService.toastr.error(error,'',  {
+              //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+              // });       
+                     this.error = error.status;
+              console.log(this.error)
+      
+              this.errorMessage = error.error.message;
+              console.log(this.errorMessage)
+      this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+              });
+           })
+            
+        
+          }
+          signupemailotp() {
+           
+            debugger
+              // this.submitted=true;
+              let jsonData = {
+                email: this.loginForm.value.email,
+                mobile: "",
+                country_code:"",
+              }
+              this.httpService.signupotp(jsonData).subscribe(( res:any) => {
+                
+                if (res['success'] == true) {
+                  // ls.set('userPass', { data: this.loginForm.value.password });
+                  console.log(res);
+                 
+                  this.httpService.toastr.success(res['message'], '', {
+                    positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                  });
+                  // this.router.navigate(['/user-control/twofactor']);
+                  // this.router.navigate(['/dashboard/dashboard']);
+          
+          
+                }
+                 else if (res['success'] == false) {
+                
+                  // this.httpService.toastr.error(res['message'], '', {
+                  //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+                  // });
+                }
+              }, (error) => {                              //Error callback
+                // console.log(error)
+                // this.httpService.toastr.error(error,'',  {
+                //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+                // });      
+                          this.error = error.status;
+                console.log(this.error)
+        
+                this.errorMessage = error.error.message;
+                console.log(this.errorMessage)
+        this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                  positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+                });
+             })
+              
+          
+            }
+     
 }
 
