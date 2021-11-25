@@ -2828,9 +2828,9 @@ span.is-active:after {
     }
 }
 
-.hero__btn {
+/* .hero__btn { */
     /* margin-top: 30px; */
-}
+/* } */
 
 @media (max-width: 480px) {
     .hero__btn {

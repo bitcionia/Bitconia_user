@@ -37,11 +37,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Datepicker SCSS file. */
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
-@import '~ngx-toastr/toastr';
-@import '~ngx-toastr/toastr-bs4-alert';
+// @import '~ngx-toastr/toastr';
+
+// @import '~ngx-toastr/toastr-bs4-alert';
  
 // if you'd like to use it without importing all of bootstrap it requires 
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-@import '~ngx-toastr/toastr-bs4-alert';
+// @import '~ngx-toastr/toastr-bs4-alert';
+
+.mat-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+    color: whitesmoke;
+    /* padding-right: 45px; */
+    border-bottom: 1px solid #766bcb;
+    margin-top: 1px;
+    border-color: #c0464d !important;
+   
+}

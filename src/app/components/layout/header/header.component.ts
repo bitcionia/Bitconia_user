@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 import { PasswordStrengthService } from '../../service/password-strength.service';
 import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from '../../service/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -80,7 +81,9 @@ data:any;
   cls: HTMLElement;
   email: any;
   error: any;
-
+  password: string;
+  show: boolean;
+  hide = true;
   constructor(
     public toastr: ToastrService,
 
@@ -93,7 +96,8 @@ data:any;
     private controlService: ControlService,
     public sharedata:CommondataService,
     public httpService: HttpService,
-    public http:HttpClient
+    public http:HttpClient,
+    private notifyService : NotificationService
 
   ) {
     // var arr = [];
@@ -157,9 +161,7 @@ this.mobileForm();
       'email': ['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       'password': [null, Validators.compose([
         Validators.required, Validators.minLength(8), PasswordStrengthService])],
-        'code':['', Validators.compose([Validators.required,Validators.pattern(
-          '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})'
-            )])]
+        'code':['',[Validators.required,Validators.pattern('[0-9]{4}')]],
 
     });
   }
@@ -172,13 +174,21 @@ this.mobileForm();
   //     console.log("dialCode :- ",Data.dialCode);
   //   }
   
-
+  onClick() {
+    if (this.password === 'password') {
+      this.password = 'text';
+      this.show = true;
+    } else {
+      this.password = 'password';
+      this.show = false;
+    }
+  }
    
   mobileForm() {
     this.mobileform = this.formBuilder.group({
       
-      'code':[''],
-                'password': ['', [Validators.required, Validators.minLength(6),PasswordStrengthService]],
+      'code':['',[Validators.required,Validators.pattern('[0-9]{4}')]],
+      'password': ['', [Validators.required, Validators.minLength(6),PasswordStrengthService]],
      'phone': [''],
 
     });
@@ -569,7 +579,7 @@ this.httpService.toastr.error(this.errorMessage, '', {
             // });
           }
         }, (error) => {                              //Error callback
-          // console.log(error)
+          console.log(error)
           // this.httpService.toastr.error(error,'',  {
           //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
           // });    
@@ -659,6 +669,7 @@ this.phoneNumber=this.code['phone']
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
+                
                 // this.router.navigate(['/user-control/twofactor']);
                 // this.router.navigate(['/dashboard/dashboard']);
         

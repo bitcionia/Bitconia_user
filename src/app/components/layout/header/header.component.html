@@ -60,8 +60,14 @@
               </ngx-intl-tel-input>            </div>
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password"  name="signup_pass" id="signup_pass"formControlName="password" placeholder="password" required>
-                <div class="errors"
+
+ <div class="input-group-append">
+                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                
+
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </div>                <div class="errors"
                                 *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
 
                                 <div *ngIf="mobileform.get('password').hasError('required')">
@@ -129,7 +135,14 @@
       
               <div class="form-group">
                 <label>Login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required>
+
+                <div class="input-group-append">
+                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                
+
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </div>
                 <div class="errors"
                 *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
 
@@ -289,8 +302,10 @@
               <div *ngIf="mobileform.get('code').hasError('required')">
                 Code is required
               </div>
-
-              <div *ngIf="mobileform.get('code').errors.code">
+              <div *ngIf="mobileform.get('code').errors.pattern">
+                Code must be at least 4 Number
+              </div>
+              <div *ngIf="mobileform.get('code').errors.pattern">
                 This is not a valid Code!!! </div>
 
 
@@ -302,8 +317,13 @@
        </div>
               <div class="form-group">
                 <label>Set login password <sup>*</sup></label>
-                <input type="password" formControlName="password"name="signup_pass" id="signup_pass" placeholder="password">
-                <div class="errors"
+                <div class="input-group-append">
+                  <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                  
+  
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </div>                <div class="errors"
                                 *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
 
                                 <div *ngIf="mobileform.get('password').hasError('required')">
@@ -371,9 +391,9 @@
               </div>
        <div class="d-flex flex-wrap justify-content-between mt-2">
        <label></label>
-      <a href="javascript:;"    (click)="signupemailotp()" class="link m-1">Send Code to Email</a>
+      <!-- <a href="javascript:;"  type="submit"  (click)="signupemailotp()" class="link m-1">Send Code to Email</a> -->
       <!-- <button  type="submit" class="link-btn" (click)="signupemailotp()">Send Code to Email</button> -->
-      <!-- <button  (click) ="signupemailotp()"class="link-btn">Send Code to Email</button > -->
+      <button type="submit"(click) ="signupemailotp()" class="link-btn">Send Code to Email</button>
 
       </div>
       <div class="form-group">
@@ -386,7 +406,10 @@
                   Code is required
                 </div>
   
-                <div *ngIf="loginForm.get('code').errors.code">
+                <div *ngIf="loginForm.get('code').errors.pattern">
+                  Code must be at least 4 Number
+                </div>
+                <div *ngIf="loginForm.get('code').errors.pattern">
                   This is not a valid Code!!! </div>
   
   
@@ -398,8 +421,13 @@
       </div>
               <div class="form-group">
                 <label>Set login password <sup>*</sup></label>
-                <input type="password" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
-                <div class="errors"
+                <div class="input-group-append">
+                  <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                  
+  
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </div>                <div class="errors"
                 *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
 
                 <div *ngIf="loginForm.get('password').hasError('required')">

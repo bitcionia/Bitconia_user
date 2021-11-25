@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
@@ -37,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule ,
     MatTabsModule,
     HttpClientModule,
+    MatIconModule,
     NgxIntlTelInputModule,
     ToastrModule.forRoot(
       {

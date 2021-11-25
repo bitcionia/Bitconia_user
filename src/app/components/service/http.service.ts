@@ -104,13 +104,18 @@ changePassword(jsonObj: any): Observable<any> {
     });
 }
 forgetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.forgetpassword, jsonObj);
+  return this.http.post(this.baseURL + this.forgetpassword, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 resetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.resetpassword, jsonObj);
+  return this.http.post(this.baseURL + this.resetpassword, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 createuser(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.create_user, jsonObj);
+  return this.http.post(this.baseURL + this.create_user, jsonObj, {
+  });
     // ...
     // this.headers.set(key, base);  });
 }
@@ -133,15 +138,25 @@ signupotp(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.signupathu, jsonObj);
 }
 loginotp(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.loginverify, jsonObj);
+  return this.http.post(this.baseURL + this.loginverify, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 twofactorotp(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.twofactor, jsonObj);
-}
-twofactorver(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.loginverify, jsonObj);
+  return this.http.post(this.baseURL + this.twofactor, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}twofactorver(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.loginverify, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 }
 
-
+function existing(key: any, existing: any): HttpHeaders | { [header: string]: string | string[]; } {
+    throw new Error('Function not implemented.');
+  }
+function key(key: any, existing: (key: any, existing: any) => HttpHeaders | { [header: string]: string | string[]; }): HttpHeaders | { [header: string]: string | string[]; } {
+  throw new Error('Function not implemented.');
+}
 
