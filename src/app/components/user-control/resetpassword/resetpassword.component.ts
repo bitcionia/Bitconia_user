@@ -20,6 +20,8 @@ export class ResetpasswordComponent implements OnInit {
   mobile: any;
   countrycode: any;
   email: any;
+  hide = true;
+
   constructor(
     public httpService: HttpService,
     private formBuilder: FormBuilder,

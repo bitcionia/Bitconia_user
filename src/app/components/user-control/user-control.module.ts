@@ -14,6 +14,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ToastrModule } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
         timeOut: 1000
       }
     ),
+    MatIconModule,
   ]
 })
 export class UserControlModule { }

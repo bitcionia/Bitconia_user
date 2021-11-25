@@ -348,17 +348,93 @@
             <div class="account-form-wrapper">
               <form action="#"[formGroup]="loginForm" (ngSubmit)="changepassword()"method="post" data-parsley-validate="" novalidate="">
                
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label>Old password <sup>*</sup></label>
                   <input type="password"  formControlName="oldPass" name="login_pass" id="old_pass" placeholder="Enter old password">
+                </div> -->
+                <div class="form-group">
+                  <label>Old password <sup>*</sup></label>
+                  <div class="input-group-append">
+                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="oldPass" placeholder="password">
+                    
+    
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </div>                <div class="errors"
+                  *ngIf="loginForm.get('oldPass').invalid && (loginForm.get('oldPass').touched || loginForm.get('oldPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('oldPass').hasError('required')">
+                    password is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('oldPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('oldPass').hasError('passwordStrength')">
+                    {{loginForm.get('oldPass').errors['passwordStrength']}}
+                  </div>
                 </div>
-				<div class="form-group">
+                </div>
+				<!-- <div class="form-group">
                   <label>New password <sup>*</sup></label>
                   <input type="password"formControlName="newPass" name="login_pass" id="new_pass" placeholder="Enter new password">
+                </div> -->
+                <div class="form-group">
+                  <label>New password <sup>*</sup></label>
+                  <div class="input-group-append">
+                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="newPass" placeholder="password">
+                    
+    
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </div>                <div class="errors"
+                  *ngIf="loginForm.get('newPass').invalid && (loginForm.get('newPass').touched || loginForm.get('newPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('newPass').hasError('required')">
+                    password is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('newPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('newPass').hasError('passwordStrength')">
+                    {{loginForm.get('newPass').errors['passwordStrength']}}
+                  </div>
                 </div>
-				<div class="form-group">
+                </div>
+				<!-- <div class="form-group">
                   <label>confirm password <sup>*</sup></label>
                   <input type="password" formControlName="confirmPass" name="login_pass" id="confirm_pass" placeholder="Enter confirm password">
+                </div> -->
+                <!-- <div class="form-group">
+                  <label>confirm password <sup>*</sup></label>
+                  <input type="password"formControlName="confirmPass" name="login_pass" id="new_pass" placeholder="Enter new password">
+                </div> -->
+                <div class="form-group">
+                  <label>confirm password <sup>*</sup></label>
+                  <div class="input-group-append">
+                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="confirmPass" placeholder="password">
+                    
+    
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </div>                <div class="errors"
+                  *ngIf="loginForm.get('confirmPass').invalid && (loginForm.get('confirmPass').touched || loginForm.get('confirmPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('confirmPass').hasError('required')">
+                    password is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('confirmPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('confirmPass').hasError('passwordStrength')">
+                    {{loginForm.get('confirmPass').errors['passwordStrength']}}
+                  </div>
+                </div>
                 </div>
                 <div class="form-group text-center mt-5">
                   <button type="submit" class="cmn-btn style--three btn--sm ">Change Password</button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
+import { PasswordStrengthService } from '../../service/password-strength.service';
 
 @Component({
   selector: 'app-accountsecurity',
@@ -22,6 +23,10 @@ id:any;
   name: any;
   dob: any;
   address: any;
+  password: string;
+  show: boolean;
+  hide = true;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -60,15 +65,23 @@ this.g2faathu();
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
-      'oldPass': ['', [Validators.required, Validators.minLength(10)]],
-      'newPass': ['', [Validators.required, Validators.minLength(10)]],
-      'confirmPass': ['', [Validators.required, Validators.minLength(10)]],
+      'oldPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
+      'newPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
+      'confirmPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
     });
   }
   get loginFormControl(){
     return this.changepass.controls;
   }
-  
+  onClick() {
+    if (this.password === 'password') {
+      this.password = 'text';
+      this.show = true;
+    } else {
+      this.password = 'password';
+      this.show = false;
+    }
+  }
   changepassword() {
     this.submitted = true;
 
