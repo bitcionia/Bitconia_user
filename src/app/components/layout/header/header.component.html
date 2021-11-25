@@ -210,7 +210,36 @@
 </div>
 
 <!-- login modal --> 
-
+<div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          
+           
+           <div class="captcha">
+<div class="captcha-spinner">
+  <label>
+    <input type="checkbox" onclick="$(this).attr('disabled','disabled');">
+    <span class="checkmark"><span>&nbsp;</span></span>
+  </label>
+</div>
+<div class="captcha-text">
+  I'm not a robot
+</div>
+<div class="captcha-logo" width="200" height="200">
+  <img src="assets/images/recaptcha.png" class="img-fluid"/>
+  <!-- <p>reCAPTCHA</p> -->
+  <!-- <small>Privacy - Terms</small> -->
+</div>
+</div>
+            
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- recaptcha modal starts -->
  <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
  
@@ -350,7 +379,7 @@
                 </div>
                </div>
               <div class="form-group text-center mt-2">
-                <button type="submit" class="cmn-btn btn--sm" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
+                <button type="submit" class="cmn-btn btn--sm"data-target="#recaptcha" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
 
                 <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
               </div>
@@ -453,7 +482,7 @@
                 <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
               </div>
               <div class="form-group text-center mt-2">
-                <button type ="submit"  class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
+                <button type ="submit" data-target="#recaptcha" class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
               </div>
       <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
             </form>

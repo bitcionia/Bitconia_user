@@ -414,6 +414,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           // ls.set('userPass', { data: this.loginForm.value.password });
           console.log(res);
           this.email=res['admin']['email'];
+          this.email=res['admin']['_id'];
+          localStorage.setItem("id", JSON.stringify(res['admin']['_id']));
+
           localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
           localStorage.setItem("data", JSON.stringify(res['data']));
           localStorage.setItem("loginState", JSON.stringify(true));

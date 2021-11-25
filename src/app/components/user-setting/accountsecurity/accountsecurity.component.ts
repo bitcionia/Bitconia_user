@@ -14,10 +14,14 @@ export class AccountsecurityComponent implements OnInit {
   userID: any;
   public loginForm: FormGroup;
   public g2faForm: FormGroup;
-
+  public profileForm:FormGroup
+id:any;
    submitted= false;
   error: any;
   errorMessage: any;
+  name: any;
+  dob: any;
+  address: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,12 +30,26 @@ export class AccountsecurityComponent implements OnInit {
 
 
     public httpService: HttpService,
-  ) { }
+  ) {
+    this.profile();
+
+    this.id = JSON.parse(localStorage.getItem("id"));
+
+   }
 
   ngOnInit(): void {
+    this.updateuser();
     this.createForm();
 this.gfen();
 this.g2faathu();
+  }
+
+  profile(){
+    this.profileForm = this.formBuilder.group({
+      'name': ['', [Validators.required, Validators.minLength(10)]],
+      'dob': ['', [Validators.required, Validators.minLength(10)]],
+      'address': ['', [Validators.required, Validators.minLength(10)]],
+    });
   }
   gfen(){
     
@@ -66,9 +84,9 @@ this.g2faathu();
         // ////debugger
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
-          // this.httpService.toastr.success(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          // });
+          this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
           this.routeTo.navigateByUrl('/index');
         }
       // }, (err) => {
@@ -183,5 +201,50 @@ this.httpService.toastr.error(this.errorMessage,'',  {
      {
     }
   }
-  
+  updateuser() {
+    this.submitted = true;
+
+    debugger
+      let JsonData = {
+        id:this.id,
+        dob:this.profileForm.value.dob,
+        username:this.profileForm.value.name,
+        address:this.profileForm.value.address,
+      }
+      this.httpService.updateuser(JsonData).subscribe(res => {
+        // ////debugger
+        console.log(res['data']['username'])
+        console.log(res['data']['dob'])
+        console.log(res['data']['address'])
+        this.name=res['data']['username']
+        this.dob=res['data']['dob']
+        this.address=res['data']['address']
+        if (res['success'] == true) {
+          // this.toastr.success("Password changed Successfully");
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          // });
+          // this.routeTo.navigateByUrl('/index');
+        }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+      },
+      (error) => {                              //Error callback
+        console.log(error)
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     });
+      
+    
+  }
 }

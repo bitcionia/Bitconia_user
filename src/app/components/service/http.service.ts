@@ -43,6 +43,7 @@ userloginurl: string = "user/auth/login";
   googledisable : string="user/auth/g2f/disable";
   loginverify: string="user/auth/verify/otp";
   twofactor: string="user/auth/sent/otp";
+  userupdate: string="user/user/update";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -104,14 +105,10 @@ changePassword(jsonObj: any): Observable<any> {
     });
 }
 forgetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.forgetpassword, jsonObj, {
-    headers: this.getAuthHeaders(),
-  });
+  return this.http.post(this.baseURL + this.forgetpassword, jsonObj);
 }
 resetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.resetpassword, jsonObj, {
-    headers: this.getAuthHeaders(),
-  });
+  return this.http.post(this.baseURL + this.resetpassword, jsonObj);
 }
 createuser(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.create_user, jsonObj, {
@@ -143,20 +140,19 @@ loginotp(jsonObj: any): Observable<any> {
   });
 }
 twofactorotp(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.twofactor, jsonObj, {
+  return this.http.post(this.baseURL + this.twofactor, jsonObj);
+}
+twofactorver(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.loginverify, jsonObj, {
     headers: this.getAuthHeaders(),
   });
-}twofactorver(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.loginverify, jsonObj, {
+}
+updateuser(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.userupdate, jsonObj, {
     headers: this.getAuthHeaders(),
   });
 }
 }
 
-function existing(key: any, existing: any): HttpHeaders | { [header: string]: string | string[]; } {
-    throw new Error('Function not implemented.');
-  }
-function key(key: any, existing: (key: any, existing: any) => HttpHeaders | { [header: string]: string | string[]; }): HttpHeaders | { [header: string]: string | string[]; } {
-  throw new Error('Function not implemented.');
-}
+
 
