@@ -8,12 +8,17 @@ import { Router } from "@angular/router";
 import * as pako from "pako";
 import { ToastrService } from "ngx-toastr";
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
+  }
   errorCount:number=0;
   tokenId: any;
   get<T>(arg0: string) {
@@ -43,7 +48,13 @@ userloginurl: string = "user/auth/login";
   googledisable : string="user/auth/g2f/disable";
   loginverify: string="user/auth/verify/otp";
   twofactor: string="user/auth/sent/otp";
-  userupdate: string="user/user/update";
+  deposithistory:string="user/deposit/list";
+  depositcreate:string="user/deposit/create";
+  depositsort:string="user/deposit/status";
+  withdraw:string="user/withdraw/list";
+  withdrawcreate: string="user/withdraw/create";
+  withdrawsort:string="user/withdraw/status";
+  drawticket: string="user/draw/alldraw/ticket/list";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -105,10 +116,14 @@ changePassword(jsonObj: any): Observable<any> {
     });
 }
 forgetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.forgetpassword, jsonObj);
+  return this.http.post(this.baseURL + this.forgetpassword, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 resetPassword(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.resetpassword, jsonObj);
+  return this.http.post(this.baseURL + this.resetpassword, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
 }
 createuser(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.create_user, jsonObj, {
@@ -131,6 +146,11 @@ g2fverify(jsonObj: any): Observable<any> {
     headers: this.getAuthHeaders(),
   });
 }
+g2fdisable(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.googledisable, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
 signupotp(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.signupathu, jsonObj);
 }
@@ -140,19 +160,48 @@ loginotp(jsonObj: any): Observable<any> {
   });
 }
 twofactorotp(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.twofactor, jsonObj);
-}
-twofactorver(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.twofactor, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}twofactorver(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.loginverify, jsonObj, {
     headers: this.getAuthHeaders(),
   });
 }
-updateuser(jsonObj: any): Observable<any> {
-  return this.http.post(this.baseURL + this.userupdate, jsonObj, {
+deposithis(): Observable<any> {
+  return this.http.get(this.baseURL + this.deposithistory, {
     headers: this.getAuthHeaders(),
   });
 }
+depositnew(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.depositcreate, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+depositsearch(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.depositsort, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+withdrawhistory(): Observable<any> {
+  return this.http.get(this.baseURL + this.withdraw, {
+    headers: this.getAuthHeaders(),
+  });
+}
+withdrawnew(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.withdrawcreate, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+withdrawsearch(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.withdrawsort, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+drawhistory(): Observable<any> {
+  return this.http.get(this.baseURL + this.drawticket, {
+    headers: this.getAuthHeaders(),
+  });
 }
 
-
-
+}

@@ -77,8 +77,6 @@ export class ForgetpasswordComponent implements OnInit {
   onSubmit() {
     debugger
       this.submitted=true;
-      localStorage.setItem("email", JSON.stringify( this.loginForm.value.email));
-
       let jsonData = {
         email: this.loginForm.value.email,
         mobile:"",
@@ -137,9 +135,7 @@ this.phoneNumber=this.code['phone']
         this.mobile =  this.code['phone']['number'];
         // this.country =  idex['countryCode'];
         this.countrycode =  this.code['phone']['dialCode'];
-        localStorage.setItem("formob", JSON.stringify(this.mobile));
-        localStorage.setItem("forcountrycode", JSON.stringify(this.countrycode));
-
+      
         console.log( this.countrycode);
         console.log( this.mobile);
       debugger
@@ -197,13 +193,13 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           country_code:"",
           pin:this.loginForm.value.code,
         }
-        this.httpService.forgetPassword(jsonData).subscribe( res => {
+        this.httpService.twofactorver(jsonData).subscribe( res => {
           
           if (res['success'] == true) {
             // ls.set('userPass', { data: this.loginForm.value.password });
             console.log(res);
            
-            this.httpService.toastr.success("Verify code", '', {
+            this.httpService.toastr.success(res['message'], '', {
               positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
             });
             this.router.navigateByUrl('/user-control/restpassword');
@@ -245,13 +241,13 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           // location:'Chennai',
           // ip:'162.198.5.46',
         }
-          this.httpService.forgetPassword(jsonData).subscribe( res => {
+          this.httpService.twofactorver(jsonData).subscribe( res => {
             
             if (res['success'] == true) {
               // ls.set('userPass', { data: this.loginForm.value.password });
               console.log(res);
              
-              this.httpService.toastr.success("Verify code", '', {
+              this.httpService.toastr.success(res['message'], '', {
                 positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
               });
               this.router.navigateByUrl('/user-control/restpassword');

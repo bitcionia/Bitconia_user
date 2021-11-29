@@ -1,7 +1,7 @@
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { version } from 'process';
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Inject } from '@angular/core';
 // import { SlideControlComponent } from 'ng-spc';
 import { ControlService, ControlInput, Result, VertifyQuery  } from '../../service/control.service';
 
@@ -14,6 +14,11 @@ import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-
 import { PasswordStrengthService } from '../../service/password-strength.service';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../../service/notification.service';
+// import { NgxUiLoaderService, SPINNER } from 'ngx-ui-loader';
+import { DOCUMENT } from '@angular/common';
+import { Location } from '@angular/common';
+
+import { AuthencationGuard } from '../../service/authencation.guard.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +26,7 @@ import { NotificationService } from '../../service/notification.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
+
   separateDialCode = false;
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
@@ -37,30 +42,7 @@ export class HeaderComponent implements OnInit {
   public loginForm: FormGroup;
 
 data:any;
-  private query: VertifyQuery;
-  @Input() controlInput: ControlInput;
-  @Output() successMatch: EventEmitter<VertifyQuery> = new EventEmitter();
-
-  private slider: any;
-  private puzzleBefore: any;
-  private sliderContainer: any;
-  private sliderMask: any;
-  private sliderText: any;
-  private puzzleBox: any;
-  private puzzleBase: any;
-  private puzzleMask: any;
-
-
-  isMouseDown = false;
-  private trail: number[] = [];
-  private originX: any;
-  private originY: any;
-  private w: any = 310; // basePuzzle's width
-  private h: any = 155; // basePuzzle's height
-  private L: any = 62; // puzzle's width
-
-  private pngBase64 = 'assets/images/logo.png';
-  private jpgBase64 = 'assets/images/logo.png';
+ 
 
   result: Result;
   count: any=[];
@@ -84,9 +66,13 @@ data:any;
   password: string;
   show: boolean;
   hide = true;
+  token: any;
+  // spinnerType = SPINNER.circle;
+
   constructor(
     public toastr: ToastrService,
-
+    // private loader: NgxUiLoaderService,
+    private authService:AuthencationGuard ,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -97,9 +83,12 @@ data:any;
     public sharedata:CommondataService,
     public httpService: HttpService,
     public http:HttpClient,
-    private notifyService : NotificationService
+    public location:Location,
+    private notifyService : NotificationService,
+    @Inject(DOCUMENT) private _document: Document
 
   ) {
+    
     // var arr = [];
     // while(arr.length < 6){
     //     var r = Math.floor(Math.random() * 50) + 1;
@@ -125,37 +114,37 @@ data:any;
     
       }
     });
+    
     this.upcomdata = JSON.parse(localStorage.getItem("count"))
     this.createForm();
 this.mobileForm();
-
+// this.reloadComponent();
    }
+   currentRouter = this.router.url;
 
   ngOnInit(): void {
-  
-    this.slider = this.el.nativeElement.querySelector('.slider');
-    this.puzzleBefore = this.el.nativeElement.querySelector('.puzzleBefore');
-    this.sliderContainer = this.el.nativeElement.querySelector('.sliderContainer');
-    this.sliderMask = this.el.nativeElement.querySelector('.sliderMask');
-    this.sliderText = this.el.nativeElement.querySelector('.sliderText');
-    this.puzzleBox = this.el.nativeElement.querySelector('.puzzleBox');
-    this.puzzleBase = this.el.nativeElement.querySelector('.puzzleBase');
-    this.puzzleMask = this.el.nativeElement.querySelector('.puzzleMask');
-    this.draw();
-    if (this.controlInput.showPuzzle) {
-      this.puzzleBox.style.display = 'block';
-    }
-
-    this.resetWindow();
-    window.onresize = () => {
-      this.resetWindow();
-    };
-    this.getIPAddress();
-
    
-  
-  }
+
+    this.token = JSON.parse(localStorage.getItem("data"));
+
+    console.log(this.token)
+  debugger
  
+  
+    
+    
+    this.getIPAddress();
+  //   this.token = JSON.parse(localStorage.getItem("data"));
+
+  //  console.log(this.token)
+// this.refresh();
+  // this.onSubmit();
+//   this.router.navigateByUrl('/header', { skipLocationChange: true }).then(() => {
+//     this.router.navigate(['/header']);
+// });
+
+  }
+
   createForm() {
     this.loginForm = this.formBuilder.group({
       'email': ['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -165,7 +154,9 @@ this.mobileForm();
 
     });
   }
- 
+//   reLoad(){
+//     this.router.navigate([this.currentRouter])
+//  }
   // checkNumber(){
   //   if(this.phoneNumber != null){
   //     let Data:any = this.phoneNumber;
@@ -206,120 +197,12 @@ this.mobileForm();
   //   });
   // }
   
-  resetWindow() {
-    // console.log(this.sliderContainer.offsetLeft);
-    this.puzzleBox.style.left = this.sliderContainer.offsetLeft + 1 + 'px';
-  }
-
-
-  touchStart(e: any) {
-
-    this.originX = e.clientX || e.touches[0].clientX;
-    this.originY = e.clientY || e.touches[0].clientY;
-    this.isMouseDown = true;
-    this.puzzleBox.style.display = 'block';
-    this.puzzleMask.style.display = 'block';
-
-  }
-
-
-  touchMove(e: any) {
-
-    // console.log(this.isMouseDown);
-    if (!this.isMouseDown) {
-      return false;
-    }
-
-    const eventX = e.clientX || e.touches[0].clientX;
-    const eventY = e.clientY || e.touches[0].clientY;
-
-    const moveX = eventX - this.originX;
-    const moveY = eventY - this.originY;
-    if (moveX < 0 || moveX + 38 >= this.w) {
-      return false;
-    }
-    this.slider.style.left = moveX + 'px';
-    const blockLeft = (this.w - this.L) / (this.w - 40) * moveX;
-    this.puzzleBefore.style.left = blockLeft + 'px';
-    this.sliderContainer.classList.add('sliderContainer_active');
-    this.sliderMask.style.width = moveX + 'px';
-    this.trail.push(moveY);
-
-  }
-
-  touchEnd(e: any) {
-
-    // console.log('touchend');
-    if (!this.isMouseDown) {
-      return false;
-    }
-    this.isMouseDown = false;
-
-    this.sliderContainer.classList.remove('sliderContainer_active');
-    this.puzzleMask.style.display = 'none';
-
-    const eventX = e.clientX || e.changedTouches[0].clientX;
-    if (eventX === this.originX) {
-      return false;
-    }
-
-    const query: VertifyQuery = {move: parseInt(this.puzzleBefore.style.left, 10), action: undefined};
-    this.controlService.vertifyAuthImage(this.controlInput.firstConfirmUrl, query)
-    .subscribe(
-      (data: Result) => {
-        this.result = { ...data };
-        if (this.result.success) {
-          query.action = this.trail;
-          this.successMatch.emit(query);
-          this.sliderContainer.classList.add('sliderContainer_success');
-          this.puzzleBox.style.display = 'none';
-        } else {
-          this.sliderContainer.classList.add('sliderContainer_fail');
-          this.sliderText.innerHTML = 'Try again';
-          setTimeout(() => {
-            this.reset();
-          }, 1000);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        setTimeout(() => {
-          this.reset();
-        }, 1000);
-      }
-    );
-
-  }
+  
   
 
   
 
-  reset() {
-    this.slider.style.left = 0;
-    this.puzzleBefore.style.left = 0;
-    this.sliderMask.style.width = 0;
-    this.sliderContainer.className = 'sliderContainer';
-    this.trail = [];
-    // 重新调用
-    this.draw();
-  }
-
-  draw() {
-    this.controlService.getAuthImage(this.controlInput.genUrl).subscribe((data: Result) => {
-      this.result = { ...data };
-      if (this.result.success) {
-        this.puzzleBase.querySelector('img').src = this.jpgBase64 + this.result.data.bigImage;
-        this.puzzleBefore.querySelector('img').src = this.pngBase64 + this.result.data.smallImage;
-        this.puzzleBefore.style.top = this.result.data.yheight + 'px';
-      } else {
-        console.log(this.result);
-      }
-    },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
-  }
+ 
   mobilelogin() {
   debugger
     localStorage.clear();
@@ -365,6 +248,10 @@ this.phoneNumber=this.code['phone']
         });
         var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
     this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+    setTimeout(() => {
+      window.location.reload();
+
+ }, 100);
         // this.router.navigate(['/user-control/twofactor']);
 
         // this.router.navigate(['/dashboard/dashboard']);
@@ -397,8 +284,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   }
   onSubmit() {
     debugger
-      localStorage.clear();
+    localStorage.clear();  
+
       this.submitted=true;
+      // this.loader.start();
+
       let jsonData = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
@@ -407,18 +297,20 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         ip:'162.198.5.46',
       }
       this.httpService.userLogin(jsonData).subscribe( res => {
-        console.log(res);
+        // this.loader.stop();
 
+
+        console.log(res);
+        console.log(res['data']);
+            //  this.token=res['data']
         if (res['success'] == true) {
           this.userId = this.loginForm.value.userid;
           // ls.set('userPass', { data: this.loginForm.value.password });
           console.log(res);
           this.email=res['admin']['email'];
-          this.email=res['admin']['_id'];
-          localStorage.setItem("id", JSON.stringify(res['admin']['_id']));
-
           localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
           localStorage.setItem("data", JSON.stringify(res['data']));
+
           localStorage.setItem("loginState", JSON.stringify(true));
   
           this.userId = res['admin']['email'];
@@ -429,9 +321,16 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           });
           var json={key:1,value:this.email}
           this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
-          // this.router.navigate(['/user-control/twofactor']);
-          // this.router.navigate(['/dashboard/dashboard']);
-  
+
+          setTimeout(function () {
+            // window.location.reload();
+            document.location.reload();
+          }, 400);
+
+          // setTimeout(function () {
+          //   this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+          // }, 100);
+      //  this.reLoad();
   
         }
          else if (res['success'] == false) {
@@ -455,9 +354,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
         });
      })
-      
-  
-    }
+   
+         }
   logoutUser() {
   debugger
     if (
@@ -479,6 +377,10 @@ console.log(userNumber );
           timeOut: 5000,
         });
         this.router.navigateByUrl("/index");
+        setTimeout(() => {
+          document.location.reload();
+
+        }, 100);
       });
     }
   }
@@ -747,6 +649,10 @@ this.phoneNumber=this.code['phone']
               
           
             }
-     
-}
+          //   refresh(): void {
+          //     window.location.reload();
+          // }
+        
+        
+          }
 

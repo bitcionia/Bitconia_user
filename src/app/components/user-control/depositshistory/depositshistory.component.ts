@@ -4,32 +4,33 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 
 @Component({
-  selector: 'app-transcation',
-  templateUrl: './transcation.component.html',
-  styleUrls: ['./transcation.component.scss']
+  selector: 'app-depositshistory',
+  templateUrl: './depositshistory.component.html',
+  styleUrls: ['./depositshistory.component.scss']
 })
-export class TranscationComponent implements OnInit {
+export class DepositshistoryComponent implements OnInit {
+  submitted: boolean;
+  data: any;
   showDatafound: boolean;
   p: number[] = [];
   totalLength: any;
   item: any[];
-  data: any;
-  constructor(
-    private route: ActivatedRoute,
+
+  constructor( private route: ActivatedRoute,
     private router: Router,
     private routeTo: Router,
     public formBuilder: FormBuilder,
 
 
-    public httpService: HttpService,
-  ) { }
+    public httpService: HttpService,) { }
 
   ngOnInit(): void {
-    this.withdrawhistory();
+    this.deposithistory();
   }
-  withdrawhistory(){
+
+  deposithistory(){
     debugger
-    this.httpService.withdrawhistory().subscribe((res: any) => {
+    this.httpService.deposithis().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
       if (this.data) {

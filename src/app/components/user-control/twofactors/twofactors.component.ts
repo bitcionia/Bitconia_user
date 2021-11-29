@@ -83,6 +83,11 @@ console.log("92",this.email)
 
 
     }
+  //   this.router.navigateByUrl('/header', { skipLocationChange: true }).then(() => {
+  //     this.router.navigate(['']);
+  // }); 
+  // this.reloadCurrentRoute();
+  // this.refersh();
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
@@ -305,4 +310,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             
         
           }
+  
+          
+   
 }

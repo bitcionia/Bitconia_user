@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
-import { PasswordStrengthService } from '../../service/password-strength.service';
 
 @Component({
   selector: 'app-accountsecurity',
@@ -15,18 +14,12 @@ export class AccountsecurityComponent implements OnInit {
   userID: any;
   public loginForm: FormGroup;
   public g2faForm: FormGroup;
-  public profileForm:FormGroup
-id:any;
+
    submitted= false;
   error: any;
   errorMessage: any;
-  name: any;
-  dob: any;
-  address: any;
-  password: string;
-  show: boolean;
-  hide = true;
-
+  qrcode: any;
+  secret: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,26 +28,11 @@ id:any;
 
 
     public httpService: HttpService,
-  ) {
-    this.profile();
-
-    this.id = JSON.parse(localStorage.getItem("id"));
-
-   }
+  ) { }
 
   ngOnInit(): void {
-    this.updateuser();
     this.createForm();
 this.gfen();
-this.g2faathu();
-  }
-
-  profile(){
-    this.profileForm = this.formBuilder.group({
-      'name': ['', [Validators.required, Validators.minLength(10)]],
-      'dob': ['', [Validators.required, Validators.minLength(10)]],
-      'address': ['', [Validators.required, Validators.minLength(10)]],
-    });
   }
   gfen(){
     
@@ -65,23 +43,15 @@ this.g2faathu();
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
-      'oldPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
-      'newPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
-      'confirmPass': ['', [Validators.required, Validators.minLength(10),PasswordStrengthService]],
+      'oldPass': ['', [Validators.required, Validators.minLength(10)]],
+      'newPass': ['', [Validators.required, Validators.minLength(10)]],
+      'confirmPass': ['', [Validators.required, Validators.minLength(10)]],
     });
   }
   get loginFormControl(){
     return this.changepass.controls;
   }
-  onClick() {
-    if (this.password === 'password') {
-      this.password = 'text';
-      this.show = true;
-    } else {
-      this.password = 'password';
-      this.show = false;
-    }
-  }
+  
   changepassword() {
     this.submitted = true;
 
@@ -97,9 +67,9 @@ this.g2faathu();
         // ////debugger
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
-          this.httpService.toastr.success(res['message'], '', {
-            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          });
+          // this.httpService.toastr.success(res['message'], '', {
+          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          // });
           this.routeTo.navigateByUrl('/index');
         }
       // }, (err) => {
@@ -130,6 +100,7 @@ this.httpService.toastr.error(this.errorMessage,'',  {
     }
   }
   g2faenabled() {
+    
     this.submitted = true;
 
     debugger
@@ -141,9 +112,9 @@ this.httpService.toastr.error(this.errorMessage,'',  {
         // ////debugger
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
-          // this.httpService.toastr.success(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          // });
+          this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
           // this.routeTo.navigateByUrl('/index');
         }
       // }, (err) => {
@@ -152,15 +123,57 @@ this.httpService.toastr.error(this.errorMessage,'',  {
       //     '', {
       //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       //   });
-      })
-     {
-      // this.httpService.toastr.error("Password didn't match");
-      // this.httpService.toastr.error("Password didn't match",
-      //   '', {
-      //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-      // });
-    }
+      }, (error) => {                              //Error callback
+        console.log(error)
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     })
+    //  this.g2faenabled();
+     
+    
   }
+  g2fadisable() {
+    this.submitted = true;
+
+    debugger
+      let JsonData = {
+        "otp": this.g2faForm.value.otp,
+      
+      }
+      this.httpService.g2fdisable(JsonData).subscribe(res => {
+        // ////debugger
+        if (res['success'] == true) {
+          // this.toastr.success("Password changed Successfully");
+          this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
+          // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
+              window.location.reload();
+        }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+      }, (error) => {                              //Error callback
+        console.log(error)
+        this.error = error.status;
+        console.log(this.error)
+
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        });
+     })
+    }
   g2faverify() {
     this.submitted = true;
 
@@ -196,7 +209,9 @@ this.httpService.toastr.error(this.errorMessage,'',  {
       this.httpService.g2fa().subscribe(res => {
         // ////debugger
         console.log(res['data']['img'])
-
+        console.log(res['data']['secret'])
+        this.secret=res['data']['secret']
+this.qrcode=res['data']['img']
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
           // this.httpService.toastr.success(res['message'], '', {
@@ -214,50 +229,5 @@ this.httpService.toastr.error(this.errorMessage,'',  {
      {
     }
   }
-  updateuser() {
-    this.submitted = true;
-
-    debugger
-      let JsonData = {
-        id:this.id,
-        dob:this.profileForm.value.dob,
-        username:this.profileForm.value.name,
-        address:this.profileForm.value.address,
-      }
-      this.httpService.updateuser(JsonData).subscribe(res => {
-        // ////debugger
-        console.log(res['data']['username'])
-        console.log(res['data']['dob'])
-        console.log(res['data']['address'])
-        this.name=res['data']['username']
-        this.dob=res['data']['dob']
-        this.address=res['data']['address']
-        if (res['success'] == true) {
-          // this.toastr.success("Password changed Successfully");
-          // this.httpService.toastr.success(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          // });
-          // this.routeTo.navigateByUrl('/index');
-        }
-      // }, (err) => {
-      //   // this.httpService.toastr.error(err);
-      //   this.httpService.toastr.error("All field is mandatory",
-      //     '', {
-      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-      //   });
-      },
-      (error) => {                              //Error callback
-        console.log(error)
-        this.error = error.status;
-        console.log(this.error)
-
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'',  {
-          positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
-        });
-     });
-      
-    
-  }
+  
 }

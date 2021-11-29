@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthencationGuard } from '../service/authencation.guard.service';
 import { AccountactivityComponent } from './accountactivity/accountactivity.component';
 import { AccountsecurityComponent } from './accountsecurity/accountsecurity.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
@@ -13,7 +14,11 @@ import { NotificationComponent } from './notification/notification.component';
 import { PirvacyComponent } from './pirvacy/pirvacy.component';
 import { TermsComponent } from './terms/terms.component';
 
-const routes: Routes = [ { path: 'accountsecurity', component: AccountsecurityComponent},
+const routes: Routes = [
+  {
+    path: '',
+    canActivate:[AuthencationGuard],
+    children: [ { path: 'accountsecurity', component: AccountsecurityComponent},
 { path: 'accountactivity', component: AccountactivityComponent},
 { path: 'notifi', component:NotificationComponent},
 { path: 'announcements', component:AnnouncementsComponent},
@@ -26,7 +31,8 @@ const routes: Routes = [ { path: 'accountsecurity', component: AccountsecurityCo
   { path: 'pirvacy', component:PirvacyComponent},
    { path: 'terms', component:TermsComponent},
   { path: 'contactus', component:ContactusComponent},
-
+    ]
+  }
 ];
 
 @NgModule({

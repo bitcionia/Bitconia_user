@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthencationGuard } from '../service/authencation.guard.service';
 import { BuynowComponent } from './buynow/buynow.component';
 import { CartComponent } from './cart/cart.component';
 import { ClaimprizeComponent } from './claimprize/claimprize.component';
@@ -12,7 +13,10 @@ import { WalletComponent } from './wallet/wallet.component';
 
 
 const routes: Routes =[
-
+  {
+  path: '',
+  canActivate:[AuthencationGuard],
+  children: [
   { path: 'buynow', component:BuynowComponent},
   { path: 'cart', component:CartComponent},
   { path: 'trans', component: TranscationComponent},
@@ -22,7 +26,10 @@ const routes: Routes =[
   { path: 'wallet', component: WalletComponent},
   { path: 'pastdraw', component: PastdrawComponent},
   { path: 'claimprize', component: ClaimprizeComponent},
+  
 
+  ]
+  }
     // canActivate:[AuthencationGuard],
 
 

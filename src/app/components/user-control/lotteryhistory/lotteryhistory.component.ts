@@ -4,16 +4,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 
 @Component({
-  selector: 'app-transcation',
-  templateUrl: './transcation.component.html',
-  styleUrls: ['./transcation.component.scss']
+  selector: 'app-lotteryhistory',
+  templateUrl: './lotteryhistory.component.html',
+  styleUrls: ['./lotteryhistory.component.scss']
 })
-export class TranscationComponent implements OnInit {
+export class LotteryhistoryComponent implements OnInit {
+  submitted: boolean;
+  data: any;
   showDatafound: boolean;
   p: number[] = [];
   totalLength: any;
   item: any[];
-  data: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -22,14 +23,14 @@ export class TranscationComponent implements OnInit {
 
 
     public httpService: HttpService,
-  ) { }
+  ) { } 
 
   ngOnInit(): void {
-    this.withdrawhistory();
+    this.lotteryhistory();
   }
-  withdrawhistory(){
+  lotteryhistory(){
     debugger
-    this.httpService.withdrawhistory().subscribe((res: any) => {
+    this.httpService.drawhistory().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
       if (this.data) {

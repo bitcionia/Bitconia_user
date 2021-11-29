@@ -11,6 +11,7 @@ import { MyticketComponent } from './myticket/myticket.component';
 import { TranscationComponent } from './transcation/transcation.component';
 import { PastdrawComponent } from './pastdraw/pastdraw.component';
 
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PastdrawComponent } from './pastdraw/pastdraw.component';
   ],
   imports: [
     CommonModule,
-    UserDrawRoutingModule
+    UserDrawRoutingModule,
+    NgxPaginationModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

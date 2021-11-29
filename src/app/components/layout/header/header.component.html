@@ -1,3 +1,6 @@
+
+
+
 <div class="scroll-to-top">
   <span class="scroll-icon">
     <i class="las la-arrow-up"></i>
@@ -210,36 +213,7 @@
 </div>
 
 <!-- login modal --> 
-<div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-md modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="account-form-area">
-          
-           
-           <div class="captcha">
-<div class="captcha-spinner">
-  <label>
-    <input type="checkbox" onclick="$(this).attr('disabled','disabled');">
-    <span class="checkmark"><span>&nbsp;</span></span>
-  </label>
-</div>
-<div class="captcha-text">
-  I'm not a robot
-</div>
-<div class="captcha-logo" width="200" height="200">
-  <img src="assets/images/recaptcha.png" class="img-fluid"/>
-  <!-- <p>reCAPTCHA</p> -->
-  <!-- <small>Privacy - Terms</small> -->
-</div>
-</div>
-            
-         
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- recaptcha modal starts -->
  <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
  
@@ -379,7 +353,7 @@
                 </div>
                </div>
               <div class="form-group text-center mt-2">
-                <button type="submit" class="cmn-btn btn--sm"data-target="#recaptcha" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
+                <button type="submit" class="cmn-btn btn--sm" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
 
                 <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
               </div>
@@ -482,7 +456,7 @@
                 <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
               </div>
               <div class="form-group text-center mt-2">
-                <button type ="submit" data-target="#recaptcha" class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
+                <button type ="submit"  class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
               </div>
       <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
             </form>
@@ -536,9 +510,12 @@
         </div>
         <div class="col-sm-7">
           <div class="right my-2 mx-2">
-     <a href="signup.html" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
+            <div *ngIf="token==null">
+              <a href="signup.html" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
+
+            </div>
      
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="token!=null ">
 <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bell"></i> <span class="cart__num">04</span></a>
 <div class="dropdown-content">
         <div href="#" class="dropdown-firstlistitem" style="float:left;">
@@ -567,7 +544,7 @@
 
 </div>
 </div>
-<div class="dropdown">
+<div class="dropdown" *ngIf="token!=null">
 <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bullhorn"></i><span class="cart__num">04</span></a>
 <div class="dropdown-content">
         <div href="#" class="dropdown-firstlistitem" style="float:left;">
@@ -597,13 +574,13 @@
         
 </div>
 </div>
- <div class="product__cart">
+ <div class="product__cart"*ngIf="token!=null">
                <a href="cart.html"  class="amount__btn">
         <i class="las la-shopping-basket"></i> 
         <span class="cart__num">08</span>
       </a>
             </div>
-           <a href=""routerLink= "/user-Draw/wallet" class="user__btn" ><i class="las la-wallet"></i></a> 
+           <a href=""routerLink= "/user-Draw/wallet" class="user__btn"*ngIf="token!=null" ><i class="las la-wallet"></i></a> 
     
    <!-- <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>  -->
       <!-- <div class="dropdown-menu"> -->
@@ -618,7 +595,7 @@
 <a href="#" class="topmenulink mt-1 ml-4 user__btn" ><i class="las la-user"></i></a>
 <div class="dropdown-content">
 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>
-<a href=""routerLink="/user-Draw/myticket" class="dropdown-item">User panel</a>
+<a href=""routerLink="/user-Draw/myticket" class="dropdown-item"*ngIf="token!=null" >User panel</a>
 <a href="#" class="dropdown-item" (click)="logoutUser()">Logout</a>
 <!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
 <!-- </button> -->
@@ -676,6 +653,8 @@
               <ul class="sub-menu">
                 <li><a routerLink="user-Draw/currentdraw">Current Draw</a></li>
                 <li><a routerLink="user-Draw/history">History</a></li>
+                <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li>
+
               </ul>
             </li>
           </ul>
@@ -713,3 +692,4 @@
     </div>
   </div>
 </div>
+<!-- <router-outlet></router-outlet> -->

@@ -16,11 +16,11 @@ const routes: Routes = [
   // 
   
 
-  {
-    path: '',
-    redirectTo: 'index',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'index',
+  //   pathMatch: 'full'
+  // },
   { path: 'user-control', loadChildren: () => import('./components/user-control/user-control.module').then(m => m.UserControlModule) },
   { path: 'user-setting', loadChildren: () => import('./components/user-setting/user-setting.module').then(m => m.UserSettingModule) },
   { path: 'user-Draw', loadChildren: () => import('./components/user-draw/user-draw.module').then(m => m.UserDrawModule) },

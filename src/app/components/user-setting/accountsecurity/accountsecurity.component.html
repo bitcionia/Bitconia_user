@@ -22,7 +22,7 @@
                     </div>
                 </div>
               </div>
-              <h3 class="user-card__name">{{name}}</h3>
+              <h3 class="user-card__name">Albert Owens</h3>
               <span class="user-card__id">ID : 19535909</span>
             </div><!-- user-card end -->
             <div class="user-action-card">
@@ -47,15 +47,15 @@
               <ul class="user-info-card__list">
                 <li>
                   <span class="caption">Name</span>
-                  <span class="value">{{name == null ? 'NA': name}}</span>
+                  <span class="value">Albert Owens</span>
                 </li>
                 <li>
                   <span class="caption">Date of Birth</span>
-                  <span class="value">{{dob == null ? 'NA': dob}}</span>
+                  <span class="value">15-03-1974</span>
                 </li>
                 <li>
                   <span class="caption">Address</span>
-                  <span class="value">{{address == null ? 'NA': address}}</span>
+                  <span class="value">8198 Fieldstone Dr.La Crosse, WI 54601</span>
                 </li>
               </ul>
             </div><!-- user-info-card end -->
@@ -83,11 +83,15 @@
 			<div class="user-info-card">
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Google Authenticator</h3>
-                <span class="text-violet"><i class="far fa-pen-nib"></i>X Unset</span>
+                <!-- <span class="text-violet"><i class="far fa-pen-nib"></i>X Unset</span> -->
+                <a href="#" class="text-violet" data-toggle="modal" data-target="#googledisable">XUnset</a>
+
                 <!-- <button type="button"><i class="far fa-edit"></i> Edit</button> -->
-				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth">Enable</a>
+				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth"(click)="g2faathu()" *ngIf="secret==null">Enable</a>
               </div>
-			  <div class="m-3 text-white">Enable to protect your account and transactions</div>
+			  <div class="m-3 text-white" style="text-align: center;">Enable to protect your account and transactions</div>
+        <!-- <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'42%'" src="{{qrcode}}"> -->
+
               <ul class="user-info-card__list">
                 <li>
 				  <!-- <span class="caption">Authenticator</span> -->
@@ -100,7 +104,7 @@
                 <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
              
                
-                 <button type="button" style="margin-bottom: 25px;" data-toggle="modal" data-target="#emailchange">Change</button>
+                 <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
 				<a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a>
               </div>
 			  
@@ -116,7 +120,7 @@
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
-           <button type="button" style="margin-bottom: 25px;" data-toggle="modal" data-target="#phonechange">Change</button>
+           <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
 				<a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a>
               </div>
 			 
@@ -131,7 +135,7 @@
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Password</h3>
               
-                <button type="button"style= "margin-bottom:25px" data-toggle="modal" data-target="#pwdchangeconfirm">Change</button>
+                <button type="button" data-toggle="modal" data-target="#pwdchangeconfirm">Change</button>
 				
               </div>
               <ul class="user-info-card__list">
@@ -152,19 +156,51 @@
             <div class="account-form-area">
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Security Verification</h3>
+              <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'37%'"[style.margin-bottom]="'6%'" src="{{qrcode}}">
+              <div class="m-3 text-white" style="text-align: center;">{{secret}}</div>
+
               <div class="account-form-wrapper">
-                <form action="#"[formGroup]="g2faForm" (ngSubmit)="g2faenabled()"method="post" data-parsley-validate="" novalidate="">
+                <form action="#"[formGroup]="g2faForm"method="post" data-parsley-validate="" novalidate="">
                
                <div class="form-group">
                     <label class="mb-3">SMS Verification code <sup>*</sup></label>
                     <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
                   </div>
           <div class="d-flex flex-wrap justify-content-end mt-3">
-               <a href="#" class="link">Get code</a>
+               <!-- <a href="#" class="link">Get code</a> -->
            </div>
           
                    <div class="form-group text-center">
-                     <button type="submit" class="cmn-btn style--three btn--sm centered m-2">Next</button>
+                     <button type="submit" data-dismiss="modal" (click)="g2faenabled()"  class="cmn-btn style--three btn--sm centered m-2">Next</button>
+            </div>
+                </form>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="googledisable" tabindex="1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="account-form-area">
+              <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+              <h3 class="title">Security Verification</h3>
+              <div class="account-form-wrapper">
+                <form action="#"[formGroup]="g2faForm" method="post" data-parsley-validate="" novalidate="">
+               
+               <div class="form-group">
+                    <label class="mb-3">SMS Verification code <sup>*</sup></label>
+                    <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
+                  </div>
+          <div class="d-flex flex-wrap justify-content-end mt-3">
+               <!-- <a href="#" class="link">Get code</a> -->
+           </div>
+          
+                   <div class="form-group text-center">
+                     <button type="submit" data-dismiss="modal" (click)="g2fadisable()" class="cmn-btn style--three btn--sm centered m-2">Next</button>
             </div>
                 </form>
                
@@ -182,23 +218,23 @@
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Personal details</h3>
               <div class="account-form-wrapper">
-                <form action="#"[formGroup]="profileForm">
+                <form>
                
                   <div class="form-group">
                     <label>Name <sup>*</sup></label>
-                    <input type="text" formControlName="name" name="login_pass" id="old_pass" placeholder="Enter Name" required>
+                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter Name" required>
                   </div>
             <div class="form-group">
                     <label>Date of Birth <sup>*</sup></label>
-                    <input type="text"formControlName="dob"  name="login_pass" id="old_pass" placeholder="Enter DOB" required>
+                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter DOB" required>
                   </div>
             <div class="form-group">
                     <label>Address </label>
-                    <input type="text"formControlName="address"  name="login_pass" id="old_pass" placeholder="Enter Address" >
+                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter Address" >
                   </div>
           
                   <div class="form-group text-center mt-5">
-                    <button type="submit" data-dismiss="modal" (click)="updateuser()"  class="cmn-btn style--three btn--sm ">Submit</button>
+                    <button class="cmn-btn style--three btn--sm ">Submit</button>
                   </div>
                 </form>
                
@@ -237,60 +273,6 @@
               </form>
              
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="account-form-area">
-            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-            <h3 class="title">Change phone number</h3>
-            <div class="account-form-wrapper">
-              <form>
-              
-                <div class="form-group">
-                  <label class="mb-1">Enter Phone number <sup>*</sup></label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="New Phone number" required>
-                </div>
-              
-				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
-                    <a href="#" class="link">Get code</a>
-				 </div>
-							 
-				 <div class="form-group">
-                  <label class="mb-1"> New SMS Verification code <sup>*</sup></label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" required>
-                </div>
-				 <h3 class="sub-title my-1">Security Verification</h3>
-               <div class="form-group">
-                  <label class="mb-1">Email Verification code <sup>*</sup></label>
-                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
-                </div>
-				<div class="d-flex flex-wrap justify-content-between mt-1">
-				<span>Code received by kla***@gmail.com</span>
-                    <a href="#" class="link">Get code</a>
-				 </div>
-				 
-				  <div class="form-group">
-                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
-                </div>
-				<div class="d-flex flex-wrap justify-content-between mt-1">
-				<span>Code received by 123***8925</span>
-                    <a href="#" class="link">Get code</a>
-				 </div>
-				 <a href="#" class="link my-1">Security Verification Unavailable?</a>
-                 <div class="form-group text-center">
-                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal">Submit</a>
-				  
-                </div>
-              </form>
-                         
-			</div>  <!--account - form-wrapper end -->
           </div>
         </div>
       </div>
@@ -348,151 +330,20 @@
             <div class="account-form-wrapper">
               <form action="#"[formGroup]="loginForm" (ngSubmit)="changepassword()"method="post" data-parsley-validate="" novalidate="">
                
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label>Old password <sup>*</sup></label>
                   <input type="password"  formControlName="oldPass" name="login_pass" id="old_pass" placeholder="Enter old password">
-                </div> -->
-                <div class="form-group">
-                  <label>Old password <sup>*</sup></label>
-                  <div class="input-group-append">
-                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="oldPass" placeholder="password">
-                    
-    
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </div>                <div class="errors"
-                  *ngIf="loginForm.get('oldPass').invalid && (loginForm.get('oldPass').touched || loginForm.get('oldPass').dirty)">
-  
-                  <div *ngIf="loginForm.get('oldPass').hasError('required')">
-                    password is required
-                  </div>
-  
-                  <div *ngIf="loginForm.get('oldPass').errors.minlength">
-                    Password must be at least 8 characters
-                  </div>
-  
-                  <div class="error-text" *ngIf="loginForm.get('oldPass').hasError('passwordStrength')">
-                    {{loginForm.get('oldPass').errors['passwordStrength']}}
-                  </div>
                 </div>
-                </div>
-				<!-- <div class="form-group">
+				<div class="form-group">
                   <label>New password <sup>*</sup></label>
                   <input type="password"formControlName="newPass" name="login_pass" id="new_pass" placeholder="Enter new password">
-                </div> -->
-                <div class="form-group">
-                  <label>New password <sup>*</sup></label>
-                  <div class="input-group-append">
-                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="newPass" placeholder="password">
-                    
-    
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </div>                <div class="errors"
-                  *ngIf="loginForm.get('newPass').invalid && (loginForm.get('newPass').touched || loginForm.get('newPass').dirty)">
-  
-                  <div *ngIf="loginForm.get('newPass').hasError('required')">
-                    password is required
-                  </div>
-  
-                  <div *ngIf="loginForm.get('newPass').errors.minlength">
-                    Password must be at least 8 characters
-                  </div>
-  
-                  <div class="error-text" *ngIf="loginForm.get('newPass').hasError('passwordStrength')">
-                    {{loginForm.get('newPass').errors['passwordStrength']}}
-                  </div>
                 </div>
-                </div>
-				<!-- <div class="form-group">
+				<div class="form-group">
                   <label>confirm password <sup>*</sup></label>
                   <input type="password" formControlName="confirmPass" name="login_pass" id="confirm_pass" placeholder="Enter confirm password">
-                </div> -->
-                <!-- <div class="form-group">
-                  <label>confirm password <sup>*</sup></label>
-                  <input type="password"formControlName="confirmPass" name="login_pass" id="new_pass" placeholder="Enter new password">
-                </div> -->
-                <div class="form-group">
-                  <label>confirm password <sup>*</sup></label>
-                  <div class="input-group-append">
-                    <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                    <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="confirmPass" placeholder="password">
-                    
-    
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </div>                <div class="errors"
-                  *ngIf="loginForm.get('confirmPass').invalid && (loginForm.get('confirmPass').touched || loginForm.get('confirmPass').dirty)">
-  
-                  <div *ngIf="loginForm.get('confirmPass').hasError('required')">
-                    password is required
-                  </div>
-  
-                  <div *ngIf="loginForm.get('confirmPass').errors.minlength">
-                    Password must be at least 8 characters
-                  </div>
-  
-                  <div class="error-text" *ngIf="loginForm.get('confirmPass').hasError('passwordStrength')">
-                    {{loginForm.get('confirmPass').errors['passwordStrength']}}
-                  </div>
-                </div>
                 </div>
                 <div class="form-group text-center mt-5">
                   <button type="submit" class="cmn-btn style--three btn--sm ">Change Password</button>
-                </div>
-              </form>
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="account-form-area">
-            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-            <h3 class="title">Change Email Id</h3>
-            <div class="account-form-wrapper">
-              <form>
-              
-                <div class="form-group">
-                  <label class="mb-1">Enter New Email <sup>*</sup></label>
-                  <input type="email" name="signup_pass" id="signup_pass" placeholder="New Email" required>
-                </div>
-              
-				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
-                    <a href="#" class="link">Get code</a>
-				 </div>
-				
-				 
-				 <div class="form-group">
-                  <label class="mb-1">New Email Verification code <sup>*</sup></label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" required>
-                </div>
-				 <h3 class="sub-title my-3">Security Verification</h3>
-               <div class="form-group">
-                  <label class="mb-1">Email Verification code <sup>*</sup></label>
-                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
-                </div>
-				<div class="d-flex flex-wrap justify-content-between mt-1">
-				<span>Code received by kla***@gmail.com</span>
-                    <a href="#" class="link">Get code</a>
-				 </div>
-				 
-				  <div class="form-group">
-                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
-                </div>
-				<div class="d-flex flex-wrap justify-content-between mt-1">
-				<span>Code received by 123***8925</span>
-                    <a href="#" class="link">Get code</a>
-				 </div>
-				 <a href="#" class="link my-2">Security Verification Unavailable?</a>
-                 <div class="form-group text-center">
-                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal">Submit</a>
-				  
                 </div>
               </form>
              

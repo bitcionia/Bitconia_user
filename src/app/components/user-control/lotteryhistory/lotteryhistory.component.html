@@ -53,69 +53,68 @@
           <div class="container my-5">
           <div class="row justify-content-center">
           <div class="col-md-4 my-2">
-           <a href="#" class="cmn-btn btn--sm">Withdrawals</a>
+           <a href="#"routerLink= "/user-Draw/trans" class="cmn-btn btn--sm">Withdrawals</a>
                 </div>
           <div class="col-md-4 my-2">
-            <a href="#"routerLink="/user-control/deposithistory" class="cmn-btn btn--sm">Deposits</a>
+            <a href="#"routerLink="/user-control/deposithistory" class="cmn-btn btn--sm" data-target="#Deposit">Deposits</a>
           </div>
           <div class="col-md-4 my-2">
             <a href="#"routerLink="/user-control/lotteryhistory" class="cmn-btn btn--sm">Lottery Purchase</a>
           </div>
           </div>
           </div>
+          <div class="tab-pane fade show active" id="loginactivity" role="tabpanel" aria-labelledby="loginactivity-tab">
                
-                <div class="tab-pane fade show active" id="loginactivity" role="tabpanel" aria-labelledby="loginactivity-tab">
-               
-                  <div class="past-draw-wrapper pt-1">
-                     <div class="table-responsive-lg">
-              <table>
-                <thead>
-                  <tr>
-                    
-                      <th>Date</th>
-                              <th>Description</th>
-                              <!-- <th>Pay. method</th> -->
-                              <th>Amount</th>
-                              <th>Status</th>
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of data | paginate:{
-                    itemsPerPage:5,
-                     currentPage:p,
-                     item:item,
-                    totalitem:totalLength }">
-                    <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
-      
-                    <td><div class="text-white">{{item['type']}}</div></td>
-                    <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
-                    <td>
-                     <div class="text-green"> {{item['text']}}</div>
-                    </td>
-                    <td><div class="text-white"> {{item['ip']}}</div></td>
-                  </tr>
-                   <tr>
-                  
-                  </tbody>
-              </table>
-              <div class="center" *ngIf="!showDatafound">
-                  <span>NO DATA FOUND </span>
-                </div>
-                <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
-      
-            </div>
-      
-           
-          <br>
-           
-          </div><!-- past-draw-wrapper end -->
-        
+            <div class="past-draw-wrapper pt-1">
+               <div class="table-responsive-lg">
+        <table>
+          <thead>
+            <tr>
               
-          
-           </div>
+                <th>Date</th>
+                        <th>Description</th>
+                        <!-- <th>Pay. method</th> -->
+                        <th>Amount</th>
+                        <th>Status</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data | paginate:{
+              itemsPerPage:5,
+               currentPage:p,
+               item:item,
+              totalitem:totalLength }">
+              <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
+
+              <td><div class="text-white">{{item['type']}}</div></td>
+              <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+              <td>
+               <div class="text-green"> {{item['text']}}</div>
+              </td>
+              <td><div class="text-white"> {{item['ip']}}</div></td>
+            </tr>
+             <tr>
+            
+            </tbody>
+        </table>
+        <div class="center" *ngIf="!showDatafound">
+            <span>NO DATA FOUND </span>
+          </div>
+          <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
+
+      </div>
+
+     
+    <br>
+     
+    </div><!-- past-draw-wrapper end -->
+  
+        
+    
+     </div>
                 <!-- <div class="load-more">
-                  <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
+                  <button type="button">Show More Lotteries <i class="las la-angle-down ml-2"></i></button>
                 </div> -->
               </div>
             </div>

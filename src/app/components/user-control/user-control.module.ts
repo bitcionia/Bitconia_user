@@ -14,7 +14,9 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ToastrModule } from 'ngx-toastr';
-import { MatIconModule } from '@angular/material/icon';
+import { DepositshistoryComponent } from './depositshistory/depositshistory.component';
+import { LotteryhistoryComponent } from './lotteryhistory/lotteryhistory.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
        TwofactorsComponent,
        ChangepasswordComponent,
        ForgetpasswordComponent,
-       ResetpasswordComponent
+       ResetpasswordComponent,
+       DepositshistoryComponent,
+       LotteryhistoryComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,7 @@ import { MatIconModule } from '@angular/material/icon';
         timeOut: 1000
       }
     ),
-    MatIconModule,
+    NgxPaginationModule,
   ]
 })
 export class UserControlModule { }

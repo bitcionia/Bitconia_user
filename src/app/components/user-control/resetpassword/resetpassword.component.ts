@@ -17,11 +17,6 @@ export class ResetpasswordComponent implements OnInit {
   ipAddress: any;
   error: any;
   errorMessage: any;
-  mobile: any;
-  countrycode: any;
-  email: any;
-  hide = true;
-
   constructor(
     public httpService: HttpService,
     private formBuilder: FormBuilder,
@@ -37,13 +32,6 @@ export class ResetpasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIPAddress();
-    this.mobile = JSON.parse(localStorage.getItem("formob"));
-    this.countrycode = JSON.parse(localStorage.getItem("forcountrycode"));
-    this.email = JSON.parse(localStorage.getItem("email"));
-
-console.log(this.mobile)
-console.log(this.countrycode)
-
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
@@ -63,16 +51,12 @@ console.log(this.countrycode)
   onSubmit() {
     debugger
       this.submitted=true;
-        let jsonData = {
-          password: this.loginForm.value.newPass,
-          email:this.email,
-          mobile:this.mobile,
-          country_code:this.countrycode,
-          device:'1',
-          location:'Chennai',
-          ip:this.ipAddress,
-          
-        }
+      let jsonData = {
+        password: this.loginForm.value.newPass,
+        device:'1',
+        location:'Chennai',
+        ip:this.ipAddress,
+      }
       this.httpService.resetPassword(jsonData).subscribe(( res: any) => {
         
         if (res['success'] == true) {
@@ -104,9 +88,6 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         });
      })
       
-    
-      
-     
+  
     }
-    
 }
