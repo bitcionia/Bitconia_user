@@ -71,13 +71,12 @@
               <table>
                 <thead>
                   <tr>
-                    
-                      <th>Date</th>
-                              <th>Description</th>
-                              <!-- <th>Pay. method</th> -->
-                              <th>Amount</th>
+                    <th>TransactionID</th>
+                              <th >Amount</th>
+                              <!-- <th>Withdrawaddress</th> -->
                               <th>Status</th>
-                  
+                              <th style="text-align: center;"> Date</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -86,14 +85,27 @@
                      currentPage:p,
                      item:item,
                     totalitem:totalLength }">
-                    <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
-      
-                    <td><div class="text-white">{{item['type']}}</div></td>
+                    <td><div class="text-white"> {{item['transactionid']}}</div></td>
+                    <!-- <td><div class="text-white"> {{item['withdrawaddress']}}</div></td> -->
+
+                    <!-- <td><div class="text-white">{{item['type']}}</div></td> -->
                     <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                     <td>
-                     <div class="text-green"> {{item['text']}}</div>
+                     <div class="text-green"> {{item['amount']}}</div>
                     </td>
-                    <td><div class="text-white"> {{item['ip']}}</div></td>
+                    <td>
+                      <span *ngIf="item['status'] === 0"
+                      [class]="item['status'] === 0 ? 'text-danger':''">
+                      {{item['status'] === 0 ? 'Inactive':item['status']}}</span>
+                      <span *ngIf="item['status'] === 1"
+                      [class]="item['status'] ===1  ? 'text-success' : ''">
+                      {{item['status'] === 1 ? 'Active':item['status']}}</span>             
+                      <span *ngIf="item['status'] === 2"
+                      [class]="item['status'] === 2 ? 'text-warning' : ''">
+                      {{item['status'] === 2 ? 'Pending':item['status']}}</span>       
+                    </td>
+                    <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
+
                   </tr>
                    <tr>
                   
