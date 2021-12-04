@@ -15,7 +15,6 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 const routes: Routes = [ 
   {
     path: '',
-    canActivate:[AuthencationGuard],
     children: [{
    path: 'ourfeatures', component:OurfeatureComponent},
    { path: 'customsupp', component:CustomersupportComponent},

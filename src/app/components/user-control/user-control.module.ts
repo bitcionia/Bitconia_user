@@ -17,6 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DepositshistoryComponent } from './depositshistory/depositshistory.component';
 import { LotteryhistoryComponent } from './lotteryhistory/lotteryhistory.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     NgxIntlTelInputModule,
+    NgSelectModule,
+    Ng2SearchPipeModule,
     ToastrModule.forRoot(
       {
         timeOut: 1000

@@ -219,7 +219,7 @@ a .dropdown-firstlistitem i:hover{
     -ms-border-radius: 999px;
     -o-border-radius: 999px;
     padding: 0 30px;
-	
+	color:white;
 }
 .dropdownform .list {
     background-color: transparent;
@@ -247,7 +247,7 @@ a .dropdown-firstlistitem i:hover{
       /* background-color: rgba(0, 0, 0, 0.1);  */
 	  text-decoration: underline;
 	  background-color: #ff00cc;
-	
+    color: white;
 	  
 	  }
     .dropdownform .option.selected {

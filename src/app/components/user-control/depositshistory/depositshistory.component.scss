@@ -13,3 +13,25 @@
 .text-success {
     color: #19b159 !important;
 }
+.ng-select .ng-select-container .ng-value-container .ng-input>input {
+  background: #ff9b21;
+  border: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  cursor: default;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+.dropdownform {
+  min-height: 48px;
+  background-color: #392ba6;
+  border: none;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  padding: 0 30px;
+  color:white;
+}

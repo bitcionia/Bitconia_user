@@ -313,6 +313,7 @@
 
 
             </div> 
+
               </div>
       <div class="d-flex flex-wrap justify-content-between mt-2">
       <label></label>
@@ -574,10 +575,10 @@
         
 </div>
 </div>
- <div class="product__cart"*ngIf="token!=null">
-               <a href="cart.html"  class="amount__btn">
+ <div class="product__cart">
+               <a href="#" routerLink="/user-Draw/cart"  class="amount__btn">
         <i class="las la-shopping-basket"></i> 
-        <span class="cart__num">08</span>
+        <span class="cart__num">0</span>
       </a>
             </div>
            <a href=""routerLink= "/user-Draw/wallet" class="user__btn"*ngIf="token!=null" ><i class="las la-wallet"></i></a> 
@@ -653,7 +654,7 @@
               <ul class="sub-menu">
                 <li><a routerLink="user-Draw/currentdraw">Current Draw</a></li>
                 <li><a routerLink="user-Draw/history">History</a></li>
-                <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li>
+                <!-- <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li> -->
 
               </ul>
             </li>

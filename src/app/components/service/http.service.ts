@@ -49,6 +49,7 @@ userloginurl: string = "user/auth/login";
   loginverify: string="user/auth/verify/otp";
   twofactor: string="user/auth/sent/otp";
   deposithistory:string="user/deposit/list";
+  depositqr:string="user/deposit/depositqrcode";
   depositcreate:string="user/deposit/create";
   depositsort:string="user/deposit/status";
   withdraw:string="user/withdraw/list";
@@ -200,6 +201,11 @@ withdrawsearch(jsonObj: any): Observable<any> {
 }
 drawhistory(): Observable<any> {
   return this.http.get(this.baseURL + this.drawticket, {
+    headers: this.getAuthHeaders(),
+  });
+}
+depositqrcode(): Observable<any> {
+  return this.http.get(this.baseURL + this.depositqr, {
     headers: this.getAuthHeaders(),
   });
 }

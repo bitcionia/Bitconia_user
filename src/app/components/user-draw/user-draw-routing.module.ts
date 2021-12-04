@@ -15,10 +15,13 @@ import { WalletComponent } from './wallet/wallet.component';
 const routes: Routes =[
   {
   path: '',
-  canActivate:[AuthencationGuard],
+  // canActivate:[AuthencationGuard],
   children: [
   { path: 'buynow', component:BuynowComponent},
-  { path: 'cart', component:CartComponent},
+  { 
+    // canActivate:[AuthencationGuard],
+
+    path: 'cart', component:CartComponent},
   { path: 'trans', component: TranscationComponent},
   { path: 'myticket', component: MyticketComponent},
   { path: 'currentdraw', component: CurrentdrawComponent},

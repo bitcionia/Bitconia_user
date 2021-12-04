@@ -17,7 +17,7 @@ import { TermsComponent } from './terms/terms.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate:[AuthencationGuard],
+    // canActivate:[AuthencationGuard],
     children: [ { path: 'accountsecurity', component: AccountsecurityComponent},
 { path: 'accountactivity', component: AccountactivityComponent},
 { path: 'notifi', component:NotificationComponent},
