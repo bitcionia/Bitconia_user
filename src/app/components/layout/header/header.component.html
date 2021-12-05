@@ -512,7 +512,7 @@
         <div class="col-sm-7">
           <div class="right my-2 mx-2">
             <div *ngIf="token==null">
-              <a href="signup.html" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
+              <a href="#" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
 
             </div>
      
@@ -597,7 +597,7 @@
 <div class="dropdown-content">
 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>
 <a href=""routerLink="/user-Draw/myticket" class="dropdown-item"*ngIf="token!=null" >User panel</a>
-<a href="#" class="dropdown-item" (click)="logoutUser()">Logout</a>
+<a href="#" class="dropdown-item" (click)="logoutUser()"*ngIf="token!=null" >Logout</a>
 <!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
 <!-- </button> -->
 </div>
@@ -652,7 +652,7 @@
        <li class="menu_has_children">
               <a href="#">Draw</a>
               <ul class="sub-menu">
-                <li><a routerLink="user-Draw/currentdraw">Current Draw</a></li>
+                <li><a routerLink="user-Draw/currentdraw">Upcoming</a></li>
                 <li><a routerLink="user-Draw/history">History</a></li>
                 <!-- <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li> -->
 

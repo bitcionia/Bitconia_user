@@ -45,10 +45,13 @@
               <div class="all-transaction">
                 <div class="all-transaction__header">
                   <h3 class="title">All Transactions</h3>
-                  <div class="date-range">
-                    <input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="en" class="datepicker-here form-control" data-position='top left' placeholder="min - max date">
-                    <i class="las la-calendar-alt"></i>
-                  </div>
+                  <!-- <div class="col-md-3">
+                    <h2>Status</h2>
+                    <select class="dropdownform"[(ngModel)]="searchText" >
+                      <option value=""  > All </option>
+                      <option *ngFor="let sat of status" >{{sat}}</option>
+              </select>
+                    </div>  -->
                 </div>
           <div class="container my-5">
           <div class="row justify-content-center">
@@ -80,7 +83,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of data | paginate:{
+            <tr *ngFor="let item of data|filter:searchText | paginate:{
               itemsPerPage:5,
                currentPage:p,
                item:item,

@@ -248,10 +248,10 @@ this.phoneNumber=this.code['phone']
         });
         var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
     this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
-    setTimeout(() => {
-      window.location.reload();
+//     setTimeout(() => {
+//       window.location.reload();
 
- }, 100);
+//  }, 100);
         // this.router.navigate(['/user-control/twofactor']);
 
         // this.router.navigate(['/dashboard/dashboard']);
@@ -322,10 +322,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           var json={key:1,value:this.email}
           this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
 
-          setTimeout(function () {
-            // window.location.reload();
-            document.location.reload();
-          }, 400);
+          // setTimeout(function () {
+          //   // window.location.reload();
+          //   document.location.reload();
+          // }, 400);
 
           // setTimeout(function () {
           //   this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})

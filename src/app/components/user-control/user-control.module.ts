@@ -19,6 +19,7 @@ import { LotteryhistoryComponent } from './lotteryhistory/lotteryhistory.compone
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   ],
   imports: [
     CommonModule,
+    FormsModule, ReactiveFormsModule,
     UserControlRoutingModule,
     FormsModule,
     ReactiveFormsModule,

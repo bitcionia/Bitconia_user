@@ -56,6 +56,8 @@ userloginurl: string = "user/auth/login";
   withdrawcreate: string="user/withdraw/create";
   withdrawsort:string="user/withdraw/status";
   drawticket: string="user/draw/alldraw/ticket/list";
+  notifi: string="user/user/notification/list";
+  alert: string="user/user/alert/list";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -209,5 +211,14 @@ depositqrcode(): Observable<any> {
     headers: this.getAuthHeaders(),
   });
 }
-
+notification(): Observable<any> {
+  return this.http.get(this.baseURL + this.notifi, {
+    headers: this.getAuthHeaders(),
+  });
+}
+alertnotification(): Observable<any> {
+  return this.http.get(this.baseURL + this.alert, {
+    headers: this.getAuthHeaders(),
+  });
+}
 }

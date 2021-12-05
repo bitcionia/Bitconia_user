@@ -15,6 +15,8 @@ export class LotteryhistoryComponent implements OnInit {
   p: number[] = [];
   totalLength: any;
   item: any[];
+  status:any =['Active','Pending','Cancel']
+  searchText;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

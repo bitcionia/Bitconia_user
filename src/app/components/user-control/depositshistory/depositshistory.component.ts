@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from '../../service/http.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { HttpService } from '../../service/http.service';
 })
 export class DepositshistoryComponent implements OnInit {
   submitted: boolean;
-  status:any =[ 'Active','Pending','Cancel']
+  modeOfPayments = [{id: 1, title: 'Active'}, {id: 2, title: 'Pending'}, {id: 3, title: 'Cancel'}];
+
+  status:any =['Active','Pending','Cancel']
   data: any;
   showDatafound: boolean;
   
@@ -21,7 +24,14 @@ export class DepositshistoryComponent implements OnInit {
   searchText:string ;
   public loginForm: FormGroup;
   Status: any;
-
+  moduleName ; 
+  selectedExch: any=[];
+  modeOfPayment = new FormControl('');
+  code: any;
+  dropdown = new FormControl();
+  options = ['Active','Pending','Cancel'];
+  testSubscription: Subscription;
+  value: any;
 //   Active=0;
 //   Inactive=1;
 // cancel=2;
@@ -39,10 +49,13 @@ export class DepositshistoryComponent implements OnInit {
     this.createForm();
 
     this.deposithistory();
+    this.testSubscription = this.dropdown.valueChanges
+    // .pipe(debounceTime(100))
+    .subscribe(value => console.log(this.value));
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
-      'status': ['', Validators.required],
+      'status':[''],
     });
     console.log(this.loginForm.value.status);
 
@@ -76,9 +89,14 @@ export class DepositshistoryComponent implements OnInit {
   
   depositsort(){
     this.submitted=true;
-   console.log(this.gen) 
+    // console.log(this.modeOfPayment.value);
+    console.log( this.selectedExch);
+
 debugger
-if( this.gen== 'Active'){
+if( this.selectedExch== 'Active'){
+
+
+
   let jsonData = {
     status:'1',
   }

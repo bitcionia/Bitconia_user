@@ -45,80 +45,17 @@
               <div class="all-transaction">
                 <div class="all-transaction__header">
                   <h3 class="title">All Transactions</h3>
-                  <!-- <div class="col-md-3">
+                   <!-- <div class="col-md-3">
                     <h2>Status</h2>
                     <select class="dropdownform"[(ngModel)]="searchText" >
-                      <option  > All </option>
+                      <option value=""  > All </option>
                       <option *ngFor="let sat of status" >{{sat}}</option>
               </select>
-                    </div> -->
+                    </div>  -->
                 
-                  <!-- <select class="dropdownform">
-                    <option>1 day</option>
-                    <option>7 days</option>
-                    <option>1 month</option>
-                    <option>3 months</option>
-                  </select> -->
-                  <!-- <select class="dropdownform" formControlName="status">
-                  <option>Status</option>
-                  <option *ngFor="let sat of status">{{sat}}</option>
-              </select> -->
-                  <!-- <div class="dropdownform">
-
-                    <ng-select [items]="status" 
-          
-           [(ngModel)]="gen">
-</ng-select>
-                    <ng-select [items]="status" placeholder="Select"
-                    class="js-example-placeholder-multiple" [(ngModel)]="gen"></ng-select> -->
-                    <!-- <input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="en" class="datepicker-here form-control" data-position='top left' placeholder="min - max date">
-                    <i class="las la-calendar-alt"></i> 
-                  </div> -->
+                  
                 </div>
-                  <div class="row row-sm  mt-lg-4">
-                    <div class="col-sm-12 col-lg-12 col-xl-12">
-                        <div class="card bg-primary custom-card card-box">
-                            <div class="card-body p-4" style="background-color: #5A4BCC;">
-                                <!-- <label>User Name</label>
-                                <input type="text"  [(ngModel)]="username" (ngModelChange)="searchpayment()"class="form-control" placeholder="Enter the User Name" /> -->
-                                <!-- <div class="row align-items-center"> -->
-                                 <form [formGroup]="loginForm" (ngSubmit)="depositsort()" novalidate>
-                 
-                                     <div class="row">
-                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                           
-                                             <div class="form-group text-left">
-                                                 <label> Status</label>
-                                                 <!-- <select class="select form-control" formControlName="status">
-                                              <option *ngFor="let sat of status">{{sat}}</option>
-                                          </select>   -->
-                                          <ng-select class="select form-control" [items]="status" placeholder="Select"
-                                          class="js-example-placeholder-multiple" [(ngModel)]="gen"></ng-select>                                            
-                                         </div>
-                                       </div>
-                                       <div class="col-lg-4 col-md-4 col-sm-4">
-                                           
-                                         
-                                   </div>
-                                  </div>
-                                  
-                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                          <button type="submit"class="btn btn-primary">Get</button>
-
-                                         </div>
-                                       
-                                        </form>
-                                        
-                                     
-                                     <!-- <div class="col-sm-12 text-right m-t-20">
-                                         <label>&nbsp;</label>
-                                         <button type="submit"class="btn btn-primary" style="width: 8%;">Get</button>
-                                     </div> -->
-                             </div> 
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                 </div>
+                  
                 
                 
           <div class="container my-5">
@@ -182,6 +119,9 @@
                       
                       </tbody>
                   </table>
+                  <div class="center" *ngIf="modeOfPayments==null">
+                    <span>NO DATA FOUND </span>
+                  </div>
         <div class="center" *ngIf="!showDatafound">
             <span>NO DATA FOUND </span>
           </div>

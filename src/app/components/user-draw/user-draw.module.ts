@@ -10,8 +10,10 @@ import { BuynowComponent } from './buynow/buynow.component';
 import { MyticketComponent } from './myticket/myticket.component';
 import { TranscationComponent } from './transcation/transcation.component';
 import { PastdrawComponent } from './pastdraw/pastdraw.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,11 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
   imports: [
     CommonModule,
     UserDrawRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+
+        FormsModule, ReactiveFormsModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

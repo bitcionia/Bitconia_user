@@ -14,6 +14,8 @@ export class TranscationComponent implements OnInit {
   totalLength: any;
   item: any[];
   data: any;
+  status:any =['Active','Pending','Cancel']
+  searchText;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

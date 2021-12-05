@@ -128,7 +128,8 @@ console.log("92",this.email)
       this.httpService.twofactorotp(jsonData).subscribe((res: any) => {
         
         if (res['success'] == true) {
-          
+          // localStorage.setItem("data", JSON.stringify(res['data']['pin']));
+console.log(res['data']['pin'])
           this.httpService.toastr.success(res['message'], '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
@@ -237,10 +238,14 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               this.httpService.toastr.success(res['message'], '', {
                 positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
               });
-              this.router.navigate(['/index']);
+
+              // this.router.navigate(['/index']);
               // this.router.navigate(['/dashboard/dashboard']);
-      
-      
+         setTimeout(() => {
+          document.location.reload();
+          this.router.navigate(['/index']);
+
+        }, 100);
             }
              else if (res['success'] == false) {
             
@@ -286,7 +291,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
                 this.router.navigate(['/index']);
-                // this.router.navigate(['/dashboard/dashboard']);
+
+                setTimeout(() => {
+                  document.location.reload();
+        
+                }, 100);                // this.router.navigate(['/dashboard/dashboard']);
         
         
               }

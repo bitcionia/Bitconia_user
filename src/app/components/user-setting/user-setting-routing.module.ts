@@ -18,10 +18,22 @@ const routes: Routes = [
   {
     path: '',
     // canActivate:[AuthencationGuard],
-    children: [ { path: 'accountsecurity', component: AccountsecurityComponent},
-{ path: 'accountactivity', component: AccountactivityComponent},
-{ path: 'notifi', component:NotificationComponent},
-{ path: 'announcements', component:AnnouncementsComponent},
+    children: [ 
+      { 
+        canActivate:[AuthencationGuard],
+        path: 'accountsecurity', component: AccountsecurityComponent},
+{ 
+  canActivate:[AuthencationGuard],
+
+  path: 'accountactivity', component: AccountactivityComponent},
+{ 
+  canActivate:[AuthencationGuard],
+
+  path: 'notifi', component:NotificationComponent},
+{ 
+  canActivate:[AuthencationGuard],
+
+  path: 'announcements', component:AnnouncementsComponent},
 { path: 'howtoplay', component: HowtoplayComponent},
   { path: 'howtoplaydetails', component:HowtoplaydetailsComponent },
 
