@@ -232,6 +232,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           this.httpService.twofactorver(jsonData).subscribe( res => {
             
             if (res['success'] == true) {
+              localStorage.setItem("pin", JSON.stringify(res['data']['pin']));
+
               // ls.set('userPass', { data: this.loginForm.value.password });
               console.log(res);
              

@@ -4,6 +4,7 @@ import { IndexComponent } from './components/index/index.component';
 
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { AuthencationGuard } from './components/service/authencation.guard.service';
 
 
 
@@ -21,10 +22,14 @@ const routes: Routes = [
   //   redirectTo: 'index',
   //   pathMatch: 'full'
   // },
-  { path: 'user-control', loadChildren: () => import('./components/user-control/user-control.module').then(m => m.UserControlModule) },
-  { path: 'user-setting', loadChildren: () => import('./components/user-setting/user-setting.module').then(m => m.UserSettingModule) },
-  { path: 'user-Draw', loadChildren: () => import('./components/user-draw/user-draw.module').then(m => m.UserDrawModule) },
-  { path: 'user-popup', loadChildren: () => import('./components/user-popup/user-popup.module').then(m => m.UserPopupModule) },
+  { 
+    path: 'user-control', loadChildren: () => import('./components/user-control/user-control.module').then(m => m.UserControlModule) },
+  { 
+    path: 'user-setting', loadChildren: () => import('./components/user-setting/user-setting.module').then(m => m.UserSettingModule) },
+  { 
+      path: 'user-Draw', loadChildren: () => import('./components/user-draw/user-draw.module').then(m => m.UserDrawModule) },
+  {
+    path: 'user-popup', loadChildren: () => import('./components/user-popup/user-popup.module').then(m => m.UserPopupModule) },
 
   { path: '**', redirectTo: 'index' }
 

@@ -17,6 +17,7 @@ export class WalletComponent implements OnInit {
   amount:number;
   error: any;
   errorMessage: any;
+  aval: any;
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class WalletComponent implements OnInit {
 
   ngOnInit(): void {
     this.depositqr();
+    this.balance();
   }
   despoitcion() {
     const dialogRef = this.dialog.open(DespoitcoinComponent, {
@@ -76,6 +78,45 @@ export class WalletComponent implements OnInit {
     this.httpService.depositqrcode().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
+      this.qrcode=res['qrcode']
+      if (this.data) {
+        if (this.data.length > 0) {
+      if (res['success'] == true) {
+        this.showDatafound = true;
+        // this.searchuser();
+
+        // this.httpService.toastr.success(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        // });
+      }
+    }
+  }
+  else {
+    this.showDatafound = false;
+    console.log("No Data found");
+  }
+    }
+    ,(error) => {                              //Error callback
+      console.log(error)
+      // console.log(error)
+      //   this.httpService.toastr.error(error,'',  {
+      //     positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+      //   });
+      this.error = error.status;
+      console.log(this.error)
+
+      this.errorMessage = error.error.message;
+      console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+        positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+      });
+   })
+  }
+  balance(){
+    debugger
+    this.httpService.balancebtc().subscribe((res: any) => {
+      console.log(res['BTC_fees']['BTC_fees']);
+      this.aval = res['BTC_fees']['BTC_fees']
       this.qrcode=res['qrcode']
       if (this.data) {
         if (this.data.length > 0) {

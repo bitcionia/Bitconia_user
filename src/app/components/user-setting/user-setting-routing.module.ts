@@ -20,10 +20,10 @@ const routes: Routes = [
     // canActivate:[AuthencationGuard],
     children: [ 
       { 
-        canActivate:[AuthencationGuard],
+        // canActivate:[AuthencationGuard],
         path: 'accountsecurity', component: AccountsecurityComponent},
 { 
-  canActivate:[AuthencationGuard],
+  // canActivate:[AuthencationGuard],
 
   path: 'accountactivity', component: AccountactivityComponent},
 { 
@@ -31,11 +31,17 @@ const routes: Routes = [
 
   path: 'notifi', component:NotificationComponent},
 { 
-  canActivate:[AuthencationGuard],
+  // canActivate:[AuthencationGuard],
 
   path: 'announcements', component:AnnouncementsComponent},
-{ path: 'howtoplay', component: HowtoplayComponent},
-  { path: 'howtoplaydetails', component:HowtoplaydetailsComponent },
+{
+  
+  
+  path: 'howtoplay', component: HowtoplayComponent},
+  { 
+    // canActivate:[AuthencationGuard],
+
+    path: 'howtoplaydetails', component:HowtoplaydetailsComponent },
 
   { path: 'howtoaddcerdit', component: HowtoaddcerditComponent},
   { path: 'howtowithdraw', component: HowtowithdrawComponent},

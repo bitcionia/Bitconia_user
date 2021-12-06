@@ -58,6 +58,7 @@ userloginurl: string = "user/auth/login";
   drawticket: string="user/draw/alldraw/ticket/list";
   notifi: string="user/user/notification/list";
   alert: string="user/user/alert/list";
+  balance: string="user/user/balance";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -218,6 +219,12 @@ notification(): Observable<any> {
 }
 alertnotification(): Observable<any> {
   return this.http.get(this.baseURL + this.alert, {
+    headers: this.getAuthHeaders(),
+  });
+}
+
+balancebtc(): Observable<any> {
+  return this.http.get(this.baseURL + this.balance, {
     headers: this.getAuthHeaders(),
   });
 }
