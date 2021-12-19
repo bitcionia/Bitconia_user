@@ -1,14 +1,15 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 
 @Component({
-  selector: 'app-currentdraw',
-  templateUrl: './currentdraw.component.html',
-  styleUrls: ['./currentdraw.component.scss']
+  selector: 'app-drawresult',
+  templateUrl: './drawresult.component.html',
+  styleUrls: ['./drawresult.component.scss']
 })
-export class CurrentdrawComponent implements OnInit {
+export class DrawresultComponent implements OnInit {
   data: any;
   showDatafound: boolean;
   p: number[] = [];
@@ -28,8 +29,6 @@ export class CurrentdrawComponent implements OnInit {
   win: any;
   price: any;
   count: any;
-  popoverTitle="sasd";
-  popoverMessage="wewewwe";
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,36 +37,11 @@ export class CurrentdrawComponent implements OnInit {
 
 
     public httpService: HttpService,
-  ) {
-   }
+  ) { }
 
   ngOnInit(): void {
-    this.upcomingdraw();
     this.pervdraw();
-  }
-  
-  upcomingdraw(){
-    debugger
-    this.httpService.upcomdraw().subscribe((res: any) => {
-      console.log(res['data'])
-      this.data = res['data']
-      if (this.data) {
-        if (this.data.length > 0) {
-      if (res['success'] == true) {
-        this.showDatafound = true;
-        // this.searchuser();
-
-        // this.httpService.toastr.success(res['message'], '', {
-        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-        // });
-      }
-    }
-  }
-  else {
-    this.showDatafound = false;
-    console.log("No Data found");
-  }
-    });
+    this.last_draw();
   }
   pervdraw(){
     debugger
@@ -85,10 +59,8 @@ export class CurrentdrawComponent implements OnInit {
       this.seq=(res['data'][0]['winning_sequence'])
      
       this.myArray = this.seq.split(',');
-     
-      // this.myArray = this.seq.split(',');
-console.log(this.myArray)
-     
+
+     console.log(this.myArray)
       this.data1 = res['data']
       if (this.data1) {
         if (this.data1.length > 0) {
@@ -108,12 +80,42 @@ console.log(this.myArray)
   }
     });
   }
-  gototick(data){
+
+  last_draw(){
     debugger
-    console.log(data)
-    var json={key:'1',value:data}
+    this.httpService.last_draw().subscribe((res: any) => {
+      console.log(res['data'])
+      this.data=res['data']
+      // console.log(res['data'][0]['name'])
+      // console.log(res['data'][0]['start_time'])
+      // console.log(res['data'][0]['winning_sequence'])
+      // this.name=res['data'][0]['name']
+      // this.time=res['data'][0]['start_time']
+      // this.win=res['data'][0]['winning_price']
+      // this.price=res['data'][0]['price']
 
-    this.router.navigateByUrl('/user-Draw/buynow',{state:{data:json}})
+      // this.seq=(res['data'][0]['winning_sequence'])
+     
+      this.myArray = this.seq.split(',');
 
+     
+      this.data1 = res['data']
+      if (this.data1) {
+        if (this.data1.length > 0) {
+      if (res['success'] == true) {
+        this.showDatafound = true;
+        // this.searchuser();
+
+        // this.httpService.toastr.success(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        // });
+      }
+    }
+  }
+  else {
+    this.showDatafound = false;
+    console.log("No Data found");
+  }
+    });
   }
 }

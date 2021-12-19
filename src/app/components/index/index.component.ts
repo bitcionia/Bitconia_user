@@ -15,12 +15,18 @@ export class IndexComponent implements OnInit {
   showDatafound : boolean;
   displayURL: any;
 
+
+
+
+
   constructor(private Sanitizer : DomSanitizer) {
+    
     this.displayURL = Sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/d6xn5uflUjg?autoplay=1');
   }
   
 
   ngOnInit(): void {
+    
 
     // this.urlSafe = this.domSanitizer.bypassSecurityTrustResourceUrl('https://youtu.be/VDZkBusrvgg');
 

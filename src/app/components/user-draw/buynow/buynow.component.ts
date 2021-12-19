@@ -2,6 +2,9 @@ import { analyzeFileForInjectables } from '@angular/compiler';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommondataService } from '../../service/commondata.service';
+import { HttpService } from '../../service/http.service';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-buynow',
@@ -9,402 +12,193 @@ import { CommondataService } from '../../service/commondata.service';
   styleUrls: ['./buynow.component.scss']
 })
 export class BuynowComponent implements OnInit {
-  @ViewChild('bagCount', { static: true }) bagCount: ElementRef;
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  data: any = [];
-  data1: any = [];
-  emptyarry: any = [];
-  // quick:any={};
-  count:any=[];
+  key:any;
+  constructor(private router: Router,public sharedata:CommondataService,
+    public httpService: HttpService,    public toastr: ToastrService,
 
-  quickdata: any = [];
-  // quick: Map<number, []> = new Map<number, []>();
-  quick=new Map([]);
-  temp:any={};
-  counterValue = 0;
-  @Output() counterChange = new EventEmitter();
-  languages: any;
-  values: any=[];
-  addticket: number;
-  count1: any=[];
-  cop: any;
-  editcount:number=0;
-  datacount: any=[];
-  editnumber: any;
-addcount:any;
-  @Input()
-  get counter() {
-    return this.counterValue;
-  }
-
-  set counter(val) {
-    this.counterValue = val;
-    this.counterChange.emit(this.counterValue);
-  }
-
-  decrement() {
-    if (this.counter > 0) {
-      this.counter--;
-      // this.data.splice(i,1); 
-      this.data.pop({ data: "" });
+    ) { 
+      
+      console.log(history.state.data.key)
+        console.log(history.state.data.value)
+this.key=history.state.data.value
+console.log(this.key)
     }
 
 
-  }
-
-  increment() {
-    debugger
-    if (this.counter < 20) {
-      this.counter++;
-      this.data.push({ data: "" });
-      this.emptyarry = [];
-      // this.emptyarry=this.generatenumber(this.emptyarry);
-      this.quick.set(this.counter, this.emptyarry)
-
-      console.log(this.quick)
-     this.addticket= this.counter*4.99
-     this.addcount=(this.addticket.toFixed(2))
-     
-    }
-
-  }
-
-  constructor(
-    private router:Router,
-    public sharedata:CommondataService,
-  ) { }
+  days: number = 0;
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
+  ticketCounts: number = 0;
+  amountOfTickets: any;
+  generateTicketsArray: Array<any> = [];
+  randomNumberArray: Array<any> = ['1','2','3','4','5','6','7','8','9','10',
+  '11','12','13','14','15','16','17','18','19','20',
+  '21','22','23','24','25','26','27','28','29','30',
+  '31','32','33','34','35','36','37','38','39','40',
+  '41','42','43','44','45','46','47','48','49'];
+  isInitialOrEdit: boolean = false;
 
   ngOnInit(): void {
 
-    if(history.state.data){
-      // this.data=[];
-    //  this.counter=history.state.data.key
-    //  this.data=history.state.data.value
-    this.editcount=history.state.data.key
-    this.editnumber=history.state.data.value
-
-      // this.quickdata = this.quick.get(0)
-      console.log("90",history.state.data)
-
-      this.cop=history.state.data
-      this.quick.set(this.editcount, this.editnumber)
-console.log("92",this.quick.get(this.editcount))
-console.log("84",this.editcount)
-
-    }
-    console.log("84",this.cop)
     
-    
-    // }
-    
-    console.log(this.editcount)
-
-    console.log(this.quick.size)
-    let countDown = new Date('oct 28, 2021, 05:48:00').getTime();
-    let time = setInterval(() => {
-      let now = new Date().getTime();
-      let distance = countDown - now;
-      this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      //   if(distance < 0){
-      //     clearInterval(time);
-      //   }
-      // }, 1000)
-      if (distance < 0) {
-        clearInterval(time);
-        this.days = 0
-        this.hours = 0
-        this.minutes = 0
-        this.seconds = 0
-
-      }
-    }, 1000);
-  }
-  //   bagCountInc(){
-  //     this.bagCount.nativeElement.value++ 
-  //  }
-  //  bagCountdec(){
-  //    if( this.bagCount.nativeElement.value  > 0){
-  //      this.bagCount.nativeElement.value-- 
-  //    }
-  //  }
-  Quickpick1(data){
-    debugger
-    var isadd= this.editnumber.indexOf(data)==-1? true :false;
-    if(isadd){
-      if(this.editnumber.length<6){
-      this.editnumber.push(data);
-      }
-    }else{
-      // var popindex=this.data.indexOf(data)
-      // delete .this.data(popindex);
-this.editnumber.forEach((value,index)=>{
-        if(value==data) this.editnumber.splice(index,1);
-    });
-    }
-console.log(data)
-this.sharedata.activity(this.editnumber)
-
-  }
-
-  getrandom1(){
-    return Math.floor((Math.random()*49)+1);
-  }
-  generatenumber1(){
-    debugger
-    this.editnumber=[];
-    for(let idex=this.editnumber.length;idex<6; idex++){
-      var temp=this.getrandom();
-      while(this.editnumber.indexOf(temp)!= -1){
-      temp=this.getrandom();
-      }
-      this.editnumber.push (temp);
-      }
-      console.log(this.editnumber)
-        }
-        closetick1(){
-          this.editnumber=[];
-
-        }
-  Quickpick(data, i) {
-    debugger
-    console.log(i)
-    console.log(this.quick.get(i + 1))
-    this.quickdata = this.quick.get(i + 1)
-
-    var isadd = this.quickdata.indexOf(data) == -1 ? true : false;
-    if (isadd) {
-      if (this.quickdata.length < 6) {
-        this.quickdata.push(data);
-      }
-    } else {
-      // var popindex=this.data.indexOf(data)
-      // delete .this.data(popindex);
-      this.quickdata.forEach((value, index) => {
-        if (value == data) this.quickdata.splice(index, 1);
-      });
+    if(history.state.data == 'edit'){
+      this.isInitialOrEdit = true
+      this.generateTicketsArray.push(this.sharedata.editsArray)
+      this.ticketCounts = this.generateTicketsArray.length
+      this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
     }
   }
+
+
+  IncOrDecTickets(key){
+    debugger
+    var userNumber = JSON.parse(localStorage.getItem("BTC"));
+this.amountOfTickets= this.ticketCounts*4.99
+    //  this.addcount=(this.amountOfTickets.toFixed(2))
+    debugger
+    // if(userNumber >=this.amountOfTickets){
+    key == 'dec' && this.ticketCounts >= 0 ? this.ticketCounts-- : key == 'inc' &&  this.ticketCounts < 20 ? this.ticketCounts++ : '';
+    var tempData = {
+      index:this.ticketCounts,
+      values:[]
+    }
+    key == 'dec' && this.ticketCounts >= 0 ? this.generateTicketsArray.splice(this.generateTicketsArray.length - 1 , 1) : key == 'inc' && this.ticketCounts <= 20 && this.generateTicketsArray.length < 20 ? this.generateTicketsArray.push(tempData) : '';
+
+    this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
+  }
+
+// else{
+//     this.toastr.error("not avalible balance", '', {
+//       positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+//     });
+//   }
 
   getrandom() {
     return Math.floor((Math.random() * 49) + 1);
   }
-  generatenumber(data, i) {
-debugger
-    data = [];
-    for (let idex = data.length; idex < 6; idex++) {
-      var temp = this.getrandom();
-      while (data.indexOf(temp) != -1) {
-        temp = this.getrandom();
-      }
-      data.push(temp);
-    }
-    // console.log(this.data)
-    this.quick.set(i, data)
-    // this.temp.push(this.quick)
-    this.count.push(this.quick)
-
-    var getKeysArray = Object.keys( this.count);
-      var getValueArray = Object.values( this.count);
-    // this.sharedata.activity(this.data)
-
-      this.sharedata.activity(getValueArray)
-// this.sharedata.data=this.count
-    // localStorage.setItem("count", JSON.stringify(this.count));
-
-    console.log(getKeysArray)
-console.log(getValueArray)
-  }
-  closetick(data, i) {
-
-    data = [];
-    this.quick.set(i, data)
-
-
-  }
-  closequick() {
-    // this.data.splice(i,1);
-    this.decrement();
-  }
-
-  
-  allpick() {
-
-    for (let idx = 1; idx <= this.counter; idx++) {
-      this.data1 = [];
-      for (let idex = this.data1.length; idex < 6; idex++) {
-        var temp = this.getrandom();
-        while (this.data1.indexOf(temp) != -1) {
-          temp = this.getrandom();
-        }
-        this.data1.push(temp);
-        this.quick.set(idx, this.data1)
-        
-
-        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
-
-      }
-      console.log(this.quick)
-      
-      this.count1.push(this.quick)
-     
-      var getKeysArray = Object.keys( this.count1);
-      var getValueArray = Object.values( this.count1);
-    //   console.log(this.count1)
-    // // this.sharedata.activity(this.data)
-
-    //   // this.sharedata.countdata(getValueArray)
-   
-    this.sharedata.activity(getValueArray)
-    }
-    // console.log(this.data)
-   
-
-
-  }
-  allerase() {
-
-    for (let idx = 1; idx <= this.counter; idx++) {
-      this.data1 = [];
-
-      this.quick.set(idx, this.data1)
-    }
-  }
-  addvalue(){
-    this.values.push({value: ""});
-  }
-  gotocart(){
+  generateOrDeleteRandomIndividual(item , key, type, index){
     
-  }
-  quickfast(quickfastlength){
-    // this.router.navigateByUrl('/cart')
-debugger
-    for (let idx = 1; idx <= quickfastlength; idx++) {
-      this.data1 = [];
-      for (let idex = this.data1.length; idex < 6; idex++) {
-        var temp = this.getrandom();
-        while (this.data1.indexOf(temp) != -1) {
-          temp = this.getrandom();
-        }
-        this.data1.push(temp);
-        this.quick.set(idx, this.data1)
-        
-
-        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
-
-      }
-      console.log(this.quick)
-      this.count1.push(this.quick)
-      var getKeysArray = Object.keys( this.count1);
-      var getValueArray = Object.values( this.count1);
-    //   console.log(this.count1)
-    // // this.sharedata.activity(this.data)
-
-    //   // this.sharedata.countdata(getValueArray)
-    this.sharedata.activity(getValueArray)
+    var tempRandom = []
+   if(key == 'gen' &&( type == 'quick' ||  type == 'pack')){
+    for(var i=0; i < 6; i++){
+      tempRandom.push(this.getrandom())
     }
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:quickfastlength}})
-
-  }
-  quickfast2(quickfastlength){
-    // this.router.navigateByUrl('/cart')
-
-    for (let idx = 1; idx <= quickfastlength; idx++) {
-      this.data1 = [];
-      for (let idex = this.data1.length; idex < 6; idex++) {
-        var temp = this.getrandom();
-        while (this.data1.indexOf(temp) != -1) {
-          temp = this.getrandom();
-        }
-        this.data1.push(temp);
-        this.quick.set(idx, this.data1)
-        
-
-        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
-
+   }
+   if((key == 'gen' || key == 'del') &&( type == 'quick' ||  type == 'pack')){
+    for(let idex of this.generateTicketsArray){
+      if(idex.index == item.index){
+        idex.values = tempRandom
       }
-      console.log(this.quick)
-      this.count1.push(this.quick)
-      var getKeysArray = Object.keys( this.count1);
-      var getValueArray = Object.values( this.count1);
-    //   console.log(this.count1)
-    // // this.sharedata.activity(this.data)
-
-    //   // this.sharedata.countdata(getValueArray)
-    this.sharedata.activity(getValueArray)
     }
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:quickfastlength}})
+   }
 
-  }
-  quickfast3(quickfastlength){
-    // this.router.navigateByUrl('/cart')
-
-    for (let idx = 1; idx <= quickfastlength; idx++) {
-      this.data1 = [];
-      for (let idex = this.data1.length; idex < 6; idex++) {
-        var temp = this.getrandom();
-        while (this.data1.indexOf(temp) != -1) {
-          temp = this.getrandom();
-        }
-        this.data1.push(temp);
-        this.quick.set(idx, this.data1)
-        
-
-        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
-
-      }
-      console.log(this.quick)
-      this.count1.push(this.quick)
-      var getKeysArray = Object.keys( this.count1);
-      var getValueArray = Object.values( this.count1);
-    //   console.log(this.count1)
-    // // this.sharedata.activity(this.data)
-
-    //   // this.sharedata.countdata(getValueArray)
-    this.sharedata.activity(getValueArray)
-    }
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:quickfastlength}})
-
-  }
-  quickfast4(quickfastlength){
-    // this.router.navigateByUrl('/cart')
-
-    for (let idx = 1; idx <= quickfastlength; idx++) {
-      this.data1 = [];
-      for (let idex = this.data1.length; idex < 6; idex++) {
-        var temp = this.getrandom();
-        while (this.data1.indexOf(temp) != -1) {
-          temp = this.getrandom();
-        }
-        this.data1.push(temp);
-        this.quick.set(idx, this.data1)
-        
-
-        // localStorage.setItem("quickdatall", JSON.stringify( this.data1));
-
-      }
-      console.log(this.quick)
-      this.count1.push(this.quick)
-      var getKeysArray = Object.keys( this.count1);
-      var getValueArray = Object.values( this.count1);
-    //   console.log(this.count1)
-    // // this.sharedata.activity(this.data)
-
-    //   // this.sharedata.countdata(getValueArray)
-    this.sharedata.activity(getValueArray)
-    }
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:quickfastlength}})
-
-  }
+   if(index == this.generateTicketsArray.length && type == 'pack'){
+     this.naviGateCardPage()
+   }
    
-  gototicket(addticket){
-    debugger
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:addticket}})
+   if(type == 'individual' && key == 'insert'){
+     for(let insert of this.generateTicketsArray){
+       const number = this.generateTicketsArray.indexOf(insert)
+       if(number == index){
+        
+        if((insert.values.length == 1 && insert.values[0] == item) || 
+        (insert.values.length == 2 && (insert.values[0] == item || insert.values[1] == item)) || 
+        (insert.values.length == 3 && (insert.values[0] == item || insert.values[1] == item || insert.values[2] == item)) ||
+        (insert.values.length == 4 && (insert.values[0] == item || insert.values[1] == item || insert.values[2] == item || insert.values[3] == item)) ||
+        (insert.values.length == 5 && (insert.values[0] == item || insert.values[1] == item || insert.values[2] == item || insert.values[3] == item || insert.values[4] == item)) || 
+        (insert.values.length == 6 && (insert.values[0] == item || insert.values[1] == item || insert.values[2] == item || insert.values[3] == item || insert.values[4] == item || insert.values[5] == item))){
+        
+          
+          insert.values = insert.values.filter(function(value, index, arr){ 
+            return value != item;
+        });
+              break;
+        }if(insert.values.length == 0 || (insert.values.length == 1 && insert.values[0] !== item) || 
+        (insert.values.length == 2 && (insert.values[0] !== item && insert.values[1] !== item)) || 
+        (insert.values.length == 3 && (insert.values[0] !== item && insert.values[1] !== item && insert.values[2] !== item)) ||
+        (insert.values.length == 4 && (insert.values[0] !== item && insert.values[1] !== item && insert.values[2] !== item && insert.values[3] !== item)) ||
+        (insert.values.length == 5 && (insert.values[0] !== item && insert.values[1] !== item && insert.values[2] !== item && insert.values[3] !== item && insert.values[4] !== item))){
+          insert.values.push(item);
+          break;
+        } 
+        
+        // if(insert.values.length == 6){
+          
+        //   for(let val of insert.values){
+        //     const insertIndex = insert.values.indexOf(val)
+        //     if(val == item){
+        //       insert.values.splice(insertIndex , 1)
+        //       break;
+        //     }
+        //   }
+        //   break;
+        // }
+      //  if(insert.values.length > 0 && insert.values.length < 6){
+      //    debugger
+      //    for(let val of insert.values){
+      //      const insertIndex = insert.values.indexOf(val)
+      //      if(val == item){
+      //       insert.values.splice(insertIndex , 1)
+      //       if(insertIndex == insert.values.length) {
+      //         break;
+      //       }
+      //      }if(val != item){
+      //       insert.values.push(item)
+      //       if(insertIndex == insert.values.length) {
+      //         break;
+              
+      //       }
+      //      }
+      //    }
+      //    break;
+      //  }
+      }
+     }
+   }
+  }
+  removeTickets(item){
+    const number = this.generateTicketsArray.indexOf(item)
+    if(number != -1){
+      this.generateTicketsArray.splice(number, 1)
+    }  
+    this.ticketCounts-- ;
+    this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
+  }
+  naviGateCardPage(){
+    if(history.state.data == 'edit'){
+      for(let item of this.sharedata.ticketsArray){
+        for (let idex of this.generateTicketsArray){
+          if(item.index == idex.index){
+            item.values = idex.values
+          }
+        }
+      }
+    }else{
+      this.sharedata.ticketsArray = this.generateTicketsArray;
+      console.log( this.sharedata.ticketsArray)
+    }
+    var json={key:'1',value:this.key}
+    this.router.navigateByUrl('user-Draw/cart',{state:{data:json}} )
+  }
+  packagePick(length){
+    if(length !== 'all'){
+    for(var i = 1; i<=length; i++){
+      var tempData = {
+        index: i,
+        values:[]
+      }
+      this.generateTicketsArray.push(tempData)
+    }
+  }
+    for(let item of this.generateTicketsArray){
+      this.generateOrDeleteRandomIndividual(item, 'gen', 'pack', length)
+    }
+  }
+  eraseAll(){
+    this.generateTicketsArray = [];
+    this.ticketCounts = 0
+  }
 }
-}
+
+

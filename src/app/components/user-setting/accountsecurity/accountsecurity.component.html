@@ -11,17 +11,19 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="user-card">
-              <div class="avatar-upload">
-                <div class="obj-el"><img src="assets/images/elements/team-obj.png" alt="image"></div>
+              <div class="avatar-upload">          
+
+                <div class="obj-el"><img src="assets/user.png" alt="image"></div>
                 <div class="avatar-edit">
                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                     <label for="imageUpload"></label>
                 </div>
                 <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(assets/images/elements/downloaded/pp.png);">
+                    <div id="imagePreview" >
                     </div>
                 </div>
               </div>
+              <br>
               <h3 class="user-card__name">Albert Owens</h3>
               <span class="user-card__id">ID : 19535909</span>
             </div><!-- user-card end -->
@@ -47,15 +49,15 @@
               <ul class="user-info-card__list">
                 <li>
                   <span class="caption">Name</span>
-                  <span class="value">Albert Owens</span>
+                  <span class="value">{{username}}</span>
                 </li>
                 <li>
                   <span class="caption">Date of Birth</span>
-                  <span class="value">15-03-1974</span>
+                  <span class="value">{{dob}}</span>
                 </li>
                 <li>
                   <span class="caption">Address</span>
-                  <span class="value">8198 Fieldstone Dr.La Crosse, WI 54601</span>
+                  <span class="value">{{address}}</span>
                 </li>
               </ul>
             </div><!-- user-info-card end -->
@@ -99,28 +101,59 @@
                 </li>
               </ul>
             </div><!-- user-info-card end -->
-            <div class="user-info-card">
+            <div class="user-info-card"*ngIf='type != "email"' >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
              
                
-                 <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+                 <button type="button" data-toggle="modal" data-target="#emailchange" style="    margin-bottom: 25px;">ADD</button>
+				<!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a> -->
+              </div>
+			  
+              <ul class="user-info-card__list">
+                <li>
+				  <span class="caption">Email</span> 
+                  <span class="value">{{example.email}}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="user-info-card" *ngIf='type == "email"'>
+              <div class="user-info-card__header">
+                <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+             
+               
+                 <button type="button" data-toggle="modal" data-target="#emailchange" style="    margin-bottom: 25px;">Change</button>
 				<a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a>
               </div>
 			  
               <ul class="user-info-card__list">
                 <li>
 				  <span class="caption">Email</span> 
-                  <span class="value">albert349@gmail.com</span>
+                  <span class="value">{{email}}</span>
                 </li>
               </ul>
             </div><!-- user-info-card end -->
             
-			<div class="user-info-card">
+            <div class="user-info-card"*ngIf="type != 'mobile'" >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
-           <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+           <button type="button" data-toggle="modal" data-target="#phonechange" style="    margin-bottom: 25px;">ADD</button>
+				<!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a> -->
+              </div>
+			 
+              <ul class="user-info-card__list">
+                <li>
+                  <span class="caption">Mobile</span> 
+                   <span class="value">+1 234-567-8925</span>
+                </li>
+              </ul>
+            </div>
+			<div class="user-info-card" *ngIf="type == 'mobile'">
+              <div class="user-info-card__header">
+                <h3 class="user-info-card__title col-md-8">Phone</h3>
+				
+           <button type="button" data-toggle="modal" data-target="#phonechange" style="    margin-bottom: 25px;">Change</button>
 				<a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a>
               </div>
 			 
@@ -218,23 +251,23 @@
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Personal details</h3>
               <div class="account-form-wrapper">
-                <form>
+                <form  [formGroup]="proForm">
                
                   <div class="form-group">
                     <label>Name <sup>*</sup></label>
-                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter Name" required>
+                    <input type="text" name="login_pass" formControlName="user" placeholder="Enter Name" required>
                   </div>
             <div class="form-group">
                     <label>Date of Birth <sup>*</sup></label>
-                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter DOB" required>
+                    <input type="text" name="login_pass" formControlName="dob" placeholder="Enter DOB" required>
                   </div>
             <div class="form-group">
                     <label>Address </label>
-                    <input type="text" name="login_pass" id="old_pass" placeholder="Enter Address" >
+                    <input type="text" name="login_pass" formControlName="address" placeholder="Enter Address" >
                   </div>
           
                   <div class="form-group text-center mt-5">
-                    <button class="cmn-btn style--three btn--sm ">Submit</button>
+                    <button type="submit"data-dismiss="modal" class="cmn-btn style--three btn--sm " (click)="profileupd()">Submit</button>
                   </div>
                 </form>
                
@@ -348,6 +381,270 @@
               </form>
              
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type == "email"'>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+            <h3 class="title">Change Email Id</h3>
+            <div class="account-form-wrapper">
+              <form [formGroup]="emailform">
+              
+                <div class="form-group">
+                  <label class="mb-1">Enter New Email <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="New Email" formControlName="email" required>
+                </div>
+              
+				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
+          <button  class="link-btn"(click)="changeemailmob()">Get code</button>
+
+                    <!-- <a href="#" class="link" >Get code</a> -->
+				 </div>
+				
+				 
+				 <div class="form-group">
+                  <label class="mb-1">New Email Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" formControlName="code"required>
+                </div>
+
+
+				 <!-- <h3 class="sub-title my-3">Security Verification</h3> -->
+               <div class="form-group">
+                  <label class="mb-1"> Old Email Verification code <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Email Code"formControlName="oldcode" required>
+                </div>
+				<!-- <div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by kla***@gmail.com</span>
+                    <a href="#" class="link">Get code</a>
+				 </div> -->
+				 
+				  <!-- <div class="form-group">
+                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
+                </div>
+				<div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by 123***8925</span>
+                    <a href="#" class="link">Get code</a>
+				 </div> -->
+				 <!-- <a href="#" class="link my-2">Security Verification Unavailable?</a> -->
+                 <div class="form-group text-center">
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#emailchange" data-dismiss="modal"(click)="verfiyemailmob()" >Submit</a>
+				  
+                </div>
+              </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type != "email"'>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+            <h3 class="title">Change Email Id</h3>
+            <div class="account-form-wrapper">
+              <form [formGroup]="emailform">
+              
+                <div class="form-group">
+                  <label class="mb-1">Enter New Email <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="New Email" formControlName="email"[(ngModel)]="example.email" required>
+                </div>
+              
+				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
+          <button  class="link-btn"(click)="addemail()">Get code</button>
+
+                    <!-- <a href="#" class="link" >Get code</a> -->
+				 </div>
+				
+				 
+				 <div class="form-group">
+                  <label class="mb-1"> Email Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" formControlName="code"required>
+                </div>
+
+
+				 <!-- <h3 class="sub-title my-3">Security Verification</h3> -->
+               <!-- <div class="form-group">
+                  <label class="mb-1"> Old Email Verification code <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Email Code"formControlName="oldcode" required>
+                </div> -->
+				<!-- <div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by kla***@gmail.com</span>
+                    <a href="#" class="link">Get code</a>
+				 </div> -->
+				 
+				  <!-- <div class="form-group">
+                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
+                </div>
+				<div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by 123***8925</span>
+                    <a href="#" class="link">Get code</a>
+				 </div> -->
+				 <!-- <a href="#" class="link my-2">Security Verification Unavailable?</a> -->
+                 <div class="form-group text-center">
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#emailchange" data-dismiss="modal"(click)="verfaddemail()" >Submit</a>
+				  
+                </div>
+              </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf="type == 'mobile'">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+            <h3 class="title">Change phone number</h3>
+            <div class="account-form-wrapper">
+              <form [formGroup]="mobileform">
+              
+                <div class="form-group">
+                  <label>Phone <sup>*</sup></label>
+                  <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                  [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                  [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                  [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
+                </ngx-intl-tel-input>            </div>
+                <div class="errors"
+                *ngIf="mobileform.get('phone').invalid && (mobileform.get('phone').touched || mobileform.get('phone').dirty)">
+  
+                <div *ngIf="mobileform.get('phone').hasError('required')">
+                  mobile is required
+                </div>
+  
+                <div *ngIf="mobileform.get('phone').errors.phone">
+                  This is not a valid number!!! </div>
+  
+  
+              </div>  
+              
+				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
+                    <!-- <a href="#" class="link">Get code</a> -->
+                    <a href="javascript:;" (click)="changemob()" class="link m-1">get Code </a>
+
+                    <!-- <button type="submit" class="link-btn"(click)="changemob()">Get code</button> -->
+
+				 </div>
+							 
+				 <div class="form-group">
+                  <label class="mb-1"> New SMS Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" formControlName="code" required>
+                </div>
+				 <!-- <h3 class="sub-title my-1">Security Verification</h3> -->
+               <div class="form-group">
+                  <label class="mb-1">Old mobile Verification code <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Mobile Code" formControlName="oldcode" required>
+                </div>
+				<!-- <div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by kla***@gmail.com</span>
+                    <a href="#" class="link">Get code</a>
+				 </div>
+				 
+				  <div class="form-group">
+                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
+                </div>
+				<div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by 123***8925</span>
+                    <a href="#" class="link">Get code</a>
+				 </div>
+				 <a href="#" class="link my-1">Security Verification Unavailable?</a> -->
+                 <div class="form-group text-center">
+                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfiymob()">Submit</a>
+				  
+                </div>
+              </form>
+                         
+			</div>  <!--account - form-wrapper end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf="type != 'mobile'">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+            <h3 class="title"> phone number</h3>
+            <div class="account-form-wrapper">
+              <form [formGroup]="mobileform">
+              
+                <div class="form-group">
+                  <label>Phone <sup>*</sup></label>
+                  <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                  [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                  [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                  [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
+                </ngx-intl-tel-input>            </div>
+                <div class="errors"
+                *ngIf="mobileform.get('phone').invalid && (mobileform.get('phone').touched || mobileform.get('phone').dirty)">
+  
+                <div *ngIf="mobileform.get('phone').hasError('required')">
+                  mobile is required
+                </div>
+  
+                <div *ngIf="mobileform.get('phone').errors.phone">
+                  This is not a valid number!!! </div>
+  
+  
+              </div>  
+              
+				<div class="d-flex flex-wrap justify-content-lg-end mt-1">
+                    <!-- <a href="#" class="link">Get code</a> -->
+                    <a href="javascript:;" (click)="changemob()" class="link m-1">get Code </a>
+
+                    <!-- <button type="submit" class="link-btn"(click)="changemob()">Get code</button> -->
+
+				 </div>
+							 
+				 <div class="form-group">
+                  <label class="mb-1"> SMS Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="SMS code" formControlName="code" required>
+                </div>
+				 <!-- <h3 class="sub-title my-1">Security Verification</h3> -->
+               <!-- <div class="form-group">
+                  <label class="mb-1">Old mobile Verification code <sup>*</sup></label>
+                  <input type="email" name="signup_pass" id="signup_pass" placeholder="Mobile Code" formControlName="oldcode" required>
+                </div> -->
+				<!-- <div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by kla***@gmail.com</span>
+                    <a href="#" class="link">Get code</a>
+				 </div>
+				 
+				  <div class="form-group">
+                  <label class="mb-1">Phone Verification code <sup>*</sup></label>
+                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Email Code" required>
+                </div>
+				<div class="d-flex flex-wrap justify-content-between mt-1">
+				<span>Code received by 123***8925</span>
+                    <a href="#" class="link">Get code</a>
+				 </div>
+				 <a href="#" class="link my-1">Security Verification Unavailable?</a> -->
+                 <div class="form-group text-center">
+                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfiymob()">Submit</a>
+				  
+                </div>
+              </form>
+                         
+			</div>  <!--account - form-wrapper end -->
           </div>
         </div>
       </div>

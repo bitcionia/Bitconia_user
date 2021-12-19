@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthencationGuard } from '../service/authencation.guard.service';
+import { BalancepopupComponent } from './balancepopup/balancepopup.component';
 import { BuynowComponent } from './buynow/buynow.component';
 import { CartComponent } from './cart/cart.component';
 import { ClaimprizeComponent } from './claimprize/claimprize.component';
 import { CurrentdrawComponent } from './currentdraw/currentdraw.component';
+import { DrawresultComponent } from './drawresult/drawresult.component';
 import { HistoryComponent } from './history/history.component';
 import { MyticketComponent } from './myticket/myticket.component';
 import { PastdrawComponent } from './pastdraw/pastdraw.component';
@@ -29,7 +31,9 @@ const routes: Routes =[
   { path: 'wallet', component: WalletComponent},
   { path: 'pastdraw', component: PastdrawComponent},
   { path: 'claimprize', component: ClaimprizeComponent},
-  
+  { path: 'payment', component: BalancepopupComponent},
+  { path: 'drawres', component: DrawresultComponent},
+
 
   ]
   }

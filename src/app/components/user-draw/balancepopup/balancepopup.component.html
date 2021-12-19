@@ -1,0 +1,39 @@
+
+ <h5 class="title">Payment</h5>
+ <div class="card custom-card" style=" color: #000;">
+    <div class="card-body">  
+      <!-- <div class="text-center text-white"> -->
+        <img src="assets/tick.png"  class="center" style="width: 20%;"  alt="image">
+
+        <!-- <img src="/src/assets/tick.png"> -->
+                <h4 class="tx-success tx-semibold mg-b-20">Congratulations!</h4>
+          <p style="color: black;">Available balance in your wallet</p>
+
+        <p style="color: black;">{{amount}}</p>
+</div>
+</div>
+<!-- </div> -->
+<div class="modal-footer">
+    <button class="btn ripple btn-primary" type="submit"(click)="payment()">Proceed</button>
+    <button type="button" class="btn ripple btn-secondary" (click)="closeModelBox()">Close</button>
+</div>
+
+<!-- 
+<div class="modal fade" id="phoneremoveconfirm" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+              <h5 class="title">Payment</h5>
+            <div class="account-form-wrapper">
+           <p>Available balabce in your wallet{{amount}}</p>
+			<div class="justify-content-between mt-2">
+               <a href="#" class="cmn-btn style--three btn--sm centered m-2" (click)="closeModelBox()">Cancel </a>
+			    <a href="#" class="cmn-btn style--three btn--sm centered m-2"(click)=" payment()">Confirm </a>
+			   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

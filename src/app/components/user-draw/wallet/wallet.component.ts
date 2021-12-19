@@ -117,9 +117,14 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     this.httpService.balancebtc().subscribe((res: any) => {
       console.log(res['BTC_fees']['BTC_fees']);
       this.aval = res['BTC_fees']['BTC_fees']
+      
+      localStorage.setItem("BTC", JSON.stringify(res['BTC_fees']['BTC_fees']));
+      // localStorage.setItem("BTC", JSON.stringify('100'));
+
       this.qrcode=res['qrcode']
       if (this.data) {
         if (this.data.length > 0) {
+
       if (res['success'] == true) {
         this.showDatafound = true;
         // this.searchuser();

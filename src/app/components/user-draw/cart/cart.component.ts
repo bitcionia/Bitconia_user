@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CommondataService } from '../../service/commondata.service';
+import { ControlService } from '../../service/control.service';
+import { HttpService } from '../../service/http.service';
+import { BalancepopupComponent } from '../balancepopup/balancepopup.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -8,63 +15,211 @@ import { CommondataService } from '../../service/commondata.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  count:number;
- 
-
-  quickdatall: any=[];
-  ticketnum:any;
+  ticketdata: any;
+  token: any;
+  balance: any;
+  ticketnum: number;
   tickdata: any;
-  data: any = [];
-
-  log: string;
-  quickdata=new Map();
-  constructor(    private router: Router,public sharedata:CommondataService,
+  remain: number;
+  error: any;
+  errorMessage: any;
+  draw_id: any;
+  countdata: any=[];
+  ticketcount: any[];
+  ticketnumber:any[];
+  key: any;
+  constructor(private router: Router,public sharedata:CommondataService,
+    public httpService: HttpService,    public dialog: MatDialog,
 
     ) {
+      console.log(history.state.data.key)
+        console.log(history.state.data.value)
+this.key=history.state.data.value
+console.log(this.key);
+    this.token = JSON.parse(localStorage.getItem("data"));
 
-      this.sharedata.activityLogShare.subscribe((msg: any) => {
-        if (msg !== "") {
-          console.log(msg)
-          for(let i=1;i<=msg.length;i++){
-            // var getKeysArray = Object.keys( msg[i]);
-          // var getValueArray = Object.values( msg[i]);
-          // console.log(getKeysArray)
-          // console.log(msg[i-1].get(i))
-          
-          this.quickdata.set(i,msg[i-1].get(i))
-          
-console.log(this.quickdata)
-  // this.quickdatall.push(quickdata)
-  // console.log(this.quickdatall[i-1])
-          }
-        }
-      });
-  //  this.sharedata.countdata
-  //  console.log(this.sharedata.countdata);
-    }
-     
+      this.balance = JSON.parse(localStorage.getItem("BTC"));
+   }
+
+  ticketsArray: Array<any> = [];
 
   ngOnInit(): void {
-    console.log("44",history.state.data)
-    
+    this.ticketcount=[];
+      this.ticketsArray = this.sharedata.ticketsArray
+      // console.log(this.ticketsArray)
+      for(let idx of this.ticketsArray){
+        console.log(idx.toString())
+        // var temp=this.countdata.split(",");
+        //  var num =`${temp[1]},${temp[2]},${temp[3]},${temp[4]},${temp[5]},${temp[6]}`;
+        // this.ticketcount.push(num)
+      
+this.ticketdata=  idx['index']  
+this.countdata=idx['values']
+this.ticketcount.push(this.countdata)
+ 
+    // console.log(this.ticketcount)
+      }
+      console.log(this.ticketcount)
+      this.ticketnumber=[];
 
-this.count=history.state.data 
-this.ticketnum=this.count*4.99
+      for(let idx of this.ticketcount){
+        console.log(idx.toString())
+        // var temp=idx.toString().split(",");
+        this.ticketnumber.push(idx.toString())
+
+      }
+console.log(this.ticketnumber)
+this.ticketnum=this.ticketdata*4.99
 this.tickdata=(this.ticketnum.toFixed(2))
-
+this.remain=this.balance- this.tickdata
+console.log(this.remain)
+      
   }
-  gototicket(data,i){
-    var json={key:data,value:i}
-    this.router.navigateByUrl('user-Draw/buynow',{state:{data:json}})
-    console.log("66",data,i)
-}
-clearall(){
-  debugger
-  this.quickdata.clear();
-}
-closetick(data){
-  debugger
-  this.quickdata.delete(data);
 
-}
-}
+  editTicket(item){
+    this.sharedata.editsArray = item
+    this.router.navigateByUrl('user-Draw/buynow',{state:{data:'edit'}})
+  }
+
+  deleteItem(item){
+    const insertIndex = this.ticketsArray.indexOf(item)
+    this.ticketsArray.splice(insertIndex , 1)
+  }
+  cartadd(){
+    if(this.balance>=this.tickdata){
+    debugger
+        let jsonData = {
+          tickets: this.ticketnumber,
+          draw_id:this.key
+        }
+        this.httpService.cardadd (jsonData).subscribe( res => {
+          
+          if (res['success'] == true) {
+            // localStorage.setItem("pin", JSON.stringify(res['data']['pin']));
+    
+            // ls.set('userPass', { data: this.loginForm.value.password });
+            console.log(res['data']);
+           this.draw_id=res['data']
+            this.httpService.toastr.success(res['message'], '', {
+              positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            });
+            setTimeout(() => {
+              this.handleWarningAlert();
+            }, 200);
+            // var json={key:addticket,value:this.ticket}
+    
+            // this.router.navigateByUrl('user-Draw/cart',{state:{data:json}})
+    
+            // this.router.navigate(['/index']);
+            // this.router.navigate(['/dashboard/dashboard']);
+      
+          }
+           else if (res['success'] == false) {
+          
+            // this.httpService.toastr.error(res['message'], '', {
+            //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+            // });
+          }
+        }, (error) => {                              //Error callback
+          console.log(error)
+          this.error = error.status;
+          console.log(this.error)
+    
+          this.errorMessage = error.error.message;
+          console.log(this.errorMessage)
+    this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+            positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+          });
+       })
+      }
+      else{
+        this.showWarningAlert();
+      }
+    }
+      showSuccessAlert() {
+        Swal.fire('Yikes!', 'After 24 hours cerdit inyour wallet!', 'success')
+      }
+      handleWarningAlert() {
+
+        Swal.fire({
+          title: 'Balance',
+          text: 'Available Balance 65.0 ',
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonText: 'Proceed',
+          cancelButtonText: 'Close',
+        }).then((result) => {
+    
+          if (result.isConfirmed) {
+    this.payment();
+            // console.log('Clicked Yes, File deleted!');
+    
+          } else if (result.isDismissed) {
+    
+            // console.log('Clicked No, File is safe!');
+    
+          }
+        })
+    
+      }
+      // payment() {
+      //   const dialogRef = this.dialog.open(BalancepopupComponent, {
+      //     width: '500px',
+      //     height: '400px',
+      //     data: { data: this.remain, count:this.ticketdata,id: this.draw_id }
+      //   });
+      //   dialogRef.afterClosed().subscribe((result) => {
+      //   });
+      // }
+      payment(){
+        debugger
+            let jsonData = {
+              // tickets: this.ticketdata,
+              // draw_id:'617f94f685c94918109408a1',
+              amount:this.remain,
+              ticket_count:this.ticketdata,
+              cart_id:this.draw_id
+            }
+            this.httpService.payadd (jsonData).subscribe( res => {
+              
+              if (res['success'] == true) {
+                // localStorage.setItem("pin", JSON.stringify(res['data']['pin']));
+        
+                // ls.set('userPass', { data: this.loginForm.value.password });
+                console.log(res['data']);
+              //  this.draw_id=res['data']
+                this.httpService.toastr.success(res['message'], '', {
+                  positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                });
+                // this.dialogRef.close();
+    
+                // var json={key:addticket,value:this.ticket}
+        
+                // this.router.navigateByUrl('user-Draw/cart',{state:{data:json}})
+        
+                // this.router.navigate(['/index']);
+                // this.router.navigate(['/dashboard/dashboard']);
+          
+              }
+               else if (res['success'] == false) {
+              
+                // this.httpService.toastr.error(res['message'], '', {
+                //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+                // });
+              }
+            }, (error) => {                              //Error callback
+              console.log(error)
+              this.error = error.status;
+              console.log(this.error)
+        
+              this.errorMessage = error.error.message;
+              console.log(this.errorMessage)
+        this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+              });
+           })
+          }
+          showWarningAlert() {
+            Swal.fire('Hey!', 'Please Check your Avaliable Balance', 'warning')
+          }
+  }

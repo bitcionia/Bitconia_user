@@ -219,109 +219,199 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         
     
       }
-      twofactemailotp() {
+    //   twofactemailotp() {
            
-        debugger
-          this.submitted=true;
-          let jsonData = {
-            email: this.email,
-            mobile:"",
-            country_code:"",
-            pin:this.loginForm.value.code,
-          }
-          this.httpService.twofactorver(jsonData).subscribe( res => {
+    //     debugger
+    //       this.submitted=true;
+    //       let jsonData = {
+    //         email: this.email,
+    //         mobile:"",
+    //         country_code:"",
+    //         pin:this.loginForm.value.code,
+    //       }
+    //       this.httpService.twofactorver(jsonData).subscribe( res => {
             
-            if (res['success'] == true) {
-              localStorage.setItem("pin", JSON.stringify(res['data']['pin']));
+    //         if (res['success'] == true) {
+    //           localStorage.setItem("pin", JSON.stringify(res['data']['pin']));
 
-              // ls.set('userPass', { data: this.loginForm.value.password });
-              console.log(res);
+    //           // ls.set('userPass', { data: this.loginForm.value.password });
+    //           console.log(res);
              
-              this.httpService.toastr.success(res['message'], '', {
-                positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-              });
+    //           this.httpService.toastr.success(res['message'], '', {
+    //             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+    //           });
 
-              // this.router.navigate(['/index']);
-              // this.router.navigate(['/dashboard/dashboard']);
-         setTimeout(() => {
-          document.location.reload();
-          this.router.navigate(['/index']);
+    //           // this.router.navigate(['/index']);
+    //           // this.router.navigate(['/dashboard/dashboard']);
+    //      setTimeout(() => {
+    //       document.location.reload();
+    //       this.router.navigate(['/index']);
 
-        }, 100);
-            }
-             else if (res['success'] == false) {
+    //     }, 100);
+    //         }
+    //          else if (res['success'] == false) {
             
-              // this.httpService.toastr.error(res['message'], '', {
-              //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
-              // });
-            }
-          }, (error) => {                              //Error callback
-            console.log(error)
-            this.error = error.status;
-            console.log(this.error)
+    //           // this.httpService.toastr.error(res['message'], '', {
+    //           //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+    //           // });
+    //         }
+    //       }, (error) => {                              //Error callback
+    //         console.log(error)
+    //         this.error = error.status;
+    //         console.log(this.error)
     
-            this.errorMessage = error.error.message;
-            console.log(this.errorMessage)
-    this.httpService.toastr.error(this.errorMessage,'Status:400',  {
-              positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
-            });
-         })
+    //         this.errorMessage = error.error.message;
+    //         console.log(this.errorMessage)
+    // this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+    //           positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+    //         });
+    //      })
           
       
-        }
-        twofactmobotp() {
+    //     }
+    //     twofactmobotp() {
            
-          debugger
-          this.submitted=true;
-          let jsonData = {
-            email:"",
-            mobile: this.mobile,
-            country_code:this.countrycode,
-            pin:this.mobileform.value.code,
+    //       debugger
+    //       this.submitted=true;
+    //       let jsonData = {
+    //         email:"",
+    //         mobile: this.mobile,
+    //         country_code:this.countrycode,
+    //         pin:this.mobileform.value.code,
             
-            //         device:'1',
-            // location:'Chennai',
-            // ip:'162.198.5.46',
-          }
-            this.httpService.twofactorver(jsonData).subscribe( res => {
+    //         //         device:'1',
+    //         // location:'Chennai',
+    //         // ip:'162.198.5.46',
+    //       }
+    //         this.httpService.twofactorver(jsonData).subscribe( res => {
               
-              if (res['success'] == true) {
-                // ls.set('userPass', { data: this.loginForm.value.password });
-                console.log(res);
+    //           if (res['success'] == true) {
+    //             // ls.set('userPass', { data: this.loginForm.value.password });
+    //             console.log(res);
                
+    //             this.httpService.toastr.success(res['message'], '', {
+    //               positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+    //             });
+    //             this.router.navigate(['/index']);
+
+    //             setTimeout(() => {
+    //               document.location.reload();
+        
+    //             }, 100);                // this.router.navigate(['/dashboard/dashboard']);
+        
+        
+    //           }
+    //            else if (res['success'] == false) {
+              
+    //             // this.httpService.toastr.error(res['message'], '', {
+    //             //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+    //             // });
+    //           }
+    //         }, (error) => {                              //Error callback
+    //           console.log(error)
+    //           this.error = error.status;
+    //           console.log(this.error)
+      
+    //           this.errorMessage = error.error.message;
+    //           console.log(this.errorMessage)
+    //   this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+    //             positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+    //           });
+    //        })
+            
+        
+    //       }
+  
+          verfaddemail() {
+            debugger
+            this.submitted = true;
+        
+            debugger
+            let JsonData = {
+              "email":  this.email,
+              "mobile": "",
+              "country_code":"",
+              "pin":this.loginForm.value.code,
+              // "oldpin": this.mobileform.value.oldcode,
+            }
+            this.httpService.addsverify(JsonData).subscribe(res => {
+              console.log(res)
+              if (res['success'] == true) {
+                // this.toastr.success("Password changed Successfully");
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
-                this.router.navigate(['/index']);
-
-                setTimeout(() => {
-                  document.location.reload();
-        
-                }, 100);                // this.router.navigate(['/dashboard/dashboard']);
-        
-        
+                this.routeTo.navigateByUrl('/index');
               }
-               else if (res['success'] == false) {
-              
-                // this.httpService.toastr.error(res['message'], '', {
-                //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
-                // });
-              }
+         
             }, (error) => {                              //Error callback
               console.log(error)
               this.error = error.status;
               console.log(this.error)
-      
+        
               this.errorMessage = error.error.message;
               console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+        this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-            
-        
           }
-  
-          
+          verfaddmob() {
+            debugger
+            // console.log(this.mobileform.value);
+            // this.code = this.mobileform.value;
+            // console.log(this.code['phone']);
+            // this.phoneNumber = this.code['phone']
+        
+            // this.mobile = this.code['phone']['number'];
+            // // this.country =  idex['countryCode'];
+            // this.countrycode = this.code['phone']['dialCode'];
+            // // localStorage.setItem("countrycode", JSON.stringify( this.countrycode));
+            // // localStorage.setItem("mobile", JSON.stringify(this.mobile));
+            // console.log(this.countrycode);
+            // console.log(this.mobile);
+            this.submitted = true;
+        
+            debugger
+            let JsonData = {
+              "email": "",
+              mobile: this.mobile,
+            country_code:this.countrycode,
+            pin:this.mobileform.value.code,
+            }
+            this.httpService.addsverify(JsonData).subscribe(res => {
+              // ////debugger
+              console.log(res)
+              //         console.log(res['data'])
+              //         console.log(res['data']['address'])
+              // this.username=res['data']['username']
+              // this.dob=res['data']['dob']
+              // this.address=res['data']['address']
+        
+              if (res['success'] == true) {
+                // this.toastr.success("Password changed Successfully");
+                this.httpService.toastr.success(res['message'], '', {
+                  positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                });
+                // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
+              }
+            // }, (err) => {
+            //   // this.httpService.toastr.error(err);
+            //   this.httpService.toastr.error("All field is mandatory",
+            //     '', {
+            //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            //   });
+            }, (error) => {                              //Error callback
+              console.log(error)
+              this.error = error.status;
+              console.log(this.error)
+        
+              this.errorMessage = error.error.message;
+              console.log(this.errorMessage)
+        this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+              });
+           })
+          }
    
 }

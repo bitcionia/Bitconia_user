@@ -67,6 +67,9 @@ data:any;
   show: boolean;
   hide = true;
   token: any;
+  aval: any;
+  qrcode: any;
+  showDatafound: boolean;
   // spinnerType = SPINNER.circle;
 
   constructor(
@@ -124,7 +127,7 @@ this.mobileForm();
 
   ngOnInit(): void {
    
-
+this.balance();
     this.token = JSON.parse(localStorage.getItem("data"));
 
     console.log(this.token)
@@ -133,7 +136,7 @@ this.mobileForm();
   
     
     
-    this.getIPAddress();
+    // this.getIPAddress();
   //   this.token = JSON.parse(localStorage.getItem("data"));
 
   //  console.log(this.token)
@@ -239,7 +242,8 @@ this.phoneNumber=this.code['phone']
         localStorage.setItem("userid", JSON.stringify(res['admin']['mobile']));
         localStorage.setItem("data", JSON.stringify(res['data']));
         localStorage.setItem("loginState", JSON.stringify(true));
-
+        localStorage.setItem("logintype", JSON.stringify("mobile"));
+        // this.Email = res['admin']['email'];
         this.userId = res['admin']['mobile'];
         // localStorage.setItem("userid", JSON.stringify(this.loginForm.value.userid));
         localStorage.setItem("userdetails", JSON.stringify(res));
@@ -310,7 +314,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           this.email=res['admin']['email'];
           localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
           localStorage.setItem("data", JSON.stringify(res['data']));
+          localStorage.setItem("id", JSON.stringify(res['admin']['_id']));
+          localStorage.setItem("logintype", JSON.stringify("email"));
 
+          
           localStorage.setItem("loginState", JSON.stringify(true));
   
           this.userId = res['admin']['email'];
@@ -319,13 +326,17 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           this.httpService.toastr.success(res['message'], '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
+          this.httpService.toastr.success('Otp Send To Email', '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
+          // this.twofactoremail();
+
           var json={key:1,value:this.email}
           this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
 
           // setTimeout(function () {
           //   // window.location.reload();
-          //   document.location.reload();
-          // }, 400);
+          // }, 100);
 
           // setTimeout(function () {
           //   this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
@@ -384,13 +395,13 @@ console.log(userNumber );
       });
     }
   }
-  getIPAddress()
-  {
-    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
-      this.ipAddress = res.ip;
-      console.log(this.ipAddress)
-    });
-  }
+  // getIPAddress()
+  // {
+  //   this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+  //     this.ipAddress = res.ip;
+  //     console.log(this.ipAddress)
+  //   });
+  // }
   openaccountmob() {
   debugger
     console.log(this.mobileform.value);
@@ -653,6 +664,99 @@ this.phoneNumber=this.code['phone']
           //     window.location.reload();
           // }
         
+          twofactoremail() {
+            debugger
+              // localStorage.clear();
+              this.submitted=true;
+              let jsonData = {
+                email: this.loginForm.value.email ,
+                mobile:"",
+                country_code:"",
+                // pin:this.loginForm.value.code,
         
+                // device:'1',
+                // location:'Chennai',
+                // ip:'162.198.5.46',
+              }
+              this.httpService.twofactorotp(jsonData).subscribe((res: any) => {
+                
+                if (res['success'] == true) {
+                  // localStorage.setItem("data", JSON.stringify(res['data']['pin']));
+        console.log(res['data']['pin'])
+                  this.httpService.toastr.success(res['message'], '', {
+                    positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                  });
+          
+                  this.router.navigate(['/user-control/twofactor']);
+                  // this.router.navigate(['/dashboard/dashboard']);
+          
+          
+                }
+                 else if (res['success'] == false) {
+                
+                  // this.httpService.toastr.error(res['message'], '', {
+                  //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
+                  // });
+                }
+              }, (error) => {                              //Error callback
+                console.log(error)
+                this.error = error.status;
+                console.log(this.error)
+        
+                this.errorMessage = error.error.message;
+                console.log(this.errorMessage)
+        this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                  positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+                });
+             })
+              
+          
+            }
+            balance(){
+              debugger
+              this.httpService.balancebtc().subscribe((res: any) => {
+                console.log(res['BTC_fees']['BTC_fees']);
+                this.aval = res['BTC_fees']['BTC_fees']
+                
+                localStorage.setItem("BTC", JSON.stringify(res['BTC_fees']['BTC_fees']));
+                // localStorage.setItem("BTC", JSON.stringify('100'));
+          
+                this.qrcode=res['qrcode']
+                if (this.data) {
+                  if (this.data.length > 0) {
+          
+                if (res['success'] == true) {
+                  this.showDatafound = true;
+                  // this.searchuser();
+          
+                  // this.httpService.toastr.success(res['message'], '', {
+                  //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                  // });
+                }
+              }
+            }
+            else {
+              this.showDatafound = false;
+              console.log("No Data found");
+            }
+              }
+              ,(error) => {                              //Error callback
+                console.log(error)
+                // console.log(error)
+                //   this.httpService.toastr.error(error,'',  {
+                //     positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+                //   });
+                this.error = error.status;
+                console.log(this.error)
+          
+                this.errorMessage = error.error.message;
+                console.log(this.errorMessage)
+          this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+                  positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+                });
+             })
+            }
+
+   
           }
 

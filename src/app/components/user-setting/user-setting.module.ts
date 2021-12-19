@@ -14,6 +14,7 @@ import { HowtowithdrawComponent } from './howtowithdraw/howtowithdraw.component'
 import { ContactusComponent } from './contactus/contactus.component';
 import { PirvacyComponent } from './pirvacy/pirvacy.component';
 import { TermsComponent } from './terms/terms.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxIntlTelInputModule
 
   ]
 })

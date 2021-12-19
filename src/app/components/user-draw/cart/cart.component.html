@@ -27,22 +27,18 @@
               <div class="ticket-wrapper">
                 <div class="ticket-wrapper__header">
                   <h3>Your tickets:</h3>
-                  <button type="button" (click)="clearall()">clear all</button>
+                  <button type="button" >clear all</button>
                 </div>
                 <div class="ticket-wrapper__body">
-                  <div class="single-row" *ngFor="let value of quickdata | keyvalue">
-                    <ul class="numbers">
-                      <li>{{value.value[0]}}</li>
-                      <li>{{value.value[1]}}</li>
-                      <li>{{value.value[2]}}</li>
-                      <li>{{value.value[3]}}</li>
-                      <li>{{value.value[4]}}</li>
-                      <li>{{value.value[5]}}</li>
-                    
-                    </ul>
+                  <div class="single-row" *ngFor="let tikets of ticketsArray">
+                    <ul class="numbers"*ngFor="let values of tikets.values">
+                       
+                        <li >{{values}}</li>
+                        
+                      </ul>
                     <div class="action-btns">
-                       <button type="button" class="edit-btn" (click)="gototicket(value.key,value.value)"><i class="las la-pen"></i></button>
-                       <button type="button" class="del-btn" (click)="closetick(value.key)"><i class="las la-trash-alt"></i></button>
+                       <button type="button" class="edit-btn" (click)="editTicket(tikets)"><i class="las la-pen"></i></button>
+                       <button type="button" class="del-btn" (click)="deleteItem(tickets)"><i class="las la-trash-alt"></i></button>
                     </div>
                   </div><!-- single-row end -->
                  
@@ -63,8 +59,8 @@
                     <li>
                       <div class="left">
                         <h4 class="caption">Ticket Price</h4>
-                        <span>({{ count ==
-                          undefined ? '0' : count }} tickets X <i class="lab la-btc text-white"></i>4.99)</span>
+                        <span>({{ ticketdata ==
+                          undefined ? '0' : ticketdata }} tickets X <i class="lab la-btc text-white"></i>4.99)</span>
                       </div>
                       <div class="right">
                         <span class="price"><i class="lab la-btc text-white"></i>{{ tickdata ==
@@ -81,9 +77,16 @@
                       </div>
                     </li>
                   </ul>
-                  <div class="checkout-wrapper__btn">
-                    <!-- <button type="submit" class="cmn-btn btn--sm" routerLink="/index#loginModal" >Place Order</button> -->
-                    <a href="/index#loginModal" class="cmn-btn btn--sm">Place Order</a>
+                  <div class="checkout-wrapper__btn"*ngIf="token!=null">
+                    <!-- <span *ngIf="balance>=tickdata">
+                    <button type="submit" class="cmn-btn btn--sm" (click)="showWarningAlert()">Place Order</button></span> -->
+                      <button type="submit" class="cmn-btn btn--sm" (click)="cartadd()">Place Order</button>
+                    <!-- <a href="#" class="cmn-btn btn--sm" type="sumbit" (click)="cartadd()">Place Order</a> -->
+                  </div>
+                  <div class="checkout-wrapper__btn" *ngIf="token==null" >
+                    
+                    <button type="submit" class="cmn-btn btn--sm" routerLink="/index">Place Order</button>
+                    <!-- <a href="#" class="cmn-btn btn--sm" type="sumbit" (click)="cartadd()">Place Order</a> -->
                   </div>
                 </div>
               </div><!-- checkout-wrapper end -->
@@ -99,7 +102,7 @@
                         <span>No.of tickets</span>
                       </div>
                       <div class="right">
-                        <span class="price">{{count}}</span>
+                        <span class="price">{{ticketdata}}</span>
                       </div>
                     </li>
                     <li>
@@ -115,7 +118,7 @@
                         <span class="caption">Wallet Balance</span>
                       </div>
                       <div class="right">
-                        <span class="price"><i class="lab la-btc text-whites"></i>0.01838423</span>
+                        <span class="price"><i class="lab la-btc text-whites"></i>{{balance}}</span>
                       </div>
                     </li>
          <li>
@@ -123,19 +126,17 @@
                         <span class="caption">Remaining Balance</span>
                       </div>
                       <div class="right">
-                        <span class="price"><i class="lab la-btc text-whites"></i>0.01838423</span>
+                        <span class="price"><i class="lab la-btc text-whites"></i>{{remain}}</span>
                       </div>
                     </li>
                   </ul>
                   
                 </div>
               </div><!-- checkout-wrapper end -->
-           
-            </div>
           </div>
         </div>
       </div>
- 
+ </div>
     </div>
   </div>
 </section>

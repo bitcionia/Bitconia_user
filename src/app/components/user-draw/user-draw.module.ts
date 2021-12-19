@@ -11,10 +11,14 @@ import { MyticketComponent } from './myticket/myticket.component';
 import { TranscationComponent } from './transcation/transcation.component';
 import { PastdrawComponent } from './pastdraw/pastdraw.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { BalancepopupComponent } from './balancepopup/balancepopup.component';
+import { DrawresultComponent } from './drawresult/drawresult.component';
+import Swal from 'sweetalert2';
 @NgModule({
   declarations: [
   
@@ -26,13 +30,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
        MyticketComponent,
        TranscationComponent,
        PastdrawComponent,
+       BalancepopupComponent,
+       DrawresultComponent,
   ],
   imports: [
     CommonModule,
     UserDrawRoutingModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-
+    NgbModule,
         FormsModule, ReactiveFormsModule,
 
   ],

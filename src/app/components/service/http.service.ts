@@ -24,7 +24,7 @@ export class HttpService {
   get<T>(arg0: string) {
     throw new Error('Method not implemented.');
   }
-  token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWQ2MzgxYmQzMDAyNzU2YmU4ODYxMiIsImlhdCI6MTYzNzcwNzAwNCwiZXhwIjoxNjM3NzkzNDA0fQ.ZiozAL5Fx7pxBC36YUYCIydcU_qeRToYpQyb8hthOc4"
+  // token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWQ2MzgxYmQzMDAyNzU2YmU4ODYxMiIsImlhdCI6MTYzNzcwNzAwNCwiZXhwIjoxNjM3NzkzNDA0fQ.ZiozAL5Fx7pxBC36YUYCIydcU_qeRToYpQyb8hthOc4"
 //LIVE
 baseURL: string = "https://www.bitconia.com/api/v1/";
 headers: any = new HttpHeaders({ "Content-Type": "application/json" });
@@ -59,6 +59,17 @@ userloginurl: string = "user/auth/login";
   notifi: string="user/user/notification/list";
   alert: string="user/user/alert/list";
   balance: string="user/user/balance";
+  card: string="user/cart/add";
+  pervdraw:string="user/draw/perviouslist";
+  payment:string="user/payment/create";
+  profile:string="user/user/update";
+  upcominlist:string="user/draw/upcominglist";
+  lastdraw:string="user/draw/lastfive_draw";
+  allticketList:string="user/draw/alldraw/ticket/list";
+  changeemail_mob:string="user/auth/sent/otp";
+  verify_otp:string="user/auth/verify/otp";
+  addotp:string="user/auth/addsent/otp";
+  addverify:string="user/auth/addverify/otp";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -115,6 +126,12 @@ getUser(): Observable<any> {
 }
 changePassword(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.changepassword, jsonObj, 
+    {
+      headers: this.getAuthHeaders(),
+    });
+}
+profileupdate(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.profile, jsonObj, 
     {
       headers: this.getAuthHeaders(),
     });
@@ -225,6 +242,57 @@ alertnotification(): Observable<any> {
 
 balancebtc(): Observable<any> {
   return this.http.get(this.baseURL + this.balance, {
+    headers: this.getAuthHeaders(),
+  });
+}
+perviousdraw(): Observable<any> {
+  return this.http.get(this.baseURL + this.pervdraw, {
+    headers: this.getAuthHeaders(),
+  });
+}
+cardadd(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.card, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+payadd(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.payment, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+upcomdraw(): Observable<any> {
+  return this.http.get(this.baseURL + this.upcominlist, {
+    headers: this.getAuthHeaders(),
+  });
+}
+last_draw(): Observable<any> {
+  return this.http.get(this.baseURL + this.lastdraw, {
+    headers: this.getAuthHeaders(),
+  });
+}
+all_draw(): Observable<any> {
+  return this.http.get(this.baseURL + this.allticketList, {
+    headers: this.getAuthHeaders(),
+  });
+}
+changeemailmob(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.changeemail_mob, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+
+verfiyemailmob(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.verify_otp, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+addsotp(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.addotp, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+addsverify(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.addverify, jsonObj, {
     headers: this.getAuthHeaders(),
   });
 }

@@ -16,6 +16,7 @@ const routes: Routes = [
   {
     path: '',
     children: [{
+      
    path: 'ourfeatures', component:OurfeatureComponent},
    { path: 'customsupp', component:CustomersupportComponent},
    { path: 'fraudaware', component:FraudawareComponent},

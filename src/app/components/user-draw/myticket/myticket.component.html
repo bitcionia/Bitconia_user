@@ -11,17 +11,19 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="user-card">
-              <div class="avatar-upload">
-                <div class="obj-el"><img src="assets/images/elements/team-obj.png" alt="image"></div>
+              <div class="avatar-upload">          
+
+                <div class="obj-el"><img src="assets/user.png" alt="image"></div>
                 <div class="avatar-edit">
                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                     <label for="imageUpload"></label>
                 </div>
                 <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(assets/images/elements/downloaded/pp.png);">
+                    <div id="imagePreview" >
                     </div>
                 </div>
               </div>
+              <br>
               <h3 class="user-card__name">Albert Owens</h3>
               <span class="user-card__id">ID : 19535909</span>
             </div><!-- user-card end -->
@@ -97,139 +99,63 @@
             </div><!-- upcoming-draw-wrapper end -->
             <div class="past-draw-wrapper mt-4">
               <h3 class="title">Past Draws</h3>
-              <div class="table-responsive-lg">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Draw</th>
-                      <th>Contest No</th>
-                      <th>Result</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                         
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                          
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                         
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list win-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                          
-                        </ul>
-                      </td>
-                      <td><div class="lottery-package-list-small">
-            <a href=""routerLink="/user-Draw/claimprize" class="ml-3">Claim Price</a>
-            </div></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                         
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
+                <div class="table-responsive-lg">
+                  <table>
+                    <thead>
+                      <tr>
                         
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="date">02.04.2020</span></td>
-                      <td><span class="contest-no">R9D</span></td>
-                      <td>
-                        <ul class="number-list">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                         
-                        </ul>
-                      </td>
-                      <td><span class="fail">No Win</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="load-more">
-                <button type="button">Show More Lotteries <i class="las la-angle-down ml-2"></i></button>
-              </div>
+                          <th >Date</th>
+                          <!-- <th ></th> -->
+                          <th >Draw</th>
+                          <!-- <th >Location</th> -->
+                          <th >Result</th>
+                          <th > Status</th>
+                          
+        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of data | paginate:{
+                        itemsPerPage:5,
+                         currentPage:p,
+                         item:item,
+                        totalitem:totalLength }">
+                        <td><div class="text-white">{{item['endtime']| date :'short' }}</div></td>
+        
+                        <td><div class="text-white">{{item['drawname'] == "" ? 'NA':item['drawname']  }}</div></td>
+                        <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+                        <td>
+                         <div class="text-green"> {{item['winning_sequence']}}</div>
+                        </td>
+                        <!-- <td><div class="text-white"> {{item['Winning_status']}}</div></td> -->
+                        <td >
+                          <span *ngIf="item['Winning_status'] === false">
+                     <a href=""routerLink="/user-Draw/claimprize" class="ml-3">WIN</a>
+
+                         </span>
+                         <span *ngIf="item['Winning_status'] === true"
+                         >
+                         No WIN</span>
+                     </td> 
+                       
+                      <!-- <td>
+                        <div class="lottery-package-list-small">
+                        <a href=""routerLink="/user-Draw/myticket" class="ml-3">Win</a>
+        </div>
+                      </td> -->
+                   
+        
+                      </tr>
+             <tr>
+                      
+            </tbody>
+                  </table>
+                </div>
+                <div class="center" *ngIf="!showDatafound">
+                  <span>NO DATA FOUND </span>
+                </div>
+              <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
             </div><!-- past-draw-wrapper end -->
-          </div>
         </div>
       </div>
     </div>
