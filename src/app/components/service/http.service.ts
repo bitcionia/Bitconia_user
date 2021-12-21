@@ -70,6 +70,8 @@ userloginurl: string = "user/auth/login";
   verify_otp:string="user/auth/verify/otp";
   addotp:string="user/auth/addsent/otp";
   addverify:string="user/auth/addverify/otp";
+  securemail:string="user/auth/security/email";
+  securemob:string="user/auth/security/mobile";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -293,6 +295,16 @@ addsotp(jsonObj: any): Observable<any> {
 }
 addsverify(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.addverify, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+secuemail(): Observable<any> {
+  return this.http.get(this.baseURL + this.securemail,{
+    headers: this.getAuthHeaders(),
+  });
+}
+secumob(): Observable<any> { 
+  return this.http.get(this.baseURL + this.securemob, {
     headers: this.getAuthHeaders(),
   });
 }

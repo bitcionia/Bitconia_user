@@ -17,11 +17,7 @@ export class BuynowComponent implements OnInit {
     public httpService: HttpService,    public toastr: ToastrService,
 
     ) { 
-      
-      console.log(history.state.data.key)
-        console.log(history.state.data.value)
-this.key=history.state.data.value
-console.log(this.key)
+     
     }
 
 
@@ -178,6 +174,11 @@ this.amountOfTickets= this.ticketCounts*4.99
       this.sharedata.ticketsArray = this.generateTicketsArray;
       console.log( this.sharedata.ticketsArray)
     }
+     
+    console.log(history.state.data.key)
+    console.log(history.state.data.value)
+this.key=history.state.data.value
+console.log(this.key)
     var json={key:'1',value:this.key}
     this.router.navigateByUrl('user-Draw/cart',{state:{data:json}} )
   }

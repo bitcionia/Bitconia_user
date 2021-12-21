@@ -41,6 +41,10 @@ export class AccountsecurityComponent implements OnInit {
   type:any;
   example = { email: ""};
   num:number=0;
+  email1: any;
+  emailstatus: any;
+  mobstatus: any;
+  mob1: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,6 +69,8 @@ console.log(this.type)
     this.mobileForm();
     this.emailForm();
     this.profileupd();
+    this.secuemail();
+    this.secumob();
     // this.addemail();
     // this.addmob();
   }
@@ -743,5 +749,80 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
+  }
+
+  
+  secuemail() {
+
+   
+    this.httpService.secuemail().subscribe(res => {
+      // ////debugger
+      console.log(res['data'])
+      console.log(res['data']['username'])
+      console.log(res['data']['dob'])
+      console.log(res['data']['address'])
+      if(res['data']['security_email'] == true){
+
+      this.username = res['data']['username']
+      this.dob = res['data']['dob']
+      this.address = res['data']['address']
+      this.email1 = res['data']['email']
+      this.emailstatus = res['data']['security_email']
+      // this.mobstatus = res['data']['security_mobile']
+      }
+      
+      
+      if (res['success'] == true) {
+        // this.toastr.success("Password changed Successfully");
+        // this.httpService.toastr.success(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        // });
+        // this.routeTo.navigateByUrl('/index');
+      }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+    })
+    {
+    }
+  }
+  secumob() {
+
+   
+    this.httpService.secumob().subscribe(res => {
+      // ////debugger
+      console.log(res['data'])
+      if(res['data']['security_mobile']== true){
+      console.log(res['data']['username'])
+      console.log(res['data']['dob'])
+      console.log(res['data']['address'])
+      this.username = res['data']['username']
+      this.dob = res['data']['dob']
+      this.address = res['data']['address']
+      this.mob1 = res['data']['mobile']
+      // this.emailstatus = res['data']['security_email']
+      this.mobstatus = res['data']['security_mobile']
+
+      }
+      
+      if (res['success'] == true) {
+        // this.toastr.success("Password changed Successfully");
+        // this.httpService.toastr.success(res['message'], '', {
+        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        // });
+        // this.routeTo.navigateByUrl('/index');
+      }
+      // }, (err) => {
+      //   // this.httpService.toastr.error(err);
+      //   this.httpService.toastr.error("All field is mandatory",
+      //     '', {
+      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+      //   });
+    })
+    {
+    }
   }
 }

@@ -32,10 +32,7 @@ export class CartComponent implements OnInit {
     public httpService: HttpService,    public dialog: MatDialog,
 
     ) {
-      console.log(history.state.data.key)
-        console.log(history.state.data.value)
-this.key=history.state.data.value
-console.log(this.key);
+     
     this.token = JSON.parse(localStorage.getItem("data"));
 
       this.balance = JSON.parse(localStorage.getItem("BTC"));
@@ -86,6 +83,10 @@ console.log(this.remain)
     this.ticketsArray.splice(insertIndex , 1)
   }
   cartadd(){
+    console.log(history.state.data.key)
+    console.log(history.state.data.value)
+this.key=history.state.data.value
+console.log(this.key);
     if(this.balance>=this.tickdata){
     debugger
         let jsonData = {

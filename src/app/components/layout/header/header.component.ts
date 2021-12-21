@@ -250,6 +250,9 @@ this.phoneNumber=this.code['phone']
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
         });
+        this.httpService.toastr.success('Otp Send To Mobile', '', {
+          positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        });
         var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
     this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
 //     setTimeout(() => {
