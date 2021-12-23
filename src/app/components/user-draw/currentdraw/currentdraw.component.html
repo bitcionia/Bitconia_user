@@ -47,7 +47,7 @@
             </div>
             <!-- <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div> -->
 
-            <button type="button" class="winner-thumb cus" ngbPopover=" ServerSeed: serverseed1412draw3" ><img src="../../../../assets/i.png" alt="image"> </button>
+            <a type="button" class="winner-thumb cus" ngbPopover=" ServerSeed: serverseed1412draw3" ><img src="../../../../assets/i.png" alt="image"> </a>
          <div class="content-bottom row mt-3">
                 <div class="col-md-3 justify-content-center p-0 m-0">
                     <p>Number of Tickets</p>
@@ -96,13 +96,7 @@
               <tr>
                 
                   <th >Draw Name</th>
-                  <!-- <th ></th> -->
-                  <th >Serverseed</th>
-                  <!-- <th >Location</th> -->
-                  <th >Name</th>
                   <th >winning price</th>
-                  <th >Draw Ends</th>
-
                   <th >Buy now</th>
                   <th >My Ticket</th>
 
@@ -116,29 +110,33 @@
                 totalitem:totalLength }">
                 <td><div class="text-white">{{item['name']}}</div></td>
 
-                <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td>
+                <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
                 <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
-                <td>
-                 <div class="text-green"> {{item['name']}}</div>
-                </td>
+                
                 <td><div class="text-white"> {{item['winning_price']}}</div></td>
-                <td>
+                <!-- <td> -->
                     <!-- <i class="las la-clock"> -->
-                    <div class="clock2" data-clock="2020/08/12">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</div>
-                </td>
+                    <!-- <div class="clock2" data-clock="2020/08/12">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</div> -->
+                <!-- </td> -->
                 <td>  <div class="lottery-package-list-small">
                   <!-- <a href=""routerLink="user-Draw/buynow" class="cmn-btn btn--sm">Buy now</a> -->
                   <button (click)="gototick(item['_id'])"class="cmn-btn btn--sm">Buynow</button>
                   <!-- <a href="#"(click)="gototick(item[_id])" class="ml-3">Buynow</a> -->
 </div>
               </td>
-              <td>
+              <!-- <td>
                 <div class="lottery-package-list-small">
                 <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>
 </div>
-              </td>
+              </td> -->
            
-
+              <td>
+              <span  class="lottery-package-list-small" *ngIf="token ==null">
+                <a href=""routerLink="/index" class="ml-3">Myticket</a></span>
+                <span  class="lottery-package-list-small" *ngIf="token !=null">
+                  <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a></span>
+                <!-- <a href=""routerLink="/index" class="ml-3">Myticket</a> -->
+              </td>
               </tr>
      <tr>
               

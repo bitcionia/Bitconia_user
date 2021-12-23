@@ -30,6 +30,7 @@ export class TwofactorsComponent implements OnInit {
   error: any;
   errorMessage: any;
   emailid: any;
+  type: any;
 
   constructor(
     public toastr: ToastrService,
@@ -51,6 +52,8 @@ export class TwofactorsComponent implements OnInit {
     this.emailid  = JSON.parse(localStorage.getItem("userid"));
     this.countrycode  = JSON.parse(localStorage.getItem("countrycode"));
     this.mobile  = JSON.parse(localStorage.getItem("mobile"));
+    this.type = JSON.parse(localStorage.getItem("logintype"));
+
     console.log(this.countrycode)
     console.log(this.mobile)
 
@@ -358,49 +361,30 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           }
           verfaddmob() {
             debugger
-            // console.log(this.mobileform.value);
-            // this.code = this.mobileform.value;
-            // console.log(this.code['phone']);
-            // this.phoneNumber = this.code['phone']
-        
-            // this.mobile = this.code['phone']['number'];
-            // // this.country =  idex['countryCode'];
-            // this.countrycode = this.code['phone']['dialCode'];
-            // // localStorage.setItem("countrycode", JSON.stringify( this.countrycode));
-            // // localStorage.setItem("mobile", JSON.stringify(this.mobile));
-            // console.log(this.countrycode);
-            // console.log(this.mobile);
             this.submitted = true;
         
             debugger
             let JsonData = {
               "email": "",
               mobile: this.mobile,
-            country_code:this.countrycode,
-            pin:this.mobileform.value.code,
+              country_code:this.countrycode,
+              pin:this.mobileform.value.code,
+              // "oldpin": this.mobileform.value.oldcode,
             }
             this.httpService.addsverify(JsonData).subscribe(res => {
-              // ////debugger
               console.log(res)
-              //         console.log(res['data'])
-              //         console.log(res['data']['address'])
-              // this.username=res['data']['username']
-              // this.dob=res['data']['dob']
-              // this.address=res['data']['address']
-        
               if (res['success'] == true) {
                 // this.toastr.success("Password changed Successfully");
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
-                // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
+                this.routeTo.navigateByUrl('/index');
+                setTimeout(() => {
+                  document.location.reload();
+                  
+                   }, 100);
               }
-            // }, (err) => {
-            //   // this.httpService.toastr.error(err);
-            //   this.httpService.toastr.error("All field is mandatory",
-            //     '', {
-            //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-            //   });
+         
             }, (error) => {                              //Error callback
               console.log(error)
               this.error = error.status;
@@ -413,5 +397,41 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               });
            })
           }
+        //   verfaddmob() {
+        //     debugger
+          
+        //     this.submitted = true;
+        
+        //     debugger
+        //     let JsonData = {
+        //       "email": "",
+        //       mobile: this.mobile,
+        //     country_code:this.countrycode,
+        //     pin:this.mobileform.value.code,
+        //     }
+        //     this.httpService.addsverify(JsonData).subscribe(res => {
+        //       console.log(res)
+           
+        
+        //       if (res['success'] == true) {
+        //         // this.toastr.success("Password changed Successfully");
+        //         this.httpService.toastr.success(res['message'], '', {
+        //           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+        //         });
+        //         this.routeTo.navigateByUrl('/index');
+        //       }
+            
+        //     }, (error) => {                              //Error callback
+        //       console.log(error)
+        //       this.error = error.status;
+        //       console.log(this.error)
+        
+        //       this.errorMessage = error.error.message;
+        //       console.log(this.errorMessage)
+        // this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+        //         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+        //       });
+        //    })
+        //   }
    
 }

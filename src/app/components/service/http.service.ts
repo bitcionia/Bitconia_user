@@ -249,7 +249,7 @@ balancebtc(): Observable<any> {
 }
 perviousdraw(): Observable<any> {
   return this.http.get(this.baseURL + this.pervdraw, {
-    headers: this.getAuthHeaders(),
+    // headers: this.getAuthHeaders(),
   });
 }
 cardadd(jsonObj: any): Observable<any> {
@@ -264,7 +264,7 @@ payadd(jsonObj: any): Observable<any> {
 }
 upcomdraw(): Observable<any> {
   return this.http.get(this.baseURL + this.upcominlist, {
-    headers: this.getAuthHeaders(),
+    // headers: this.getAuthHeaders(),
   });
 }
 last_draw(): Observable<any> {

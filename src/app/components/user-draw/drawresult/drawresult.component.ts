@@ -29,6 +29,7 @@ export class DrawresultComponent implements OnInit {
   win: any;
   price: any;
   count: any;
+  list:any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -46,7 +47,8 @@ export class DrawresultComponent implements OnInit {
   pervdraw(){
     debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
-      console.log(res['count'])
+      console.log(res['data'])
+      this.list=res['data']
       this.count=res['count']
       console.log(res['data'][0]['name'])
       console.log(res['data'][0]['start_time'])

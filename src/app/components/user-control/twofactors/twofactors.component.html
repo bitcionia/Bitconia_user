@@ -33,14 +33,14 @@
         <h3 class="title">Choose to send Code</h3>
    <div class="col-lg-12">
         <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
-          <li class="nav-item" role="presentation">
+          <li class="nav-item" role="presentation"*ngIf='type == "mobile"'>
             <a class="nav-link active" id="sv_phone-tab" data-toggle="tab" href="#sv_phone" role="tab" aria-controls="sv_phone" aria-selected="true">
               <div class="icon-thumb"><img src="assets/images/icon/contact/1.png" alt="image"></div>
               <span>Phone</span>
             </a>
           </li>
-          <li class="nav-item" role="presentation">
-            <a class="nav-link" id="sv_email-tab" data-toggle="tab" href="#sv_email" role="tab" aria-controls="sv_email" aria-selected="false">
+          <li class="nav-item" role="presentation"*ngIf='type == "email"'>
+            <a class="nav-link" id="sv_email-tab" data-toggle="tab" href="#sv_email" role="tab" aria-controls="sv_email" aria-selected="true">
               <div class="icon-thumb"><img src="assets/images/icon/contact/2.png" alt="image"></div>
               <span>Email</span>
             </a>
@@ -50,7 +50,7 @@
         <div class="tab-content mt-15 mb-15" id="winnerTabContent">
   
   <!-- Phone tab -->
-          <div class="tab-pane fade show active" id="sv_phone" role="tabpanel" aria-labelledby="sv_phone-tab">
+          <div class="tab-pane fade show active" id="sv_phone" role="tabpanel" aria-labelledby="sv_phone-tab"*ngIf='type == "mobile"'>
             <div class="row mb-none-30">
               <div class="col-lg-12 mb-30">
                  <div class="account-form-wrapper">
@@ -85,7 +85,7 @@
    
     </div>
     <!-- Email tab -->
-          <div class="tab-pane fade" id="sv_email" role="tabpanel" aria-labelledby="sv_email-tab">
+          <div class="tab-pane fade show active" id="sv_email" role="tabpanel" aria-labelledby="sv_email-tab" *ngIf='type == "email"'>
                <div class="row mb-none-30">
               <div class="col-lg-12 mb-30">
                  <div class="account-form-wrapper">
