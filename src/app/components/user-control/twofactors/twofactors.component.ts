@@ -128,7 +128,7 @@ console.log("92",this.email)
         // location:'Chennai',
         // ip:'162.198.5.46',
       }
-      this.httpService.twofactorotp(jsonData).subscribe((res: any) => {
+      this.httpService.reotp(jsonData).subscribe((res: any) => {
         
         if (res['success'] == true) {
           // localStorage.setItem("data", JSON.stringify(res['data']['pin']));
@@ -189,7 +189,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             // location:'Chennai',
             // ip:'162.198.5.46',
           }
-        this.httpService.twofactorotp(jsonData).subscribe((res: any) => {
+        this.httpService.reotp(jsonData).subscribe((res: any) => {
           
           if (res['success'] == true) {
             
