@@ -1,6 +1,5 @@
 
-    
-	  <!-- inner-hero-section start -->
+<!--     
       <div class="inner-hero-section style--five">
         <h2 style="text-align: center;
         font-size: 68px;">Never miss a draw!</h2>
@@ -11,9 +10,7 @@
    <p style="text-align: center;
    font-size: 20px;">many others anytime, anywhere</p>
       </div>
-      <!-- inner-hero-section end -->
       
-        <!-- winner details section start -->
       <div class="col-lg-8 mt-lg-0 mt-4">
   
         <div class="upcoming-draw-wrapper">
@@ -23,7 +20,6 @@
                <img src="assets/images/elements/winnercoin.png" alt="image">
             </div>
             <div class="winner-card__content">
-              <!-- <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div> -->
               <div class="content-bottom borderbottom">
               <div class="number-list-wrapper">
                  <div class="left" >
@@ -31,12 +27,8 @@
                 </div>
                   <ul class="number-list mt-2"*ngFor="let values of myArray" >
                     <li style="float:left;">{{values}}</li>
-                    <!-- <li>23</li>
-                    <li>9</li>
-                    <li>19</li>
-                    <li>26</li>
-                    <li>87</li> -->
-                  </ul><!-- number-list end -->
+                  
+                  </ul>
                 </div>
                 
                 <div class="right">
@@ -72,11 +64,7 @@
                   </div>
                   <div class="col-md-3 justify-content-center">
                   <p></p>
-                  <!-- <div class="pick-lottery-package">
-                      <div class="lottery-package-list-small">
-                          <span class="lottery-package-list-small-org mt-5 pt-2"><a href="#0" routerLink="/">Draw Details</a></span>
-                         </div>
-                  </div> -->
+                  
                   </div>
               
                                       
@@ -84,7 +72,6 @@
             </div>
           </div>
   
-          <!-- draw-ticket-slider end -->
         </div>
         <div class="past-draw-wrapper mt-4">
           <h3 class="title">Past draw</h3>
@@ -104,15 +91,12 @@
                 <tr *ngFor="let item of list ">
                   <td><div class="text-white">{{item['name']}}</div></td>
   
-                  <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
-                  <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+              
                   <td>
                    <div class="text-green"> {{item['winning_sequence']}}</div>
                   </td>
                   <td><div class="text-white"> {{item['winning_price']}}</div></td>
-                  <!-- <td><div class="text-white">  {{item['start_time'] | date :'medium'}}
-
-                  </div></td> -->
+                  
                   <td><div class="text-white"> {{item['end_time']| date :'medium'}}
 
                   </div></td>
@@ -125,22 +109,237 @@
                 
       </tbody>
             </table>
-            <!-- <table>
-                <tr>
-                  <td style="padding-left: 9rem;border:white; color: white;float: right;"><b>Grand Total</b></td>
-                  <td style="text-align: right;">
-                    <span style="color:white;">435454354</span>
-                  </td>
-                </tr>
-              </table> -->
+           
           </div>
           <div class="center" *ngIf="!showDatafound">
             <span>NO DATA FOUND </span>
           </div>
-        <!-- <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls> -->
         </div>
         <br>
         <div>
             <button _ngcontent-joi-c181="" type="submit" class="cmn-btn w-100">Download</button>
                   </div>
-        </div>
+        </div> -->
+
+
+
+        <section class="inner-hero-section style--four">
+          <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape-2.png" alt="image"></div> -->
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="inner-page-content">
+                  <h2 class="title mt-5">Never miss a draw!</h2>
+                  <p>Easy way to buy tickets and win your lotteries</p>
+                  <p>many others anytime, anywhere</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- inner-hero-section end -->
+      
+        <!-- winner details section start -->
+        <section class="mt-minus-150 mb-80">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
+                  <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
+                  <div class="body">
+                    <p class="contest-number">{{name1}}</p>
+                    <p class="contest-date mb-15"><span>Draw took place on :</span> {{time1| date:'medium'}}</p>
+            <p class="contest-date mb-15"><span>Sever Seed :</span>{{server1}}</p>
+            <p class="contest-date mb-15"><span>Server Seed Hash :</span>{{hash}}</p>
+            <p class="contest-date mb-30"><span>Block Number:</span> {{block}}</p>
+            <div class="number-list-wrapper">
+              <div style="text-align: center;" >
+               <h2>Last Winning Number</h2>
+             </div>
+               <!-- <ul class="number-list mt-2"*ngFor="let values of myArray" >
+                 <li style="float:left;">{{values}}</li>
+               
+               </ul> -->
+               <p>{{seq}}</p>
+             </div>
+                    <!-- <div class="btn-grp"> -->
+                      <!-- <a href="#0" class="btn-border">Alerts</a> -->
+                      <!-- <a href="#0" class="btn-border">How to Claim</a> -->
+                    <!-- </div> -->
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- winner details section end -->
+      <!-- latest winner section start  -->
+        <section class="latest-winner-section position-relative pt-120 pb-120">
+           <div class="container">
+            
+                 <div class="row justify-content-center">
+                      <div class="col-lg-8">
+              
+               <!-- winner-card first start -->
+               <div class="winner-card mb-30">
+                <div class="winner-card__thumb justify-content-center">
+                  <img src="assets/images/elements/winnercoin.png" alt="image">
+      </div>
+       <div class="winner-card__content">
+                  <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                  <div class="content-top">
+                    <div class="left">
+                      <h5>Server seed hash: {{server1}}</h5>
+                    </div>
+                    <div class="right">
+                      <span>Draw Name</span>
+                      <p>{{name1}}</p>
+                    </div>
+                  </div>
+                  <div class="content-bottom">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="color: white;">Draw</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white;">Price No</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white; text-align: center;">Result</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white; text-align: center;">Draw Ends</th>             
+                            
+                          
+                            
+                            
+                            <!-- <th style="color: white;">Prize</th>
+                            <th></th>&nbsp;
+                            <th></th>&nbsp;
+                          
+                            
+      
+                            <th style="color: white; text-align: center;">Draw Ends</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><div class="text-white">{{win1}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{price1}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{seq1}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{time1|  date:'medium'}}</div></td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                
+                </div>
+    
+              </div>
+              <!-- winner-card first end -->
+               <!-- winner-card 2 start -->
+               <div class="winner-card mb-30">
+                <div class="winner-card__thumb justify-content-center">
+                  <img src="assets/images/elements/winnercoin.png" alt="image">
+      </div>
+       <div class="winner-card__content">
+                  <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                  <div class="content-top">
+                    <div class="left">
+                      <h5>Server seed hash: NA</h5>
+                    </div>
+                    <div class="right">
+                      <span>Draw Name</span>
+                      <p>{{name}}</p>
+                    </div>
+                  </div>
+                  <div class="content-bottom">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="color: white;">Draw</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white;">Price No</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white; text-align: center;">Result</th>
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th></th>&nbsp;
+                          <th style="color: white; text-align: center;">Draw Ends</th>             
+                            
+                          
+                            
+                            
+                            <!-- <th style="color: white;">Prize</th>
+                            <th></th>&nbsp;
+                            <th></th>&nbsp;
+                          
+                            
+      
+                            <th style="color: white; text-align: center;">Draw Ends</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><div class="text-white">{{win}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{price}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{seq}}</div></td>
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td></td>&nbsp;
+                          <td><div class="text-white">{{time|  date:'medium'}}</div></td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                
+                </div>
+    
+              </div>
+              <!-- winner-card 2 end -->
+            
+                      
+                      </div>
+                    </div>
+                
+              </div>
+            
+        </section>

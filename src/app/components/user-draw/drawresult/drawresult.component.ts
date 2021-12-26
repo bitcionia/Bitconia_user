@@ -30,6 +30,16 @@ export class DrawresultComponent implements OnInit {
   price: any;
   count: any;
   list:any;
+  server: any;
+  block: any;
+  blhash: any;
+  hash: any;
+  name1: any;
+  time1: any;
+  win1: any;
+  price1: any;
+  seq1: any;
+  server1: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -57,9 +67,20 @@ export class DrawresultComponent implements OnInit {
       this.time=res['data'][0]['start_time']
       this.win=res['data'][0]['winning_price']
       this.price=res['data'][0]['price']
+      this.seq=(res['data'][0]['winning_sequence'])
+      this.server1=(res['data'][1]['server_seed'])
 
       this.seq=(res['data'][0]['winning_sequence'])
-     
+      this.blhash=(res['data'][1]['block_hash'])
+      this.block=(res['data'][1]['block_number'])
+      this.hash=(res['data'][1]['hash_server_seed'])
+
+      this.name1=res['data'][1]['name']
+      this.time1=res['data'][1]['start_time']
+      this.win1=res['data'][1]['winning_price']
+      this.price1=res['data'][1]['price']
+
+      this.seq1=(res['data'][1]['winning_sequence'])
       this.myArray = this.seq.split(',');
 
      console.log(this.myArray)
@@ -98,7 +119,7 @@ export class DrawresultComponent implements OnInit {
 
       // this.seq=(res['data'][0]['winning_sequence'])
      
-      this.myArray = this.seq.split(',');
+      // this.myArray = this.seq.split(',');
 
      
       this.data1 = res['data']

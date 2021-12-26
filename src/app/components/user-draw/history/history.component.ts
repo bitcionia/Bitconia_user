@@ -49,7 +49,7 @@ export class HistoryComponent implements OnInit {
 
       this.seq=(res['data'][0]['winning_sequence'])
      
-      this.myArray = this.seq.split(',');
+      // this.myArray = this.seq.split(',');
 
      console.log(this.myArray)
       this.data1 = res['data']

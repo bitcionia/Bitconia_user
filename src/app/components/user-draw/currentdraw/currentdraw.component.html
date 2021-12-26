@@ -1,10 +1,7 @@
 
-    
-	  <!-- inner-hero-section start -->
-    
-    
-    <!-- inner-hero-section end -->
-    <div class="inner-hero-section style--five">
+   
+	
+    <!-- <div class="inner-hero-section style--five">
       <h2 style="text-align: center;
       font-size: 68px;">Never miss a draw!</h2>
       <br>
@@ -14,7 +11,6 @@
  <p style="text-align: center;
  font-size: 20px;">many others anytime, anywhere</p>
     </div>
-	  <!-- winner details section start -->
     <div class="col-lg-8 mt-lg-0 mt-4">
 
       <div class="upcoming-draw-wrapper">
@@ -32,12 +28,8 @@
               <div>
                 <ul class="number-list mt-2 "*ngFor="let values of myArray" >
                   <li>{{values}}</li>
-                  <!-- <li>{{values}}</li>
-                  <li>{{values}}</li>
-                  <li>{{values}}</li>
-                  <li>{{values}}</li>
-                  <li>{{values}}</li> -->
-                </ul><!-- number-list end -->
+                 
+                </ul>
               </div>
             </div>
               <div class="right">
@@ -45,7 +37,6 @@
                 <p>{{time| date :'short'}}</p>
               </div>
             </div>
-            <!-- <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div> -->
 
             <a type="button" class="winner-thumb cus" ngbPopover=" ServerSeed: serverseed1412draw3" ><img src="../../../../assets/i.png" alt="image"> </a>
          <div class="content-bottom row mt-3">
@@ -86,7 +77,6 @@
           </div>
         </div>
 
-        <!-- draw-ticket-slider end -->
       </div>
       <div class="past-draw-wrapper mt-4">
         <h3 class="title">Upcoming Draw</h3>
@@ -110,32 +100,21 @@
                 totalitem:totalLength }">
                 <td><div class="text-white">{{item['name']}}</div></td>
 
-                <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
-                <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+               
                 
                 <td><div class="text-white"> {{item['winning_price']}}</div></td>
-                <!-- <td> -->
-                    <!-- <i class="las la-clock"> -->
-                    <!-- <div class="clock2" data-clock="2020/08/12">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</div> -->
-                <!-- </td> -->
+              
                 <td>  <div class="lottery-package-list-small">
-                  <!-- <a href=""routerLink="user-Draw/buynow" class="cmn-btn btn--sm">Buy now</a> -->
                   <button (click)="gototick(item['_id'])"class="cmn-btn btn--sm">Buynow</button>
-                  <!-- <a href="#"(click)="gototick(item[_id])" class="ml-3">Buynow</a> -->
 </div>
               </td>
-              <!-- <td>
-                <div class="lottery-package-list-small">
-                <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>
-</div>
-              </td> -->
+   
            
               <td>
               <span  class="lottery-package-list-small" *ngIf="token ==null">
                 <a href=""routerLink="/index" class="ml-3">Myticket</a></span>
                 <span  class="lottery-package-list-small" *ngIf="token !=null">
                   <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a></span>
-                <!-- <a href=""routerLink="/index" class="ml-3">Myticket</a> -->
               </td>
               </tr>
      <tr>
@@ -148,7 +127,550 @@
         </div>
       <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
         <div class="load-more">
-          <!-- <button type="button">Show More Lotteries <i class="las la-angle-down ml-2"></i></button> -->
         </div>
       </div>
+      </div> -->
+
+      
+	  <!-- inner-hero-section start -->
+    <section class="inner-hero-section style--four">
+      <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape-2.png" alt="image"></div> -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="inner-page-content">
+              <h2 class="title mt-5">Never miss a draw!</h2>
+              <p>Easy way to buy tickets and win your lotteries</p>
+              <p>many others anytime, anywhere</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+    <!-- inner-hero-section end -->
+	
+	  <!-- winner details section start -->
+    <section class="mt-minus-150 mb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
+              <div class="left"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
+              <div class="body">
+                <p class="contest-number">Up Coming Draws</p>
+                <div class="lottery-package-list-small">
+                  <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>&nbsp;
+                  <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+
+</div>				<!-- <br/> -->
+				<!-- <h5 class="contest-date">Server seed hash: <span class="text-bold"> 694c2d9055e37e9b2ffe3f...</span></h5> -->
+                <div class="line"></div>
+                <h4 style="text-align: center;"> Numbers OF Tickets:  {{count1}}</h4>
+               
+                <div class="btn-grp">
+                     <a href="#0" class="btn-border  btn--sm">How to Claim</a>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- winner details section end -->
+  <!-- latest winner section start  -->
+    <section class="latest-winner-section position-relative pt-120 pb-120">
+       <div class="container">
+        
+             <div class="row justify-content-center">
+                  <div class="col-lg-8">
+				  
+				   <!-- winner-card first start -->
+           <div class="winner-card mb-30">
+            <div class="winner-card__thumb justify-content-center">
+              <img src="assets/images/elements/winnercoin.png" alt="image">
+  </div>
+   <div class="winner-card__content">
+              <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+              <div class="content-top">
+                <div class="left">
+                  <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                </div>
+                <div class="right">
+                  <span>Draw Name</span>
+                  <p>{{name}}</p>
+                </div>
+              </div>
+              <div class="content-bottom">
+                <table>
+                  <thead>
+                    <tr>
+                        <th style="color: white;">winning price</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+                        
+                        <th style="color: white;">Prize</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+  
+                        <th style="color: white; text-align: center;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="text-white">{{win}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      
+                     
+                      <td><div class="text-white">{{price}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                     
+                      
+                      <td><div class="text-white">{{time|  date:'medium'}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td>
+                        
+                        <div class="lottery-package-list-small">
+                          <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>
+        </div>
+                      </td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      <td>
+                        <br>
+
+                        <div class="lottery-package-list-small">
+                          <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+
+          </div>
+					<!-- winner-card first end -->
+					 <!-- winner-card 2 start -->
+           <div class="winner-card mb-30">
+            <div class="winner-card__thumb justify-content-center">
+              <img src="assets/images/elements/winnercoin.png" alt="image">
+  </div>
+   <div class="winner-card__content">
+              <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+              <div class="content-top">
+                <div class="left">
+                  <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                </div>
+                <div class="right">
+                  <span>Draw Name</span>
+                  <p>{{name1}}</p>
+                </div>
+              </div>
+              <div class="content-bottom">
+                <table>
+                  <thead>
+                    <tr>
+                        <th style="color: white;">winning price</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+                        
+                        <th style="color: white;">Prize</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+  
+                        <th style="color: white; text-align: center;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="text-white">{{win1}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      
+                     
+                      <td><div class="text-white">{{price1}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                     
+                      
+                      <td><div class="text-white">{{time1|  date:'medium'}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td>
+                        
+                        <div class="lottery-package-list-small">
+                          <button (click)="gototick(id1)"class="cmn-btn btn--sm">Buynow</button>
+        </div>
+                      </td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      <td>
+                        <br>
+
+                        <div class="lottery-package-list-small">
+                          <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+
+          </div>
+					<!-- winner-card 2 end -->
+					 <!-- winner-card 3 start -->
+           <div class="winner-card mb-30">
+            <div class="winner-card__thumb justify-content-center">
+              <img src="assets/images/elements/winnercoin.png" alt="image">
+  </div>
+   <div class="winner-card__content">
+              <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+              <div class="content-top">
+                <div class="left">
+                  <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                </div>
+                <div class="right">
+                  <span>Draw Name</span>
+                  <p>{{name2}}</p>
+                </div>
+              </div>
+              <div class="content-bottom">
+                <table>
+                  <thead>
+                    <tr>
+                        <th style="color: white;">winning price</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+                        
+                        <th style="color: white;">Prize</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+  
+                        <th style="color: white; text-align: center;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="text-white">{{win2}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      
+                     
+                      <td><div class="text-white">{{price2}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                     
+                      
+                      <td><div class="text-white">{{time2|  date:'medium'}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td>
+                        
+                        <div class="lottery-package-list-small">
+                          <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>
+        </div>
+                      </td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      <td>
+                        <br>
+
+                        <div class="lottery-package-list-small">
+                          <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+
+          </div>
+					<!-- winner-card 3 end -->
+					 <!-- winner-card 4 start -->
+           <div class="winner-card mb-30">
+            <div class="winner-card__thumb justify-content-center">
+              <img src="assets/images/elements/winnercoin.png" alt="image">
+  </div>
+   <div class="winner-card__content">
+              <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+              <div class="content-top">
+                <div class="left">
+                  <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                </div>
+                <div class="right">
+                  <span>Draw Name</span>
+                  <p>{{name3}}</p>
+                </div>
+              </div>
+              <div class="content-bottom">
+                <table>
+                  <thead>
+                    <tr>
+                        <th style="color: white;">winning price</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+                        
+                        <th style="color: white;">Prize</th>
+                        <th></th>&nbsp;
+                        <th></th>&nbsp;
+                      
+                        
+  
+                        <th style="color: white; text-align: center;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="text-white">{{win3}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      
+                     
+                      <td><div class="text-white">{{price3}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                     
+                      
+                      <td><div class="text-white">{{time3|  date:'medium'}}</div></td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                      <td>
+                        
+                        <div class="lottery-package-list-small">
+                          <button (click)="gototick(id3)"class="cmn-btn btn--sm">Buynow</button>
+        </div>
+                      </td>
+                      <td></td>&nbsp;
+                      <td></td>&nbsp;
+                     
+                      <td>
+                        <br>
+
+                        <div class="lottery-package-list-small">
+                          <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+
+          </div>
+					<!-- winner-card 4 end -->
+          <br>
+                  <!-- winner-card 4 start -->
+                  <div class="winner-card mb-30">
+                    <div class="winner-card__thumb justify-content-center">
+                      <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+           <div class="winner-card__content">
+                      <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                      <div class="content-top">
+                        <div class="left">
+                          <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                        </div>
+                        <div class="right">
+                          <span>Draw Name</span>
+                          <p>{{name4}}</p>
+                        </div>
+                      </div>
+                      <div class="content-bottom">
+                        <table>
+                          <thead>
+                            <tr>
+                                <th style="color: white;">winning price</th>
+                                <th></th>&nbsp;
+                                <th></th>&nbsp;
+                              
+                                
+                                
+                                <th style="color: white;">Prize</th>
+                                <th></th>&nbsp;
+                                <th></th>&nbsp;
+                              
+                                
+          
+                                <th style="color: white; text-align: center;">Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><div class="text-white">{{win4}}</div></td>
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                             
+                              
+                             
+                              <td><div class="text-white">{{price4}}</div></td>
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                             
+                             
+                              
+                              <td><div class="text-white">{{time4|  date:'medium'}}</div></td>
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                              <td>
+                                
+                                <div class="lottery-package-list-small">
+                                  <button (click)="gototick(id4)"class="cmn-btn btn--sm">Buynow</button>
+                </div>
+                              </td>
+                              <td></td>&nbsp;
+                              <td></td>&nbsp;
+                             
+                              <td>
+                                <br>
+        
+                                <div class="lottery-package-list-small">
+                                  <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+        
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    
+                    </div>
+        
+                  </div>
+        <!-- winner-card 4 end -->
+        <br>
+                <!-- winner-card 4 start -->
+                <div class="winner-card mb-30">
+                  <div class="winner-card__thumb justify-content-center">
+                    <img src="assets/images/elements/winnercoin.png" alt="image">
+        </div>
+         <div class="winner-card__content">
+                    <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                    <div class="content-top">
+                      <div class="left">
+                        <h5>Server seed hash: 694c2d9055e37e9b2ffe3f...</h5>
+                      </div>
+                      <div class="right">
+                        <span>Draw Name</span>
+                        <p>{{name5}}</p>
+                      </div>
+                    </div>
+                    <div class="content-bottom">
+                      <table>
+                        <thead>
+                          <tr>
+                              <th style="color: white;">winning price</th>
+                              <th></th>&nbsp;
+                              <th></th>&nbsp;
+                            
+                              
+                              
+                              <th style="color: white;">Prize</th>
+                              <th></th>&nbsp;
+                              <th></th>&nbsp;
+                            
+                              
+        
+                              <th style="color: white; text-align: center;">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><div class="text-white">{{win5}}</div></td>
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                           
+                            
+                           
+                            <td><div class="text-white">{{price5}}</div></td>
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                           
+                           
+                            
+                            <td><div class="text-white">{{time5|  date:'medium'}}</div></td>
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                            <td>
+                              
+                              <div class="lottery-package-list-small">
+                                <button (click)="gototick(id5)"class="cmn-btn btn--sm">Buynow</button>
+              </div>
+                            </td>
+                            <td></td>&nbsp;
+                            <td></td>&nbsp;
+                           
+                            <td>
+                              <br>
+      
+                              <div class="lottery-package-list-small">
+                                <a href=""routerLink="/user-Draw/myticket" class="ml-3">Myticket</a>                        
+      
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  
+                  </div>
+      
+                </div>
+      <!-- winner-card 4 end -->
+              
+                  </div>
+                </div>
+            
+          </div>
+        
+    </section>

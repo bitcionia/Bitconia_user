@@ -26,7 +26,7 @@ export class HttpService {
   }
   // token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWQ2MzgxYmQzMDAyNzU2YmU4ODYxMiIsImlhdCI6MTYzNzcwNzAwNCwiZXhwIjoxNjM3NzkzNDA0fQ.ZiozAL5Fx7pxBC36YUYCIydcU_qeRToYpQyb8hthOc4"
 //LIVE
-baseURL: string = "https://www.bitconia.com/api/v1/";
+baseURL: string = "https://www.admin.bitconia.com/api/v1/";
 headers: any = new HttpHeaders({ "Content-Type": "application/json" });
 // headers = new HttpHeaders().set("Content-Type", "application/json")
 //       .set("Authorization",this.token)
