@@ -48,12 +48,16 @@ export class BuynowComponent implements OnInit {
 
 
   IncOrDecTickets(key){
-    debugger
-    var userNumber = JSON.parse(localStorage.getItem("BTC"));
-this.amountOfTickets= this.ticketCounts*4.99
+    
+    // if (key == 0) {
+    
+
     //  this.addcount=(this.amountOfTickets.toFixed(2))
-    debugger
+    
     // if(userNumber >=this.amountOfTickets){
+      if((this.ticketCounts == 0 && key == 'inc') || this.ticketCounts > 0){
+        var userNumber = JSON.parse(localStorage.getItem("BTC"));
+      this.amountOfTickets= this.ticketCounts*4.99
     key == 'dec' && this.ticketCounts >= 0 ? this.ticketCounts-- : key == 'inc' &&  this.ticketCounts < 20 ? this.ticketCounts++ : '';
     var tempData = {
       index:this.ticketCounts,
@@ -62,8 +66,13 @@ this.amountOfTickets= this.ticketCounts*4.99
     key == 'dec' && this.ticketCounts >= 0 ? this.generateTicketsArray.splice(this.generateTicketsArray.length - 1 , 1) : key == 'inc' && this.ticketCounts <= 20 && this.generateTicketsArray.length < 20 ? this.generateTicketsArray.push(tempData) : '';
 
     this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
-  }
+      }
+  // }
+  this.sharedata.countick(this.ticketCounts)
 
+  localStorage.setItem("tickcount", JSON.stringify(this.ticketCounts));
+
+  }
 // else{
 //     this.toastr.error("not avalible balance", '', {
 //       positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
@@ -175,12 +184,14 @@ this.amountOfTickets= this.ticketCounts*4.99
       console.log( this.sharedata.ticketsArray)
     }
      
-    console.log(history.state.data.key)
-    console.log(history.state.data.value)
-this.key=history.state.data.value
-console.log(this.key)
-    var json={key:'1',value:this.key}
-    this.router.navigateByUrl('user-Draw/cart',{state:{data:json}} )
+//     console.log(history.state.data.key)
+//     console.log(history.state.data.data)
+// this.key=history.state.data.value
+// console.log(this.key)
+//     var json={key:'1',value:this.key}
+//     this.router.navigateByUrl('user-Draw/cart',{state:{data:json}} )
+    this.router.navigateByUrl('user-Draw/cart')
+
   }
   packagePick(length){
     if(length !== 'all'){

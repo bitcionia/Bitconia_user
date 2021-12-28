@@ -28,6 +28,7 @@ export class CartComponent implements OnInit {
   ticketcount: any[];
   ticketnumber:any[];
   key: any;
+  ticknymbbv: any;
   constructor(private router: Router,public sharedata:CommondataService,
     public httpService: HttpService,    public dialog: MatDialog,
 
@@ -35,7 +36,10 @@ export class CartComponent implements OnInit {
      
     this.token = JSON.parse(localStorage.getItem("data"));
 
-      this.balance = JSON.parse(localStorage.getItem("BTC"));
+      this.balance = JSON.parse(localStorage.getItem("BTC"));    
+        this.ticknymbbv = JSON.parse(localStorage.getItem("cart"));
+
+
    }
 
   ticketsArray: Array<any> = [];
@@ -66,6 +70,8 @@ this.ticketcount.push(this.countdata)
 
       }
 console.log(this.ticketnumber)
+localStorage.setItem("cart", JSON.stringify(this.ticketnumber));
+
 this.ticketnum=this.ticketdata*4.99
 this.tickdata=(this.ticketnum.toFixed(2))
 this.remain=this.balance- this.tickdata
@@ -83,15 +89,17 @@ console.log(this.remain)
     this.ticketsArray.splice(insertIndex , 1)
   }
   cartadd(){
-    console.log(history.state.data.key)
-    console.log(history.state.data.value)
-this.key=history.state.data.value
-console.log(this.key);
+//     console.log(history.state.data.key)
+//     console.log(history.state.data.value)
+// this.key=history.state.data.value
+// console.log(this.key);
+var id = JSON.parse(localStorage.getItem("tickid"));
+
     if(this.balance>=this.tickdata){
     debugger
         let jsonData = {
           tickets: this.ticketnumber,
-          draw_id:this.key
+          draw_id:id
         }
         this.httpService.cardadd (jsonData).subscribe( res => {
           

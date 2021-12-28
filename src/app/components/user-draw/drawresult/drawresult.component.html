@@ -143,7 +143,7 @@
         <section class="mt-minus-150 mb-80">
           <div class="container">
             <div class="row">
-              <div class="col-lg-12">
+              <!-- <div class="col-lg-12">
                 <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
                   <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
                   <div class="body">
@@ -156,12 +156,34 @@
               <div style="text-align: center;" >
                <h2>Last Winning Number</h2>
              </div>
-               <!-- <ul class="number-list mt-2"*ngFor="let values of myArray" >
-                 <li style="float:left;">{{values}}</li>
-               
-               </ul> -->
+             
                <p>{{seq}}</p>
              </div>
+                  
+                  </div>
+                
+                </div>
+              </div> -->
+              <div class="col-lg-12">
+                <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
+                  <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
+                  <div class="body">
+                    <p class="contest-number">{{name1}}</p>
+                    <p class="contest-date mb-15"><span>Draw took place on :</span> {{time1| date:'medium'}}</p>
+            <p class="contest-date mb-15"><span>Sever Seed :</span> {{server1}}</p>
+            <p class="contest-date mb-15"><span>Server Seed Hash :</span>{{hash}}</p>
+            <p class="contest-date mb-30"><span>Block Number:</span> {{block}}</p>
+                      <p>Last Winning Number</p>
+                      <p>{{seq}}</p>
+                    <!-- <ul class="numbers mb-80" style="text-align: center;">
+                      <li>11</li>
+                      <li>88</li>
+                      <li>23</li>
+                      <li>9</li>
+                      <li>19</li>
+                      <li>26</li>
+                     
+                    </ul> -->
                     <!-- <div class="btn-grp"> -->
                       <!-- <a href="#0" class="btn-border">Alerts</a> -->
                       <!-- <a href="#0" class="btn-border">How to Claim</a> -->
@@ -180,83 +202,37 @@
             
                  <div class="row justify-content-center">
                       <div class="col-lg-8">
-              
-               <!-- winner-card first start -->
-               <div class="winner-card mb-30">
-                <div class="winner-card__thumb justify-content-center">
-                  <img src="assets/images/elements/winnercoin.png" alt="image">
-      </div>
-       <div class="winner-card__content">
-                  <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
-                  <div class="content-top">
-                    <div class="left">
-                      <h5>Server seed hash: {{server1}}</h5>
-                    </div>
-                    <div class="right">
-                      <span>Draw Name</span>
-                      <p>{{name1}}</p>
-                    </div>
-                  </div>
-                  <div class="content-bottom">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th style="color: white;">Draw</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white;">Price No</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white; text-align: center;">Result</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white; text-align: center;">Draw Ends</th>             
-                            
-                          
-                            
-                            
-                            <!-- <th style="color: white;">Prize</th>
-                            <th></th>&nbsp;
-                            <th></th>&nbsp;
-                          
-                            
-      
-                            <th style="color: white; text-align: center;">Draw Ends</th> -->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><div class="text-white">{{win1}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{price1}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{seq1}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{time1|  date:'medium'}}</div></td>
-
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                
+                        <div class="winner-card mb-30">
+                          <div class="winner-card__thumb justify-content-center">
+                            <img src="assets/images/elements/winnercoin.png" alt="image">
                 </div>
-    
-              </div>
+                 <div class="winner-card__content">
+                            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                            <div class="content-top">
+                              <div class="left">
+                                <h5>Server seed hash: </h5>
+                                <h5 style="color: #27ff5a">{{server1}}</h5>
+                              </div>
+                              <div class="right">
+                                <span>Draw Ends</span>
+                                <p>{{time1|  date:'medium'}}</p>
+                              </div>
+                            </div>
+                            <div class="content-bottom">
+                              <div class="number-list-wrapper">
+                                <p> winning Number</p>
+                                <p style="color: white;">{{seq1}}</p>
+                              <!-- number-list end -->
+                              </div>
+                              <div class="right">
+                                <p>Draw Name:</p>
+                                <span class="contest-num">{{name1}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+               <!-- winner-card first start -->
+               
               <!-- winner-card first end -->
                <!-- winner-card 2 start -->
                <div class="winner-card mb-30">
@@ -267,72 +243,26 @@
                   <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
                   <div class="content-top">
                     <div class="left">
-                      <h5>Server seed hash: NA</h5>
+                      <h5>Server seed hash:NA </h5>
+                      <!-- <h5 style="color: #27ff5a">{{server1}}</h5> -->
                     </div>
                     <div class="right">
-                      <span>Draw Name</span>
-                      <p>{{name}}</p>
+                      <span>Draw Ends</span>
+                      <p>{{time|  date:'medium'}}</p>
                     </div>
                   </div>
                   <div class="content-bottom">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th style="color: white;">Draw</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white;">Price No</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white; text-align: center;">Result</th>
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th></th>&nbsp;
-                          <th style="color: white; text-align: center;">Draw Ends</th>             
-                            
-                          
-                            
-                            
-                            <!-- <th style="color: white;">Prize</th>
-                            <th></th>&nbsp;
-                            <th></th>&nbsp;
-                          
-                            
-      
-                            <th style="color: white; text-align: center;">Draw Ends</th> -->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><div class="text-white">{{win}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{price}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{seq}}</div></td>
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td></td>&nbsp;
-                          <td><div class="text-white">{{time|  date:'medium'}}</div></td>
-
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="number-list-wrapper">
+                      <p> winning Number</p>
+                      <p style="color: white;">{{seq}}</p>
+                    <!-- number-list end -->
+                    </div>
+                    <div class="right">
+                      <p>Draw Name:</p>
+                      <span class="contest-num">{{name}}</span>
+                    </div>
                   </div>
-                
                 </div>
-    
               </div>
               <!-- winner-card 2 end -->
             

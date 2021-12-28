@@ -61,6 +61,7 @@ export class CurrentdrawComponent implements OnInit {
   win5: any;
   price5: any;
   id5: any;
+  server: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -88,6 +89,7 @@ export class CurrentdrawComponent implements OnInit {
       this.win=res['data'][0]['winning_price']
       this.price=res['data'][0]['price']
       this.id=res['data'][0]['_id']
+      this.server=res['data'][0]['server_seed']
       this.seq=(res['data'][1]['winning_sequence'])
       this.name1=res['data'][1]['name']
       this.time1=res['data'][1]['start_time']
@@ -180,9 +182,9 @@ console.log(this.myArray)
   gototick(data){
     debugger
     console.log(data)
-    var json={key:'1',value:data}
+    localStorage.setItem("tickid", JSON.stringify(data));
 
-    this.router.navigateByUrl('/user-Draw/buynow',{state:{data:json}})
+    this.router.navigateByUrl('/user-Draw/buynow')
 
   }
 }

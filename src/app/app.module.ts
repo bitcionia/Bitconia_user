@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NavigationService } from './components/service/navigation.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   // providers:[],
 
-  providers:[{provide: APP_BASE_HREF, useValue: '/'}],
+  providers:[{provide: APP_BASE_HREF, useValue: '/'},NavigationService],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

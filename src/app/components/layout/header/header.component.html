@@ -578,7 +578,7 @@
  <div class="product__cart">
                <a href="#" routerLink="/user-Draw/cart"  class="amount__btn">
         <i class="las la-shopping-basket"></i> 
-        <span class="cart__num">0</span>
+        <span class="cart__num">{{tickcount}}</span>
       </a>
             </div>
            <a href=""routerLink= "/user-Draw/wallet" class="user__btn"*ngIf="token!=null" ><i class="las la-wallet"></i></a> 
@@ -661,7 +661,10 @@
           </ul>
           <div class="nav-right">
         <a href=""routerLink="/user-Draw/buynow" class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a>
-      <!-- <div class="hero__btn wow fadeInUp"> -->
+    
+        <!-- <a href=""routerLink=".."class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a> -->
+
+        <!-- <div class="hero__btn wow fadeInUp"> -->
               <!-- <a href="buytickets.html" class="cmn-btn btn-sm"><img src="assets/images/tag.png" alt="icon" class="mr-2">Buy Tickets</a> -->
           
             <!-- </div> -->

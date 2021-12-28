@@ -8,7 +8,7 @@ import { ControlService, ControlInput, Result, VertifyQuery  } from '../../servi
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommondataService } from '../../service/commondata.service';
 import { HttpService } from '../../service/http.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, ActivationEnd, RoutesRecognized } from '@angular/router';
 // import { ToastrService } from 'ngx-toastr';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 import { PasswordStrengthService } from '../../service/password-strength.service';
@@ -19,6 +19,8 @@ import { DOCUMENT } from '@angular/common';
 import { Location } from '@angular/common';
 
 import { AuthencationGuard } from '../../service/authencation.guard.service';
+import { filter, pairwise } from 'rxjs/operators';
+import { NavigationService } from '../../service/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -71,7 +73,9 @@ data:any;
   qrcode: any;
   showDatafound: boolean;
   // spinnerType = SPINNER.circle;
-
+  previousUrl: string = null;
+  currentUrl: string = null;
+  tickcount: any;
   constructor(
     public toastr: ToastrService,
     // private loader: NgxUiLoaderService,
@@ -88,10 +92,17 @@ data:any;
     public http:HttpClient,
     public location:Location,
     private notifyService : NotificationService,
+    private navigation:NavigationService,
     @Inject(DOCUMENT) private _document: Document
 
   ) {
-    
+    this.tickcount = JSON.parse(localStorage.getItem("tickcount"));
+    this.sharedata.ticketcount.subscribe((msg: any) => {
+      if (msg !== "") {
+        console.log(msg)
+        this.tickcount=msg
+      }
+    });
     // var arr = [];
     // while(arr.length < 6){
     //     var r = Math.floor(Math.random() * 50) + 1;
@@ -122,11 +133,36 @@ data:any;
     this.createForm();
 this.mobileForm();
 // this.reloadComponent();
+console.log(router.url , 'gfhhj');
    }
    currentRouter = this.router.url;
 
   ngOnInit(): void {
-   
+
+  //   this.router.events.pipe(
+  //     filter((event) => event instanceof NavigationEnd)
+  // ).subscribe((event: NavigationEnd) => {
+  //    this.previousUrl = this.currentUrl;
+  //    this.currentUrl = event.url;
+  //    console.log(this.previousUrl , 'gfhhj');
+  //    console.log(this.currentUrl , 'gfhhj');
+
+  // });
+
+  // this.router.events
+  // .pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
+  // .subscribe((events: RoutesRecognized[]) => {
+  //   console.log('previous url', events[0].urlAfterRedirects);
+  //   console.log('current url', events[1].urlAfterRedirects);
+  // });
+
+  this.router.events
+  .pipe( filter(        (evt:any)=>evt instanceof RoutesRecognized),pairwise())
+  .subscribe((events: RoutesRecognized[]) =>{        
+      console.log('previous',events[0].urlAfterRedirects);//previous url
+      console.log('current url',events[1].urlAfterRedirects);//current url
+    }    );
+
 this.balance();
     this.token = JSON.parse(localStorage.getItem("data"));
 
@@ -147,7 +183,12 @@ this.balance();
 // });
 
   }
-
+  backWithNavigation() {
+    this.navigation.back();
+  }
+  backWithLocation() {
+    this.location.back();
+  }
   createForm() {
     this.loginForm = this.formBuilder.group({
       'email': ['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],

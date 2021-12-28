@@ -24,7 +24,9 @@ export class CommondataService {
   constructor(
   ) { }
 
- 
+  countick(data) {
+    this.ticketnumber.next(data);
+  }
   activity(data) {
     this.activityMsg.next(data);
   }
