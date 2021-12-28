@@ -131,7 +131,12 @@
               <span>${{amountOfTickets}}</span>
             </div>
           </div>
-          <div  class="right"><button  class="cmn-btn" (click)="naviGateCardPage()">Checkout</button></div>
+          <!-- <div  class="right" *ngIf="!isempty">
+            <button  class="cmn-btn">Checkout</button>
+          </div> -->
+          <div  class="right" >
+            <button  class="cmn-btn" (click)="naviGateCardPage()">Checkout</button>
+          </div>
 
         </div>
       </div>

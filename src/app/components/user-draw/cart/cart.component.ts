@@ -72,11 +72,11 @@ this.ticketcount.push(this.countdata)
 console.log(this.ticketnumber)
 localStorage.setItem("cart", JSON.stringify(this.ticketnumber));
 
-this.ticketnum=this.ticketdata*4.99
-this.tickdata=(this.ticketnum.toFixed(2))
-this.remain=this.balance- this.tickdata
-console.log(this.remain)
-      
+// this.ticketnum=this.ticketdata*4.99
+// this.tickdata=(this.ticketnum.toFixed(2))
+// this.remain=this.balance- this.tickdata
+// console.log(this.remain)
+this.calcAmt()
   }
 
   editTicket(item){
@@ -87,6 +87,14 @@ console.log(this.remain)
   deleteItem(item){
     const insertIndex = this.ticketsArray.indexOf(item)
     this.ticketsArray.splice(insertIndex , 1)
+    
+    this.sharedata.countick(this.ticketsArray.length)
+    this.calcAmt()
+  }
+  delete(){
+    this.ticketsArray=[]
+    this.sharedata.countick(this.ticketsArray.length)
+    this.calcAmt()
   }
   cartadd(){
 //     console.log(history.state.data.key)
@@ -170,6 +178,13 @@ var id = JSON.parse(localStorage.getItem("tickid"));
           }
         })
     
+      }
+
+      calcAmt(){
+        this.ticketnum=this.ticketsArray.length*4.99
+this.tickdata=(this.ticketnum.toFixed(2))
+this.remain=this.balance- this.tickdata
+console.log(this.remain)
       }
       // payment() {
       //   const dialogRef = this.dialog.open(BalancepopupComponent, {

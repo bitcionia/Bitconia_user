@@ -27,7 +27,7 @@
               <div class="ticket-wrapper">
                 <div class="ticket-wrapper__header">
                   <h3>Your tickets:</h3>
-                  <button type="button" >clear all</button>
+                  <button type="button"(click)="delete()" >clear all</button>
                 </div>
                 <div class="ticket-wrapper__body">
                   <div class="single-row" *ngFor="let tikets of ticketsArray">
@@ -59,8 +59,7 @@
                     <li>
                       <div class="left">
                         <h4 class="caption">Ticket Price</h4>
-                        <span>({{ ticketdata ==
-                          undefined ? '0' : ticketdata }} tickets X <i class="lab la-btc text-white"></i>4.99)</span>
+                        <span>( {{this.ticketsArray.length}} tickets X <i class="lab la-btc text-white"></i>4.99)</span>
                       </div>
                       <div class="right">
                         <span class="price"><i class="lab la-btc text-white"></i>{{ tickdata ==
@@ -102,7 +101,7 @@
                         <span>No.of tickets</span>
                       </div>
                       <div class="right">
-                        <span class="price">{{ticketdata}}</span>
+                        <span class="price"> {{this.ticketsArray.length}}</span>
                       </div>
                     </li>
                     <li>

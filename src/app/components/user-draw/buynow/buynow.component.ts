@@ -13,11 +13,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BuynowComponent implements OnInit {
   key:any;
+  tick: any=[];
+  ticketdata: any;
+  countdata: any;
   constructor(private router: Router,public sharedata:CommondataService,
     public httpService: HttpService,    public toastr: ToastrService,
 
     ) { 
-     
+
     }
 
 
@@ -70,7 +73,7 @@ export class BuynowComponent implements OnInit {
   // }
   this.sharedata.countick(this.ticketCounts)
 
-  localStorage.setItem("tickcount", JSON.stringify(this.ticketCounts));
+  localStorage.setItem("tickarry", JSON.stringify(this.ticketCounts));
 
   }
 // else{
@@ -83,7 +86,7 @@ export class BuynowComponent implements OnInit {
     return Math.floor((Math.random() * 49) + 1);
   }
   generateOrDeleteRandomIndividual(item , key, type, index){
-    
+    debugger
     var tempRandom = []
    if(key == 'gen' &&( type == 'quick' ||  type == 'pack')){
     for(var i=0; i < 6; i++){
@@ -171,6 +174,7 @@ export class BuynowComponent implements OnInit {
     this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
   }
   naviGateCardPage(){
+
     if(history.state.data == 'edit'){
       for(let item of this.sharedata.ticketsArray){
         for (let idex of this.generateTicketsArray){
@@ -180,17 +184,23 @@ export class BuynowComponent implements OnInit {
         }
       }
     }else{
+var isvaild = 0;
+
       this.sharedata.ticketsArray = this.generateTicketsArray;
+
       console.log( this.sharedata.ticketsArray)
+      localStorage.setItem("tick", JSON.stringify(this.sharedata.ticketsArray));
+      
     }
-     
-//     console.log(history.state.data.key)
-//     console.log(history.state.data.data)
-// this.key=history.state.data.value
-// console.log(this.key)
-//     var json={key:'1',value:this.key}
-//     this.router.navigateByUrl('user-Draw/cart',{state:{data:json}} )
-    this.router.navigateByUrl('user-Draw/cart')
+for(let item of this.generateTicketsArray){
+  if(item.values.length > 0){
+    isvaild = isvaild + 1
+  }
+}
+if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
+  this.router.navigateByUrl('user-Draw/cart')
+}
+    
 
   }
   packagePick(length){

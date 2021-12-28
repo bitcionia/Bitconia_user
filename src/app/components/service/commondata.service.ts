@@ -18,6 +18,8 @@ export class CommondataService {
   count= this.ticket.asObservable();
   countnu= this.countnum.asObservable();
 
+  
+
   ticketsArray: Array<any> = [];
   editsArray: Array<any> = []
 

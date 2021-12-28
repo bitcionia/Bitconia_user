@@ -75,7 +75,7 @@ data:any;
   // spinnerType = SPINNER.circle;
   previousUrl: string = null;
   currentUrl: string = null;
-  tickcount: any;
+  tickcount=0;
   constructor(
     public toastr: ToastrService,
     // private loader: NgxUiLoaderService,
@@ -97,6 +97,12 @@ data:any;
 
   ) {
     this.tickcount = JSON.parse(localStorage.getItem("tickcount"));
+    // this.sharedata.ticketsArray.subscribe((msg: any) => {
+    //   if (msg !== "") {
+    //     console.log(msg)
+    //     this.tickcount=msg
+    //   }
+    // });
     this.sharedata.ticketcount.subscribe((msg: any) => {
       if (msg !== "") {
         console.log(msg)
