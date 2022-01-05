@@ -82,3 +82,122 @@
        display:none;
  }
  }
+ .h1, h2, h3, h4, h5, h6,p {
+    font-family: "Josefin Sans", sans-serif;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+.h5, h5 {
+    font-size: 1.25rem;
+}
+.body{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    // background-color: #0f0232;
+}
+.winner-tab-nav li {
+    width: calc(100% / 4); 
+     text-align: center;
+ }
+ .winner-tab-nav li a .icon-thumb {
+     height: 115px;
+     position: relative;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     color: #ffffff;
+     font-size: 20px;
+ }
+ 
+ .winner-tab-nav {
+     background-color: transparent !important;
+     border-color: transparent !important;
+     border-bottom: 4px solid #ff5800 !important;
+ }
+ 
+ .winner-tab-nav li a.active, .winner-tab-nav li a:hover{
+     background-color: transparent !important;
+     border-color: transparent !important;
+     border-bottom: transparent!important;
+ }
+ 
+ @media (max-width: 575px){
+ .winner-tab-nav li a .icon-thumb {
+     width: 120px;
+     height: 120px;
+     margin: auto;
+ }
+ }
+ .winner-tab-nav li a span {
+     font-size: 18px;
+     font-weight: 600;
+     text-transform: uppercase;
+     margin-top: 40px;
+     color: #ffffff;
+     padding-bottom: 10px;
+ }
+ .number-check-wrapper {
+     padding: 58px 10px;
+     background-color: #4939c1;
+     border-radius: 20px;
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+ }
+ 
+ .latest-winner-section{
+ margin-top: 300px;
+ }
+ .tooltip-inner {
+     max-width: 100% !important;
+     text-align:left;line-height:40px;
+     background: #392ba6;
+     border: 1px solid #000000;
+ }
+ 
+ .popover-title {
+     color: blue;
+     font-size: 15px;
+ }
+ .popover-content {
+ width: 1200px;
+     color: red;
+     font-size: 10px;
+ }
+ 
+ @media (max-width: 575px){
+ .winner-tab-nav li a .icon-thumb {
+     height: 115px;
+     position: relative;
+     left:-30px;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     color: #ffffff;
+     font-size: 20px;
+ }
+ .latest-winner-section .el-1 {
+    display:none;
+ }
+ 
+ .latest-winner-section .el-2 {
+      display:none;
+ }
+ 
+ .latest-winner-section .el-3 {
+       display:none;
+ }
+ }

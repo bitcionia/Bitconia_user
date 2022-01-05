@@ -102,17 +102,25 @@
                                 <th >Price Category</th>
                                  <th >Draw Ends</th> 
                                   <th>Status</th> -->
-                                
-                                <th>Draw</th>
-                                <th>Price No</th>
-                                <th>Result</th>
-                                <th>Status</th>
+                                  
+                                    <th>Date</th>
+                                    <th>Draw</th>
+                                    <th>Result</th>
+                                    <!-- <th>Price</th> -->
+                                    <th>Status</th>
+                                  
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of list ">
-                              <td><div class="text-white">{{item['name']}}</div></td>
-              
+                              <td><span class="date">{{item['end_time'] | date:'shortDate'}}</span></td>
+
+                              <!-- <td><div class="text-white">{{item['name']}}</div></td> -->
+                              <td><span class="contest-no">
+                                <a class="contest-no" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" data-html="true" title="<div>SERVER SEED:&nbsp; {{item['server_seed']}}
+                     <br/>SERVER SEED HASH:&nbsp; {{item['hash_server_seed']}}
+                     <br/>CLIENT SEED:&nbsp; {{item['block_hash']}}">{{item['name']}}</a>
+                     </span></td>
                               <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
                               <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                               <td>
@@ -121,11 +129,11 @@
                                   </ul>
                                <!-- <div class="text-green"> {{item['winning_sequence']}}</div> -->
                               </td>
-                              <td>
+                              <!-- <td>
                             
                                   <div class="text-white"> {{item['winning_price']}}</div>
                                   
-                              </td>
+                              </td> -->
                              
                               <!-- <td><div class="text-white"> {{item['end_time']| date :'medium'}}
             
