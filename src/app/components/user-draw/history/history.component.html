@@ -116,14 +116,21 @@
                               <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
                               <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                               <td>
-                               <div class="text-green"> {{item['winning_sequence']}}</div>
+                                <ul class="number-list">
+                                  <li   *ngFor="let values of seq">{{values}}</li>
+                                  </ul>
+                               <!-- <div class="text-green"> {{item['winning_sequence']}}</div> -->
                               </td>
-                              <td><div class="text-white"> {{item['winning_price']}}</div></td>
+                              <td>
+                            
+                                  <div class="text-white"> {{item['winning_price']}}</div>
+                                  
+                              </td>
                              
                               <!-- <td><div class="text-white"> {{item['end_time']| date :'medium'}}
             
                               </div></td> -->
-                              <td><a href=""routerLink="/user-Draw/drawres" class="cmn-btn btn--sm">Check</a></td>
+                              <td><button (click)="gotoview(item)" class="cmn-btn btn--sm">Check</button></td>
 
                             
                          
@@ -142,9 +149,9 @@
                             </tr>
                           </table> -->
                       </div>
-                      <div class="center" *ngIf="!showDatafound">
+                      <!-- <div class="center" *ngIf="!showDatafound">
                         <span>NO DATA FOUND </span>
-                      </div>
+                      </div> -->
                     <!-- <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls> -->
                     </div>
 		  <!-- <div class="past-draw-wrapper">

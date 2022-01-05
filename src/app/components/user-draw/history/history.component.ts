@@ -33,6 +33,13 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.pervdraw();
   }
+  gotoview(view) {
+    // //debugger
+    this.router.navigateByUrl('/user-Draw/drawres')
+    
+    localStorage.setItem("hisview", JSON.stringify(view));
+
+  }
   pervdraw(){
     debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
@@ -47,7 +54,7 @@ export class HistoryComponent implements OnInit {
       this.win=res['data'][0]['winning_price']
       this.price=res['data'][0]['price']
 
-      this.seq=(res['data'][0]['winning_sequence'])
+      this.seq=res['data'][0]['winning_sequence'].split(',');
      
       // this.myArray = this.seq.split(',');
 

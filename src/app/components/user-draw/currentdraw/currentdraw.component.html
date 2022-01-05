@@ -180,12 +180,12 @@
             <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
               <div class="left"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
               <div class="body">
-                <p class="contest-number">UP Coming Draws</p>
+                <p class="contest-number">Contest No:{{name}} </p>
 
-                <p class="contest-number">{{name}}</p>
+                <!-- <p class="contest-number"></p> -->
                 <p><span>Draw Ends:</span> {{time|  date:'medium'}}</p>
 				<br/>
-				<h5 class="contest-date">Server seed hash: <span class="text-bold"> {{server}}</span></h5>
+				<h5 class="contest-date">Server seed hash: <span class="text-bold"> 694c2d9055e37e9b2ffe3f...</span></h5>
                 <div class="line"></div>
                 <!-- <h4 class="title">Latest  biggest Winning Numbers:</h4> -->
                 <h4 class="title">Numbers OF Tickets:  {{count1}}</h4>
@@ -219,34 +219,59 @@
                      <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
                      <div class="content-top">
                        <div class="left">
-                         <p>Server seed hash:</p>
+                         <p>Server seed hash:NA</p>
                          <span style="color: #27ff5a">{{server}}</span>
                         
                        </div>
                        <div class="right">
                         <span>Draw Name</span>
                   <p>{{name}}</p>
+                  <span>Draw took place on</span>
+                               <p>{{time| date:'medium'}}</p>
                        </div>
                      </div>
-                     <div class="content-bottom">
+                     <div class="content-bottom row mt-3">
+                      <div class="col-md-3 justify-content-center p-0 m-0">
+                        <p>Winning</p>
+                        <ul class="number-list" >  
+                          <li style="height:60px;width:60px; padding-top:15px">{{win}}</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 justify-content-center">
+                          <p> Prize</p>
+                       <div class="pick-lottery-package">
+                               <div class="lottery-package-list-small mt-3">
+                          <a href="#0"> ${{price}}</a>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="col-md-3 justify-content-center">
+                      <p class="ml-3"> Buy now</p>
+                       <div class="pick-lottery-package">
+                        <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>
+
+                      </div>
+                      </div>
+                   
+                    
+                                                        
+                                </div>
+                     <!-- <div class="content-bottom">
                       <div style="padding-left:2rem;" >
                         <p>Winning</p>
                         <span class="text-white">{{win}}</span>
                        
                       </div>
-                       <div style="padding-left:3rem;">
-                         <p style="text-align: center;">Buy Now</p>
-                         <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>
-                        
-                       </div>
-                       
-                     
-    
                        <div style="padding-left:5rem;" >
                          <p>Prize</p>
                          <span class="text-white">{{price}}</span>
                        </div>
-                     </div>
+                       <div style="padding-left:3rem;">
+                        <p style="text-align: center;">Buy Now</p>
+                        <button (click)="gototick(id)"class="cmn-btn btn--sm">Buynow</button>
+                       
+                      </div>
+                     </div> -->
                    </div>
                  </div>
                  <div class="winner-card mb-30">
@@ -264,6 +289,8 @@
                       <div class="right">
                        <span>Draw Name</span>
                  <p>{{name1}}</p>
+                 <span>Draw took place on</span>
+                               <p>{{time1| date:'medium'}}</p>
                       </div>
                     </div>
                     <div class="content-bottom">
@@ -272,17 +299,19 @@
                        <span class="text-white">{{win1}}</span>
                       
                      </div>
-                      <div style="padding-left:3rem;">
-                        <p style="text-align: center;">Buy Now</p>
-                        <button (click)="gototick(id1)"class="cmn-btn btn--sm">Buynow</button>
-                       
-                      </div>
+                     
                       
                     
    
                       <div style="padding-left:5rem;" >
                         <p>Prize</p>
                         <span class="text-white">{{price1}}</span>
+                        
+                      </div>
+                      <div style="padding-left:3rem;">
+                        <p style="text-align: center;">Buy Now</p>
+                        <button (click)="gototick(id1)"class="cmn-btn btn--sm">Buynow</button>
+                       
                       </div>
                     </div>
                   </div>
@@ -301,6 +330,8 @@
                       <div class="right">
                        <span>Draw Name</span>
                  <p>{{name2}}</p>
+                 <span>Draw took place on</span>
+                               <p>{{time2| date:'medium'}}</p>
                       </div>
                     </div>
                     <div class="content-bottom">
@@ -309,17 +340,18 @@
                        <span class="text-white">{{win2}}</span>
                       
                      </div>
-                      <div style="padding-left:3rem;">
-                        <p style="text-align: center;">Buy Now</p>
-                        <button (click)="gototick(id2)"class="cmn-btn btn--sm">Buynow</button>
-                       
-                      </div>
+                     
                       
                     
    
                       <div style="padding-left:5rem;" >
                         <p>Prize</p>
                         <span class="text-white">{{price2}}</span>
+                      </div>
+                      <div style="padding-left:3rem;">
+                        <p style="text-align: center;">Buy Now</p>
+                        <button (click)="gototick(id2)"class="cmn-btn btn--sm">Buynow</button>
+                       
                       </div>
                     </div>
                   </div>
@@ -338,6 +370,8 @@
                       <div class="right">
                        <span>Draw Name</span>
                  <p>{{name3}}</p>
+                 <span>Draw took place on</span>
+                               <p>{{time3| date:'medium'}}</p>
                       </div>
                     </div>
                     <div class="content-bottom">
@@ -346,17 +380,18 @@
                        <span class="text-white">{{win3}}</span>
                       
                      </div>
-                      <div style="padding-left:3rem;">
-                        <p style="text-align: center;">Buy Now</p>
-                        <button (click)="gototick(id3)"class="cmn-btn btn--sm">Buynow</button>
-                       
-                      </div>
+                      
                       
                     
    
                       <div style="padding-left:5rem;" >
                         <p>Prize</p>
                         <span class="text-white">{{price3}}</span>
+                      </div>
+                      <div style="padding-left:3rem;">
+                        <p style="text-align: center;">Buy Now</p>
+                        <button (click)="gototick(id3)"class="cmn-btn btn--sm">Buynow</button>
+                       
                       </div>
                     </div>
                   </div>
@@ -375,6 +410,8 @@
                       <div class="right">
                        <span>Draw Name</span>
                  <p>{{name4}}</p>
+                 <span>Draw took place on</span>
+                               <p>{{time4| date:'medium'}}</p>
                       </div>
                     </div>
                     <div class="content-bottom">
@@ -383,17 +420,18 @@
                        <span class="text-white">{{win4}}</span>
                       
                      </div>
-                      <div style="padding-left:3rem;">
-                        <p style="text-align: center;">Buy Now</p>
-                        <button (click)="gototick(id4)"class="cmn-btn btn--sm">Buynow</button>
-                       
-                      </div>
+                     
                       
                     
    
                       <div style="padding-left:5rem;" >
                         <p>Prize</p>
                         <span class="text-white">{{price4}}</span>
+                      </div>
+                      <div style="padding-left:3rem;">
+                        <p style="text-align: center;">Buy Now</p>
+                        <button (click)="gototick(id4)"class="cmn-btn btn--sm">Buynow</button>
+                       
                       </div>
                     </div>
                   </div>

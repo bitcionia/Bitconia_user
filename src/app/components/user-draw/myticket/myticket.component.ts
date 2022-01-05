@@ -31,6 +31,12 @@ export class MyticketComponent implements OnInit {
   win: any;
   price: any;
   count: any;
+  totalprice: any;
+  count1: any;
+  count2: any;
+  count4: any;
+  count3: any;
+  iddata: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -49,7 +55,13 @@ export class MyticketComponent implements OnInit {
     this.last_draw();
 
   }
-  
+  gotoview(view) {
+    // //debugger
+    this.router.navigateByUrl('/user-Draw/claimprize')
+    
+    localStorage.setItem("mytickview", JSON.stringify(view));
+
+  }
   last_draw(){
     debugger
     this.httpService.last_draw().subscribe((res: any) => {
@@ -63,9 +75,9 @@ export class MyticketComponent implements OnInit {
       // this.win=res['data'][0]['winning_price']
       // this.price=res['data'][0]['price']
 
-      // this.seq=(res['data'][0]['winning_sequence'])
+      this.seq=res['data'][0]['winning_sequence'].split(',');
      
-
+console.log(this.seq)
      
       this.data1 = res['data']
       if (this.data1) {
@@ -123,4 +135,5 @@ export class MyticketComponent implements OnInit {
   }
     });
   }
+ 
 }

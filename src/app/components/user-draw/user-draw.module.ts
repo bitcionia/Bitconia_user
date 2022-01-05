@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BalancepopupComponent } from './balancepopup/balancepopup.component';
 import { DrawresultComponent } from './drawresult/drawresult.component';
 import Swal from 'sweetalert2';
+import { ClaimprizeComponent } from './claimprize/claimprize.component';
 @NgModule({
   declarations: [
   
@@ -32,6 +33,7 @@ import Swal from 'sweetalert2';
        PastdrawComponent,
        BalancepopupComponent,
        DrawresultComponent,
+       ClaimprizeComponent,
   ],
   imports: [
     CommonModule,

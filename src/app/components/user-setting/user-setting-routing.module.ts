@@ -27,7 +27,7 @@ const routes: Routes = [
 
   path: 'accountactivity', component: AccountactivityComponent},
 { 
-  canActivate:[AuthencationGuard],
+  // canActivate:[AuthencationGuard],
 
   path: 'notifi', component:NotificationComponent},
 { 

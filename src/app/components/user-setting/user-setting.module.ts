@@ -15,8 +15,9 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { PirvacyComponent } from './pirvacy/pirvacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxIntlTelInputModule
+    NgxIntlTelInputModule,
+    ClipboardModule
 
   ]
 })

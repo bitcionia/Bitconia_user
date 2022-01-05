@@ -40,6 +40,12 @@ export class DrawresultComponent implements OnInit {
   price1: any;
   seq1: any;
   server1: any;
+  iddata: any;
+  totalprice: any;
+  count2: any;
+  count1: any;
+  count4: any;
+  count3: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -48,67 +54,53 @@ export class DrawresultComponent implements OnInit {
 
 
     public httpService: HttpService,
-  ) { }
+  ) {
+
+    var history = JSON.parse(localStorage.getItem("hisview"));
+console.log(history)
+
+this.name=history['name']
+    this.time=history['start_time']
+    this.win=history['winning_price']
+    this.price=history['price']
+    this.seq=history['winning_sequence'].split(',')
+    this.server=history['server_seed']
+    this.blhash=history['block_hash']
+    this.block=history['block_number']
+    this.hash=history['hash_server_seed']
+    this.iddata=history['_id']
+
+   }
 
   ngOnInit(): void {
-    this.pervdraw();
-    this.last_draw();
+    this.draw();
   }
-  pervdraw(){
+  
+  draw(){
     debugger
-    this.httpService.perviousdraw().subscribe((res: any) => {
-      console.log(res['data'])
-      this.list=res['data']
-      this.count=res['count']
-      console.log(res['data'][0]['name'])
-      console.log(res['data'][0]['start_time'])
-      console.log(res['data'][0]['winning_sequence'])
-      this.name=res['data'][0]['name']
-      this.time=res['data'][0]['start_time']
-      this.win=res['data'][0]['winning_price']
-      this.price=res['data'][0]['price']
-      this.seq=(res['data'][0]['winning_sequence'])
-      this.server1=(res['data'][1]['server_seed'])
-
-      this.seq=(res['data'][0]['winning_sequence'])
-      this.blhash=(res['data'][1]['block_hash'])
-      this.block=(res['data'][1]['block_number'])
-      this.hash=(res['data'][1]['hash_server_seed'])
-
-      this.name1=res['data'][1]['name']
-      this.time1=res['data'][1]['start_time']
-      this.win1=res['data'][1]['winning_price']
-      this.price1=res['data'][1]['price']
-
-      this.seq1=(res['data'][1]['winning_sequence'])
-      this.myArray = this.seq.split(',');
-
-     console.log(this.myArray)
-      this.data1 = res['data']
-      if (this.data1) {
-        if (this.data1.length > 0) {
-      if (res['success'] == true) {
-        this.showDatafound = true;
-        // this.searchuser();
-
-        // this.httpService.toastr.success(res['message'], '', {
-        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-        // });
-      }
+    let jsonData={
+      // id:this.id
+      // id:'612480f7288d443094dca546',
+      // user_id:'611a1282c3c0543978f01705',
+      id:this.iddata,
+      // Sequence_number:'010256785632',
     }
-  }
-  else {
-    this.showDatafound = false;
-    console.log("No Data found");
-  }
-    });
-  }
-
-  last_draw(){
-    debugger
-    this.httpService.last_draw().subscribe((res: any) => {
+    this.httpService.drawwin(jsonData).subscribe((res: any) => {
       console.log(res['data'])
-      this.data=res['data']
+      this.data=res['drawdetails']
+      this.totalprice=res['totalprice']
+      this.price=res['price']
+      this.count1=res['count1']
+      this.count2=res['count2']
+      this.count3=res['count3']
+      this.count4=res['count4']
+
+      console.log(this.data)
+      console.log(this.totalprice)
+      console.log(this.price)
+
+      // this.data=res['drawdetails']
+
       // console.log(res['data'][0]['name'])
       // console.log(res['data'][0]['start_time'])
       // console.log(res['data'][0]['winning_sequence'])

@@ -1,32 +1,19 @@
-.col-lg-8 {
-    // -ms-flex: 0 0 66.666667%;
-    /* flex: 0 0 66.666667%; */
-    max-width: 81.666667%;
-    padding-left: 24%;
+.h1, h2, h3, h4, h5, h6,p{
+    font-family: "Josefin Sans", sans-serif;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
 }
-.winner-card__content .winner-thumb {
-    position: absolute;
-    top: 65%;
-    left: 89%;
-    width: 41px;
-    height: 40px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    overflow: hidden;
-    margin-top: -43px;
-    background-color: unset;
+.h5, h5 {
+    font-size: 1.25rem;
 }
-.winner-card__content .content-bottom .number-list {
-    display: -ms-flexbox;
-    display: table-cell;
-        -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-right: 30px;
-}
-.cus{
-    cursor: pointer;
+.body{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    // background-color: #0f0232;
 }

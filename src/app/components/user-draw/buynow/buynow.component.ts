@@ -47,6 +47,15 @@ export class BuynowComponent implements OnInit {
       this.ticketCounts = this.generateTicketsArray.length
       this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
     }
+
+    var isvaild = JSON.parse(localStorage.getItem('tick'))
+    if(history.state.data !== 'edit' && isvaild){
+      
+      var istoken = JSON.parse(localStorage.getItem("data"));
+      istoken ?  this.generateTicketsArray = isvaild : ''
+      istoken ? this.ticketCounts = isvaild.length : ''
+      this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
+    }
   }
 
 
@@ -205,6 +214,8 @@ if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
   }
   packagePick(length){
     if(length !== 'all'){
+      this.sharedata.countick(length)
+
     for(var i = 1; i<=length; i++){
       var tempData = {
         index: i,
@@ -222,5 +233,3 @@ if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
     this.ticketCounts = 0
   }
 }
-
-

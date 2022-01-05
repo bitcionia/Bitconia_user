@@ -578,6 +578,7 @@
  <div class="product__cart">
                <a href="#" routerLink="/user-Draw/cart"  class="amount__btn">
         <i class="las la-shopping-basket"></i> 
+       
         <span class="cart__num">{{tickcount}}</span>
       </a>
             </div>
@@ -595,7 +596,7 @@
   <div class="dropdown">
 <a href="#" class="topmenulink mt-1 ml-4 user__btn" ><i class="las la-user"></i></a>
 <div class="dropdown-content">
-<a href="#" class="dropdown-item"*ngIf="token==null " data-toggle="modal" data-target="#loginModal" data-dismiss="modal" >Login</a>
+<a href="#" class="dropdown-item"*ngIf="token==null" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" >Login</a>
 <a href=""routerLink="/user-Draw/myticket" class="dropdown-item"*ngIf="token!=null" >User panel</a>
 <a href="#" class="dropdown-item" (click)="logoutUser()"*ngIf="token!=null" >Logout</a>
 <!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->

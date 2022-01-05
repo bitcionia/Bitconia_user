@@ -168,13 +168,18 @@
                 <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
                   <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
                   <div class="body">
-                    <p class="contest-number">{{name1}}</p>
-                    <p class="contest-date mb-15"><span>Draw took place on :</span> {{time1| date:'medium'}}</p>
-            <p class="contest-date mb-15"><span>Sever Seed :</span> {{server1}}</p>
+                    <p class="contest-number">{{name}}</p>
+                    <p class="contest-date mb-15"><span>Draw took place on :</span> {{time| date:'medium'}}</p>
+            <p class="contest-date mb-15"><span>Sever Seed :</span> {{server}}</p>
             <p class="contest-date mb-15"><span>Server Seed Hash :</span>{{hash}}</p>
             <p class="contest-date mb-30"><span>Block Number:</span> {{block}}</p>
                       <p>Last Winning Number</p>
-                      <p>{{seq}}</p>
+                      <!-- <p>{{seq}}</p> -->
+                      <ul  class="numbers mb-80" >
+                     
+                        <li class="active"  *ngFor="let values of seq">{{values}}</li>
+                        
+                      </ul>
                     <!-- <ul class="numbers mb-80" style="text-align: center;">
                       <li>11</li>
                       <li>88</li>
@@ -195,81 +200,144 @@
             </div>
           </div>
         </section>
-        <!-- winner details section end -->
-      <!-- latest winner section start  -->
         <section class="latest-winner-section position-relative pt-120 pb-120">
-           <div class="container">
-            
-                 <div class="row justify-content-center">
-                      <div class="col-lg-8">
-                        <div class="winner-card mb-30">
-                          <div class="winner-card__thumb justify-content-center">
-                            <img src="assets/images/elements/winnercoin.png" alt="image">
-                </div>
-                 <div class="winner-card__content">
-                            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
-                            <div class="content-top">
-                              <div class="left">
-                                <h5>Server seed hash: </h5>
-                                <h5 style="color: #27ff5a">{{server1}}</h5>
-                              </div>
-                              <div class="right">
-                                <span>Draw Ends</span>
-                                <p>{{time1|  date:'medium'}}</p>
-                              </div>
-                            </div>
-                            <div class="content-bottom">
-                              <div class="number-list-wrapper">
-                                <p> winning Number</p>
-                                <p style="color: white;">{{seq1}}</p>
-                              <!-- number-list end -->
-                              </div>
-                              <div class="right">
-                                <p>Draw Name:</p>
-                                <span class="contest-num">{{name1}}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-               <!-- winner-card first start -->
+          <div class="container">
+           
+                <div class="row justify-content-center">
+                     <div class="col-lg-8">
+             
+              <!-- winner-card first start -->
+                       <div class="winner-card mb-30">
+                         <div class="winner-card__thumb justify-content-center">
+                           <img src="assets/images/elements/winnercoin.png" alt="image">
+               </div>
+                <div class="winner-card__content">
+                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+                           <div class="content-top">
+                             <div class="left">
+                               <h5>Match 1 6/6</h5>
+                             </div>
+                             <div class="right">
+                               <span>Draw took place on</span>
+                               <p>{{time| date:'medium'}}</p>
+                             </div>
+                           </div>
+                           <div class="content-bottom">
+                             <div class="number-list-wrapper">
+                               <p>Number of winners</p>
+                               <ul class="number-list mt-2">
+                                 <li>{{count1}}</li>
+                                
+                               </ul><!-- number-list end -->
+                             </div>
+                             <div class="right">
+                               <p>Contest No:</p>
+                               <span class="contest-num">{{name}}</span>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+             <!-- winner-card first end -->
+              <!-- winner-card 2 start -->
+                       <div class="winner-card mb-30">
+                         <div class="winner-card__thumb justify-content-center">
+                           <img src="assets/images/elements/winnercoin.png" alt="image">
+               </div>
+                <div class="winner-card__content">
+                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner2.png" alt="image"></div>
+                           <div class="content-top">
+                             <div class="left">
+                               <h5>Match 2 5/6</h5>
+                             </div>
+                             <div class="right">
+                               <span>Draw took place on</span>
+                               <p>{{time| date:'medium'}}</p>
+                             </div>
+                           </div>
+                           <div class="content-bottom">
+                             <div class="number-list-wrapper">
+                               <p>Number of winners</p>
+                               <ul class="number-list mt-2">
+                                 <li>{{count2}}</li>
+                                
+                               </ul><!-- number-list end -->
+                             </div>
+                             <div class="right">
+                               <p>Contest No:</p>
+                               <span class="contest-num">{{name}}</span>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+             <!-- winner-card 2 end -->
+              <!-- winner-card 3 start -->
+                       <div class="winner-card mb-30">
+                         <div class="winner-card__thumb justify-content-center">
+                           <img src="assets/images/elements/winnercoin.png" alt="image">
+               </div>
+                <div class="winner-card__content">
+                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner3.png" alt="image"></div>
+                           <div class="content-top">
+                             <div class="left">
+                               <h5>Match 3 4/6</h5>
+                             </div>
+                             <div class="right">
+                               <span>Draw took place on</span>
+                               <p>{{time| date:'medium'}}</p>
+                             </div>
+                           </div>
+                           <div class="content-bottom">
+                             <div class="number-list-wrapper">
+                               <p>Number of winners</p>
+                               <ul class="number-list mt-2">
+                                 <li>{{count3}}</li>
+                                
+                               </ul><!-- number-list end -->
+                             </div>
+                             <div class="right">
+                               <p>Contest No:</p>
+                               <span class="contest-num">{{name}}</span>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+             <!-- winner-card 3 end -->
+              <!-- winner-card 4 start -->
+                       <div class="winner-card">
+                         <div class="winner-card__thumb justify-content-center">
+                           <img src="assets/images/elements/winnercoin.png" alt="image">
+               </div>
+                <div class="winner-card__content">
+                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner4.png" alt="image"></div>
+                           <div class="content-top">
+                             <div class="left">
+                               <h5>Match 4 3/6</h5>
+                             </div>
+                             <div class="right">
+                               <span>Draw took place on</span>
+                               <p>{{time| date:'medium'}}</p>
+                             </div>
+                           </div>
+                           <div class="content-bottom">
+                             <div class="number-list-wrapper">
+                               <p>Number of winners</p>
+                               <ul class="number-list mt-2">
+                                 <li>{{count4}}</li>
+                                
+                               </ul><!-- number-list end -->
+                             </div>
+                             <div class="right">
+                               <p>Contest No:</p>
+                               <span class="contest-num">{{name}}</span>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+             <!-- winner-card 4 end -->
+                     
+                     </div>
+                   </div>
                
-              <!-- winner-card first end -->
-               <!-- winner-card 2 start -->
-               <div class="winner-card mb-30">
-                <div class="winner-card__thumb justify-content-center">
-                  <img src="assets/images/elements/winnercoin.png" alt="image">
-      </div>
-       <div class="winner-card__content">
-                  <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
-                  <div class="content-top">
-                    <div class="left">
-                      <h5>Server seed hash:NA </h5>
-                      <!-- <h5 style="color: #27ff5a">{{server1}}</h5> -->
-                    </div>
-                    <div class="right">
-                      <span>Draw Ends</span>
-                      <p>{{time|  date:'medium'}}</p>
-                    </div>
-                  </div>
-                  <div class="content-bottom">
-                    <div class="number-list-wrapper">
-                      <p> winning Number</p>
-                      <p style="color: white;">{{seq}}</p>
-                    <!-- number-list end -->
-                    </div>
-                    <div class="right">
-                      <p>Draw Name:</p>
-                      <span class="contest-num">{{name}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- winner-card 2 end -->
-            
-                      
-                      </div>
-                    </div>
-                
-              </div>
-            
-        </section>
+             </div>
+           
+       </section>

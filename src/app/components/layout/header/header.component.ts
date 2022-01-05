@@ -107,7 +107,11 @@ data:any;
       if (msg !== "") {
         console.log(msg)
         this.tickcount=msg
+      }else{
+        this.tickcount=0;
+
       }
+
     });
     // var arr = [];
     // while(arr.length < 6){

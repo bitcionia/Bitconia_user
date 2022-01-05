@@ -73,6 +73,9 @@ userloginurl: string = "user/auth/login";
   securemail:string="user/auth/security/email";
   securemob:string="user/auth/security/mobile";
   resendotp:string="user/auth/resent/otp";
+  drawidwin:string="user/draw/drawbyid/winners";
+  mydrawidwin:string="user/draw/mydrawbyid/winners";
+  claim:string="user/draw/claim";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -311,6 +314,21 @@ secumob(): Observable<any> {
 }
 reotp(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.resendotp, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+drawwin(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.drawidwin, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+mydrawwin(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.mydrawidwin, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+claimwin(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.claim, jsonObj, {
     headers: this.getAuthHeaders(),
   });
 }
