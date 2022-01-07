@@ -40,6 +40,7 @@ export class AccountactivityComponent implements OnInit {
         if (this.data.length > 0) {
       if (res['success'] == true) {
         this.showDatafound = true;
+        // window.location.reload();
         // this.searchuser();
 
         // this.httpService.toastr.success(res['message'], '', {

@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./accountsecurity.component.scss']
 })
 export class AccountsecurityComponent implements OnInit {
+  
   public changepass: FormGroup;
   userDetails: any = [];
   userID: any;
@@ -846,6 +847,7 @@ if(this.type=="email"){
       this.email1 = res['data']['email']
 
       this.mob1 = res['data']['mobile']
+      console.log(this.mob1)
       // localStorage.setItem("email", JSON.stringify(res['admin']['security_email']));
       // localStorage.setItem("mobile", JSON.stringify(res['admin']['security_mobile']));
       // localStorage.setItem("2fa", JSON.stringify(res['admin']['tfa_active']));
@@ -963,10 +965,18 @@ if(this.emailstatus!=false || this.mob1!=null ){
     //     '', {
     //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
     //   });
-    })
-  } else if(this.emailstatus==false || this.mob1==null){
-   this.showWarningAlert();
-  }
+    }, (error) => {                              //Error callback
+      console.log(error)
+      this.error = error.status;
+      console.log(this.error)
+
+      this.errorMessage = error.error.message;
+      console.log(this.errorMessage)
+this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+        positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
+      });
+   })
+  } 
 //      (error) => {                              //Error callback
 //       console.log(error)
 //       this.error = error.status;

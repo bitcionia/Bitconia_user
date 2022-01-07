@@ -339,7 +339,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
-    
+   this.clearFilters();
+
 
   }
   onSubmit() {
@@ -421,7 +422,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
         });
      })
-   
+   this.clearFilters();
          }
   logoutUser() {
   debugger
@@ -517,7 +518,8 @@ this.httpService.toastr.error(this.errorMessage, '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut:5000
         });
      });
-      
+     this.clearFilters();
+
     }
     openaccountemail() {
       debugger
@@ -565,7 +567,8 @@ this.httpService.toastr.error(this.errorMessage, '', {
           });
        })
         
-    
+       this.clearFilters();
+
       }
       verifyemail() {
         debugger
@@ -610,7 +613,8 @@ this.httpService.toastr.error(this.errorMessage, '', {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })
-      
+         this.clearFilters();
+
         }
         signupotp() {
           console.log(this.mobileform.value);
@@ -667,7 +671,8 @@ this.phoneNumber=this.code['phone']
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-            
+           this.clearFilters();
+
         
           }
           signupemailotp() {
@@ -713,7 +718,8 @@ this.phoneNumber=this.code['phone']
                   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
                 });
              })
-              
+             this.clearFilters();
+
           
             }
           //   refresh(): void {
@@ -766,7 +772,8 @@ this.phoneNumber=this.code['phone']
                 });
              })
               
-          
+             this.clearFilters();
+
             }
             balance(){
               debugger
@@ -813,6 +820,12 @@ this.phoneNumber=this.code['phone']
              })
             }
 
-   
+            clearFilters() {
+
+               this.mobile='';
+      this.mobileform.value.password= '';
+      this.loginForm.value.email='';
+        this.loginForm.value.password='';
+              }
           }
 

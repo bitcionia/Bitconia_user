@@ -41,6 +41,7 @@ export class TranscationComponent implements OnInit {
       if (this.data) {
         if (this.data.length > 0) {
       if (res['success'] == true) {
+        // document.location.reload();
         this.showDatafound = true;
         // this.searchuser();
 

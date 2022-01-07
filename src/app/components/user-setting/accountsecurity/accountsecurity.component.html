@@ -141,11 +141,11 @@
               </ul>
             </div><!-- user-info-card end -->
             
-            <div class="user-info-card"*ngIf='mob1 == " "' >
+            <div class="user-info-card"*ngIf='type !="email"|| mob1 == null'>
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
-           <button type="button" data-toggle="modal" data-target="#phonechange" style="    margin-bottom: 25px;">ADD</button>
+           <button type="button" data-toggle="modal" data-target="#phonenew" style="    margin-bottom: 25px;">ADD</button>
 				<!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a> -->
               </div>
 			 
@@ -156,7 +156,7 @@
                 </li>
               </ul>
             </div>
-			<div class="user-info-card" *ngIf='mob1 != " "' >
+			<div class="user-info-card" *ngIf='type == "mobile "|| mob1 != null' >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
@@ -308,7 +308,7 @@
                     <div class="col-sm-12">
                         <!-- <img id="fav_preview" src="assets/img/brand/Symbo-pngl.ico"
                             alt="FavIcon" width="32" height="32"> -->
-                            <img width="32" height="32" [src]="FavIcon" class="image">
+                            <!-- <img width="32" height="32" [src]="FavIcon" class="image"> -->
                     </div>
                     <div class="col-sm-12">
                         <br><input type="file" id="fav_icon" (change)="handleFile($event.target.files)" name="fav_icon"
@@ -606,7 +606,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 != " "'>
+  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true"*ngIf='mob1 != "" || type =="mobile"' >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -679,7 +679,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == " "'>
+  <div class="modal fade" id="phonenew" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == null ||type !="mobile"'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
