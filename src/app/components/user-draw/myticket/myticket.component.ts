@@ -37,6 +37,7 @@ export class MyticketComponent implements OnInit {
   count4: any;
   count3: any;
   iddata: any;
+  username: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -48,6 +49,12 @@ export class MyticketComponent implements OnInit {
   ) {
     if(history.state.data){
       console.log(history.state.data)
+    }
+    if (
+      localStorage.getItem("username") != undefined ||
+      localStorage.getItem("username") != null
+    ) {
+      // this.username = JSON.parse(localStorage.getItem("username"));
     }
    }
 

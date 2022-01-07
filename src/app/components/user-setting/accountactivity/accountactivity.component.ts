@@ -14,6 +14,7 @@ export class AccountactivityComponent implements OnInit {
   p: number[] = [];
   totalLength: any;
   item: any[];
+  username: any;
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
@@ -22,7 +23,10 @@ export class AccountactivityComponent implements OnInit {
 
     public httpService: HttpService,
 
-  ) { }
+  ) { 
+    // this.username = JSON.parse(localStorage.getItem("username"));
+
+  }
 
   ngOnInit(): void {
     this.getUser();

@@ -13,19 +13,26 @@
             <div class="user-card">
               <div class="avatar-upload">          
 
-                <div class="obj-el"><img src="assets/user.png" alt="image"></div>
-                <div class="avatar-edit">
+                <!-- <div class="obj-el"><img src="assets/user.png" alt="image"></div> -->
+                <!-- <div class="obj-el"> <img  [src]="FavIcon" class="image"></div> -->
+
+                <!-- <div class="avatar-edit">
                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                     <label for="imageUpload"></label>
-                </div>
-                <div class="avatar-preview">
+                </div> -->
+                <!-- <div class="avatar-preview">
                     <div id="imagePreview" >
-                    </div>
+                      <img  [src]="FavIcon" class="image">
+                    </div> -->
+                    <div class="avatar-preview">
+                      <div id="imagePreview">
+                        <img width="100" height="100" [src]="FavIcon" class="image">
+                      </div>
                 </div>
               </div>
               <br>
-              <h3 class="user-card__name">Albert Owens</h3>
-              <span class="user-card__id">ID : 19535909</span>
+              <h3 class="user-card__name">{{username}}</h3>
+              <!-- <span class="user-card__id">ID : 19535909</span> -->
             </div><!-- user-card end -->
             <div class="user-action-card">
               <ul class="user-action-list">
@@ -65,7 +72,7 @@
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Account Settings</h3>
                 
-                <button type="button" data-toggle="modal" data-target="#accountchange">Change</button>
+                <button type="button" data-toggle="modal" data-target="#accountchange"></button>
 			              </div>
               <ul class="user-info-card__list">
                 <li>
@@ -86,10 +93,10 @@
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Google Authenticator</h3>
                 <!-- <span class="text-violet"><i class="far fa-pen-nib"></i>X Unset</span> -->
-                <a href="#" class="text-violet" data-toggle="modal" data-target="#googledisable">XUnset</a>
+                <a href="#" class="text-violet" data-toggle="modal" data-target="#googledisable" *ngIf="twofa !=false">Disable</a>
 
                 <!-- <button type="button"><i class="far fa-edit"></i> Edit</button> -->
-				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth"(click)="g2faathu()" *ngIf="secret==null">Enable</a>
+				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth"(click)="g2faathu()" *ngIf="twofa ==false">ADD</a>
               </div>
 			  <div class="m-3 text-white" style="text-align: center;">Enable to protect your account and transactions</div>
         <!-- <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'42%'" src="{{qrcode}}"> -->
@@ -101,29 +108,29 @@
                 </li>
               </ul>
             </div><!-- user-info-card end -->
-            <div class="user-info-card"*ngIf='type != "email"' >
+            <div class="user-info-card"*ngIf='email1 == ""'>
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
              
                
-                 <button type="button" data-toggle="modal" data-target="#emailchange" style="    margin-bottom: 25px;">ADD</button>
+                 <button type="button" data-toggle="modal" data-target="#emailnew" style="    margin-bottom: 25px;">ADD</button>
 				<!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a> -->
               </div>
 			  
               <ul class="user-info-card__list">
                 <li>
 				  <span class="caption">Email</span> 
-                  <span class="value">{{example.email}}</span>
+                  <span class="value">{{email1}}</span>
                 </li>
               </ul>
             </div>
-            <div class="user-info-card" *ngIf='type == "email"'>
+            <div class="user-info-card" *ngIf='email1 != ""'>
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
              
                
                  <button type="button" data-toggle="modal" data-target="#emailchange" style="    margin-bottom: 25px;">Change</button>
-				<a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a>
+				<button type="button" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm" >Remove</button>
               </div>
 			  
               <ul class="user-info-card__list">
@@ -134,7 +141,7 @@
               </ul>
             </div><!-- user-info-card end -->
             
-            <div class="user-info-card"*ngIf="mobstatus == false" >
+            <div class="user-info-card"*ngIf='mob1 == " "' >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
@@ -145,16 +152,16 @@
               <ul class="user-info-card__list">
                 <li>
                   <span class="caption">Mobile</span> 
-                   <span class="value"></span>
+                   <span class="value">{{mob1}}</span>
                 </li>
               </ul>
             </div>
-			<div class="user-info-card" *ngIf="mobstatus == true">
+			<div class="user-info-card" *ngIf='mob1 != " "' >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
            <button type="button" data-toggle="modal" data-target="#phonechange" style="    margin-bottom: 25px;">Change</button>
-				<a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a>
+				<button type="button" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm" >Remove</button>
               </div>
 			 
               <ul class="user-info-card__list">
@@ -182,7 +189,7 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'>
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -205,6 +212,38 @@
           
                    <div class="form-group text-center">
                      <button type="submit" data-dismiss="modal" (click)="g2faenabled()"  class="cmn-btn style--three btn--sm centered m-2">Next</button>
+            </div>
+                </form>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "mobile"' >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="account-form-area">
+              <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+              <h3 class="title">Security Verification</h3>
+              <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'37%'"[style.margin-bottom]="'6%'" src="{{qrcode}}">
+              <div class="m-3 text-white" style="text-align: center;">{{secret}}</div>
+
+              <div class="account-form-wrapper">
+                <form action="#"[formGroup]="g2faForm"method="post" data-parsley-validate="" novalidate="">
+               
+               <div class="form-group">
+                    <label class="mb-3">SMS Verification code <sup>*</sup></label>
+                    <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
+                  </div>
+          <div class="d-flex flex-wrap justify-content-end mt-3">
+               <!-- <a href="#" class="link">Get code</a> -->
+           </div>
+          
+                   <div class="form-group text-center">
+                     <button type="submit" data-dismiss="modal" (click)="gm2faenabled()"  class="cmn-btn style--three btn--sm centered m-2">Next</button>
             </div>
                 </form>
                
@@ -259,13 +298,28 @@
                   </div>
             <div class="form-group">
                     <label>Date of Birth <sup>*</sup></label>
-                    <input type="text" name="login_pass" formControlName="dob" placeholder="Enter DOB" required>
+                    <input type="date" name="login_pass" formControlName="dob" placeholder="Enter DOB" required>
                   </div>
             <div class="form-group">
                     <label>Address </label>
                     <input type="text" name="login_pass" formControlName="address" placeholder="Enter Address" >
                   </div>
-          
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <!-- <img id="fav_preview" src="assets/img/brand/Symbo-pngl.ico"
+                            alt="FavIcon" width="32" height="32"> -->
+                            <img width="32" height="32" [src]="FavIcon" class="image">
+                    </div>
+                    <div class="col-sm-12">
+                        <br><input type="file" id="fav_icon" (change)="handleFile($event.target.files)" name="fav_icon"
+                            id="fav_icon" class=""><br><br>
+                        <input type="hidden" value="1593932296.ico" name="fav_icon_hide"
+                            id="fav_icon_hide">
+                        <small class="text-danger">- Upload files only:
+                            jpg,png</small><br>
+                        <!-- <small class="text-danger">- Best Size: 32x32</small> -->
+                    </div>
+                </div>
                   <div class="form-group text-center mt-5">
                     <button type="submit"data-dismiss="modal" class="cmn-btn style--three btn--sm " (click)="profileupd()">Submit</button>
                   </div>
@@ -324,7 +378,7 @@
  <p>Two security verification methods are required for withdrawals and other actions. Using only one verification method will limit your withdrawals.</p>
 			<div class="justify-content-between mt-2">
                <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Cancel </a>
-			    <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
+			    <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close"data-dismiss="modal"(click)="removee()">Confirm </a>
 			   </div>
             </div>
           </div>
@@ -345,7 +399,7 @@
 <p>Two security verification methods are required for withdrawals and other actions. Using only one verification method will limit your withdrawals.</p>
 			<div class="justify-content-between mt-2">
                <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Cancel </a>
-			    <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
+			    <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close" data-dismiss="modal"(click)="removeem()" >Confirm </a>
 			   </div>
             </div>
           </div>
@@ -366,14 +420,60 @@
                 <div class="form-group">
                   <label>Old password <sup>*</sup></label>
                   <input type="password"  formControlName="oldPass" name="login_pass" id="old_pass" placeholder="Enter old password">
+                  <div class="errors"
+                  *ngIf="loginForm.get('oldPass').invalid && (loginForm.get('oldPass').touched || loginForm.get('oldPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('oldPass').hasError('required')">
+                    OldPass is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('oldPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('oldPass').hasError('passwordStrength')">
+                    {{loginForm.get('oldPass').errors['passwordStrength']}}
+                  </div>
                 </div>
+                </div>
+
 				<div class="form-group">
                   <label>New password <sup>*</sup></label>
                   <input type="password"formControlName="newPass" name="login_pass" id="new_pass" placeholder="Enter new password">
+                  <div class="errors"
+                  *ngIf="loginForm.get('newPass').invalid && (loginForm.get('newPass').touched || loginForm.get('newPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('newPass').hasError('required')">
+                    NewPass is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('newPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('newPass').hasError('passwordStrength')">
+                    {{loginForm.get('newPass').errors['passwordStrength']}}
+                  </div>
+                </div>
                 </div>
 				<div class="form-group">
                   <label>confirm password <sup>*</sup></label>
                   <input type="password" formControlName="confirmPass" name="login_pass" id="confirm_pass" placeholder="Enter confirm password">
+                  <div class="errors"
+                  *ngIf="loginForm.get('confirmPass').invalid && (loginForm.get('confirmPass').touched || loginForm.get('confirmPass').dirty)">
+  
+                  <div *ngIf="loginForm.get('confirmPass').hasError('required')">
+                    ConfirmPass is required
+                  </div>
+  
+                  <div *ngIf="loginForm.get('confirmPass').errors.minlength">
+                    Password must be at least 8 characters
+                  </div>
+  
+                  <div class="error-text" *ngIf="loginForm.get('confirmPass').hasError('passwordStrength')">
+                    {{loginForm.get('confirmPass').errors['passwordStrength']}}
+                  </div>
+                </div>
                 </div>
                 <div class="form-group text-center mt-5">
                   <button type="submit" class="cmn-btn style--three btn--sm ">Change Password</button>
@@ -386,7 +486,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type == "email"'>
+  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type == "email"||secemail == email1'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -447,13 +547,13 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type != "email"'>
+  <div class="modal fade" id="emailnew" tabindex="1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
           <div class="account-form-area">
             <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-            <h3 class="title">Change Email Id</h3>
+            <h3 class="title">New Email Id</h3>
             <div class="account-form-wrapper">
               <form [formGroup]="emailform">
               
@@ -495,7 +595,7 @@
 				 </div> -->
 				 <!-- <a href="#" class="link my-2">Security Verification Unavailable?</a> -->
                  <div class="form-group text-center">
-                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#emailchange" data-dismiss="modal"(click)="verfaddemail()" >Submit</a>
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#emailnew" data-dismiss="modal"(click)="verfaddemail()" >Submit</a>
 				  
                 </div>
               </form>
@@ -506,7 +606,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf="type == 'mobile'">
+  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 != " "'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -579,7 +679,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf="type != 'mobile'">
+  <div class="modal fade" id="phonechange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == " "'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -641,7 +741,7 @@
 				 </div>
 				 <a href="#" class="link my-1">Security Verification Unavailable?</a> -->
                  <div class="form-group text-center">
-                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfiymob()">Submit</a>
+                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfaddmob()">Submit</a>
 				  
                 </div>
               </form>

@@ -291,6 +291,8 @@ this.phoneNumber=this.code['phone']
         // ls.set('userPass', { data: this.loginForm.value.password });
         console.log(res);
         localStorage.setItem("userid", JSON.stringify(res['admin']['mobile']));
+        
+
         localStorage.setItem("data", JSON.stringify(res['data']));
         localStorage.setItem("loginState", JSON.stringify(true));
         localStorage.setItem("logintype", JSON.stringify("mobile"));

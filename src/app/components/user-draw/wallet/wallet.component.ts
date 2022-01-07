@@ -18,6 +18,7 @@ export class WalletComponent implements OnInit {
   error: any;
   errorMessage: any;
   aval: any;
+  username: any;
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -27,7 +28,10 @@ export class WalletComponent implements OnInit {
 
 
     public httpService: HttpService
-  ) { }
+  ) {
+    // this.username = JSON.parse(localStorage.getItem("username"));
+
+   }
 
   ngOnInit(): void {
     this.depositqr();

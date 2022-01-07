@@ -76,6 +76,7 @@ userloginurl: string = "user/auth/login";
   drawidwin:string="user/draw/drawbyid/winners";
   mydrawidwin:string="user/draw/mydrawbyid/winners";
   claim:string="user/draw/claim";
+  remove:string="user/user/remove";
     constructor(
     public http: HttpClient,
     public router: Router,
@@ -332,4 +333,10 @@ claimwin(jsonObj: any): Observable<any> {
     headers: this.getAuthHeaders(),
   });
 }
+removeem(jsonObj: any): Observable<any> {
+  return this.http.post(this.baseURL + this.remove, jsonObj, {
+    headers: this.getAuthHeaders(),
+  });
+}
+
 }

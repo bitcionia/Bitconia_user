@@ -16,6 +16,7 @@ export class TranscationComponent implements OnInit {
   data: any;
   status:any =['Active','Pending','Cancel']
   searchText;
+  username: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -24,7 +25,10 @@ export class TranscationComponent implements OnInit {
 
 
     public httpService: HttpService,
-  ) { }
+  ) { 
+    // this.username = JSON.parse(localStorage.getItem("username"));
+
+  }
 
   ngOnInit(): void {
     this.withdrawhistory();

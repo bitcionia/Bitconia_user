@@ -66,7 +66,7 @@
 
  <div class="input-group-append">
                 <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass" autocomplete="off"formControlName="password" placeholder="password">
                 
 
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -87,12 +87,12 @@
                               </div>
               </div>
             
-            <div class="d-flex flex-wrap justify-content-between mt-2">
-                <div class="custom-checkbox">
+             <div class="d-flex flex-wrap justify-content-between mt-2">
+               <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-1" id="id-1" checked>
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
-                </div>
+                </div> -->
                 <a href=""routerLink="/user-control/forgetpass" data-dismiss="modal"class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
@@ -120,7 +120,7 @@
                       
                       <div class="form-group">
                 <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name" id="signup_name" formControlName="email" placeholder="Enter your Email" required>
+                <input type="email" name="signup_name" id="signup_name" autocomplete="off" formControlName="email" placeholder="Enter your Email" required>
                 <div class="errors"
               *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
 
@@ -141,7 +141,7 @@
 
                 <div class="input-group-append">
                 <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off" id="signup_pass"formControlName="password" placeholder="password">
                 
 
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -163,12 +163,12 @@
               </div>
               </div>
             
-              <div class="d-flex flex-wrap justify-content-between mt-2">
-                <div class="custom-checkbox">
+               <div class="d-flex flex-wrap justify-content-between mt-2">
+               <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-1" id="id-1" checked>
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
-                </div>
+                </div> -->
                 <a href=""routerLink="/user-control/forgetpass"data-dismiss="modal" class="link">Forgot Password?</a>
               </div>
                <div class="form-group text-center mt-2">
@@ -298,7 +298,7 @@
       </div>
       <div class="form-group">
                 <label>phone verification code <sup>*</sup></label>
-                <input type="text" name="signup_name"formControlName="code" id="signup_name" placeholder="phone verification code">
+                <input type="text" name="signup_name"formControlName="code" id="signup_name"  autocomplete="off" placeholder="phone verification code">
                 <div class="errors"
               *ngIf="mobileform.get('code').invalid && (mobileform.get('code').touched || mobileform.get('code').dirty)">
 
@@ -323,7 +323,7 @@
                 <label>Set login password <sup>*</sup></label>
                 <div class="input-group-append">
                   <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password"autocomplete="off">
                   
   
                   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -379,7 +379,7 @@
                     <form [formGroup]="loginForm" novalidate>
                       <div class="form-group">
                 <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name" id="signup_name" formControlName="email"placeholder="Enter your Email">
+                <input type="email" name="signup_name"  autocomplete="off"id="signup_name" formControlName="email"placeholder="Enter your Email">
                 <div class="errors"
               *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
 
@@ -402,7 +402,7 @@
       </div>
       <div class="form-group">
                 <label>Email verification code <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name"formControlName="code" placeholder="Email verification code">
+                <input type="text" name="signup_name" id="signup_name"formControlName="code" autocomplete="off" placeholder="Email verification code">
                 <div class="errors"
                 *ngIf="loginForm.get('code').invalid && (loginForm.get('code').touched || loginForm.get('code').dirty)">
   
@@ -427,7 +427,7 @@
                 <label>Set login password <sup>*</sup></label>
                 <div class="input-group-append">
                   <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password">
+                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off" id="signup_pass"formControlName="password" placeholder="password">
                   
   
                   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -449,11 +449,11 @@
               </div>
             
               <div class="d-flex flex-wrap mt-2">
-                <div class="custom-checkbox">
+                <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-2" id="id-2" checked>
                   <label for="id-2">I agree to the</label>
                   <span class="checkbox"></span>
-                </div>
+                </div> -->
                 <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
               </div>
               <div class="form-group text-center mt-2">
