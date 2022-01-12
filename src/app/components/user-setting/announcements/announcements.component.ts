@@ -24,7 +24,7 @@ export class AnnouncementsComponent implements OnInit {
   ngOnInit(): void {
   }
   getalert(){
-    debugger
+    //debugger
     this.httpService.alertnotification().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

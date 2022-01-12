@@ -2,14 +2,20 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as SecureLS from 'secure-ls';
 import { HttpService } from '../../service/http.service';
-
+function refresh() {
+  window .location.reload();
+}
 @Component({
   selector: 'app-drawresult',
   templateUrl: './drawresult.component.html',
   styleUrls: ['./drawresult.component.scss']
 })
 export class DrawresultComponent implements OnInit {
+  get nativeWindow() : any {
+    return refresh();
+ }
   data: any;
   showDatafound: boolean;
   p: number[] = [];
@@ -22,7 +28,7 @@ export class DrawresultComponent implements OnInit {
   data1: any;
   name: any;
   time: any;
-  seq: any=[];
+  seq: any;
   split:string[];
   myString: any;
   myArray:any=[];
@@ -57,13 +63,21 @@ export class DrawresultComponent implements OnInit {
   ) {
 
     var history = JSON.parse(localStorage.getItem("hisview"));
+    // var history = ls.get("hisview");
+
 console.log(history)
 
 this.name=history['name']
     this.time=history['start_time']
     this.win=history['winning_price']
     this.price=history['price']
+  if(history.hasOwnProperty('winning_sequence')){
     this.seq=history['winning_sequence'].split(',')
+
+  }
+ 
+    // this.seq=history['winning_sequence']
+    console.log( this.seq)
     this.server=history['server_seed']
     this.blhash=history['block_hash']
     this.block=history['block_number']
@@ -71,13 +85,17 @@ this.name=history['name']
     this.iddata=history['_id']
 
    }
-
+   refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.draw();
   }
-  
+  ngOnDestroy(){
+    this.refresh();
+  }
   draw(){
-    debugger
+    //debugger
     let jsonData={
       // id:this.id
       // id:'612480f7288d443094dca546',

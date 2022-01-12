@@ -31,6 +31,7 @@ export class ForgetpasswordComponent implements OnInit {
   countrycode: any;
   errorMessage: any;
   error: any;
+  type: any;
   constructor(
     public httpService: HttpService,
     private formBuilder: FormBuilder,
@@ -41,7 +42,8 @@ export class ForgetpasswordComponent implements OnInit {
     public toastr: ToastrService,
 
   ) { 
-   
+    this.type = JSON.parse(localStorage.getItem("logintype"));
+
     this.createForm();
     this.mobileForm();
 
@@ -75,7 +77,7 @@ export class ForgetpasswordComponent implements OnInit {
     });
   }
   onSubmit() {
-    debugger
+    //debugger
       this.submitted=true;
       let jsonData = {
         email: this.loginForm.value.email,
@@ -86,7 +88,7 @@ export class ForgetpasswordComponent implements OnInit {
         // location:'Chennai',
         // ip:'162.198.5.46',
       }
-      this.httpService.twofactorotp(jsonData).subscribe(( res: any) => {
+      this.httpService.reotp(jsonData).subscribe(( res: any) => {
         
         if (res['success'] == true) {
           // ls.set('userPass', { data: this.loginForm.value.password });
@@ -126,7 +128,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
 
     }
     openphone(){
-      debugger
+      //debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -138,7 +140,7 @@ this.phoneNumber=this.code['phone']
       
         console.log( this.countrycode);
         console.log( this.mobile);
-      debugger
+      //debugger
       this.submitted=true;
       let jsonData = {
         mobile: this.mobile,
@@ -149,7 +151,7 @@ this.phoneNumber=this.code['phone']
         // location:'Chennai',
         // ip:'162.198.5.46',
       }
-      this.httpService.twofactorotp(jsonData).subscribe( res => {
+      this.httpService.reotp(jsonData).subscribe( res => {
         
         if (res['success'] == true) {
           // ls.set('userPass', { data: this.loginForm.value.password });
@@ -185,7 +187,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     }
     twofactemailotp() {
            
-      debugger
+      //debugger
         this.submitted=true;
         let jsonData = {
           email: this.loginForm.value.email,
@@ -229,7 +231,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       }
       twofactmobotp() {
          
-        debugger
+        //debugger
         this.submitted=true;
         let jsonData = {
           email:"",

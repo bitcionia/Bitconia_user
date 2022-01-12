@@ -112,7 +112,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of list ">
+                            <tr *ngFor="let item of list">
                               <td><span class="date">{{item['end_time'] | date:'shortDate'}}</span></td>
 
                               <!-- <td><div class="text-white">{{item['name']}}</div></td> -->
@@ -123,11 +123,16 @@
                      </span></td>
                               <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
                               <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+                           <!-- <td>
+                            <ul class="number-list">
+                              <li>{{item['winning_sequence']}}</li>
+                              </ul>
+                           </td> -->
                               <td>
                                 <ul class="number-list">
                                   <li   *ngFor="let values of seq">{{values}}</li>
                                   </ul>
-                               <!-- <div class="text-green"> {{item['winning_sequence']}}</div> -->
+                              
                               </td>
                               <!-- <td>
                             

@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
+import { Location } from '@angular/common';
+import { Observable,Subscription, interval  } from 'rxjs';
 
-  // window.location.reload();
-
+function refresh() {
+  window .location.reload();
+}
 
 @Component({
   selector: 'app-myticket',
@@ -12,6 +15,9 @@ import { HttpService } from '../../service/http.service';
   styleUrls: ['./myticket.component.scss']
 })
 export class MyticketComponent implements OnInit {
+  get nativeWindow() : any {
+    return refresh();
+ }
   data: any;
   showDatafound: boolean;
   p: number[] = [];
@@ -43,10 +49,12 @@ export class MyticketComponent implements OnInit {
     private router: Router,
     private routeTo: Router,
     public formBuilder: FormBuilder,
+    private location: Location,
 
 
     public httpService: HttpService,
   ) {
+
     if(history.state.data){
       console.log(history.state.data)
     }
@@ -57,20 +65,27 @@ export class MyticketComponent implements OnInit {
       // this.username = JSON.parse(localStorage.getItem("username"));
     }
    }
+//    refresh(): void {
+//     window.location.reload();
+// }
 
   ngOnInit(): void {
     this.last_draw();
-
+    // this.location.replaceState('/user-Draw/myticket');
+  // this.refresh()
+  }
+   ngOnDestroy(){
+    this.nativeWindow();
   }
   gotoview(view) {
-    // //debugger
+    // ////debugger
     this.router.navigateByUrl('/user-Draw/claimprize')
     
     localStorage.setItem("mytickview", JSON.stringify(view));
 
   }
   last_draw(){
-    debugger
+    //debugger
     this.httpService.last_draw().subscribe((res: any) => {
       console.log(res['data'])
       this.data=res['data']
@@ -106,7 +121,7 @@ console.log(this.seq)
     });
   }
   alldraw(){
-    debugger
+    //debugger
     this.httpService.all_draw().subscribe((res: any) => {
       console.log(res['data'])
       this.data1=res['data']
@@ -142,5 +157,5 @@ console.log(this.seq)
   }
     });
   }
- 
+
 }

@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
-
+function refresh() {
+  window .location.reload();
+}
 @Component({
   selector: 'app-currentdraw',
   templateUrl: './currentdraw.component.html',
   styleUrls: ['./currentdraw.component.scss']
 })
 export class CurrentdrawComponent implements OnInit {
+  get nativeWindow() : any {
+    return refresh();
+ }
   data: any;
   showDatafound: boolean;
   p: number[] = [];
@@ -72,14 +77,18 @@ export class CurrentdrawComponent implements OnInit {
     public httpService: HttpService,
   ) {
    }
-
+   refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.upcomingdraw();
     this.pervdraw();
   }
-  
+  ngOnDestroy(){
+    this.refresh();
+  }
   upcomingdraw(){
-    debugger
+    //debugger
     this.httpService.upcomdraw().subscribe((res: any) => {
       console.log(res['data'])
       console.log(res['data'])
@@ -141,7 +150,7 @@ export class CurrentdrawComponent implements OnInit {
     });
   }
   pervdraw(){
-    debugger
+    //debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
       console.log(res['count'])
       this.count=res['count']
@@ -180,7 +189,7 @@ console.log(this.myArray)
     });
   }
   gototick(data){
-    debugger
+    //debugger
     console.log(data)
     localStorage.setItem("tickid", JSON.stringify(data));
 

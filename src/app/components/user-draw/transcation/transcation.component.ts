@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
-
+// function refresh() {
+//   window .location.reload();
+// }
 @Component({
   selector: 'app-transcation',
   templateUrl: './transcation.component.html',
   styleUrls: ['./transcation.component.scss']
 })
 export class TranscationComponent implements OnInit {
+//   get nativeWindow() : any {
+//     return refresh();
+//  }
   showDatafound: boolean;
   p: number[] = [];
   totalLength: any;
@@ -29,12 +34,15 @@ export class TranscationComponent implements OnInit {
     // this.username = JSON.parse(localStorage.getItem("username"));
 
   }
-
+  refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.withdrawhistory();
   }
+
   withdrawhistory(){
-    debugger
+    //debugger
     this.httpService.withdrawhistory().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -56,5 +64,8 @@ export class TranscationComponent implements OnInit {
     console.log("No Data found");
   }
     });
+  }
+  ngOnDestroy(){
+    this.refresh();
   }
 }

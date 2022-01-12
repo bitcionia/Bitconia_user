@@ -95,7 +95,7 @@ export class BuynowComponent implements OnInit {
     return Math.floor((Math.random() * 49) + 1);
   }
   generateOrDeleteRandomIndividual(item , key, type, index){
-    debugger
+    //debugger
     var tempRandom = []
    if(key == 'gen' &&( type == 'quick' ||  type == 'pack')){
     for(var i=0; i < 6; i++){
@@ -152,7 +152,7 @@ export class BuynowComponent implements OnInit {
         //   break;
         // }
       //  if(insert.values.length > 0 && insert.values.length < 6){
-      //    debugger
+      //    //debugger
       //    for(let val of insert.values){
       //      const insertIndex = insert.values.indexOf(val)
       //      if(val == item){

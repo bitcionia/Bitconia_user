@@ -49,7 +49,7 @@ export class ResetpasswordComponent implements OnInit {
     });
   }
   onSubmit() {
-    debugger
+    //debugger
       this.submitted=true;
       let jsonData = {
         password: this.loginForm.value.newPass,

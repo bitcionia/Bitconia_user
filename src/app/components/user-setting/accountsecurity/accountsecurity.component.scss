@@ -35,3 +35,149 @@
 .errors{
   color:red;
 }
+
+
+.user-info-card + .user-info-card {
+  margin-top: 30px;
+}
+
+.user-info-card {
+  background-color: #5a4bcc;
+  padding: 30px 30px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+@media (max-width: 575px) {
+  .user-info-card {
+  margin-top:20px;
+      padding: 20px;
+  }
+}
+
+.user-info-card__header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-info-card__header button {
+  background-color: transparent;
+  color: #ada3f7;
+}
+
+.user-info-card__header button i {
+  font-size: 22px;
+}
+
+.user-info-card__list {
+  margin-top: 30px;
+}
+
+.user-info-card__list li + li {
+  margin-top: 8px;
+}
+
+@media (max-width: 530px) {
+  .user-info-card__list li + li {
+      margin-top: 15px;
+  }
+}
+
+.user-info-card__list li {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.user-info-card__list li span {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+@media (max-width: 575px) {
+  .user-info-card__list li span {
+      font-size: 14px;
+  }
+}
+
+.user-info-card__list li .caption {
+  width: 20%;
+   position: relative; 
+   text-align: right; 
+  padding-right: 20px;
+}
+
+@media (max-width: 991px) {
+  .user-info-card__list li .caption {
+      width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  .user-info-card__list li .caption {
+      width: 30%;
+  }
+}
+
+@media (max-width: 575px) {
+  .user-info-card__list li .caption {
+      text-align: left;
+      width: 42%;
+  }
+}
+
+.user-info-card__list li .caption::after {
+  position: absolute;
+  content: ':';
+  right: 0;
+  top: -3%;
+}
+
+.user-info-card__list li .value {
+  width: 70%;
+  padding-left: 25px;
+}
+
+@media (max-width: 991px) {
+  .user-info-card__list li .value {
+      width: 60%;
+  }
+}
+
+@media (max-width: 575px) {
+  .user-info-card__list li .value {
+      width: 58%;
+      padding-left: 15px;
+  }
+}
+
+.user-info-card__list li .value.user-password {
+  padding-top: 10px;
+}
+
+.user-info-card__list li .value.status-active {
+  font-size: 14px;
+  position: relative;
+  padding-left: 45px;
+}
+
+.user-info-card__list li .value.status-active::before {
+  position: absolute;
+  content: "\f058";
+  top: 0;
+  left: 25px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #22b455;
+}
+p.c {
+  word-break: break-all;
+}

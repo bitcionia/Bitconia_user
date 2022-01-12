@@ -31,6 +31,7 @@ export class TwofactorsComponent implements OnInit {
   errorMessage: any;
   emailid: any;
   type: any;
+  data: any;
 
   constructor(
     public toastr: ToastrService,
@@ -61,7 +62,8 @@ console.log(this.emailid)
     if(history.state.data){
       // this.data=[];
     //  this.counter=history.state.data.key
-    //  this.data=history.state.data.value
+     this.data=history.state.data.values
+     console.log(this.data)
     // this.editcount=history.state.data.key
     this.countrycode=history.state.data.value
     this.mobile=history.state.data.vale
@@ -115,7 +117,7 @@ console.log("92",this.email)
     });
   }
   twofactoremail() {
-    debugger
+    //debugger
       // localStorage.clear();
       this.submitted=true;
       let jsonData = {
@@ -163,9 +165,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   
     }
     towfactormob() {
-      debugger
+      //debugger
         this.submitted=true;
-        debugger
+        //debugger
     //     console.log(this.mobileform.value);
     //     this.code = this.mobileform.value;
     //     console.log( this.code['phone']);
@@ -177,7 +179,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           
     //         console.log( this.countrycode);
     //         console.log( this.mobile);
-          debugger
+          //debugger
           this.submitted=true;
           let jsonData = {
             email:"",
@@ -222,9 +224,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         
     
       }
+     
     //   twofactemailotp() {
            
-    //     debugger
+    //     //debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email: this.email,
@@ -274,7 +277,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //     }
     //     twofactmobotp() {
            
-    //       debugger
+    //       //debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email:"",
@@ -326,10 +329,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //       }
   
           verfaddemail() {
-            debugger
+            //debugger
             this.submitted = true;
         
-            debugger
+            //debugger
+            if(this.data =="false"){
             let JsonData = {
               "email":  this.email,
               "mobile": "",
@@ -359,11 +363,16 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               });
            })
           }
+          else if(this.data !="false"){
+            //debugger
+               this.g2faverifyemail();
+          }
+          }
           verfaddmob() {
-            debugger
+            //debugger
             this.submitted = true;
-        
-            debugger
+            if(this.data =="false"){
+            //debugger
             let JsonData = {
               "email": "",
               mobile: this.mobile,
@@ -396,13 +405,76 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
+          } else if(this.data !="false"){
+             this.g2faverifymob();
+          }
+          }
+          g2faverifymob() {
+            this.submitted = true;
+        
+            //debugger
+            let JsonData = {
+              "email": "",
+              mobile: this.mobile,
+              country_code:this.countrycode,
+              "otp":this.mobileform.value.code,
+            }
+            this.httpService.g2fverify(JsonData).subscribe(res => {
+              // //////debugger
+              if (res['success'] == true) {
+                this.routeTo.navigateByUrl('/index');
+                setTimeout(() => {
+                  document.location.reload();
+                  
+                   }, 100);
+              }
+              // }, (err) => {
+              //   // this.httpService.toastr.error(err);
+              //   this.httpService.toastr.error("All field is mandatory",
+              //     '', {
+              //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+              //   });
+            })
+            {
+            }
+          }
+          g2faverifyemail() {
+            this.submitted = true;
+            let JsonData = {
+              "email":this.email,
+              "mobile":"",
+              "otp": this.loginForm.value.code,
+        
+            }
+            this.httpService.g2fverify(JsonData).subscribe(res => {
+            
+              if (res['success'] == true) {
+
+                this.httpService.toastr.success("OTP Verified", '', {
+                  positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+                });
+                // this.routeTo.navigateByUrl('/index');
+                setTimeout(() => {
+                  document.location.reload();
+                  
+                   }, 100);
+              }
+              // }, (err) => {
+              //   // this.httpService.toastr.error(err);
+              //   this.httpService.toastr.error("All field is mandatory",
+              //     '', {
+              //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+              //   });
+            })
+            {
+            }
           }
         //   verfaddmob() {
-        //     debugger
+        //     //debugger
           
         //     this.submitted = true;
         
-        //     debugger
+        //     //debugger
         //     let JsonData = {
         //       "email": "",
         //       mobile: this.mobile,

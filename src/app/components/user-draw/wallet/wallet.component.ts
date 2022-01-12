@@ -4,13 +4,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 import { DespoitcoinComponent } from '../../user-popup/despoitcoin/despoitcoin.component';
-
+// function refresh() {
+//   window .location.reload();
+// }
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })
 export class WalletComponent implements OnInit {
+//   get nativeWindow() : any {
+//     return refresh();
+//  }
   data: any;
   showDatafound: boolean;
   qrcode: any;
@@ -32,11 +37,14 @@ export class WalletComponent implements OnInit {
     // this.username = JSON.parse(localStorage.getItem("username"));
 
    }
-
+   refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.depositqr();
     this.balance();
   }
+
   despoitcion() {
     const dialogRef = this.dialog.open(DespoitcoinComponent, {
       // width: '600px',
@@ -51,7 +59,7 @@ export class WalletComponent implements OnInit {
 
   }
   depositcreate(){
-    debugger
+    //debugger
     let JsonData = {   
          amount:this.amount
     }
@@ -78,7 +86,7 @@ export class WalletComponent implements OnInit {
     });
   }
   depositqr(){
-    debugger
+    //debugger
     this.httpService.depositqrcode().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -117,7 +125,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
    })
   }
   balance(){
-    debugger
+    //debugger
     this.httpService.balancebtc().subscribe((res: any) => {
       console.log(res['BTC_fees']['BTC_fees']);
       this.aval = res['BTC_fees']['BTC_fees']
@@ -159,5 +167,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
+  }
+    ngOnDestroy(){
+    this.refresh();
   }
 }

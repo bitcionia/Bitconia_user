@@ -5,6 +5,10 @@ import { CountryISO, SearchCountryField } from 'ngx-intl-tel-input';
 import { HttpService } from '../../service/http.service';
 import { PasswordStrengthService } from '../../service/password-strength.service';
 import Swal from 'sweetalert2';
+function refresh() {
+  window .location.reload();
+}
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-accountsecurity',
@@ -12,7 +16,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./accountsecurity.component.scss']
 })
 export class AccountsecurityComponent implements OnInit {
-  
+  get nativeWindow() : any {
+    return refresh();
+ }
   public changepass: FormGroup;
   userDetails: any = [];
   userID: any;
@@ -59,12 +65,14 @@ export class AccountsecurityComponent implements OnInit {
   form: any;
   FavIcon: any;
   img: any;
+  public browserRefresh: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private routeTo: Router,
     public formBuilder: FormBuilder,
+    private loader: NgxUiLoaderService,
 
 
     public httpService: HttpService,
@@ -82,22 +90,116 @@ export class AccountsecurityComponent implements OnInit {
     // this.secemail = JSON.parse(localStorage.getItem("secemail"));
     
 console.log(this.user)
-
+this.createForm();
+this.gfen();
+this.gpro();
+this.mobileForm();
+this.emailForm();
   }
-
-  ngOnInit(): void {
-    this.createForm();
-    this.gfen();
-    this.gpro();
-    this.mobileForm();
-    this.emailForm();
+  refresh(): void {
+  this.loader.start();
+  }
+  ngOnInit() {
+   
     this.profileupd();
-    this.secuemail();
-    this.secumob();
+    this.loader.start();
+      if(this.type=="email"){   
+          this.httpService.secuemail().subscribe(res => {
+            // //////debugger
+            console.log(res['data'])
+            console.log(res['data']['username'])
+            console.log(res['data']['dob'])
+            console.log(res['data']['address'])
+            if(res['data']['security_email'] == true){
+      
+            this.username = res['data']['username']
+            this.dob = res['data']['dob']
+            this.address = res['data']['address']
+            this.email1 = res['data']['email']
+      
+            this.mob1 = res['data']['mobile']
+            console.log(this.mob1)
+            // localStorage.setItem("email", JSON.stringify(res['admin']['security_email']));
+            // localStorage.setItem("mobile", JSON.stringify(res['admin']['security_mobile']));
+            // localStorage.setItem("2fa", JSON.stringify(res['admin']['tfa_active']));
+            this.emailstatus = res['data']['security_email']
+            this.mobstatus = res['data']['security_mobile']     
+             this.twofa = res['data']['tfa_active']
+      
+            localStorage.setItem("username", JSON.stringify(this.username));
+      
+            }
+            this.loader.stop();
+
+            
+            if (res['success'] == true) {
+              // window.location.reload();
+      
+              // this.toastr.success("Password changed Successfully");
+              // this.httpService.toastr.success(res['message'], '', {
+              //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+              // });
+              // this.routeTo.navigateByUrl('/index');
+            }
+            // }, (err) => {
+            //   // this.httpService.toastr.error(err);
+            //   this.httpService.toastr.error("All field is mandatory",
+            //     '', {
+            //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            //   });
+          })
+        }      
+         else if(this.type=="mobile"){   
+      
+          this.httpService.secumob().subscribe(res => {
+            // //////debugger
+            console.log(res['data'])
+            if(res['data']['security_mobile']== true){
+            console.log(res['data']['username'])
+            console.log(res['data']['dob'])
+            console.log(res['data']['address'])
+            this.username = res['data']['username']
+            this.dob = res['data']['dob']
+            this.address = res['data']['address']
+            this.mob1 = res['data']['mobile']
+            this.email1 = res['data']['email']
+            // localStorage.setItem("secemail", JSON.stringify(this.email1));
+            // localStorage.setItem("username", JSON.stringify(this.username));
+      
+            this.emailstatus = res['data']['security_email']
+            this.mobstatus = res['data']['security_mobile']
+            this.twofa = res['data']['tfa_active']
+      
+            }
+            
+            if (res['success'] == true) {
+              // window.location.reload();
+      
+              // this.toastr.success("Password changed Successfully");
+              // this.httpService.toastr.success(res['message'], '', {
+              //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+              // });
+              // this.routeTo.navigateByUrl('/index');
+            }
+            // }, (err) => {
+            //   // this.httpService.toastr.error(err);
+            //   this.httpService.toastr.error("All field is mandatory",
+            //     '', {
+            //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            //   });
+          })
+          
+          }
+        
+        
+   
     // this.g2faathu();
     // this.addemail();
     // this.addmob();
   }
+ ngOnDestroy(){
+  this.nativeWindow();
+}
   emailForm() {
     this.emailform = this.formBuilder.group({
       'email': ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -145,7 +247,7 @@ console.log(this.user)
   changepassword() {
     this.submitted = true;
 
-    debugger
+    //debugger
     if (this.loginForm.value.newPass == this.loginForm.value.confirmPass) {
       let JsonData = {
         "old_password": this.loginForm.value.oldPass,
@@ -154,7 +256,7 @@ console.log(this.user)
         // "userId": this.userID,
       }
       this.httpService.changePassword(JsonData).subscribe(res => {
-        // ////debugger
+        // //////debugger
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
           // this.httpService.toastr.success(res['message'], '', {
@@ -192,8 +294,9 @@ console.log(this.user)
   g2faenabled() {
 
     this.submitted = true;
+    this.loader.start();
 
-    debugger
+    //debugger
     let JsonData = {
       "mobile":"",
       "email":this.email1,
@@ -201,7 +304,9 @@ console.log(this.user)
 
     }
     this.httpService.g2faenable(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
+      this.loader.stop();
+
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
         this.httpService.toastr.success(res['message'], '', {
@@ -234,7 +339,7 @@ console.log(this.user)
 
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "email":"",
       "mobile":this.mob1,
@@ -242,7 +347,7 @@ console.log(this.user)
 
     }
     this.httpService.g2faenable(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
         this.httpService.toastr.success(res['message'], '', {
@@ -274,21 +379,24 @@ console.log(this.user)
   }
   g2fadisable() {
     this.submitted = true;
+    this.loader.start();
 
-    debugger
+    //debugger
     let JsonData = {
       "otp": this.g2faForm.value.otp,
 
     }
     this.httpService.g2fdisable(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
+      this.loader.stop();
+
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
-        window.location.reload();
+        // window.location.reload();
         localStorage.removeItem('secret');
 
       }
@@ -313,13 +421,13 @@ console.log(this.user)
   g2faverify() {
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "otp": this.g2faForm.value.otp,
 
     }
     this.httpService.g2fverify(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
         // this.httpService.toastr.success(res['message'], '', {
@@ -340,10 +448,10 @@ console.log(this.user)
   g2faathu() {
     this.submitted = true;
 
-    debugger
+    //debugger
 
     this.httpService.g2fa().subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res['data']['img'])
       console.log(res['data']['secret'])
       this.secret = res['data']['secret']
@@ -372,7 +480,7 @@ console.log(this.user)
   profileupd() {
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "username": this.proForm.value.user,
       "address": this.proForm.value.address,
@@ -380,7 +488,7 @@ console.log(this.user)
       "id": this.id
     }
     this.httpService.profileupdate(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res['data']['username'])
       console.log(res['data']['dob'])
       console.log(res['data']['address'])
@@ -409,14 +517,14 @@ console.log(this.user)
   changeemailmob() {
     // this.submitted = true;
 this.email=this.emailform.value.email
-    debugger
+    //debugger
     let JsonData = {
       "email": this.emailform.value.email,
       "mobile": "",
       "country_code": "",
     }
     this.httpService.changeemailmob(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       console.log(res['data'])
       console.log(res['data']['address'])
@@ -451,7 +559,7 @@ this.email=this.emailform.value.email
     })
   }
   changemob() {
-    // debugger
+    // //debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log(this.code['phone']);
@@ -468,14 +576,14 @@ this.email=this.emailform.value.email
     console.log(this.mobile);
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "email": "",
       mobile:8667621266,
       "country_code": this.countrycode,
     }
     this.httpService.changeemailmob(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       console.log(res['data'])
       console.log(res['data']['address'])
@@ -511,7 +619,7 @@ this.email=this.emailform.value.email
   verfiyemailmob() {
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "email": this.emailform.value.email,
       "mobile": "",
@@ -520,7 +628,7 @@ this.email=this.emailform.value.email
       "oldpin": this.emailform.value.oldcode,
     }
     this.httpService.verfiyemailmob(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       //         console.log(res['data'])
       //         console.log(res['data']['address'])
@@ -533,6 +641,7 @@ this.email=this.emailform.value.email
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
+        document.location.reload();
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
       }
     // }, (err) => {
@@ -569,7 +678,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     console.log(this.mobile);
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       // "email": "",
       "mobile": this.mobile,
@@ -578,7 +687,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       "oldpin": this.mobileform.value.oldcode,
     }
     this.httpService.verfiyemailmob(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       //         console.log(res['data'])
       //         console.log(res['data']['address'])
@@ -592,6 +701,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         window.location.reload();
+        // this.refresh();
 
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
       }
@@ -616,14 +726,14 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   addemail() {
     // this.submitted = true;
 this.email=this.emailform.value.email
-    debugger
+    //debugger
     let JsonData = {
       "email": this.emailform.value.email,
       "mobile": "",
       "country_code": "",
     }
     this.httpService.changeemailmob(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       console.log(res['data'])
       console.log(res['data']['address'])
@@ -671,14 +781,14 @@ this.email=this.emailform.value.email
     // localStorage.setItem("mobile", JSON.stringify(this.mobile));
     console.log(this.countrycode);
     console.log(this.mobile);
-        debugger
+        //debugger
         let JsonData = {
           "email": "",
           "mobile": this.mobile,
           "country_code": this.countrycode,
         }
     this.httpService.addsotp(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       console.log(res['data'])
       console.log(res['data']['address'])
@@ -692,6 +802,7 @@ this.email=this.emailform.value.email
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
+
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
       }
       // }, (err) => {
@@ -727,7 +838,7 @@ this.email=this.emailform.value.email
     console.log(this.mobile);
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "email": this.emailform.value.email,
       "mobile": "",
@@ -736,7 +847,7 @@ this.email=this.emailform.value.email
       // "oldpin": this.mobileform.value.oldcode,
     }
     this.httpService.addsverify(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       //         console.log(res['data'])
       //         console.log(res['data']['address'])
@@ -751,6 +862,8 @@ this.email=this.emailform.value.email
         });
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
         window.location.reload();
+        // this.refresh();
+
       }
     // }, (err) => {
     //   // this.httpService.toastr.error(err);
@@ -785,7 +898,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     console.log(this.mobile);
     this.submitted = true;
 
-    debugger
+    //debugger
     let JsonData = {
       "email": "",
       "mobile": this.mobile,
@@ -794,7 +907,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       "oldpin": this.mobileform.value.oldcode,
     }
     this.httpService.addsverify(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       //         console.log(res['data'])
       //         console.log(res['data']['address'])
@@ -830,98 +943,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   }
 
   
-  secuemail() {
-
-if(this.type=="email"){   
-    this.httpService.secuemail().subscribe(res => {
-      // ////debugger
-      console.log(res['data'])
-      console.log(res['data']['username'])
-      console.log(res['data']['dob'])
-      console.log(res['data']['address'])
-      if(res['data']['security_email'] == true){
-
-      this.username = res['data']['username']
-      this.dob = res['data']['dob']
-      this.address = res['data']['address']
-      this.email1 = res['data']['email']
-
-      this.mob1 = res['data']['mobile']
-      console.log(this.mob1)
-      // localStorage.setItem("email", JSON.stringify(res['admin']['security_email']));
-      // localStorage.setItem("mobile", JSON.stringify(res['admin']['security_mobile']));
-      // localStorage.setItem("2fa", JSON.stringify(res['admin']['tfa_active']));
-      this.emailstatus = res['data']['security_email']
-      this.mobstatus = res['data']['security_mobile']     
-       this.twofa = res['data']['tfa_active']
-
-      localStorage.setItem("username", JSON.stringify(this.username));
-
-      }
-      
-      
-      if (res['success'] == true) {
-        // this.toastr.success("Password changed Successfully");
-        // this.httpService.toastr.success(res['message'], '', {
-        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-        // });
-        // this.routeTo.navigateByUrl('/index');
-      }
-      // }, (err) => {
-      //   // this.httpService.toastr.error(err);
-      //   this.httpService.toastr.error("All field is mandatory",
-      //     '', {
-      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-      //   });
-    })
-  }
-   
-  }
-  secumob() {
-
-    if(this.type=="mobile"){   
-
-    this.httpService.secumob().subscribe(res => {
-      // ////debugger
-      console.log(res['data'])
-      if(res['data']['security_mobile']== true){
-      console.log(res['data']['username'])
-      console.log(res['data']['dob'])
-      console.log(res['data']['address'])
-      this.username = res['data']['username']
-      this.dob = res['data']['dob']
-      this.address = res['data']['address']
-      this.mob1 = res['data']['mobile']
-      this.email1 = res['data']['email']
-      // localStorage.setItem("secemail", JSON.stringify(this.email1));
-      // localStorage.setItem("username", JSON.stringify(this.username));
-
-      this.emailstatus = res['data']['security_email']
-      this.mobstatus = res['data']['security_mobile']
-      this.twofa = res['data']['tfa_active']
-
-      }
-      
-      if (res['success'] == true) {
-        // this.toastr.success("Password changed Successfully");
-        // this.httpService.toastr.success(res['message'], '', {
-        //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-        // });
-        // this.routeTo.navigateByUrl('/index');
-      }
-      // }, (err) => {
-      //   // this.httpService.toastr.error(err);
-      //   this.httpService.toastr.error("All field is mandatory",
-      //     '', {
-      //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-      //   });
-    })
-    
-    }
-  }
   
   removeem() {
-    debugger
+
+    //debugger
     // console.log(this.mobileform.value);
     // this.code = this.mobileform.value;
     // console.log(this.code['phone']);
@@ -936,14 +961,14 @@ if(this.type=="email"){
     // console.log(this.mobile);
     this.submitted = true;
 if(this.emailstatus!=false || this.mob1!=null ){
-    debugger
+    //debugger
     let JsonData = {
       "email": "",
       "mobile": this.mob1,
      
     }
     this.httpService.removeem(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
       //         console.log(res['data'])
       //         console.log(res['data']['address'])
@@ -957,6 +982,8 @@ if(this.emailstatus!=false || this.mob1!=null ){
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         window.location.reload();
+        // this.refresh();
+
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
       }
     // }, (err) => {
@@ -991,18 +1018,18 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   }
   
   removee() {
-    debugger
+    //debugger
     
     this.submitted = true;
 if(this.mobstatus!=false || this.email1!=null ){
-    debugger
+    //debugger
     let JsonData = {
       "email": this.email1,
       "mobile": "",
      
     }
     this.httpService.removeem(JsonData).subscribe(res => {
-      // ////debugger
+      // //////debugger
       console.log(res)
      
 
@@ -1011,6 +1038,8 @@ if(this.mobstatus!=false || this.email1!=null ){
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         window.location.reload();
+        // this.refresh();
+
       }
    
     }, (error) => {                              //Error callback
@@ -1071,7 +1100,7 @@ uploadFiles( system_logo ) {
         }
     }
 upload(event) {
-  //debugger
+  ////debugger
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({
       img: file
@@ -1081,4 +1110,5 @@ upload(event) {
  showWarningAlert() {
   Swal.fire('Hey!', 'Please Enable Mobile Or Email', 'warning')
 }
+
 }

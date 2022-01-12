@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
-
+// function refresh() {
+//   window .location.reload();
+// }
 @Component({
   selector: 'app-accountactivity',
   templateUrl: './accountactivity.component.html',
   styleUrls: ['./accountactivity.component.scss']
 })
 export class AccountactivityComponent implements OnInit {
+//   get nativeWindow() : any {
+//     return refresh();
+//  }
   data: any=[];
   showDatafound: boolean;
   p: number[] = [];
@@ -27,12 +32,15 @@ export class AccountactivityComponent implements OnInit {
     // this.username = JSON.parse(localStorage.getItem("username"));
 
   }
-
+  refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.getUser();
   }
+ 
   getUser(){
-    debugger
+    //debugger
     this.httpService.getUser().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -54,5 +62,8 @@ export class AccountactivityComponent implements OnInit {
     console.log("No Data found");
   }
     });
+  }
+   ngOnDestroy(){
+    this.refresh();
   }
 }

@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
-
+function refresh() {
+  window .location.reload();
+}
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
+  get nativeWindow() : any {
+    return refresh();
+ }
   list: any;
   name: any;
   time: any;
@@ -29,19 +34,23 @@ export class HistoryComponent implements OnInit {
 
     public httpService: HttpService,
   ) { }
-
+  refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
     this.pervdraw();
   }
+  ngOnDestroy(){
+    this.refresh();
+  }
   gotoview(view) {
-    // //debugger
+    // ////debugger
     this.router.navigateByUrl('/user-Draw/drawres')
-    
     localStorage.setItem("hisview", JSON.stringify(view));
 
   }
   pervdraw(){
-    debugger
+    //debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
       console.log(res['data'])
       this.list=res['data']

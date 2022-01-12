@@ -21,14 +21,18 @@ import { Location } from '@angular/common';
 import { AuthencationGuard } from '../../service/authencation.guard.service';
 import { filter, pairwise } from 'rxjs/operators';
 import { NavigationService } from '../../service/navigation.service';
-
+function refresh() {
+  window .location.reload();
+}
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  get nativeWindow() : any {
+    return refresh();
+ }
   separateDialCode = false;
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
@@ -146,9 +150,10 @@ this.mobileForm();
 console.log(router.url , 'gfhhj');
    }
    currentRouter = this.router.url;
-
+   refresh(): void {
+    window.location.reload();
+}
   ngOnInit(): void {
-
   //   this.router.events.pipe(
   //     filter((event) => event instanceof NavigationEnd)
   // ).subscribe((event: NavigationEnd) => {
@@ -177,7 +182,7 @@ this.balance();
     this.token = JSON.parse(localStorage.getItem("data"));
 
     console.log(this.token)
-  debugger
+  //debugger
  
   
     
@@ -192,6 +197,9 @@ this.balance();
 //     this.router.navigate(['/header']);
 // });
 
+  }
+  ngOnDestroy(){
+    this.refresh();
   }
   backWithNavigation() {
     this.navigation.back();
@@ -258,10 +266,10 @@ this.balance();
 
  
   mobilelogin() {
-  debugger
+  //debugger
     localStorage.clear();
     this.submitted=true;
-    debugger
+    //debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -274,7 +282,7 @@ this.phoneNumber=this.code['phone']
         localStorage.setItem("mobile", JSON.stringify(this.mobile));
         console.log( this.countrycode);
         console.log( this.mobile);
-      debugger
+      //debugger
       this.submitted=true;
       let jsonData = {
         mobile: this.mobile,
@@ -303,9 +311,16 @@ this.phoneNumber=this.code['phone']
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 1000
         });
-        this.httpService.toastr.success('Otp Send To Mobile', '', {
-          positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-        });
+        if(res['admin']['tfa_active'] == true){
+          this.httpService.toastr.success('Enter To Google Authenticator Otp', '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
+        }else if(res['admin']['tfa_active'] == false){
+          this.httpService.toastr.success('Otp Send To Mobile', '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
+        }
+      
         var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
     this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
 //     setTimeout(() => {
@@ -339,12 +354,18 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
-   this.clearFilters();
+  
 
 
   }
+  gotouser(){
+    this.router.navigate(['/user-control/forgetpass'])
+    localStorage.setItem("logintype", JSON.stringify("email"));
+
+  }
+  
   onSubmit() {
-    debugger
+    //debugger
     localStorage.clear();  
 
       this.submitted=true;
@@ -383,12 +404,19 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           this.httpService.toastr.success(res['message'], '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
-          this.httpService.toastr.success('Otp Send To Email', '', {
-            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          });
+          if(res['admin']['tfa_active'] == true){
+            this.httpService.toastr.success('Enter To Google Authenticator Otp', '', {
+              positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            });
+          }else if(res['admin']['tfa_active'] == false){
+            this.httpService.toastr.success('Otp Send To Email', '', {
+              positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+            });
+          }
+        
           // this.twofactoremail();
 
-          var json={key:1,value:this.email}
+          var json={key:1,value:this.email,keys:2,values:res['admin']['tfa_active']}
           this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
 
           // setTimeout(function () {
@@ -422,10 +450,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
         });
      })
-   this.clearFilters();
+  
          }
   logoutUser() {
-  debugger
+  //debugger
     if (
       localStorage.getItem("userid") != null ||
       localStorage.getItem("userid") != undefined
@@ -460,7 +488,7 @@ console.log(userNumber );
   //   });
   // }
   openaccountmob() {
-  debugger
+  //debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -485,7 +513,7 @@ this.phoneNumber=this.code['phone']
         ip:'162.198.5.46',
       }
       this.httpService.createuser(jsonData).subscribe( res => {
-        debugger
+        //debugger
         console.log(res);
 
         if (res['success'] === true) {
@@ -518,11 +546,11 @@ this.httpService.toastr.error(this.errorMessage, '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut:5000
         });
      });
-     this.clearFilters();
+    
 
     }
     openaccountemail() {
-      debugger
+      //debugger
         this.submitted=true;
         let jsonData = {
           email: this.loginForm.value.email,
@@ -567,11 +595,11 @@ this.httpService.toastr.error(this.errorMessage, '', {
           });
        })
         
-       this.clearFilters();
+      
 
       }
       verifyemail() {
-        debugger
+        //debugger
           // this.submitted=true;
           let jsonData = {
             email: this.loginForm.value.email,
@@ -595,15 +623,9 @@ this.httpService.toastr.error(this.errorMessage, '', {
             }
              else if (res['success'] == false) {
             
-              // this.httpService.toastr.error(res['message'], '', {
-              //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 2000
-              // });
+              
             }
-          }, (error) => {                              //Error callback
-            // console.log(error)
-            // this.httpService.toastr.error(error,'',  {
-            //   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
-            // });    
+          }, (error) => {                              //Error callback    
                     this.error = error.status;
             console.log(this.error)
     
@@ -613,7 +635,7 @@ this.httpService.toastr.error(this.errorMessage, '', {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })
-         this.clearFilters();
+        
 
         }
         signupotp() {
@@ -628,7 +650,7 @@ this.phoneNumber=this.code['phone']
       
         console.log( this.countrycode);
         console.log( this.mobile);
-          debugger
+          //debugger
             // this.submitted=true;
             let jsonData = {
               email:'',
@@ -671,13 +693,13 @@ this.phoneNumber=this.code['phone']
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-           this.clearFilters();
+          
 
         
           }
           signupemailotp() {
            
-            debugger
+            //debugger
               // this.submitted=true;
               let jsonData = {
                 email: this.loginForm.value.email,
@@ -718,7 +740,7 @@ this.phoneNumber=this.code['phone']
                   positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
                 });
              })
-             this.clearFilters();
+            
 
           
             }
@@ -727,7 +749,7 @@ this.phoneNumber=this.code['phone']
           // }
         
           twofactoremail() {
-            debugger
+            //debugger
               // localStorage.clear();
               this.submitted=true;
               let jsonData = {
@@ -772,11 +794,11 @@ this.phoneNumber=this.code['phone']
                 });
              })
               
-             this.clearFilters();
+            
 
             }
             balance(){
-              debugger
+              //debugger
               this.httpService.balancebtc().subscribe((res: any) => {
                 console.log(res['BTC_fees']['BTC_fees']);
                 this.aval = res['BTC_fees']['BTC_fees']
@@ -820,12 +842,6 @@ this.phoneNumber=this.code['phone']
              })
             }
 
-            clearFilters() {
-
-               this.mobile='';
-      this.mobileform.value.password= '';
-      this.loginForm.value.email='';
-        this.loginForm.value.password='';
-              }
+         
           }
 

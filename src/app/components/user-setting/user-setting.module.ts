@@ -35,7 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
           HowtowithdrawComponent,
           ContactusComponent,
           PirvacyComponent,
-          TermsComponent
+          TermsComponent,
   ],
   imports: [
     CommonModule,

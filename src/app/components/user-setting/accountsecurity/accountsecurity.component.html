@@ -1,4 +1,4 @@
-  
+
     
 	 <!-- inner-hero-section start -->
      <div class="inner-hero-section style--five">
@@ -11,24 +11,23 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="user-card">
-              <div class="avatar-upload">          
 
-                <!-- <div class="obj-el"><img src="assets/user.png" alt="image"></div> -->
-                <!-- <div class="obj-el"> <img  [src]="FavIcon" class="image"></div> -->
+                <div class="avatar-upload">          
 
-                <!-- <div class="avatar-edit">
-                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                    <label for="imageUpload"></label>
-                </div> -->
-                <!-- <div class="avatar-preview">
-                    <div id="imagePreview" >
-                      <img  [src]="FavIcon" class="image">
-                    </div> -->
-                    <div class="avatar-preview">
+                  <div class="obj-el"><img src="assets/user.png" alt="image"></div>
+                  <!-- <div class="avatar-edit">
+                      <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                      <label for="imageUpload"></label>
+                  </div> -->
+                  <div class="avatar-preview">
+                      <div id="imagePreview" >
+                      </div>
+                  </div>
+                    <!-- <div class="avatar-preview">
                       <div id="imagePreview">
                         <img width="100" height="100" [src]="FavIcon" class="image">
-                      </div>
-                </div>
+                      </div> -->
+              
               </div>
               <br>
               <h3 class="user-card__name">{{username}}</h3>
@@ -36,8 +35,8 @@
             </div><!-- user-card end -->
             <div class="user-action-card">
               <ul class="user-action-list">
-                <li ><a routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
-                <li class="active"><a href=""routerLink="/user-setting/accountsecurity">Account Security</a></li>
+                <li ><a href=""routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
+                <li class="active"><a href="" routerLink="/user-setting/accountsecurity">Account Security</a></li>
                 <li><a href=""routerLink="/user-setting/accountactivity">Account Activity</a></li>
     
                  <li ><a href=""routerLink="/user-Draw/wallet">Wallet</a></li>
@@ -45,6 +44,7 @@
               </ul>
             </div><!-- user-action-card end -->
           </div>
+          
           <div class="col-lg-8 mt-lg-0 mt-5">
             <div class="user-info-card">
               <div class="user-info-card__header">
@@ -93,10 +93,10 @@
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Google Authenticator</h3>
                 <!-- <span class="text-violet"><i class="far fa-pen-nib"></i>X Unset</span> -->
-                <a href="#" class="text-violet" data-toggle="modal" data-target="#googledisable" *ngIf="twofa !=false">Disable</a>
+                <a href="#" class="text-violet" data-toggle="modal" data-target="#googledisable" *ngIf="twofa ==true">Disable</a>
 
                 <!-- <button type="button"><i class="far fa-edit"></i> Edit</button> -->
-				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth"(click)="g2faathu()" *ngIf="twofa ==false">ADD</a>
+				<a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth"(click)="g2faathu()" *ngIf="twofa ==false">Enable</a>
               </div>
 			  <div class="m-3 text-white" style="text-align: center;">Enable to protect your account and transactions</div>
         <!-- <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'42%'" src="{{qrcode}}"> -->
@@ -120,7 +120,7 @@
               <ul class="user-info-card__list">
                 <li>
 				  <span class="caption">Email</span> 
-                  <span class="value">{{email1}}</span>
+                  <span class="value">{{user}}</span>
                 </li>
               </ul>
             </div>
@@ -129,7 +129,7 @@
                 <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
              
                
-                 <button type="button" data-toggle="modal" data-target="#emailchange" style="    margin-bottom: 25px;">Change</button>
+                 <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
 				<button type="button" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm" >Remove</button>
               </div>
 			  
@@ -141,7 +141,7 @@
               </ul>
             </div><!-- user-info-card end -->
             
-            <div class="user-info-card"*ngIf='type !="email"|| mob1 == null'>
+            <div class="user-info-card"*ngIf='mob1 == " "'>
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
@@ -156,11 +156,11 @@
                 </li>
               </ul>
             </div>
-			<div class="user-info-card" *ngIf='type == "mobile "|| mob1 != null' >
+			<div class="user-info-card" *ngIf='mob1 !=" " ' >
               <div class="user-info-card__header">
                 <h3 class="user-info-card__title col-md-8">Phone</h3>
 				
-           <button type="button" data-toggle="modal" data-target="#phonechange" style="    margin-bottom: 25px;">Change</button>
+           <button type="button" data-toggle="modal" data-target="#phonechange" >Change</button>
 				<button type="button" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm" >Remove</button>
               </div>
 			 
@@ -189,7 +189,7 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'>
+    <!-- <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'>
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -197,17 +197,16 @@
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Security Verification</h3>
               <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'37%'"[style.margin-bottom]="'6%'" src="{{qrcode}}">
-              <div class="m-3 text-white" style="text-align: center;">{{secret}}</div>
+              <div class="m-3 text-white"> <p class="c">{{secret}}</p></div>
 
               <div class="account-form-wrapper">
                 <form action="#"[formGroup]="g2faForm"method="post" data-parsley-validate="" novalidate="">
                
                <div class="form-group">
-                    <label class="mb-3">SMS Verification code <sup>*</sup></label>
-                    <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder="SMS Code" required>
+                    <label class="mb-3"> Verification code <sup>*</sup></label>
+                    <input type="text"formControlName="otp"  name="signup_pass" id="signup_pass" placeholder=" Code" required>
                   </div>
           <div class="d-flex flex-wrap justify-content-end mt-3">
-               <!-- <a href="#" class="link">Get code</a> -->
            </div>
           
                    <div class="form-group text-center">
@@ -220,8 +219,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "mobile"' >
+    </div> -->
+    <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true" >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -229,7 +228,7 @@
               <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
               <h3 class="title">Security Verification</h3>
               <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'37%'"[style.margin-bottom]="'6%'" src="{{qrcode}}">
-              <div class="m-3 text-white" style="text-align: center;">{{secret}}</div>
+              <div class="m-3 text-white"><p class="c">{{secret}}</p></div>
 
               <div class="account-form-wrapper">
                 <form action="#"[formGroup]="g2faForm"method="post" data-parsley-validate="" novalidate="">
@@ -486,7 +485,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type == "email"||secemail == email1'>
+  <div class="modal fade" id="emailchange" tabindex="1" role="dialog" aria-hidden="true" *ngIf='type == "email"||email1 != ""'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -668,7 +667,7 @@
 				 </div>
 				 <a href="#" class="link my-1">Security Verification Unavailable?</a> -->
                  <div class="form-group text-center">
-                  <a href="securityverification.html" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfiymob()">Submit</a>
+                  <a href="" class="cmn-btn style--three btn--sm centered m-2"  data-toggle="modal" data-target="#enableconfirm" data-dismiss="modal"(click)="verfiymob()">Submit</a>
 				  
                 </div>
               </form>
@@ -679,7 +678,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="phonenew" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == null ||type !="mobile"'>
+  <div class="modal fade" id="phonenew" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == " "'>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">

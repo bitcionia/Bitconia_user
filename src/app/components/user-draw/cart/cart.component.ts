@@ -108,7 +108,7 @@ this.calcAmt()
 var id = JSON.parse(localStorage.getItem("tickid"));
 
     if(this.balance>=this.tickdata){
-    debugger
+    //debugger
         let jsonData = {
           tickets: this.ticketnumber,
           draw_id:id
@@ -200,7 +200,7 @@ console.log(this.remain)
       //   });
       // }
       payment(){
-        debugger
+        //debugger
             let jsonData = {
               // tickets: this.ticketdata,
               // draw_id:'617f94f685c94918109408a1',
@@ -365,7 +365,7 @@ console.log(this.remain)
 // var id = JSON.parse(localStorage.getItem("tickid"));
 
 //     if(this.balance>=this.tickdata){
-//     debugger
+//     //debugger
 //         let jsonData = {
 //           tickets: this.ticketnumber,
 //           draw_id:id
@@ -457,7 +457,7 @@ console.log(this.remain)
 //       //   });
 //       // }
 //       payment(){
-//         debugger
+//         //debugger
 //             let jsonData = {
 //               // tickets: this.ticketdata,
 //               // draw_id:'617f94f685c94918109408a1',
