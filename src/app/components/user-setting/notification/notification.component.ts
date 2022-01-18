@@ -24,7 +24,7 @@ export class NotificationComponent implements OnInit {
   ngOnInit(): void {
   }
   getnotification(){
-    //debugger
+    ////debugger
     this.httpService.notification().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

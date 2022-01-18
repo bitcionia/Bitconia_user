@@ -14,25 +14,25 @@ export class AuthencationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem("pin")){
-        return true;
+  //     if(localStorage.getItem("pin")){
+  //       return true;
 
-      }
-      this.router.navigateByUrl("/index");
-      return false;
-  }
-  // let user = JSON.parse(localStorage.getItem('userid'));
-  //   if (!user || user === null) {
-  //     this.router.navigate(['/index']);
-  //     return true
-  //   }
-  //   else if (user) {
-  //     if (!Object.keys(user).length) {
-  //       this.router.navigate(['/index']);
-  //       return true
   //     }
-  //   }
-  //   return true
+  //     this.router.navigateByUrl("/index");
+  //     return false;
+  // }
+  let user = JSON.parse(localStorage.getItem('userid'));
+    if (!user || user === null) {
+      this.router.navigate(['/index']);
+      return true
+    }
+    else if (user) {
+      if (!Object.keys(user).length) {
+        this.router.navigate(['/index']);
+        return true
+      }
+    }
+    return true
   
-  
+    }
 }

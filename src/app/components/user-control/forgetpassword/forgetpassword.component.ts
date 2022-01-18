@@ -77,7 +77,7 @@ export class ForgetpasswordComponent implements OnInit {
     });
   }
   onSubmit() {
-    //debugger
+    ////debugger
       this.submitted=true;
       let jsonData = {
         email: this.loginForm.value.email,
@@ -123,12 +123,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
      })
   
     }
-    gotorest(){
-             this.router.navigateByUrl('/user-control/restpassword');
-
-    }
+   
     openphone(){
-      //debugger
+      ////debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -140,7 +137,7 @@ this.phoneNumber=this.code['phone']
       
         console.log( this.countrycode);
         console.log( this.mobile);
-      //debugger
+      ////debugger
       this.submitted=true;
       let jsonData = {
         mobile: this.mobile,
@@ -187,7 +184,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     }
     twofactemailotp() {
            
-      //debugger
+      ////debugger
         this.submitted=true;
         let jsonData = {
           email: this.loginForm.value.email,
@@ -204,7 +201,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             this.httpService.toastr.success(res['message'], '', {
               positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
             });
-            this.router.navigateByUrl('/user-control/restpassword');
+            var json={key:1,value:this.loginForm.value.email}
+
+            this.router.navigateByUrl('/user-control/restpassword',{state:{data:json}});
             // this.router.navigate(['/dashboard/dashboard']);
     
     
@@ -231,7 +230,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       }
       twofactmobotp() {
          
-        //debugger
+        ////debugger
         this.submitted=true;
         let jsonData = {
           email:"",
@@ -252,6 +251,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               this.httpService.toastr.success(res['message'], '', {
                 positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
               });
+    
+            // this.router.navigateByUrl('user-Draw/cart',{state:{data:json}})
               this.router.navigateByUrl('/user-control/restpassword');
               // this.router.navigate(['/dashboard/dashboard']);
       
@@ -276,5 +277,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
          })
           
       
+        }
+        gotorest(){
+          var json={key:1,value:this.mobile,keys:2,values:this.countrycode,key1:3,value1:this.loginForm.value.email}
+    
+                this.router.navigateByUrl('/user-control/restpassword',{state:{data:json}});
+    
         }
 }

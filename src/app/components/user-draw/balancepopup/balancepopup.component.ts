@@ -43,7 +43,7 @@ export class BalancepopupComponent implements OnInit {
   }
   
   payment(){
-    //debugger
+    ////debugger
         let jsonData = {
           // tickets: this.ticketdata,
           // draw_id:'617f94f685c94918109408a1',

@@ -95,7 +95,7 @@ this.name=history['name']
     this.refresh();
   }
   draw(){
-    //debugger
+    ////debugger
     let jsonData={
       // id:this.id
       // id:'612480f7288d443094dca546',

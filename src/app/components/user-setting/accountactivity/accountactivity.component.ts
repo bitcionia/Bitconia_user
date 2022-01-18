@@ -40,7 +40,7 @@ export class AccountactivityComponent implements OnInit {
   }
  
   getUser(){
-    //debugger
+    ////debugger
     this.httpService.getUser().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

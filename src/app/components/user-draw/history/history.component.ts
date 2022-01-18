@@ -44,13 +44,13 @@ export class HistoryComponent implements OnInit {
     this.refresh();
   }
   gotoview(view) {
-    // ////debugger
+    // //////debugger
     this.router.navigateByUrl('/user-Draw/drawres')
     localStorage.setItem("hisview", JSON.stringify(view));
 
   }
   pervdraw(){
-    //debugger
+    ////debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
       console.log(res['data'])
       this.list=res['data']

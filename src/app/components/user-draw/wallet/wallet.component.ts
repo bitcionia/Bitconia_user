@@ -59,7 +59,7 @@ export class WalletComponent implements OnInit {
 
   }
   depositcreate(){
-    //debugger
+    ////debugger
     let JsonData = {   
          amount:this.amount
     }
@@ -86,7 +86,7 @@ export class WalletComponent implements OnInit {
     });
   }
   depositqr(){
-    //debugger
+    ////debugger
     this.httpService.depositqrcode().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -125,7 +125,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
    })
   }
   balance(){
-    //debugger
+    ////debugger
     this.httpService.balancebtc().subscribe((res: any) => {
       console.log(res['BTC_fees']['BTC_fees']);
       this.aval = res['BTC_fees']['BTC_fees']

@@ -24,11 +24,17 @@ const routes: Routes =[
     // canActivate:[AuthencationGuard],
 
     path: 'cart', component:CartComponent},
-  { path: 'trans', component: TranscationComponent},
-  { path: 'myticket', component: MyticketComponent},
+  {
+    canActivate:[AuthencationGuard],
+    path: 'trans', component: TranscationComponent},
+  { 
+    canActivate:[AuthencationGuard],
+    path: 'myticket', component: MyticketComponent},
   { path: 'currentdraw', component: CurrentdrawComponent},
   { path: 'history', component: HistoryComponent},
-  { path: 'wallet', component: WalletComponent},
+  {
+    canActivate:[AuthencationGuard],
+    path: 'wallet', component: WalletComponent},
   { path: 'pastdraw', component: PastdrawComponent},
   { path: 'claimprize', component: ClaimprizeComponent},
   { path: 'payment', component: BalancepopupComponent},

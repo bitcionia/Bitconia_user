@@ -1,6 +1,3 @@
-
-
-
 <div class="scroll-to-top">
   <span class="scroll-icon">
     <i class="las la-arrow-up"></i>
@@ -11,66 +8,78 @@
 <!-- page-wrapper start -->
 <div class="page-wrapper">
 
- <!-- login modal -->
-<div class="modal fade" id="loginModal" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-  <div class=" scrollbarcustom">
-        <div class="account-form-area">
-          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-          <h3 class="title">Login</h3>
-     <div class="col-lg-12">
-          <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="phone-tab" data-toggle="tab" href="#phone" role="tab" aria-controls="dream" aria-selected="true">
-                <div class="icon-thumb"><img src="assets/images/icon/contact/1.png" alt="image"></div>
-                <span>Phone</span>
-              </a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="email-tab" data-toggle="tab" href="#email" role="tab" aria-controls="bike" aria-selected="false">
-                <div class="icon-thumb"><img src="assets/images/icon/contact/2.png" alt="image"></div>
-                <span>Email</span>
-              </a>
-            </li>
-           <li class="nav-item" role="presentation">
-              <a class="nav-link" id="qrcode-tab" data-toggle="tab" href="#qrcode" role="tab" aria-controls="qrcode" aria-selected="false">
-                <div class="icon-thumb"><i class="las la-qrcode text-icons-qrcode"></i></div>
-                <span>QR code</span>
-              </a>
-            </li>
-          </ul>
-          <div class="tab-content mt-15 mb-15" id="winnerTabContent">
-    
-    <!-- Phone tab -->
-            <div class="tab-pane fade show active" id="phone" role="tabpanel" aria-labelledby="phone-tab">
-              <div class="row mb-none-30">
-                <div class="col-lg-12 mb-30">
-                   <div class="account-form-wrapper">
-                    <form [formGroup]="mobileform" (ngSubmit)="mobilelogin()" novalidate>
-             
-      <!-- <div class="form-group">
+  <!-- login modal -->
+  <div class="modal fade" id="loginModal" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class=" scrollbarcustom">
+            <div class="account-form-area">
+              <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i
+                  class="las la-times"></i></button>
+              <h3 class="title">Login</h3>
+              <div class="col-lg-12">
+                <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="phone-tab" data-toggle="tab" href="#phone" role="tab"
+                      aria-controls="dream" aria-selected="true">
+                      <div class="icon-thumb"><img src="assets/images/icon/contact/1.png" alt="image"></div>
+                      <span>Phone</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="email-tab" data-toggle="tab" href="#email" role="tab" aria-controls="bike"
+                      aria-selected="false">
+                      <div class="icon-thumb"><img src="assets/images/icon/contact/2.png" alt="image"></div>
+                      <span>Email</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="qrcode-tab" data-toggle="tab" href="#qrcode" role="tab"
+                      aria-controls="qrcode" aria-selected="false">
+                      <div class="icon-thumb"><i class="las la-qrcode text-icons-qrcode"></i></div>
+                      <span>QR code</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content mt-15 mb-15" id="winnerTabContent">
+
+                  <!-- Phone tab -->
+                  <div class="tab-pane fade show active" id="phone" role="tabpanel" aria-labelledby="phone-tab">
+                    <div class="row mb-none-30">
+                      <div class="col-lg-12 mb-30">
+                        <div class="account-form-wrapper">
+                          <form [formGroup]="mobileform" (ngSubmit)="mobilelogin()" novalidate>
+
+                            <!-- <div class="form-group">
                 <label>Phone <sup>*</sup></label>
                 <input type="number"  name="signup_name" id="signup_name" placeholder="phone number" required>
               </div> -->
-              <div class="form-group">
-                <label>Phone <sup>*</sup></label>
-                <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
-                [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
-                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-                [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
-              </ngx-intl-tel-input>            </div>
-              <div class="form-group">
-                <label>Login password <sup>*</sup></label>
+                            <div class="form-group">
+                              <label>Phone <sup>*</sup></label>
+                              <ngx-intl-tel-input [cssClass]="'custom'"
+                                [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                                [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true"
+                                name="phone" formControlName="phone">
+                              </ngx-intl-tel-input>
+                            </div>
+                            <p>Note: User Please Enter the Mobile Number Only Country code Automatically Fetch</p>
 
- <div class="input-group-append">
-                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass" autocomplete="off"formControlName="password" placeholder="password">
-                
+                            <div class="form-group">
+                              <label>Login password <sup>*</sup></label>
 
-                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </div>                <div class="errors"
+                              <div class="input-group-append">
+                                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                                <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off"
+                                  formControlName="password" placeholder="password">
+
+
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                                </mat-icon>
+                              </div>
+                              <div class="errors"
                                 *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
 
                                 <div *ngIf="mobileform.get('password').hasError('required')">
@@ -85,140 +94,149 @@
                                   {{mobileform.get('password').errors['passwordStrength']}}
                                 </div> -->
                               </div>
-              </div>
-            
-             <div class="d-flex flex-wrap justify-content-between mt-2">
-               <!-- <div class="custom-checkbox">
+                            </div>
+
+                            <div class="d-flex flex-wrap justify-content-between mt-2">
+                              <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-1" id="id-1" checked>
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div> -->
-                <a href=""routerLink="/user-control/forgetpass" data-dismiss="modal"class="link">Forgot Password?</a>
-              </div>
-               <div class="form-group text-center mt-2">
-                <!-- <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a> -->
-                <button  type="submit"  class="cmn-btn btn--sm btn-block "data-dismiss="modal"(click)="mobilelogin()"
-                >log in</button>
-              </div>
-            </form>
-            <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
-          
-        </div>  <!--account - form-wrapper end -->
-       
-                </div>
-             
-       </div>
-            
-     
-      </div>
-      <!-- Email tab -->
-            <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
-                 <div class="row mb-none-30">
-                <div class="col-lg-12 mb-30">
-                   <div class="account-form-wrapper">
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-                      
-                      <div class="form-group">
-                <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name" id="signup_name" autocomplete="off" formControlName="email" placeholder="Enter your Email" required>
-                <div class="errors"
-              *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
+                              <a href="" routerLink="/user-control/forgetpass" data-dismiss="modal" class="link">Forgot
+                                Password?</a>
+                            </div>
+                            <div class="form-group text-center mt-2">
+                              <!-- <a href=""routerLink="/user-control/twofactor" class="cmn-btn btn--sm">log in</a> -->
+                              <button type="submit" class="cmn-btn btn--sm btn-block " data-dismiss="modal"
+                                (click)="mobilelogin()">log in</button>
+                            </div>
+                          </form>
+                          <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal"
+                              data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
 
-              <div *ngIf="loginForm.get('email').hasError('required')">
-                Email is required
-              </div>
+                        </div>
+                        <!--account - form-wrapper end -->
 
-              <div *ngIf="loginForm.get('email').errors.email">
-                This is not a valid Email!!! </div>
+                      </div>
+
+                    </div>
 
 
-            </div>
-              </div>
-      
-      
-              <div class="form-group">
-                <label>Login password <sup>*</sup></label>
+                  </div>
+                  <!-- Email tab -->
+                  <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
+                    <div class="row mb-none-30">
+                      <div class="col-lg-12 mb-30">
+                        <div class="account-form-wrapper">
+                          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
 
-                <div class="input-group-append">
-                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off" id="signup_pass"formControlName="password" placeholder="password">
-                
+                            <div class="form-group">
+                              <label>Email <sup>*</sup></label>
+                              <input type="email" name="signup_name" autocomplete="off" formControlName="email"
+                                placeholder="Enter your Email" required>
+                              <div class="errors"
+                                *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
 
-                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </div>
-                <div class="errors"
-                *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+                                <div *ngIf="loginForm.get('email').hasError('required')">
+                                  Email is required
+                                </div>
 
-                <div *ngIf="loginForm.get('password').hasError('required')">
-                  password is required
-                </div>
+                                <div *ngIf="loginForm.get('email').errors.email">
+                                  This is not a valid Email!!! </div>
 
-                <!-- <div *ngIf="loginForm.get('password').errors.minlength">
+
+                              </div>
+                            </div>
+
+
+                            <div class="form-group">
+                              <label>Login password <sup>*</sup></label>
+
+                              <div class="input-group-append">
+                                <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                                <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off"
+                                  formControlName="password" placeholder="password">
+
+
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                                </mat-icon>
+                              </div>
+                              <div class="errors"
+                                *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+
+                                <div *ngIf="loginForm.get('password').hasError('required')">
+                                  password is required
+                                </div>
+
+                                <!-- <div *ngIf="loginForm.get('password').errors.minlength">
                   Password must be at least 8 characters
                 </div>
 
                 <div class="error-text" *ngIf="loginForm.get('password').hasError('passwordStrength')">
                   {{loginForm.get('password').errors['passwordStrength']}}
                 </div> -->
-              </div>
-              </div>
-            
-               <div class="d-flex flex-wrap justify-content-between mt-2">
-               <!-- <div class="custom-checkbox">
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap justify-content-between mt-2">
+                              <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-1" id="id-1" checked>
                   <label for="id-1">Remember Password</label>
                   <span class="checkbox"></span>
                 </div> -->
-                <a href=""(click)="gotouser()"data-dismiss="modal" class="link">Forgot Password?</a>
+                              <a href="" (click)="gotouser()" data-dismiss="modal" class="link">Forgot Password?</a>
+                            </div>
+                            <div class="form-group text-center mt-2">
+                              <!-- <a href=""class="cmn-btn btn--sm">log in</a> -->
+                              <button type="submit" class="cmn-btn btn--sm btn-block" data-dismiss="modal"
+                                (click)="onSubmit()">log in</button>
+                            </div>
+                          </form>
+                          <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal"
+                              data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
+
+                        </div>
+                        <!--account - form-wrapper end -->
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- QR code tab -->
+                  <div class="tab-pane fade" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab">
+                    <div class="row mb-none-30">
+                      <div class="col-lg-12 mb-30">
+                        <div class="account-form-wrapper">
+                          <form>
+                            <img src="assets/images/qrcode.jpg" class="center" alt="QR Code" width="200" height="150">
+                          </form>
+                          <p class="text-center mt-4">Open bitcoin app and scan the QR code to login</p>
+
+                        </div>
+                        <!--account - form-wrapper end -->
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div><!-- tab-content end -->
               </div>
-               <div class="form-group text-center mt-2">
-                <!-- <a href=""class="cmn-btn btn--sm">log in</a> -->
-                <button  type="submit" class="cmn-btn btn--sm btn-block"data-dismiss="modal"(click)="onSubmit()"
-                >log in</button>
-              </div>
-            </form>
-            <p class="text-center mt-4">Don’t have an account? <a href="#0" data-toggle="modal" data-target="#signupModal" data-dismiss="modal"> Sign Up Now</a></p>
-          
-        </div>  <!--account - form-wrapper end -->
-       
-                </div>
-             
-       </div>
-    </div>
-           <!-- QR code tab -->
-           <div class="tab-pane fade" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab">
-            <div class="row mb-none-30">
-           <div class="col-lg-12 mb-30">
-              <div class="account-form-wrapper">
-       <form>
-        <img src="assets/images/qrcode.jpg"  class="center"alt="QR Code" width="200" height="150">
-       </form>
-       <p class="text-center mt-4">Open bitcoin app and scan the QR code to login</p>
-     
-   </div>  <!--account - form-wrapper end -->
-  
-           </div>
-        
-  </div>
-</div>
-           
-     </div><!-- tab-content end -->
+
+            </div> <!--  account- form- area -->
+          </div>
         </div>
-          
-</div>	 <!--  account- form- area -->
-    </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- login modal --> 
+  <!-- login modal -->
 
-<!-- recaptcha modal starts -->
- <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
- 
+  <!-- recaptcha modal starts -->
+  <div class="modal fade" id="recaptcha" tabindex="1" role="dialog" aria-hidden="true">
 
-  <!-- <div class="puzzleMask" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"></div>
+
+    <!-- <div class="puzzleMask" (mouseup)="touchEnd($event)" (mousemove)="touchMove($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)"></div>
   <div class="slideWhole" style="margin-top:27%;
   padding-left: 40%;
 ">
@@ -237,464 +255,503 @@
           <span class="sliderText">Slide right to fill the puzzle</span>
       </div>
   </div> -->
-</div>
+  </div>
 
-    <!-- recaptcha modal end-->
-<!-- Sign Up modal starts -->
-<div class="modal fade" id="signupModal" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="account-form-area">
-          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-          <h3 class="title">Open Free Account</h3>
-     <div class="col-lg-12">
-          <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="signupphone-tab" data-toggle="tab" href="#signupphone" role="tab" aria-controls="phone" aria-selected="true">
-                <div class="icon-thumb"><img src="assets/images/icon/contact/1.png" alt="image"></div>
-                <span>Phone</span>
-              </a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" id="signupemail-tab" data-toggle="tab" href="#signupemail" role="tab" aria-controls="email" aria-selected="false">
-                <div class="icon-thumb"><img src="assets/images/icon/contact/2.png" alt="image"></div>
-                <span>Email</span>
-              </a>
-            </li>
-           
-          </ul>
-          <div class="tab-content mt-15 mb-15" id="winnerTabContent">
-    
-    <!-- Phone tab -->
-            <div class="tab-pane fade show active" id="signupphone" role="tabpanel" aria-labelledby="phone-tab">
-              <div class="row mb-none-30">
-                <div class="col-lg-12 mb-30">
-                   <div class="account-form-wrapper">
-                    <form [formGroup]="mobileform" (ngSubmit)="openaccountmob()" novalidate>
-             
-      <div class="form-group">
-                <label>Phone <sup>*</sup></label>
-                <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
-                [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
-                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-                [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone" formControlName="phone">
-              </ngx-intl-tel-input>            </div>
-              <div class="errors"
-              *ngIf="mobileform.get('phone').invalid && (mobileform.get('phone').touched || mobileform.get('phone').dirty)">
+  <!-- recaptcha modal end-->
+  <!-- Sign Up modal starts -->
+  <div class="modal fade" id="signupModal" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i
+                class="las la-times"></i></button>
+            <h3 class="title">Open Free Account</h3>
+            <div class="col-lg-12">
+              <ul class="nav nav-tabs winner-tab-nav" id="winnerTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="signupphone-tab" data-toggle="tab" href="#signupphone" role="tab"
+                    aria-controls="phone" aria-selected="true">
+                    <div class="icon-thumb"><img src="assets/images/icon/contact/1.png" alt="image"></div>
+                    <span>Phone</span>
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="signupemail-tab" data-toggle="tab" href="#signupemail" role="tab"
+                    aria-controls="email" aria-selected="false">
+                    <div class="icon-thumb"><img src="assets/images/icon/contact/2.png" alt="image"></div>
+                    <span>Email</span>
+                  </a>
+                </li>
 
-              <div *ngIf="mobileform.get('phone').hasError('required')">
-                mobile is required
-              </div>
+              </ul>
+              <div class="tab-content mt-15 mb-15" id="winnerTabContent">
 
-              <div *ngIf="mobileform.get('phone').errors.phone">
-                This is not a valid number!!! </div>
+                <!-- Phone tab -->
+                <div class="tab-pane fade show active" id="signupphone" role="tabpanel" aria-labelledby="phone-tab">
+                  <div class="row mb-none-30">
+                    <div class="col-lg-12 mb-30">
+                      <div class="account-form-wrapper">
+                        <form [formGroup]="mobileform" (ngSubmit)="openaccountmob()" novalidate>
 
+                          <div class="form-group">
+                            <label>Phone <sup>*</sup></label>
+                            <ngx-intl-tel-input [cssClass]="'custom'"
+                              [preferredCountries]="[CountryISO.UnitedArabEmirates, CountryISO.India]"
+                              [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                              [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                              [selectedCountryISO]="CountryISO.UnitedArabEmirates" [phoneValidation]="true" name="phone"
+                              formControlName="phone">
+                            </ngx-intl-tel-input>
+                          </div>
+                          <div class="errors"
+                            *ngIf="mobileform.get('phone').invalid && (mobileform.get('phone').touched || mobileform.get('phone').dirty)">
 
-            </div>  
-       <div class="d-flex flex-wrap justify-content-between mt-2">
-       <label></label>
-      <a href="javascript:;" (click)="signupotp()" class="link m-1">Send Code to phone</a>
-      </div>
-      <div class="form-group">
-                <label>phone verification code <sup>*</sup></label>
-                <input type="text" name="signup_name"formControlName="code" id="signup_name"  autocomplete="off" placeholder="phone verification code">
-                <div class="errors"
-              *ngIf="mobileform.get('code').invalid && (mobileform.get('code').touched || mobileform.get('code').dirty)">
+                            <div *ngIf="mobileform.get('phone').hasError('required')">
+                              mobile is required
+                            </div>
 
-              <div *ngIf="mobileform.get('code').hasError('required')">
-                Code is required
-              </div>
-              <div *ngIf="mobileform.get('code').errors.pattern">
-                Code must be at least 4 Number
-              </div>
-              <div *ngIf="mobileform.get('code').errors.pattern">
-                This is not a valid Code!!! </div>
+                            <div *ngIf="mobileform.get('phone').errors.phone">
+                              This is not a valid number!!! </div>
 
 
-            </div> 
+                          </div>
+                          <p>Note: User Please Enter the Mobile Number Only Country code Automatically Fetch</p>
 
-              </div>
-      <div class="d-flex flex-wrap justify-content-between mt-2">
-      <label></label>
-       <!-- <a href="#0" class="link m-1">Verify Code</a> -->
-       </div>
-              <div class="form-group">
-                <label>Set login password <sup>*</sup></label>
-                <div class="input-group-append">
-                  <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" id="signup_pass"formControlName="password" placeholder="password"autocomplete="off">
-                  
-  
-                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </div>                <div class="errors"
-                                *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
+                          <div class="d-flex flex-wrap justify-content-between mt-2">
+                            <label></label>
+                            <a href="javascript:;" (click)="signupotp()" class="link m-1">Send Code to phone</a>
+                          </div>
+                          <div class="form-group">
+                            <label>phone verification code <sup>*</sup></label>
+                            <input type="text" name="signup_name" formControlName="code" autocomplete="off"
+                              placeholder="phone verification code">
+                            <div class="errors"
+                              *ngIf="mobileform.get('code').invalid && (mobileform.get('code').touched || mobileform.get('code').dirty)">
 
-                                <div *ngIf="mobileform.get('password').hasError('required')">
-                                  password is required
-                                </div>
-
-                                <div *ngIf="mobileform.get('password').errors.minlength">
-                                  Password must be at least 8 characters
-                                </div>
-
-                                <div class="error-text" *ngIf="mobileform.get('password').hasError('passwordStrength')">
-                                  {{mobileform.get('password').errors['passwordStrength']}}
-                                </div>
+                              <div *ngIf="mobileform.get('code').hasError('required')">
+                                Code is required
                               </div>
-              </div>
-            
-             <div class="d-flex flex-wrap justify-content-between mt-2">
-                <div class="custom-checkbox">
-                  <input type="checkbox" name="id-1" id="id-1" checked>
-                  <label for="id-1">I Agree To The
-</label>
-<a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
-                  <span class="checkbox"></span>
+                              <div *ngIf="mobileform.get('code').errors.pattern">
+                                Code must be at least 4 Number
+                              </div>
+                              <div *ngIf="mobileform.get('code').errors.pattern">
+                                This is not a valid Code!!! </div>
+
+
+                            </div>
+
+                          </div>
+                          <div class="d-flex flex-wrap justify-content-between mt-2">
+                            <label></label>
+                            <!-- <a href="#0" class="link m-1">Verify Code</a> -->
+                          </div>
+                          <div class="form-group">
+                            <label>Set login password <sup>*</sup></label>
+                            <div class="input-group-append">
+                              <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                              <input [type]="hide ? 'password' : 'text'" name="signup_pass" formControlName="password"
+                                placeholder="password" autocomplete="off">
+
+
+                              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                              </mat-icon>
+                            </div>
+                            <div class="errors"
+                              *ngIf="mobileform.get('password').invalid && (mobileform.get('password').touched || mobileform.get('password').dirty)">
+
+                              <div *ngIf="mobileform.get('password').hasError('required')">
+                                password is required
+                              </div>
+
+                              <div *ngIf="mobileform.get('password').errors.minlength">
+                                Password must be at least 8 characters
+                              </div>
+
+                              <div class="error-text" *ngIf="mobileform.get('password').hasError('passwordStrength')">
+                                {{mobileform.get('password').errors['passwordStrength']}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-wrap justify-content-between mt-2">
+                            <div class="custom-checkbox">
+                              <input type="checkbox" name="id-1" id="id-1" checked>
+                              <label for="id-1">I Agree To The
+                              </label>
+                              <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
+                              <span class="checkbox"></span>
+                            </div>
+                          </div>
+                          <div class="form-group text-center mt-2">
+                            <button type="submit" class="cmn-btn btn--sm" [disabled]="!mobileform.valid"
+                              data-dismiss="modal" (click)="openaccountmob()">Sign Up</button>
+
+                            <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
+                          </div>
+                          <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive SMS?</a>
+                        </form>
+
+                        <p class="text-center mt-2"> Already have an account? <a href="#0" data-toggle="modal"
+                            data-target="#loginModal" data-dismiss="modal">Login</a></p>
+
+                      </div>
+                      <!--account - form-wrapper end -->
+
+                    </div>
+
+                  </div>
+
+
                 </div>
-               </div>
-              <div class="form-group text-center mt-2">
-                <button type="submit" class="cmn-btn btn--sm" data-dismiss="modal"(click)="openaccountmob()" >Sign Up</button>
+                <!-- Email tab -->
+                <div class="tab-pane fade" id="signupemail" role="tabpanel" aria-labelledby="email-tab">
+                  <div class="row mb-none-30">
+                    <div class="col-lg-12 mb-30">
+                      <div class="account-form-wrapper">
+                        <form [formGroup]="loginForm" novalidate>
+                          <div class="form-group">
+                            <label>Email <sup>*</sup></label>
+                            <input type="email" name="signup_name" autocomplete="off" formControlName="email"
+                              placeholder="Enter your Email">
+                            <div class="errors"
+                              *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
 
-                <!-- <button type="submit" class="cmn-btn btn--sm" data-toggle="modal" data-target="#recaptcha" data-dismiss="modal">Sign Up</button> -->
-              </div>
-       <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive SMS?</a>
-            </form>
-     
-            <p class="text-center mt-2"> Already have an account? <a href="#0" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
-          
-        </div>  <!--account - form-wrapper end -->
-       
-                </div>
-             
-       </div>
-            
-     
-      </div>
-      <!-- Email tab -->
-            <div class="tab-pane fade" id="signupemail" role="tabpanel" aria-labelledby="email-tab">
-                 <div class="row mb-none-30">
-                <div class="col-lg-12 mb-30">
-                   <div class="account-form-wrapper">
-                    <form [formGroup]="loginForm" novalidate>
-                      <div class="form-group">
-                <label>Email <sup>*</sup></label>
-                <input type="email" name="signup_name"  autocomplete="off"id="signup_name" formControlName="email"placeholder="Enter your Email">
-                <div class="errors"
-              *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)">
+                              <div *ngIf="loginForm.get('email').hasError('required')">
+                                Email is required
+                              </div>
 
-              <div *ngIf="loginForm.get('email').hasError('required')">
-                Email is required
-              </div>
-
-              <div *ngIf="loginForm.get('email').errors.email">
-                This is not a valid Email!!! </div>
+                              <div *ngIf="loginForm.get('email').errors.email">
+                                This is not a valid Email!!! </div>
 
 
-            </div> 
-              </div>
-       <div class="d-flex flex-wrap justify-content-between mt-2">
-       <label></label>
-      <!-- <a href="javascript:;"  type="submit"  (click)="signupemailotp()" class="link m-1">Send Code to Email</a> -->
-      <!-- <button  type="submit" class="link-btn" (click)="signupemailotp()">Send Code to Email</button> -->
-      <button type="submit"(click) ="signupemailotp()" class="link-btn">Send Code to Email</button>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-wrap justify-content-between mt-2">
+                            <label></label>
+                            <!-- <a href="javascript:;"  type="submit"  (click)="signupemailotp()" class="link m-1">Send Code to Email</a> -->
+                            <!-- <button  type="submit" class="link-btn" (click)="signupemailotp()">Send Code to Email</button> -->
+                            <button type="submit" (click)="signupemailotp()" class="link-btn">Send Code to
+                              Email</button>
 
-      </div>
-      <div class="form-group">
-                <label>Email verification code <sup>*</sup></label>
-                <input type="text" name="signup_name" id="signup_name"formControlName="code" autocomplete="off" placeholder="Email verification code">
-                <div class="errors"
-                *ngIf="loginForm.get('code').invalid && (loginForm.get('code').touched || loginForm.get('code').dirty)">
-  
-                <div *ngIf="loginForm.get('code').hasError('required')">
-                  Code is required
-                </div>
-  
-                <div *ngIf="loginForm.get('code').errors.pattern">
-                  Code must be at least 4 Number
-                </div>
-                <div *ngIf="loginForm.get('code').errors.pattern">
-                  This is not a valid Code!!! </div>
-  
-  
-              </div> 
-              </div>
-       <div class="d-flex flex-wrap justify-content-between mt-2">
-       <label></label>
-      <!-- <a href="#0" class="link m-1">Verify Code</a> -->
-      </div>
-              <div class="form-group">
-                <label>Set login password <sup>*</sup></label>
-                <div class="input-group-append">
-                  <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
-                  <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off" id="signup_pass"formControlName="password" placeholder="password">
-                  
-  
-                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </div>                <div class="errors"
-                *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+                          </div>
+                          <div class="form-group">
+                            <label>Email verification code <sup>*</sup></label>
+                            <input type="text" name="signup_name" formControlName="code" autocomplete="off"
+                              placeholder="Email verification code">
+                            <div class="errors"
+                              *ngIf="loginForm.get('code').invalid && (loginForm.get('code').touched || loginForm.get('code').dirty)">
 
-                <div *ngIf="loginForm.get('password').hasError('required')">
-                  password is required
-                </div>
+                              <div *ngIf="loginForm.get('code').hasError('required')">
+                                Code is required
+                              </div>
 
-                <div *ngIf="loginForm.get('password').errors.minlength">
-                  Password must be at least 8 characters
-                </div>
+                              <div *ngIf="loginForm.get('code').errors.pattern">
+                                Code must be at least 4 Number
+                              </div>
+                              <div *ngIf="loginForm.get('code').errors.pattern">
+                                This is not a valid Code!!! </div>
 
-                <div class="error-text" *ngIf="loginForm.get('password').hasError('passwordStrength')">
-                  {{loginForm.get('password').errors['passwordStrength']}}
-                </div>
-              </div>
-              </div>
-            
-              <div class="d-flex flex-wrap mt-2">
-                <!-- <div class="custom-checkbox">
+
+                            </div>
+                          </div>
+                          <div class="d-flex flex-wrap justify-content-between mt-2">
+                            <label></label>
+                            <!-- <a href="#0" class="link m-1">Verify Code</a> -->
+                          </div>
+                          <div class="form-group">
+                            <label>Set login password <sup>*</sup></label>
+                            <div class="input-group-append">
+                              <!-- <input type="password" name="signup_pass" id="signup_pass" formControlName="password" placeholder="password" required> -->
+                              <input [type]="hide ? 'password' : 'text'" name="signup_pass" autocomplete="off"
+                                formControlName="password" placeholder="password">
+
+
+                              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                              </mat-icon>
+                            </div>
+                            <div class="errors"
+                              *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched || loginForm.get('password').dirty)">
+
+                              <div *ngIf="loginForm.get('password').hasError('required')">
+                                password is required
+                              </div>
+
+                              <div *ngIf="loginForm.get('password').errors.minlength">
+                                Password must be at least 8 characters
+                              </div>
+
+                              <div class="error-text" *ngIf="loginForm.get('password').hasError('passwordStrength')">
+                                {{loginForm.get('password').errors['passwordStrength']}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-wrap mt-2">
+                            <!-- <div class="custom-checkbox">
                   <input type="checkbox" name="id-2" id="id-2" checked>
                   <label for="id-2">I agree to the</label>
                   <span class="checkbox"></span>
                 </div> -->
-                <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
-              </div>
-              <div class="form-group text-center mt-2">
-                <button type ="submit"  class="cmn-btn btn--sm"data-dismiss="modal"(click)="openaccountemail()" >Sign Up</button>
-              </div>
-      <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
-            </form>
-            <p class="text-center mt-2"> Already have an account? <a href="#0" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
-          
-        </div>  <!--account - form-wrapper end -->
-       
+                            <a href="#0" class="link ml-1">Terms, Privacy Policy and Fees</a>
+                          </div>
+                          <div class="form-group text-center mt-2">
+                            <button type="submit" [disabled]="!loginForm.valid" class="cmn-btn btn--sm"
+                              data-dismiss="modal" (click)="openaccountemail()">Sign Up</button>
+                          </div>
+                          <a href="#" class="link d-flex flex-wrap justify-content-center mt-2">Cant receive Email?</a>
+                        </form>
+                        <p class="text-center mt-2"> Already have an account? <a href="#0" data-toggle="modal"
+                            data-target="#loginModal" data-dismiss="modal">Login</a></p>
+
+                      </div>
+                      <!--account - form-wrapper end -->
+
+                    </div>
+
+                  </div>
                 </div>
-             
-       </div>
-    </div>
-           
-     </div><!-- tab-content end -->
+
+              </div><!-- tab-content end -->
+            </div>
+
+          </div> <!--  account- form- area -->
         </div>
-          
-</div>	 <!--  account- form- area -->
       </div>
     </div>
   </div>
-</div>
 
-<!-- Sign Up modal ends-->
+  <!-- Sign Up modal ends-->
 
- <!-- header-section start  -->
-<header class="header">
-  <div class="header__top">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-sm-5">
-          <div class="left d-flex align-items-center">
-            <!-- <a href="customersupport.html"><i class="las la-phone-volume"></i> Customer Support</a> -->
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="las la-tags"></i> Bitconia Token</a> 
-      <div class="dropdown-menu">
-    <a href="#" class="dropdown-item">Sub menu1</a> 
-  
-     <a href="#" class="dropdown-item">Sub menu2</a> 
-   <a href="#" class="dropdown-item">Sub menu3</a> 
-      
+  <!-- header-section start  -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-sm-5">
+            <div class="left d-flex align-items-center">
+              <!-- <a href="customersupport.html"><i class="las la-phone-volume"></i> Customer Support</a> -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="las la-tags"></i> Bitconia Token</a>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Sub menu1</a>
+
+                <a href="#" class="dropdown-item">Sub menu2</a>
+                <a href="#" class="dropdown-item">Sub menu3</a>
+
+              </div>
+              <div class="language">
+                <i class="las la-globe-europe"></i>
+                <select>
+                  <option>En</option>
+                  <option>Rus</option>
+                  <option>Bn</option>
+                  <option>Hp</option>
+                  <option>Frn</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="right my-2 mx-2">
+              <div *ngIf="token==null">
+                <a href="#" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
+
+              </div>
+
+              <div class="dropdown" *ngIf="token!=null ">
+                <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bell"></i> <span
+                    class="cart__num">04</span></a>
+                <div class="dropdown-content">
+                  <div href="#" class="dropdown-firstlistitem" style="float:left;">
+                    <div class="row ">
+                      <span class="col-lg-12 text-bold">4 pending Notifications</span>
+                      <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear
+                          all</a></span>
+                      <span class="col-lg-12 justify-content-center"><a href="" routerLink="/user-setting/notifi"
+                          style="float:left;">View all</a><i class="las la-angle-right"></i></span>
+                    </div>
+                  </div>
+                  <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>login attempted from new IP
+                    <div class="menudesc">The system has detected that ...</div>
+                    <div class="menudesc">1 day ago</div>
+                  </a>
+                  <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Start trading FIDA ...
+                    <div class="menudesc">you can start trasding FIDA...</div>
+                    <div class="menudesc">19 day ago</div>
+                  </a>
+                  <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Beta token sale on Bitconia...
+                    <div class="menudesc">Bitconia is excited to announce the...</div>
+                    <div class="menudesc">20 day ago</div>
+                  </a>
+                  <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Bitconia spot Trading System ...
+                    <div class="menudesc">spot Trading System Upgrade will start...</div>
+                    <div class="menudesc">23 day ago</div>
+                  </a>
+
+                </div>
+              </div>
+              <div class="dropdown" *ngIf="token!=null">
+                <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bullhorn"></i><span
+                    class="cart__num">04</span></a>
+                <div class="dropdown-content">
+                  <div href="#" class="dropdown-firstlistitem" style="float:left;">
+                    <div class="row">
+                      <span class="col-lg-12 text-bold">4 pending Annoucements</span>
+                      <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear
+                          all</a></span>
+                      <span class="col-lg-12 justify-content-center"><a href="" routerLink="/user-setting/announcements"
+                          style="float:left;">View all</a><i class="las la-angle-right"></i></span>
+                    </div>
+                  </div>
+                  <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Beta token sale on Bitconia
+                    <div class="menudesc">Bitconia is excited to announce the...</div>
+                    <div class="menudesc">20 day ago</div>
+                  </a>
+                  <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Bitconia spot Trading System
+                    <div class="menudesc">spot Trading System Upgrade will start...</div>
+                    <div class="menudesc">23 day ago</div>
+                  </a>
+
+                  <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i> <span>.</span>login attempted
+                    from new IP
+                    <div class="menudesc">The system has detected that ...</div>
+                    <div class="menudesc">1 day ago</div>
+                  </a>
+                  <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Start trasding FIDA today at
+                    <div class="menudesc">you can start trasding FIDA today...</div>
+                    <div class="menudesc">19 day ago</div>
+                  </a>
+
+                </div>
+              </div>
+              <div class="product__cart">
+                <a href="#" routerLink="/user-Draw/cart" class="amount__btn">
+                  <i class="las la-shopping-basket"></i>
+
+                  <span class="cart__num">{{tickcount}}</span>
+                </a>
+              </div>
+              <a href="" routerLink="/user-Draw/wallet" class="user__btn" *ngIf="token!=null"><i
+                  class="las la-wallet"></i></a>
+
+              <!-- <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>  -->
+              <!-- <div class="dropdown-menu"> -->
+              <!-- <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>  -->
+
+              <!-- <a href="userpanel.html" class="dropdown-item">User panel</a>  -->
+              <!-- <a href="#" class="dropdown-item">Logout</a>  -->
+
+              <!-- </div> -->
+
+              <div class="dropdown">
+                <a href="#" class="topmenulink mt-1 ml-4 user__btn"><i class="las la-user"></i></a>
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item" *ngIf="token==null" data-toggle="modal" data-target="#loginModal"
+                    data-dismiss="modal">Login</a>
+                  <a href="#/user-setting/accountsecurity" class="dropdown-item" *ngIf="token!=null">User panel</a>
+                  <a href="#" class="dropdown-item" (click)="logoutUser()" *ngIf="token!=null">Logout</a>
+                  <!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
+                  <!-- </button> -->
+                </div>
+              </div>
+
+
+              <div class="dropdown">
+                <a href="#" class="topmenulink mt-1 ml-4">Download</a>
+                <div class="dropdown-content">
+                  <img src="assets/images/qrcode.jpg" class="center" alt="QR Code" width="100" height="100">
+                  <div class="desc">Scan here</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
-            <div class="language">
-              <i class="las la-globe-europe"></i>
-              <select>
-                <option>En</option>
-                <option>Rus</option>
-                <option>Bn</option>
-                <option>Hp</option>
-                <option>Frn</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-7">
-          <div class="right my-2 mx-2">
-            <div *ngIf="token==null">
-              <a href="#" class="topmenulink mt-1" data-toggle="modal" data-target="#signupModal">Create Account</a>
+    </div><!-- header__top end -->
+    <div class="header__bottom">
+      <div class="container">
+        <nav class="navbar navbar-expand-xl p-0 align-items-center">
+          <a href="" routerLink="index">
+            <img src="assets/images/logo.png" alt="Bitconia" class="img=fluid">
+          </a>
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="menu-toggle"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav main-menu ml-auto">
+              <li class="menu_has_children">
+                <a href="#">Play</a>
+                <ul class="sub-menu">
+                  <li><a href="" routerLink="/user-Draw/buynow">Buy Now</a></li>
+                  <li><a href="" routerLink="/user-setting/howtoplay">How to play</a></li>
+                  <li><a href="" routerLink="/user-setting/howtoaddcerdit">How to add credit</a></li>
+                  <li><a href="" routerLink="/user-setting/howtowithdraw">How to withdraw</a></li>
+                  <li><a href="" routerLink="/user-setting/faq">FAQ</a></li>
+                </ul>
+              </li>
+              <li class="menu_has_children">
+                <a href="#">Communities</a>
+                <ul class="sub-menu">
+                  <li><a routerLink="user-control/ourfeatures">Our Features</a></li>
+                  <li><a routerLink="user-control/customsupp">Customer Support</a></li>
+                  <li><a routerLink="user-control/fraudaware">Fraud Awareness</a></li>
 
-            </div>
-     
-      <div class="dropdown" *ngIf="token!=null ">
-<a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bell"></i> <span class="cart__num">04</span></a>
-<div class="dropdown-content">
-        <div href="#" class="dropdown-firstlistitem" style="float:left;">
-          <div class="row ">
-            <span class="col-lg-12 text-bold">4 pending Notifications</span>
-            <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
-            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/notifi"  style="float:left;">View all</a><i class="las la-angle-right"></i></span>
-          </div>
-        </div>
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>login attempted from new IP
-          <div class="menudesc">The system has detected that ...</div>
-          <div class="menudesc">1 day ago</div>
-        </a> 
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Start trading FIDA ...
-          <div class="menudesc">you can start trasding FIDA...</div>
-          <div class="menudesc">19 day ago</div>
-        </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Beta token sale on Bitconia... 
-          <div class="menudesc">Bitconia is excited to announce the...</div>
-          <div class="menudesc">20 day ago</div>
-        </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-envelope"></i>Bitconia spot Trading System ...
-          <div class="menudesc">spot Trading System Upgrade will start...</div>
-          <div class="menudesc">23 day ago</div>
-        </a> 
 
-</div>
-</div>
-<div class="dropdown" *ngIf="token!=null">
-<a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bullhorn"></i><span class="cart__num">04</span></a>
-<div class="dropdown-content">
-        <div href="#" class="dropdown-firstlistitem" style="float:left;">
-          <div class="row">
-            <span class="col-lg-12 text-bold">4 pending Annoucements</span>
-            <span class="col-lg-12 text-red"><a href="#" data-toggle="modal" data-target="#clearModal"> clear all</a></span>
-            <span class="col-lg-12 justify-content-center"><a href=""routerLink="/user-setting/announcements"  style="float:left;">View all</a><i class="las la-angle-right"></i></span>
-          </div>
-        </div>
-         <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Beta token sale on Bitconia
-          <div class="menudesc">Bitconia is excited to announce the...</div>
-          <div class="menudesc">20 day ago</div>
-        </a>
-        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Bitconia spot Trading System
-          <div class="menudesc">spot Trading System Upgrade will start...</div>
-          <div class="menudesc">23 day ago</div>
-        </a> 
+                </ul>
+              </li>
+              <!-- <li><a href="#">Draw</a></li> -->
+              <li class="menu_has_children">
+                <a href="#">Draw</a>
+                <ul class="sub-menu">
+                  <li><a routerLink="user-Draw/currentdraw">Upcoming</a></li>
+                  <li><a routerLink="/user-Draw/history">History</a></li>
+                  <!-- <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li> -->
 
-        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i> <span>.</span>login attempted from new IP
-          <div class="menudesc">The system has detected that ...</div>
-          <div class="menudesc">1 day ago</div>
-        </a> 
-        <a href="#" class="dropdown-listitem"><i class="las la-volume-down"></i>Start trasding FIDA today at
-          <div class="menudesc">you can start trasding FIDA today...</div>
-          <div class="menudesc">19 day ago</div>
-        </a>
-        
-</div>
-</div>
- <div class="product__cart">
-               <a href="#" routerLink="/user-Draw/cart"  class="amount__btn">
-        <i class="las la-shopping-basket"></i> 
-       
-        <span class="cart__num">{{tickcount}}</span>
-      </a>
-            </div>
-           <a href=""routerLink= "/user-Draw/wallet" class="user__btn"*ngIf="token!=null" ><i class="las la-wallet"></i></a> 
-    
-   <!-- <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>  -->
-      <!-- <div class="dropdown-menu"> -->
-   <!-- <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a>  -->
-  
-     <!-- <a href="userpanel.html" class="dropdown-item">User panel</a>  -->
-   <!-- <a href="#" class="dropdown-item">Logout</a>  -->
-      
-       <!-- </div> -->
-   
-  <div class="dropdown">
-<a href="#" class="topmenulink mt-1 ml-4 user__btn" ><i class="las la-user"></i></a>
-<div class="dropdown-content">
-<a href="#" class="dropdown-item"*ngIf="token==null" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" >Login</a>
-<a href="#/user-Draw/myticket" class="dropdown-item"*ngIf="token!=null" >User panel</a>
-<a href="#" class="dropdown-item" (click)="logoutUser()"*ngIf="token!=null" >Logout</a>
-<!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
-<!-- </button> -->
-</div>
-</div> 
-   
+                </ul>
+              </li>
+            </ul>
+            <div class="nav-right">
+              <a href="" routerLink="/user-Draw/buynow" class="cmn-btn style--three btn--sm"><img
+                  src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a>
 
-  <div class="dropdown">
-<a href="#" class="topmenulink mt-1 ml-4">Download</a>
-<div class="dropdown-content">
-<img src="assets/images/qrcode.jpg" class="center" alt="QR Code" width="100" height="100">
-<div class="desc">Scan here</div>
-</div>
-</div>
+              <!-- <a href=""routerLink=".."class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a> -->
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!-- header__top end -->
-  <div class="header__bottom">
-     <div class="container">
-      <nav class="navbar navbar-expand-xl p-0 align-items-center">
-        <a href=""routerLink="index">
-    <img src="assets/images/logo.png" alt="Bitconia" class="img=fluid">
-    </a>
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="menu-toggle"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav main-menu ml-auto">
-            <li class="menu_has_children">
-              <a href="#">Play</a>
-              <ul class="sub-menu">
-                <li><a href=""routerLink="/user-Draw/buynow">Buy Now</a></li>
-                <li><a href=""routerLink="/user-setting/howtoplay">How to play</a></li>
-                <li><a href=""routerLink="/user-setting/howtoaddcerdit">How to add credit</a></li>
-                <li><a href=""routerLink="/user-setting/howtowithdraw">How to withdraw</a></li>
-                <li><a href=""routerLink="/user-setting/faq">FAQ</a></li> 
-              </ul>
-            </li>
-           <li class="menu_has_children">
-              <a href="#">Communities</a>
-              <ul class="sub-menu">
-                <li><a routerLink="user-control/ourfeatures">Our Features</a></li>
-                <li><a routerLink="user-control/customsupp">Customer Support</a></li>
-                <li><a routerLink="user-control/fraudaware">Fraud Awareness</a></li>
- 
-                
-              </ul>
-            </li>
-            <!-- <li><a href="#">Draw</a></li> -->
-       <li class="menu_has_children">
-              <a href="#">Draw</a>
-              <ul class="sub-menu">
-                <li><a routerLink="user-Draw/currentdraw">Upcoming</a></li>
-                <li><a routerLink="/user-Draw/history">History</a></li>
-                <!-- <li><a routerLink="user-Draw/pastdraw">Pastdraw</a></li> -->
-
-              </ul>
-            </li>
-          </ul>
-          <div class="nav-right">
-        <a href=""routerLink="/user-Draw/buynow" class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a>
-    
-        <!-- <a href=""routerLink=".."class="cmn-btn style--three btn--sm"><img src="assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Buy Tickets </a> -->
-
-        <!-- <div class="hero__btn wow fadeInUp"> -->
+              <!-- <div class="hero__btn wow fadeInUp"> -->
               <!-- <a href="buytickets.html" class="cmn-btn btn-sm"><img src="assets/images/tag.png" alt="icon" class="mr-2">Buy Tickets</a> -->
-          
-            <!-- </div> -->
+
+              <!-- </div> -->
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
-  </div><!-- header__bottom end -->
-</header>
+        </nav>
+      </div>
+    </div><!-- header__bottom end -->
+  </header>
 
-<div class="modal fade" id="clearModal" tabindex="1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="account-form-area">
-          <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
+  <div class="modal fade" id="clearModal" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+            <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
             <h5 class="title">Clear all?</h5>
-          <div class="account-form-wrapper">
-          
-         <p>You can't see these pending notifications here. However you have all the notifications in the page by clicking "view all" </p>
+            <div class="account-form-wrapper">
 
-          <div class="justify-content-between mt-2">
-             <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Cancel </a>
-              <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
-             </div>
+              <p>You can't see these pending notifications here. However you have all the notifications in the page by
+                clicking "view all" </p>
+
+              <div class="justify-content-between mt-2">
+                <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal"
+                  aria-label="Close">Cancel </a>
+                <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal"
+                  aria-label="Close">Confirm </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- <router-outlet></router-outlet> -->
+  <!-- <router-outlet></router-outlet> -->

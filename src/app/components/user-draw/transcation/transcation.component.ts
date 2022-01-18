@@ -42,7 +42,7 @@ export class TranscationComponent implements OnInit {
   }
 
   withdrawhistory(){
-    //debugger
+    ////debugger
     this.httpService.withdrawhistory().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

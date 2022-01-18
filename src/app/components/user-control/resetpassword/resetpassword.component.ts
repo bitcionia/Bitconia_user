@@ -17,6 +17,9 @@ export class ResetpasswordComponent implements OnInit {
   ipAddress: any;
   error: any;
   errorMessage: any;
+  countrycode: any;
+  mobile: any;
+  email: any;
   constructor(
     public httpService: HttpService,
     private formBuilder: FormBuilder,
@@ -26,12 +29,21 @@ export class ResetpasswordComponent implements OnInit {
     private http: HttpClient,
     public toastr: ToastrService,
 
-  ) { 
+  ) {
+    if(history.state.data){
+      console.log(history.state.data.value)
+      console.log(history.state.data.values)
+      this.countrycode=history.state.data.values
+this.mobile=history.state.data.value
+    } 
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.getIPAddress();
+    if(history.state.data){
+      console.log(history.state.data.value1)
+this.email=history.state.data.value1
+    } 
   }
   createForm() {
     this.loginForm = this.formBuilder.group({
@@ -41,21 +53,17 @@ export class ResetpasswordComponent implements OnInit {
 
     });
   }
-  getIPAddress()
-  {
-    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
-      this.ipAddress = res.ip;
-      console.log(this.ipAddress)
-    });
-  }
+ 
   onSubmit() {
-    //debugger
+    debugger
       this.submitted=true;
       let jsonData = {
+        mobile:this.mobile,
+        country_code:this.countrycode,
         password: this.loginForm.value.newPass,
         device:'1',
         location:'Chennai',
-        ip:this.ipAddress,
+        ip:'162.198.5.46',
       }
       this.httpService.resetPassword(jsonData).subscribe(( res: any) => {
         

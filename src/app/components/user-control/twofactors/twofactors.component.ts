@@ -32,6 +32,8 @@ export class TwofactorsComponent implements OnInit {
   emailid: any;
   type: any;
   data: any;
+  userdetails: any;
+  act: any;
 
   constructor(
     public toastr: ToastrService,
@@ -51,13 +53,16 @@ export class TwofactorsComponent implements OnInit {
     this.createForm();
     this.mobileForm();
     this.emailid  = JSON.parse(localStorage.getItem("userid"));
+    this.userdetails  = JSON.parse(localStorage.getItem("userdetails"));
+
     this.countrycode  = JSON.parse(localStorage.getItem("countrycode"));
     this.mobile  = JSON.parse(localStorage.getItem("mobile"));
     this.type = JSON.parse(localStorage.getItem("logintype"));
 
     console.log(this.countrycode)
     console.log(this.mobile)
-
+    console.log(this.userdetails['admin']['tfa_active'])
+this.act=this.userdetails['admin']['tfa_active']
 console.log(this.emailid)
     if(history.state.data){
       // this.data=[];
@@ -117,7 +122,7 @@ console.log("92",this.email)
     });
   }
   twofactoremail() {
-    //debugger
+    ////debugger
       // localStorage.clear();
       this.submitted=true;
       let jsonData = {
@@ -165,9 +170,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   
     }
     towfactormob() {
-      //debugger
+      ////debugger
         this.submitted=true;
-        //debugger
+        ////debugger
     //     console.log(this.mobileform.value);
     //     this.code = this.mobileform.value;
     //     console.log( this.code['phone']);
@@ -179,7 +184,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           
     //         console.log( this.countrycode);
     //         console.log( this.mobile);
-          //debugger
+          ////debugger
           this.submitted=true;
           let jsonData = {
             email:"",
@@ -227,7 +232,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
      
     //   twofactemailotp() {
            
-    //     //debugger
+    //     ////debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email: this.email,
@@ -277,7 +282,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //     }
     //     twofactmobotp() {
            
-    //       //debugger
+    //       ////debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email:"",
@@ -329,11 +334,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //       }
   
           verfaddemail() {
-            //debugger
+            ////debugger
             this.submitted = true;
         
-            //debugger
-            if(this.data =="false"){
+            ////debugger
+            if(this.data =="false"|| this.data ==undefined){
             let JsonData = {
               "email":  this.email,
               "mobile": "",
@@ -364,15 +369,15 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
            })
           }
           else if(this.data !="false"){
-            //debugger
+            ////debugger
                this.g2faverifyemail();
           }
           }
           verfaddmob() {
-            //debugger
+            debugger
             this.submitted = true;
-            if(this.data =="false"){
-            //debugger
+            if(this.data =="false" || this.data ==undefined){
+            ////debugger
             let JsonData = {
               "email": "",
               mobile: this.mobile,
@@ -405,14 +410,14 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-          } else if(this.data !="false"){
+          } else if(this.data =="true"){
              this.g2faverifymob();
           }
           }
           g2faverifymob() {
             this.submitted = true;
         
-            //debugger
+            ////debugger
             let JsonData = {
               "email": "",
               mobile: this.mobile,
@@ -420,7 +425,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               "otp":this.mobileform.value.code,
             }
             this.httpService.g2fverify(JsonData).subscribe(res => {
-              // //////debugger
+              // ////////debugger
               if (res['success'] == true) {
                 this.routeTo.navigateByUrl('/index');
                 setTimeout(() => {
@@ -438,6 +443,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             {
             }
           }
+          
           g2faverifyemail() {
             this.submitted = true;
             let JsonData = {
@@ -470,11 +476,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             }
           }
         //   verfaddmob() {
-        //     //debugger
+        //     ////debugger
           
         //     this.submitted = true;
         
-        //     //debugger
+        //     ////debugger
         //     let JsonData = {
         //       "email": "",
         //       mobile: this.mobile,

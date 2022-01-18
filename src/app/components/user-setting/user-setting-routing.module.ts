@@ -20,10 +20,10 @@ const routes: Routes = [
     // canActivate:[AuthencationGuard],
     children: [ 
       { 
-        // canActivate:[AuthencationGuard],
+        canActivate:[AuthencationGuard],
         path: 'accountsecurity', component: AccountsecurityComponent},
 { 
-  // canActivate:[AuthencationGuard],
+  canActivate:[AuthencationGuard],
 
   path: 'accountactivity', component: AccountactivityComponent},
 { 

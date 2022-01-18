@@ -31,7 +31,7 @@ export class LotteryhistoryComponent implements OnInit {
     this.lotteryhistory();
   }
   lotteryhistory(){
-    //debugger
+    ////debugger
     this.httpService.drawhistory().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

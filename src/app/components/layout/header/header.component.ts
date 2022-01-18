@@ -182,7 +182,7 @@ this.balance();
     this.token = JSON.parse(localStorage.getItem("data"));
 
     console.log(this.token)
-  //debugger
+  ////debugger
  
   
     
@@ -266,10 +266,13 @@ this.balance();
 
  
   mobilelogin() {
-  //debugger
+  ////debugger
     localStorage.clear();
+    if(this.mobileform.value.password!=PasswordStrengthService){
+
+    
     this.submitted=true;
-    //debugger
+    ////debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -282,7 +285,7 @@ this.phoneNumber=this.code['phone']
         localStorage.setItem("mobile", JSON.stringify(this.mobile));
         console.log( this.countrycode);
         console.log( this.mobile);
-      //debugger
+      ////debugger
       this.submitted=true;
       let jsonData = {
         mobile: this.mobile,
@@ -354,7 +357,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
-  
+    }
 
 
   }
@@ -365,7 +368,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   }
   
   onSubmit() {
-    //debugger
+    ////debugger
     localStorage.clear();  
 
       this.submitted=true;
@@ -393,6 +396,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           localStorage.setItem("userid", JSON.stringify(res['admin']['email']));
           localStorage.setItem("data", JSON.stringify(res['data']));
           localStorage.setItem("id", JSON.stringify(res['admin']['_id']));
+
           localStorage.setItem("logintype", JSON.stringify("email"));
 
           
@@ -453,7 +457,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   
          }
   logoutUser() {
-  //debugger
+  ////debugger
     if (
       localStorage.getItem("userid") != null ||
       localStorage.getItem("userid") != undefined
@@ -488,7 +492,7 @@ console.log(userNumber );
   //   });
   // }
   openaccountmob() {
-  //debugger
+  ////debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -513,7 +517,7 @@ this.phoneNumber=this.code['phone']
         ip:'162.198.5.46',
       }
       this.httpService.createuser(jsonData).subscribe( res => {
-        //debugger
+        ////debugger
         console.log(res);
 
         if (res['success'] === true) {
@@ -550,7 +554,7 @@ this.httpService.toastr.error(this.errorMessage, '', {
 
     }
     openaccountemail() {
-      //debugger
+      ////debugger
         this.submitted=true;
         let jsonData = {
           email: this.loginForm.value.email,
@@ -599,7 +603,7 @@ this.httpService.toastr.error(this.errorMessage, '', {
 
       }
       verifyemail() {
-        //debugger
+        ////debugger
           // this.submitted=true;
           let jsonData = {
             email: this.loginForm.value.email,
@@ -650,7 +654,7 @@ this.phoneNumber=this.code['phone']
       
         console.log( this.countrycode);
         console.log( this.mobile);
-          //debugger
+          ////debugger
             // this.submitted=true;
             let jsonData = {
               email:'',
@@ -699,7 +703,7 @@ this.phoneNumber=this.code['phone']
           }
           signupemailotp() {
            
-            //debugger
+            ////debugger
               // this.submitted=true;
               let jsonData = {
                 email: this.loginForm.value.email,
@@ -749,7 +753,7 @@ this.phoneNumber=this.code['phone']
           // }
         
           twofactoremail() {
-            //debugger
+            ////debugger
               // localStorage.clear();
               this.submitted=true;
               let jsonData = {
@@ -798,7 +802,7 @@ this.phoneNumber=this.code['phone']
 
             }
             balance(){
-              //debugger
+              ////debugger
               this.httpService.balancebtc().subscribe((res: any) => {
                 console.log(res['BTC_fees']['BTC_fees']);
                 this.aval = res['BTC_fees']['BTC_fees']

@@ -78,14 +78,14 @@ export class MyticketComponent implements OnInit {
     this.nativeWindow();
   }
   gotoview(view) {
-    // ////debugger
+    // //////debugger
     this.router.navigateByUrl('/user-Draw/claimprize')
     
     localStorage.setItem("mytickview", JSON.stringify(view));
 
   }
   last_draw(){
-    //debugger
+    ////debugger
     this.httpService.last_draw().subscribe((res: any) => {
       console.log(res['data'])
       this.data=res['data']
@@ -121,7 +121,7 @@ console.log(this.seq)
     });
   }
   alldraw(){
-    //debugger
+    ////debugger
     this.httpService.all_draw().subscribe((res: any) => {
       console.log(res['data'])
       this.data1=res['data']

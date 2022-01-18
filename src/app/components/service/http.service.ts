@@ -115,13 +115,13 @@ userloginurl: string = "user/auth/login";
     );
   }
 userLogin(jsonObj: any): Observable<any> {
-  // //////debugger
+  // ////////debugger
   return this.http.post(this.baseURL + this.userloginurl, jsonObj, {
     headers: this.headers,
   });
 }
 logoutSession(jsonObj: any): Observable<any> {
-  // //////debugger
+  // ////////debugger
   return this.http.post(this.baseURL + this.logout, jsonObj, {
     headers: this.getAuthHeaders(),
   });
@@ -150,7 +150,7 @@ forgetPassword(jsonObj: any): Observable<any> {
 }
 resetPassword(jsonObj: any): Observable<any> {
   return this.http.post(this.baseURL + this.resetpassword, jsonObj, {
-    headers: this.getAuthHeaders(),
+    // headers: this.getAuthHeaders(),
   });
 }
 createuser(jsonObj: any): Observable<any> {
