@@ -9,6 +9,7 @@ function refresh() {
   window .location.reload();
 }
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-accountsecurity',
@@ -74,7 +75,7 @@ export class AccountsecurityComponent implements OnInit {
     private routeTo: Router,
     public formBuilder: FormBuilder,
     private loader: NgxUiLoaderService,
-
+private toastr:ToastrService,
 
     public httpService: HttpService,
   ) {
@@ -251,7 +252,7 @@ this.emailForm();
   changepassword() {
     this.submitted = true;
 
-    ////debugger
+    debugger
     if (this.loginForm.value.newPass == this.loginForm.value.confirmPass) {
       let JsonData = {
         "old_password": this.loginForm.value.oldPass,
@@ -263,9 +264,9 @@ this.emailForm();
         // ////////debugger
         if (res['success'] == true) {
           // this.toastr.success("Password changed Successfully");
-          // this.httpService.toastr.success(res['message'], '', {
-          //   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-          // });
+          this.httpService.toastr.success(res['message'], '', {
+            positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          });
           this.routeTo.navigateByUrl('/index');
         }
         // }, (err) => {
