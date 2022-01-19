@@ -12,13 +12,13 @@ export class CommondataService {
   public countnum = new BehaviorSubject<any>("");
 
   activityLogShare = this.activityMsg.asObservable();
-   ticketcount= this.ticketnumber.asObservable();
+  ticketcount = this.ticketnumber.asObservable();
 
   countshare = this.activityMsg.asObservable();
-  count= this.ticket.asObservable();
-  countnu= this.countnum.asObservable();
+  count = this.ticket.asObservable();
+  countnu = this.countnum.asObservable();
 
-  
+
 
   ticketsArray: Array<any> = [];
   editsArray: Array<any> = []

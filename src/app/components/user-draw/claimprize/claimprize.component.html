@@ -5,7 +5,7 @@
       <div class="col-lg-8">
         <div class="inner-page-content">
           <h2 class="title mt-5">Never miss a draw!</h2>
-         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -25,18 +25,18 @@
             <p class="contest-number">Contest No: {{name}}</p>
             <p class="contest-date"><span>Draw took place on :</span> {{time | date:'medium'}}</p>
             <div class="line"></div>
-            <h4 class="title">Latest  biggest Winning Numbers:</h4>
+            <h4 class="title">Latest biggest Winning Numbers:</h4>
             <ul class="numbers">
-                     
+
               <li *ngFor="let values of seq">{{values}}</li>
-              
+
             </ul>
             <div class="btn-grp">
               <a href="#0" class="btn-border  btn--sm">Alerts</a>
               <a href="#0" class="btn-border  btn--sm">How to Claim</a>
             </div>
           </div>
-        
+
         </div>
       </div>
     </div>
@@ -45,292 +45,296 @@
 
 <section class="latest-winner-section position-relative pt-120 pb-120">
   <div class="container">
-   
-        <div class="row justify-content-center">
-             <div class="col-lg-10">
-     
-      <!-- winner-card first start -->
-                   <div class="winner-card mb-30">
-                 <div class="winner-card__thumb justify-content-center">
-          <img src="assets/images/elements/winnercoin.png" alt="image">
-       </div>
-                 <div class="winner-card__content">
-                   <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
-                   <div class="content-bottom borderbottom">
-       <div class="number-list-wrapper">
-                      <div class="left">
-                       <h5>Match 1 6/6</h5>
-                     </div>
-                       <ul class="number-list mt-2">
-                         <li>11</li>
-                         <li>88</li>
-                         <li>23</li>
-                         <li>9</li>
-                         <li>19</li>
-                         <li>26</li>
-                         <li>87</li>
-                       </ul><!-- number-list end -->
-                     </div>
-                     
-                     <div class="right">
-                       <span>Draw took place on</span>
-                       <p>Saturday April 20, 2020</p>
-                     </div>
-                   </div>
-                <div class="content-bottom row mt-3">
-         <div class="col-md-3 justify-content-center p-0 m-0">
-           <p>Number of Tickets</p>
-           <ul class="number-list" >  
-             <li style="height:60px;width:60px; padding-top:15px">{{count1}}</li>
-           </ul>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p > Prize/Category</p>
-          <div class="pick-lottery-package">
-                  <div class="lottery-package-list-small mt-3">
-             <!-- <a href="#0"> ${{price1}}</a> -->
-             <a href="#0"> ${{0}}</a>
 
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p class="ml-3"> Total Prize</p>
-          <div class="pick-lottery-package">
-                        <div class="lottery-package-list-small mt-3">
-               <a href="#0">${{totprice1}}</a>
-                    
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p></p>
-         <div class="pick-lottery-package">
-           <div class="lottery-package-list-small">
-             <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim Prize</a></span>
-                    </div>
-         </div>
-         </div>
-       
-                                           
-                   </div>
-                 </div>
-               </div><!-- winner-card end -->
-     <!-- winner-card first end -->
-     
-      <!-- winner-card second start -->
-                   <div class="winner-card mb-30">
-                 <div class="winner-card__thumb justify-content-center">
-          <img src="assets/images/elements/winnercoin.png" alt="image">
-       </div>
-                 <div class="winner-card__content">
-                   <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner2.png" alt="image"></div>
-                   <div class="content-bottom borderbottom">
-       <div class="number-list-wrapper">
-                      <div class="left">
-                       <h5>Match 2 5/6</h5>
-                     </div>
-                       <ul class="number-list mt-2">
-                         <li>11</li>
-                         <li>88</li>
-                         <li>23</li>
-                         <li>9</li>
-                         <li>19</li>
-                         <li>26</li>
-                         <li>87</li>
-                       </ul><!-- number-list end -->
-                     </div>
-                     
-                     <div class="right">
-                       <span>Draw took place on</span>
-                       <p>Saturday April 20, 2020</p>
-                     </div>
-                   </div>
-                  
-       <div class="content-bottom row mt-3">
-         <div class="col-md-3 justify-content-center p-0 m-0">
-           <p>Number of Tickets</p>
-           <ul class="number-list" >  
-             <li style="height:60px;width:60px; padding-top:15px">{{count2}}</li>
-           </ul>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p > Prize/Category</p>
-          <div class="pick-lottery-package">
-                  <div class="lottery-package-list-small mt-3">
-             <!-- <a href="#0"> ${{price2}}</a> -->
-             <a href="#0"> ${{0}}</a>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
 
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p class="ml-3"> Total Prize</p>
-          <div class="pick-lottery-package">
-                        <div class="lottery-package-list-small mt-3">
-               <a href="#0">${{totprice2}}</a>
-                    
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p></p>
-         <div class="pick-lottery-package">
-           <div class="lottery-package-list-small">
-             <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim Prize</a></span>
-                    </div>
-         </div>
-         </div>
-       
-                                           
-                   </div>
-                
-       </div>
-               </div><!-- winner-card end -->
-     <!-- winner-card second end -->
-     
-      <!-- winner-card third start -->
-                   <div class="winner-card mb-30">
-                 <div class="winner-card__thumb justify-content-center">
-          <img src="assets/images/elements/winnercoin.png" alt="image">
-       </div>
-                 <div class="winner-card__content">
-                   <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner3.png" alt="image"></div>
-                   <div class="content-bottom borderbottom">
-       <div class="number-list-wrapper">
-                      <div class="left">
-                       <h5>Match 3 4/6</h5>
-                     </div>
-                       <ul class="number-list mt-2">
-                         <li>11</li>
-                         <li>88</li>
-                         <li>23</li>
-                         <li>9</li>
-                         <li>19</li>
-                         <li>26</li>
-                         <li>87</li>
-                       </ul><!-- number-list end -->
-                     </div>
-                     
-                     <div class="right">
-                       <span>Draw took place on</span>
-                       <p>Saturday April 20, 2020</p>
-                     </div>
-                   </div>
-                  <div class="content-bottom row mt-3">
-         <div class="col-md-3 justify-content-center p-0 m-0">
-           <p>Number of Tickets</p>
-           <ul class="number-list" >  
-             <li style="height:60px;width:60px; padding-top:15px">{{count3}}</li>
-           </ul>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p > Prize/Category</p>
-          <div class="pick-lottery-package">
-                  <div class="lottery-package-list-small mt-3">
-             <!-- <a href="#0"> ${{price3}}</a> -->
-             <a href="#0"> ${{0}}</a>
+        <!-- winner-card first start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+            <div class="content-bottom borderbottom">
+              <div class="number-list-wrapper">
+                <div class="left">
+                  <h5>Match 1 6/6</h5>
+                </div>
+                <ul class="number-list mt-2">
+                  <li>11</li>
+                  <li>88</li>
+                  <li>23</li>
+                  <li>9</li>
+                  <li>19</li>
+                  <li>26</li>
+                  <li>87</li>
+                </ul><!-- number-list end -->
+              </div>
 
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p class="ml-3"> Total Prize</p>
-          <div class="pick-lottery-package">
-                        <div class="lottery-package-list-small mt-3">
-               <a href="#0">${{totprice3}}</a>
-                    
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p></p>
-         <div class="pick-lottery-package">
-           <div class="lottery-package-list-small">
-             <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim Prize</a></span>
-                    </div>
-         </div>
-         </div>
-       
-                                           
-                   </div>
-                 </div>
-               </div><!-- winner-card end -->
-     <!-- winner-card third end -->
-     
-      <!-- winner-card fourth start -->
-                   <div class="winner-card mb-30">
-                 <div class="winner-card__thumb justify-content-center">
-          <img src="assets/images/elements/winnercoin.png" alt="image">
-       </div>
-                 <div class="winner-card__content">
-                   <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner4.png" alt="image"></div>
-                   <div class="content-bottom borderbottom">
-       <div class="number-list-wrapper">
-                      <div class="left">
-                       <h5>Match 4 3/6</h5>
-                     </div>
-                       <ul class="number-list mt-2">
-                         <li>11</li>
-                         <li>88</li>
-                         <li>23</li>
-                         <li>9</li>
-                         <li>19</li>
-                         <li>26</li>
-                         <li>87</li>
-                       </ul><!-- number-list end -->
-                     </div>
-                     
-                     <div class="right">
-                       <span>Draw took place on</span>
-                       <p>Saturday April 20, 2020</p>
-                     </div>
-                   </div>
-                 <div class="content-bottom row mt-3">
-         <div class="col-md-3 justify-content-center p-0 m-0">
-           <p>Number of Tickets</p>
-           <ul class="number-list" >  
-             <li style="height:60px;width:60px; padding-top:15px">{{count4}}</li>
-           </ul>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p > Prize/Category</p>
-          <div class="pick-lottery-package">
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>Saturday April 20, 2020</p>
+              </div>
+            </div>
+            <div class="content-bottom row mt-3">
+              <div class="col-md-3 justify-content-center p-0 m-0">
+                <p>Number of Tickets</p>
+                <ul class="number-list">
+                  <li style="height:60px;width:60px; padding-top:15px">{{count1}}</li>
+                </ul>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p> Prize/Category</p>
+                <div class="pick-lottery-package">
                   <div class="lottery-package-list-small mt-3">
-             <!-- <a href="#0"> ${{price4}}</a> -->
-             <a href="#0"> ${{0}}</a>
+                    <!-- <a href="#0"> ${{price1}}</a> -->
+                    <a href="#0"> ${{0}}</a>
 
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p class="ml-3"> Total Prize</p>
-          <div class="pick-lottery-package">
-                        <div class="lottery-package-list-small mt-3">
-               <a href="#0">${{totprice4}}</a>
-                    
-           </div>
-         </div>
-         </div>
-         <div class="col-md-3 justify-content-center">
-         <p></p>
-         <div class="pick-lottery-package">
-           <div class="lottery-package-list-small">
-             <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim Prize</a></span>
-                    </div>
-         </div>
-         </div>
-       
-                                           
-                   </div>
-                 </div>
-               </div><!-- winner-card end -->
-     <!-- winner-card fourth end -->
-     
-             
-             </div>
-           </div>
-       
-     </div>
-   
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p class="ml-3"> Total Prize</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <a href="#0">${{totprice1}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p></p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small">
+                    <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim
+                        Prize</a></span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div><!-- winner-card end -->
+        <!-- winner-card first end -->
+
+        <!-- winner-card second start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner2.png" alt="image"></div>
+            <div class="content-bottom borderbottom">
+              <div class="number-list-wrapper">
+                <div class="left">
+                  <h5>Match 2 5/6</h5>
+                </div>
+                <ul class="number-list mt-2">
+                  <li>11</li>
+                  <li>88</li>
+                  <li>23</li>
+                  <li>9</li>
+                  <li>19</li>
+                  <li>26</li>
+                  <li>87</li>
+                </ul><!-- number-list end -->
+              </div>
+
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>Saturday April 20, 2020</p>
+              </div>
+            </div>
+
+            <div class="content-bottom row mt-3">
+              <div class="col-md-3 justify-content-center p-0 m-0">
+                <p>Number of Tickets</p>
+                <ul class="number-list">
+                  <li style="height:60px;width:60px; padding-top:15px">{{count2}}</li>
+                </ul>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p> Prize/Category</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <!-- <a href="#0"> ${{price2}}</a> -->
+                    <a href="#0"> ${{0}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p class="ml-3"> Total Prize</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <a href="#0">${{totprice2}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p></p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small">
+                    <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim
+                        Prize</a></span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div><!-- winner-card end -->
+        <!-- winner-card second end -->
+
+        <!-- winner-card third start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner3.png" alt="image"></div>
+            <div class="content-bottom borderbottom">
+              <div class="number-list-wrapper">
+                <div class="left">
+                  <h5>Match 3 4/6</h5>
+                </div>
+                <ul class="number-list mt-2">
+                  <li>11</li>
+                  <li>88</li>
+                  <li>23</li>
+                  <li>9</li>
+                  <li>19</li>
+                  <li>26</li>
+                  <li>87</li>
+                </ul><!-- number-list end -->
+              </div>
+
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>Saturday April 20, 2020</p>
+              </div>
+            </div>
+            <div class="content-bottom row mt-3">
+              <div class="col-md-3 justify-content-center p-0 m-0">
+                <p>Number of Tickets</p>
+                <ul class="number-list">
+                  <li style="height:60px;width:60px; padding-top:15px">{{count3}}</li>
+                </ul>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p> Prize/Category</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <!-- <a href="#0"> ${{price3}}</a> -->
+                    <a href="#0"> ${{0}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p class="ml-3"> Total Prize</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <a href="#0">${{totprice3}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p></p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small">
+                    <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim
+                        Prize</a></span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div><!-- winner-card end -->
+        <!-- winner-card third end -->
+
+        <!-- winner-card fourth start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner4.png" alt="image"></div>
+            <div class="content-bottom borderbottom">
+              <div class="number-list-wrapper">
+                <div class="left">
+                  <h5>Match 4 3/6</h5>
+                </div>
+                <ul class="number-list mt-2">
+                  <li>11</li>
+                  <li>88</li>
+                  <li>23</li>
+                  <li>9</li>
+                  <li>19</li>
+                  <li>26</li>
+                  <li>87</li>
+                </ul><!-- number-list end -->
+              </div>
+
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>Saturday April 20, 2020</p>
+              </div>
+            </div>
+            <div class="content-bottom row mt-3">
+              <div class="col-md-3 justify-content-center p-0 m-0">
+                <p>Number of Tickets</p>
+                <ul class="number-list">
+                  <li style="height:60px;width:60px; padding-top:15px">{{count4}}</li>
+                </ul>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p> Prize/Category</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <!-- <a href="#0"> ${{price4}}</a> -->
+                    <a href="#0"> ${{0}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p class="ml-3"> Total Prize</p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small mt-3">
+                    <a href="#0">${{totprice4}}</a>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 justify-content-center">
+                <p></p>
+                <div class="pick-lottery-package">
+                  <div class="lottery-package-list-small">
+                    <span class="lottery-package-list-small-org mt-5 pt-2"><a herf="#" (click)="claimwin()">Claim
+                        Prize</a></span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div><!-- winner-card end -->
+        <!-- winner-card fourth end -->
+
+
+      </div>
+    </div>
+
+  </div>
+
 </section>

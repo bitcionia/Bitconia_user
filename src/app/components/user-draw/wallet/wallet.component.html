@@ -1,87 +1,85 @@
+<!-- inner-hero-section end -->
 
-	
-    <!-- inner-hero-section end -->
+<!-- user section start -->
+<!-- inner-hero-section start -->
+<div class="inner-hero-section style--five">
+</div>
+<!-- inner-hero-section end -->
 
-     <!-- user section start -->
-   <!-- inner-hero-section start -->
-   <div class="inner-hero-section style--five">
-  </div>
-  <!-- inner-hero-section end -->
+<!-- user section start -->
+<div class="mt-minus-150 pb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="user-card">
+          <div class="avatar-upload">
 
-   <!-- user section start -->
-  <div class="mt-minus-150 pb-120">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="user-card">
-            <div class="avatar-upload">          
-
-              <div class="obj-el"><img src="assets/user.png" alt="image"></div>
-              <!-- <div class="avatar-edit">
+            <div class="obj-el"><img src="assets/user.png" alt="image"></div>
+            <!-- <div class="avatar-edit">
                   <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                   <label for="imageUpload"></label>
               </div> -->
-              <div class="avatar-preview">
-                  <div id="imagePreview" >
-                  </div>
+            <div class="avatar-preview">
+              <div id="imagePreview">
               </div>
             </div>
-            <br>
-            <h3 class="user-card__name">{{username}}</h3>
           </div>
-          <div class="user-action-card">
-           <ul class="user-action-list">
-            <li><a routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
-            <li><a href=""routerLink="/user-setting/accountsecurity">Account Security</a></li>
-            <li  ><a href=""routerLink="/user-setting/accountactivity">Account Activity</a></li>
-
-             <li class="active"><a href=""routerLink="/user-Draw/wallet">Wallet</a></li>
-                            <li ><a routerLink="/user-Draw/trans">Transactions</a></li>
-             
-            </ul>
-          </div>
+          <br>
+          <h3 class="user-card__name">{{username}}</h3>
         </div>
-        <div class="col-lg-8 mt-lg-0 mt-4">
-          <div class="transaction-balance-wrapper">
-            <div class="left">
-              <div class="transaction-balance">
-                <h4 class="balance">${{aval}}</h4>
-                <span>Available Balance</span>
-              </div>
+        <div class="user-action-card">
+          <ul class="user-action-list">
+            <li><a routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
+            <li><a href="" routerLink="/user-setting/accountsecurity">Account Security</a></li>
+            <li><a href="" routerLink="/user-setting/accountactivity">Account Activity</a></li>
+
+            <li class="active"><a href="" routerLink="/user-Draw/wallet">Wallet</a></li>
+            <li><a routerLink="/user-Draw/trans">Transactions</a></li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-8 mt-lg-0 mt-4">
+        <div class="transaction-balance-wrapper">
+          <div class="left">
+            <div class="transaction-balance">
+              <h4 class="balance">${{aval}}</h4>
+              <span>Available Balance</span>
             </div>
-            <div class="right">
-              <a href="#" class="transaction-action-btn" data-toggle="modal" data-target="#depositmodal">
-                <img src="assets/images/icon/transaction/1.png" alt="image">
-                <span>Deposit</span>
-              </a>
-              <a href="#" class="transaction-action-btn ml-4" data-toggle="modal" data-target="#withdrawmodal">
-                <img src="assets/images/icon/transaction/2.png" alt="image">
-                <span>Withdraw</span>
-              </a>
+          </div>
+          <div class="right">
+            <a href="#" class="transaction-action-btn" data-toggle="modal" data-target="#depositmodal">
+              <img src="assets/images/icon/transaction/1.png" alt="image">
+              <span>Deposit</span>
+            </a>
+            <a href="#" class="transaction-action-btn ml-4" data-toggle="modal" data-target="#withdrawmodal">
+              <img src="assets/images/icon/transaction/2.png" alt="image">
+              <span>Withdraw</span>
+            </a>
+          </div>
+        </div><!-- transaction-balance-wrapper end -->
+        <div class="btc-wallet my-5">
+          <div class="row">
+
+            <div class="col-lg-3 text-right">
+              <i class="lab la-btc" style="color: #d78108; font-size: 80px;"></i>
             </div>
-          </div><!-- transaction-balance-wrapper end -->
-          <div class="btc-wallet my-5">
-            <div class="row">
-           
-           <div class="col-lg-3 text-right">
-     <i class="lab la-btc" style="color: #d78108; font-size: 80px;"></i>
-     </div>
-             <div class="col-lg-6">
-       <h3 class="text-white mt-2">BTC</h3>
-       <h5 class="text-yellow mt-2">0.00005144BTC</h5>
-     </div>
-      <div class="col-lg-3">
-      <h3 class="text-white mt-4">$2</h3>
-     </div>
+            <div class="col-lg-6">
+              <h3 class="text-white mt-2">BTC</h3>
+              <h5 class="text-yellow mt-2">0.00005144BTC</h5>
+            </div>
+            <div class="col-lg-3">
+              <h3 class="text-white mt-4">$2</h3>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  <!-- user section end -->
+<!-- user section end -->
 
-  <!-- <div class="modal fade" id="depositmodal" tabindex="1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="depositmodal" tabindex="1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
@@ -101,186 +99,199 @@
       </div>
     </div>
   </div> -->
- 
-  <div class="modal fade" id="depositmodal" tabindex="1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="account-form-area">
-            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-            <h3 class="title">Deposit</h3>
-		   <div class="col-lg-12 justify-content-center">
+
+<div class="modal fade" id="depositmodal" tabindex="1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i
+              class="las la-times"></i></button>
+          <h3 class="title">Deposit</h3>
+          <div class="col-lg-12 justify-content-center">
             <ul class="nav nav-tabs winner-tab-nav" id="depositTab" role="tablist">
               <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="phone-tab" data-toggle="tab" href="#btc" role="tab" aria-controls="btc" aria-selected="true">
+                <a class="nav-link active" id="phone-tab" data-toggle="tab" href="#btc" role="tab" aria-controls="btc"
+                  aria-selected="true">
                   <div class="icon-thumb"><i class="lab la-btc text-icons-org"></i></div>
                   <span>BTC</span>
                 </a>
               </li>
-             
-            
+
+
             </ul>
             <div class="tab-content mt-15 mb-15" id="depositTabContent">
-			
-			<!-- BTC tab start-->
+
+              <!-- BTC tab start-->
               <div class="tab-pane fade show active" id="btc" role="tabpanel" aria-labelledby="btc-tab">
                 <div class="row mb-none-30">
                   <div class="col-lg-12 mb-30">
-                     <div class="account-form-wrapper">
-              <form>
-                <img  class="center" src="{{qrcode}}">
+                    <div class="account-form-wrapper">
+                      <form>
+                        <img class="center" src="{{qrcode}}">
 
-				 
-               <!-- <img src="assets/images/qrcode.jpg"class="center" alt="QR Code" width="100" height="90"> -->
-               
-			    <div class="btc-wallet my-2">
-              <div class="row">
-                <div class="col-lg-10">
-			   <h4 class="text-white">BTC Address</h4>
-			   <div class="text-white mt-2">{{data}}</div>
-			
-			 </div>
-			  <div class="col-lg-1 mt-2">
-			  <i class="las la-copy text-icons-30"></i>
-			 </div>
-            </div>
-          </div>
-			   
-			   <h4>Important</h4>
-			   <p class="my-1">
-			   Send only BTC to this deposit address
-			   </p>
-             <p class="my-1">
-			   Sending coins or tokens other than BTC to this address may result in the loss of your deposit
-			   </p>
-              </form>
-            
-            
-          </div>  <!--account - form-wrapper end -->
-         
-             <div class="row text-center mt-2 justify-content-center">
-                  <a href="#" class="cmn-btn btn--sm">Share</a>
-                </div> 
 
-				</div>
-               
-			   </div>
-              
-			 
-			  </div>
-			<!-- BTC tab end-->
-        
-		   </div><!-- tab-content end -->
+                        <!-- <img src="assets/images/qrcode.jpg"class="center" alt="QR Code" width="100" height="90"> -->
+
+                        <div class="btc-wallet my-2">
+                          <div class="row">
+                            <div class="col-lg-10">
+                              <h4 class="text-white">BTC Address</h4>
+                              <div class="text-white mt-2">{{data}}</div>
+                              
+
+                            </div>
+                            <div class="col-lg-1 mt-2">
+                              <!-- <button type="button" > -->
+                              <i class="las la-copy text-icons-30"  (click)=" copyText(data)"></i>
+                           <!-- </button> -->
+                               <!-- <i class="las la-copy text-icons-30"></i> -->
+                            </div>
+                          </div>
+                        </div>
+
+                        <h4>Important</h4>
+                        <p class="my-1">
+                          Send only BTC to this deposit address
+                        </p>
+                        <p class="my-1">
+                          Sending coins or tokens other than BTC to this address may result in the loss of your deposit
+                        </p>
+                      </form>
+
+
+                    </div>
+                    <!--account - form-wrapper end -->
+
+                    <div class="row text-center mt-2 justify-content-center">
+                      <a href="#" class="cmn-btn btn--sm">Share</a>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+              <!-- BTC tab end-->
+
+            </div><!-- tab-content end -->
           </div>
-            
-	</div>	 <!--  account- form- area -->
-      
-        </div>
+
+        </div> <!--  account- form- area -->
+
       </div>
     </div>
   </div>
- 
-  <!-- deposit modal --> 
-  
-   <!-- withdraw modal -->
-  <div class="modal fade" id="withdrawmodal" tabindex="1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="account-form-area">
-            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
-            <h3 class="title">Withdraw</h3>
-		   <div class="col-lg-12">
+</div>
+
+<!-- deposit modal -->
+
+<!-- withdraw modal -->
+<div class="modal fade" id="withdrawmodal" tabindex="1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i
+              class="las la-times"></i></button>
+          <h3 class="title">Withdraw</h3>
+          <div class="col-lg-12">
             <ul class="nav nav-tabs winner-tab-nav" id="depositTab" role="tablist">
               <li class="nav-item center" role="presentation">
-                <a class="nav-link active" id="btcwithdraw-tab" data-toggle="tab" href="#btcwithdraw" role="tab" aria-controls="btc" aria-selected="true">
+                <a class="nav-link active" id="btcwithdraw-tab" data-toggle="tab" href="#btcwithdraw" role="tab"
+                  aria-controls="btc" aria-selected="true">
                   <div class="icon-thumb"><i class="lab la-btc text-icons-org"></i></div>
                   <span>BTC</span>
                 </a>
               </li>
-            
-            
+
+
             </ul>
             <div class="tab-content mt-15 mb-15" id="depositTabContent">
-			
-			<!-- BTC tab start-->
-               <div class="tab-pane fade show active" id="btcwithdraw" role="tabpanel" aria-labelledby="btcwithdraw-tab">
+
+              <!-- BTC tab start-->
+              <div class="tab-pane fade show active" id="btcwithdraw" role="tabpanel" aria-labelledby="btcwithdraw-tab">
                 <div class="row mb-none-30">
                   <div class="col-lg-12 mb-30">
-                     <div class="account-form-wrapper">
-              <form>
-			  <div class="input-icons">
-              <div class="form-group">
-                  <label>Address</label>
-                  <input type="text" name="signup_name" id="signup_name" placeholder="Long press to paste" required>
-				  <i class="las la-expand"></i>
-                </div>
-				
-                <div class="form-group">
-                  <label>Amount</label>
-                  <input type="text" name="signup_pass" id="signup_pass" placeholder="Enter Amount" required>
-				  <span>BTC</span><span> Max</span>
-                </div>
-				</div>
-				<br/>
-			  <p>
-			  You will get:
-			  </p>
-			
-			  <h3 class="text-yellow">0.00 BTC</h3>
-			  
-			  <p>
-			 Transaction Fee 0.30 BTC
-			  </p>
-              </form>
-            
-            
-          </div> 
-		  <!--account - form-wrapper end -->
-         
-             <div class="row text-center mt-3 justify-content-center">
-                  <a href="#" class="cmn-btn btn--sm">Withdraw</a>
-                </div> 
+                    <div class="account-form-wrapper">
+                      <form>
+                        <div class="input-icons">
+                          <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="signup_name" id="signup_name" placeholder="Long press to paste"
+                              required>
+                            <i class="las la-expand"></i>
+                          </div>
 
-				</div>
-               
-			   </div>
-              
-			 
-			  </div>
-			<!-- BTC tab end-->
-            
-		
-		   </div><!-- tab-content end -->
+                          <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" name="signup_pass" id="signup_pass" placeholder="Enter Amount" required>
+                            <span>BTC</span><span> Max</span>
+                          </div>
+                        </div>
+                        <br />
+                        <p>
+                          You will get:
+                        </p>
+
+                        <h3 class="text-yellow">0.00 BTC</h3>
+
+                        <p>
+                          Transaction Fee 0.30 BTC
+                        </p>
+                      </form>
+
+
+                    </div>
+                    <!--account - form-wrapper end -->
+
+                    <div class="row text-center mt-3 justify-content-center">
+                      <a href="#" class="cmn-btn btn--sm">Withdraw</a>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+              <!-- BTC tab end-->
+
+
+            </div><!-- tab-content end -->
           </div>
-            
-	</div>	 <!--  account- form- area -->
-      
-        </div>
+
+        </div> <!--  account- form- area -->
+
       </div>
     </div>
   </div>
- 
-  <!-- withdraw modal end -->
-   <!-- clear all modal starts -->
-   <div class="modal fade" id="clearModal" tabindex="1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="account-form-area">
-            <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
-              <h5 class="title">Clear all?</h5>
-            <div class="account-form-wrapper">
-			
-           <p>You can't see these pending notifications here. However you have all the notifications in the page by clicking "view all" </p>
+</div>
 
-			<div class="justify-content-between mt-2">
-               <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Cancel </a>
-			    <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal" aria-label="Close">Confirm </a>
-			   </div>
+<!-- withdraw modal end -->
+<!-- clear all modal starts -->
+<div class="modal fade" id="clearModal" tabindex="1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
+          <h5 class="title">Clear all?</h5>
+          <div class="account-form-wrapper">
+
+            <p>You can't see these pending notifications here. However you have all the notifications in the page by
+              clicking "view all" </p>
+
+            <div class="justify-content-between mt-2">
+              <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal"
+                aria-label="Close">Cancel </a>
+              <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-dismiss="modal"
+                aria-label="Close">Confirm </a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

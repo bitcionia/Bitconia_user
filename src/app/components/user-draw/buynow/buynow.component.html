@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <ul class="page-list">
           <li><a href="#">Home</a></li>
-           <li class="active">Buy tickets</li>
+          <li class="active">Buy tickets</li>
         </ul>
       </div>
     </div>
@@ -13,59 +13,64 @@
 
 
 
-<section class="pb-120 mt-minus-50"style="background-color:#12023E;">
+<section class="pb-120 mt-minus-50" style="background-color:#12023E;">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-      <div class="lottery-wrapper">
+        <div class="lottery-wrapper">
           <h2 class="lottery-wrapper__title mb-5"> {{isInitialOrEdit ? 'Edit' :'Choose'}} your Tickets</h2>
-        <div class="lottery-wrapper style--two">
-          <div class="action-header" *ngIf="!isInitialOrEdit">
-            <div class="left mt-5" >
-              <div class="quantity">Quantity
+          <div class="lottery-wrapper style--two">
+            <div class="action-header" *ngIf="!isInitialOrEdit">
+              <div class="left mt-5">
+                <div class="quantity">Quantity
                   <div class="form-group-quantity">
-  
-    <div class="input-group" >
-        <div class="input-group-btn">
-            <button id="down" class="btn btn-default" style="margin-top: 10%;" (click)="IncOrDecTickets('dec')"><i class="las la-minus mt-1" style="color:#ffffff;background-color:#5a4bcc;; border-radius:50%;padding:5px;"></i></button>
-           
-        </div>
-        <span  style="margin-top:12%;">{{ticketCounts}}</span>
 
-        <div class="input-group-btn">
-            <button id="up" class="btn btn-default"style="margin-top: 10%;"  (click)="IncOrDecTickets('inc')"><i class="las la-plus mt-1" style="color:#ffffff;background-color:#5a4bcc;; border-radius:50%;padding:5px;"></i></button>
-        </div>
-    </div>
-</div>
-      </div>   
+                    <div class="input-group">
+                      <div class="input-group-btn">
+                        <button id="down" class="btn btn-default" style="margin-top: 10%;"
+                          (click)="IncOrDecTickets('dec')"><i class="las la-minus mt-1"
+                            style="color:#ffffff;background-color:#5a4bcc;; border-radius:50%;padding:5px;"></i></button>
+
+                      </div>
+                      <span style="margin-top:12%;">{{ticketCounts}}</span>
+
+                      <div class="input-group-btn">
+                        <button id="up" class="btn btn-default" style="margin-top: 10%;"
+                          (click)="IncOrDecTickets('inc')"><i class="las la-plus mt-1"
+                            style="color:#ffffff;background-color:#5a4bcc;; border-radius:50%;padding:5px;"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <ul>
+                  <li>
+                    <i class="las la-clock"></i>
+                    <div class="clock2" data-clock="2020/08/12">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</div>
+                  </li>
+                  <li>
+                    <button type="button" (click)="eraseAll()">
+                      <i class="las la-trash"></i>
+                      <span>Erase All</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" (click)="packagePick('all')">
+                      <i class="las la-table"></i>
+                      <span>Quick Pick All</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="right" >
-              <ul>
-                <li>
-                  <i class="las la-clock"></i>
-                  <div class="clock2" data-clock="2020/08/12">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</div>
-                </li>
-                <li>
-                  <button type="button"  (click)="eraseAll()">
-                    <i class="las la-trash"></i>
-                    <span>Erase All</span>
-                  </button>
-                </li>
-                <li>
-                  <button type="button" (click)="packagePick('all')">
-                    <i class="las la-table"></i>
-                    <span>Quick Pick All</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-     
-           <div class="row mt-50 mb-none-30" >
-             
-              <div class="col-lg-4 mb-30"  *ngFor="let tick of generateTicketsArray; let ind = index">
-                <div class="lottery-single style--two" >
-                  <button class="lottery-single__close" (click)="removeTickets(tick)"><i class="las la-times"></i></button>
+
+            <div class="row mt-50 mb-none-30">
+
+              <div class="col-lg-4 mb-30" *ngFor="let tick of generateTicketsArray; let ind = index">
+                <div class="lottery-single style--two">
+                  <button class="lottery-single__close" (click)="removeTickets(tick)"><i
+                      class="las la-times"></i></button>
                   <div class="lottery-single__header">
                     <div class="top">
                       <span class="titcket-number">Ticket #{{tick.index}}</span>
@@ -77,22 +82,27 @@
                           </button>
                         </li>
                         <li>
-                          <button  (click)="generateOrDeleteRandomIndividual(tick , 'del','quick', ind)"><i class="las la-trash"></i> </button>
+                          <button (click)="generateOrDeleteRandomIndividual(tick , 'del','quick', ind)"><i
+                              class="las la-trash"></i> </button>
                         </li>
                       </ul>
                     </div>
-                    <ul class="lottery-single__selected-number justify-content-center"*ngFor="let values of tick.values">
-                     
+                    <ul class="lottery-single__selected-number justify-content-center"
+                      *ngFor="let values of tick.values">
+
                       <li class="active">{{values}}</li>
-                      
+
                     </ul>
                   </div>
-                  
+
                   <div class="lottery-single__body">
-                     <ul class="lottery-single__number">
-                       
-                      <li  *ngFor="let item of randomNumberArray; let key = index" (click)="generateOrDeleteRandomIndividual(item , 'insert','individual', ind)" [class]="tick.values[0] == item || tick.values[1] == item || tick.values[2] == item || tick.values[3] == item || tick.values[4] == item || tick.values[5] == item ? 'active' : '' " >{{item}}</li>
-                      
+                    <ul class="lottery-single__number">
+
+                      <li *ngFor="let item of randomNumberArray; let key = index"
+                        (click)="generateOrDeleteRandomIndividual(item , 'insert','individual', ind)"
+                        [class]="tick.values[0] == item || tick.values[1] == item || tick.values[2] == item || tick.values[3] == item || tick.values[4] == item || tick.values[5] == item ? 'active' : '' ">
+                        {{item}}</li>
+
                     </ul>
                   </div>
                   <div class="lottery-single__footer">
@@ -103,28 +113,29 @@
                       <li>4</li>
                       <li>5</li>
                       <li>6</li>
-                     
+
                     </ul>
                   </div>
                 </div>
-              </div> 
+              </div>
+            </div>
+
+
+            <div class="lottery-wrapper__btn" *ngIf="!isInitialOrEdit">
+              <button (click)="IncOrDecTickets('inc')" style="background-color: #12023E;"
+                class="btn-border text-white">Add Tickets</button>
+            </div>
           </div>
-         
-         
-          <div class="lottery-wrapper__btn"  *ngIf="!isInitialOrEdit">
-            <button (click)="IncOrDecTickets('inc')"  style="background-color: #12023E;" class="btn-border text-white">Add Tickets</button>
-          </div>
-        </div>
         </div>
       </div>
       <div class="col-lg-12 mt-50">
 
         <div class="buy-lottery-ticket">
           <div class="left">
-              <div class="sub-total-price">
+            <div class="sub-total-price">
               <p>Ticket Price ({{ticketCounts}} tickets X $ 4.99)</p>
               <span>${{amountOfTickets}}</span>
-            </div>  
+            </div>
 
             <div class="total-price">
               <p>Ticket Price ({{ticketCounts}} tickets X $ 4.99)</p>
@@ -134,8 +145,8 @@
           <!-- <div  class="right" *ngIf="!isempty">
             <button  class="cmn-btn">Checkout</button>
           </div> -->
-          <div  class="right" >
-            <button  class="cmn-btn" (click)="naviGateCardPage()">Checkout</button>
+          <div class="right">
+            <button class="cmn-btn" (click)="naviGateCardPage()">Checkout</button>
           </div>
 
         </div>
@@ -144,10 +155,10 @@
         <div class="pick-lottery-package">
           <h2 class="title">Choose a Quick Pick</h2>
           <div class="lottery-package-list">
-            <button  style="background-color: #e9388e;"  (click)="packagePick('3')" >3 Quick Picks For $14.97</button>
-            <button  style="background-color: #e9388e;"  (click)="packagePick('5')">5 Quick Picks For $24.95</button>
-            <button  style="background-color: #e9388e;"  (click)="packagePick('10')">10 Quick Picks For $49.90</button>
-            <button  style="background-color: #e9388e;"  (click)="packagePick('20')">20 Quick Picks For $99.80</button>
+            <button style="background-color: #e9388e;" (click)="packagePick('3')">3 Quick Picks For $14.97</button>
+            <button style="background-color: #e9388e;" (click)="packagePick('5')">5 Quick Picks For $24.95</button>
+            <button style="background-color: #e9388e;" (click)="packagePick('10')">10 Quick Picks For $49.90</button>
+            <button style="background-color: #e9388e;" (click)="packagePick('20')">20 Quick Picks For $99.80</button>
           </div>
         </div>
       </div>

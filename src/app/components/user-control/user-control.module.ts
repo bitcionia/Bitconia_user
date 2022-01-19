@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrowserModule } from '@angular/platform-browser';
+import { GoogleAuthenticatorComponent } from './google-authenticator/google-authenticator.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BrowserModule } from '@angular/platform-browser';
        ForgetpasswordComponent,
        ResetpasswordComponent,
        DepositshistoryComponent,
-       LotteryhistoryComponent
+       LotteryhistoryComponent,
+       GoogleAuthenticatorComponent
   ],
   imports: [
     CommonModule,

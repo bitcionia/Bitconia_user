@@ -1,9 +1,9 @@
- <!-- inner-hero-section start -->
- <div class="inner-hero-section style--five">
+<!-- inner-hero-section start -->
+<div class="inner-hero-section style--five">
 </div>
 <!-- inner-hero-section end -->
 
- <!-- user section start -->
+<!-- user section start -->
 <div class="mt-minus-150 pb-120">
   <div class="container">
     <div class="row">
@@ -12,27 +12,27 @@
           <div class="avatar-upload">
             <div class="obj-el"><img src="assets/images/elements/team-obj.png" alt="image"></div>
             <div class="avatar-edit">
-                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                <label for="imageUpload"></label>
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+              <label for="imageUpload"></label>
             </div>
             <div class="avatar-preview">
-                <div id="imagePreview" style="background-image: url(assets/images/elements/downloaded/pp.png);">
-                </div>
+              <div id="imagePreview" style="background-image: url(assets/images/elements/downloaded/pp.png);">
+              </div>
             </div>
           </div>
           <h3 class="user-card__name">Albert Owens</h3>
           <span class="user-card__id">ID : 19535909</span>
         </div><!-- user-card end -->
         <div class="user-action-card">
-         <ul class="user-action-list">
+          <ul class="user-action-list">
 
-            
-                            <li><a routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
-            <li><a href=""routerLink="/user-setting/accountsecurity">Account Security</a></li>
-            <li  ><a href=""routerLink="/user-setting/accountactivity">Account Activity</a></li>
 
-             <li ><a href=""routerLink="/user-Draw/wallet">Wallet</a></li>
-                            <li class="active" ><a routerLink="/user-Draw/trans">Transactions</a></li>
+            <li><a routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
+            <li><a href="" routerLink="/user-setting/accountsecurity">Account Security</a></li>
+            <li><a href="" routerLink="/user-setting/accountactivity">Account Activity</a></li>
+
+            <li><a href="" routerLink="/user-Draw/wallet">Wallet</a></li>
+            <li class="active"><a routerLink="/user-Draw/trans">Transactions</a></li>
             <!-- <li><a href="#">Referral Program</a></li> -->
             <!-- <li><a href="#">Favorite Lotteries</a></li> -->
             <!-- <li><a href="#">Help Center</a></li> -->
@@ -41,86 +41,94 @@
         </div><!-- user-action-card end -->
       </div>
       <div class="col-lg-8">
-        <br class="d-sm-block d-md-none"/>
-              <div class="all-transaction">
-                <div class="all-transaction__header">
-                  <h3 class="title">All Transactions</h3>
-                  <!-- <div class="col-md-3">
+        <br class="d-sm-block d-md-none" />
+        <div class="all-transaction">
+          <div class="all-transaction__header">
+            <h3 class="title">All Transactions</h3>
+            <!-- <div class="col-md-3">
                     <h2>Status</h2>
                     <select class="dropdownform"[(ngModel)]="searchText" >
                       <option value=""  > All </option>
                       <option *ngFor="let sat of status" >{{sat}}</option>
               </select>
                     </div>  -->
-                </div>
+          </div>
           <div class="container my-5">
-          <div class="row justify-content-center">
-          <div class="col-md-4 my-2">
-           <a href="#"routerLink= "/user-Draw/trans" class="cmn-btn btn--sm">Withdrawals</a>
-                </div>
-          <div class="col-md-4 my-2">
-            <a href="#"routerLink="/user-control/deposithistory" class="cmn-btn btn--sm" data-target="#Deposit">Deposits</a>
-          </div>
-          <div class="col-md-4 my-2">
-            <a href="#"routerLink="/user-control/lotteryhistory" class="cmn-btn btn--sm">Lottery Purchase</a>
-          </div>
-          </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4 my-2">
+                <a href="#" routerLink="/user-Draw/trans" class="cmn-btn btn--sm">Withdrawals</a>
+              </div>
+              <div class="col-md-4 my-2">
+                <a href="#" routerLink="/user-control/deposithistory" class="cmn-btn btn--sm"
+                  data-target="#Deposit">Deposits</a>
+              </div>
+              <div class="col-md-4 my-2">
+                <a href="#" routerLink="/user-control/lotteryhistory" class="cmn-btn btn--sm">Lottery Purchase</a>
+              </div>
+            </div>
           </div>
           <div class="tab-pane fade show active" id="loginactivity" role="tabpanel" aria-labelledby="loginactivity-tab">
-               
+
             <div class="past-draw-wrapper pt-1">
-               <div class="table-responsive-lg">
-        <table>
-          <thead>
-            <tr>
-              
-                <th>Date</th>
-                        <th>Description</th>
-                        <!-- <th>Pay. method</th> -->
-                        <th>Amount</th>
-                        <th>Status</th>
-            
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of data|filter:searchText | paginate:{
+              <div class="table-responsive-lg">
+                <table>
+                  <thead>
+                    <tr>
+
+                      <th>Date</th>
+                      <th>Description</th>
+                      <!-- <th>Pay. method</th> -->
+                      <th>Amount</th>
+                      <th>Status</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of data|filter:searchText | paginate:{
               itemsPerPage:5,
                currentPage:p,
                item:item,
               totalitem:totalLength }">
-              <td><div class="text-white">{{item['createdAt']| date :'short'}}</div></td>
+                      <td>
+                        <div class="text-white">{{item['createdAt']| date :'short'}}</div>
+                      </td>
 
-              <td><div class="text-white">{{item['type']}}</div></td>
-              <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
-              <td>
-               <div class="text-green"> {{item['text']}}</div>
-              </td>
-              <td><div class="text-white"> {{item['ip']}}</div></td>
-            </tr>
-             <tr>
-            
-            </tbody>
-        </table>
-        <div class="center" *ngIf="!showDatafound">
-            <span>NO DATA FOUND </span>
+                      <td>
+                        <div class="text-white">{{item['type']}}</div>
+                      </td>
+                      <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
+                      <td>
+                        <div class="text-green"> {{item['text']}}</div>
+                      </td>
+                      <td>
+                        <div class="text-white"> {{item['ip']}}</div>
+                      </td>
+                    </tr>
+                    <tr>
+
+                  </tbody>
+                </table>
+                <div class="center" *ngIf="!showDatafound">
+                  <span>NO DATA FOUND </span>
+                </div>
+                <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"
+                  item:item></pagination-controls>
+
+              </div>
+
+
+              <br>
+
+            </div><!-- past-draw-wrapper end -->
+
+
+
           </div>
-          <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
-
-      </div>
-
-     
-    <br>
-     
-    </div><!-- past-draw-wrapper end -->
-  
-        
-    
-     </div>
-                <!-- <div class="load-more">
+          <!-- <div class="load-more">
                   <button type="button">Show More Lotteries <i class="las la-angle-down ml-2"></i></button>
                 </div> -->
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>

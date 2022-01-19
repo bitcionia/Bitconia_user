@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 import { DespoitcoinComponent } from '../../user-popup/despoitcoin/despoitcoin.component';
+import { Clipboard } from '@angular/cdk/clipboard';
+
 // function refresh() {
 //   window .location.reload();
 // }
@@ -30,7 +32,7 @@ export class WalletComponent implements OnInit {
     private router: Router,
     private routeTo: Router,
     public formBuilder: FormBuilder,
-
+    private clipboard: Clipboard,
 
     public httpService: HttpService
   ) {
@@ -124,6 +126,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       });
    })
   }
+  copyText(textToCopy: string) {
+    this.clipboard.copy(textToCopy);
+    console.log(this.clipboard.copy(textToCopy))
+}
+
   balance(){
     ////debugger
     this.httpService.balancebtc().subscribe((res: any) => {

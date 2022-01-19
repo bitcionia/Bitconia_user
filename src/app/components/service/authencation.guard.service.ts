@@ -7,21 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class AuthencationGuard implements CanActivate {
   constructor(
-   
+
     private router: Router,
-    
-  ) {}
+
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //     if(localStorage.getItem("pin")){
-  //       return true;
+    //     if(localStorage.getItem("pin")){
+    //       return true;
 
-  //     }
-  //     this.router.navigateByUrl("/index");
-  //     return false;
-  // }
-  let user = JSON.parse(localStorage.getItem('userid'));
+    //     }
+    //     this.router.navigateByUrl("/index");
+    //     return false;
+    // }
+    let user = JSON.parse(localStorage.getItem('userid'));
     if (!user || user === null) {
       this.router.navigate(['/index']);
       return true
@@ -33,6 +33,6 @@ export class AuthencationGuard implements CanActivate {
       }
     }
     return true
-  
-    }
+
+  }
 }

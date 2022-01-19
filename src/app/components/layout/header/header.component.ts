@@ -30,6 +30,8 @@ function refresh() {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  secuemail: any;
+  secumob: any;
   get nativeWindow() : any {
     return refresh();
  }
@@ -144,6 +146,8 @@ data:any;
     });
     
     this.upcomdata = JSON.parse(localStorage.getItem("count"))
+    this.secuemail = JSON.parse(localStorage.getItem("Securityverf"))
+console.log(this.secuemail)
     this.createForm();
 this.mobileForm();
 // this.reloadComponent();
@@ -268,7 +272,7 @@ this.balance();
   mobilelogin() {
   ////debugger
     localStorage.clear();
-    if(this.mobileform.value.password!=PasswordStrengthService){
+   
 
     
     this.submitted=true;
@@ -318,14 +322,17 @@ this.phoneNumber=this.code['phone']
           this.httpService.toastr.success('Enter To Google Authenticator Otp', '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
+          this.router.navigateByUrl('/user-control/t2fa')
+
         }else if(res['admin']['tfa_active'] == false){
           this.httpService.toastr.success('Otp Send To Mobile', '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
+          var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
+          this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
         }
       
-        var json={key:1,value:this.countrycode,ke:2,vale:this.mobile}
-    this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+      
 //     setTimeout(() => {
 //       window.location.reload();
 
@@ -357,7 +364,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
-    }
+    
 
 
   }
@@ -368,7 +375,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   }
   
   onSubmit() {
-    ////debugger
+  debugger
     localStorage.clear();  
 
       this.submitted=true;
@@ -412,16 +419,19 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             this.httpService.toastr.success('Enter To Google Authenticator Otp', '', {
               positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
             });
+            this.router.navigateByUrl('/user-control/t2fa')
+
           }else if(res['admin']['tfa_active'] == false){
             this.httpService.toastr.success('Otp Send To Email', '', {
               positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
             });
+            var json={key:1,value:this.email,keys:2,values:res['admin']['tfa_active']}
+          this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
           }
         
           // this.twofactoremail();
 
-          var json={key:1,value:this.email,keys:2,values:res['admin']['tfa_active']}
-          this.router.navigateByUrl('/user-control/twofactor',{state:{data:json}})
+          
 
           // setTimeout(function () {
           //   // window.location.reload();

@@ -31,7 +31,8 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         // Hide loading indicator
         this.timeout = setTimeout(() => {
-          clearTimeout(this.timeout);
+          window.scrollTo(0, 0);
+                    clearTimeout(this.timeout);
           this.routerChanged = false;
         }, 1000);
       }

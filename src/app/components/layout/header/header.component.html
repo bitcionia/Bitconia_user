@@ -558,7 +558,7 @@
 
               </div>
 
-              <div class="dropdown" *ngIf="token!=null ">
+              <div class="dropdown" *ngIf='secuemail== "true"'>
                 <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bell"></i> <span
                     class="cart__num">04</span></a>
                 <div class="dropdown-content">
@@ -590,7 +590,7 @@
 
                 </div>
               </div>
-              <div class="dropdown" *ngIf="token!=null">
+              <div class="dropdown" *ngIf='secuemail== "true"'>
                 <a href="#" class="amount__btn mt-1 ml-3"><i class="las la-bullhorn"></i><span
                     class="cart__num">04</span></a>
                 <div class="dropdown-content">
@@ -631,7 +631,7 @@
                   <span class="cart__num">{{tickcount}}</span>
                 </a>
               </div>
-              <a href="" routerLink="/user-Draw/wallet" class="user__btn" *ngIf="token!=null"><i
+              <a href="" routerLink="/user-Draw/wallet" class="user__btn" *ngIf="secuemail==true"><i
                   class="las la-wallet"></i></a>
 
               <!-- <a href="#" class="dropdown-toggle user__btn" data-toggle="dropdown"><i class="las la-user"></i></a>  -->
@@ -648,8 +648,8 @@
                 <div class="dropdown-content">
                   <a href="#" class="dropdown-item" *ngIf="token==null" data-toggle="modal" data-target="#loginModal"
                     data-dismiss="modal">Login</a>
-                  <a href="#/user-setting/accountsecurity" class="dropdown-item" *ngIf="token!=null">User panel</a>
-                  <a href="#" class="dropdown-item" (click)="logoutUser()" *ngIf="token!=null">Logout</a>
+                  <a href="#/user-setting/accountsecurity" class="dropdown-item" *ngIf='secuemail== "true"'>User panel</a>
+                  <a href="#" class="dropdown-item" (click)="logoutUser()" *ngIf='secuemail== "true"'>Logout</a>
                   <!-- <button class="dropdown-item"(click)="logoutUser()"> LogOut -->
                   <!-- </button> -->
                 </div>

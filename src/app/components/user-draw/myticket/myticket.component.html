@@ -1,17 +1,15 @@
+<!-- inner-hero-section start -->
+<div class="inner-hero-section style--five">
+</div>
+<!-- inner-hero-section end -->
 
-    
-	 <!-- inner-hero-section start -->
-     <div class="inner-hero-section style--five">
-    </div>
-    <!-- inner-hero-section end -->
-  
-    <!-- user section start -->
-    <div class="mt-minus-150 pb-120">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="user-card">
-              <!-- <div class="avatar-upload">          
+<!-- user section start -->
+<div class="mt-minus-150 pb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="user-card">
+          <!-- <div class="avatar-upload">          
 
                 <div class="obj-el"><img src="assets/user.png" alt="image"></div>
                 <div class="avatar-edit">
@@ -23,162 +21,163 @@
                     </div>
                 </div>
               </div> -->
-              <div class="avatar-upload">          
+          <div class="avatar-upload">
 
-                <div class="obj-el"><img src="assets/user.png" alt="image"></div>
-                <!-- <div class="avatar-edit">
+            <div class="obj-el"><img src="assets/user.png" alt="image"></div>
+            <!-- <div class="avatar-edit">
                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                     <label for="imageUpload"></label>
                 </div> -->
-                <div class="avatar-preview">
-                    <div id="imagePreview" >
-                    </div>
-                </div>
+            <div class="avatar-preview">
+              <div id="imagePreview">
               </div>
-              <br>
-              <h3 class="user-card__name">{{username}}</h3>
-              <!-- <span class="user-card__id">ID : 19535909</span> -->
-            </div><!-- user-card end -->
-            <div class="user-action-card">
-              <ul class="user-action-list">
-    
-                <li class="active" ><a href="" routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a></li>
-                <li><a href="" routerLink="/user-setting/accountsecurity">Account Security</a></li>
-                <li  ><a href="" routerLink="/user-setting/accountactivity">Account Activity</a></li>
-    
-                 <li ><a href="" routerLink="/user-Draw/wallet">Wallet</a></li>
-                                <li ><a href="" routerLink="/user-Draw/trans">Transactions</a></li>
-                <!-- <li><a href="#">Referral Program</a></li> -->
-                <!-- <li><a href="#">Favorite Lotteries</a></li> -->
-                <!-- <li><a href="#">Help Center</a></li> -->
-                <!-- <li><a href="#">Log Out</a></li> -->
-              </ul>
-            </div><!-- user-action-card end -->
+            </div>
           </div>
-          <div class="col-lg-8 mt-lg-0 mt-4">
-            <div class="upcoming-draw-wrapper">
-              <h3 class="title">Upcoming Draw</h3>
-              <div class="draw-ticket-slider">
-                <div class="draw-single-ticket">
-                  <div class="draw-single-ticket__header">
-                    <div class="left">Ticket #1</div>
-                    <div class="right">Contest No:R9D</div>
-                  </div>
-                  <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
-                  <ul class="ticket-numbers-list">
-                    <li>23</li>
-                    <li>22</li>
-                    <li>19</li>
-                    <li>9</li>
-                    <li>50</li>
-                    <li>11</li>
-                    <li>12</li>
-                  </ul>
-                </div><!-- draw-single-ticket end -->
-                <div class="draw-single-ticket">
-                  <div class="draw-single-ticket__header">
-                    <div class="left">Ticket #2</div>
-                    <div class="right">Contest No:R9D</div>
-                  </div>
-                  <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
-                  <ul class="ticket-numbers-list">
-                    <li>23</li>
-                    <li>22</li>
-                    <li>19</li>
-                    <li>9</li>
-                    <li>50</li>
-                    <li>11</li>
-                    <li>12</li>
-                  </ul>
-                </div><!-- draw-single-ticket end -->
-                <div class="draw-single-ticket">
-                  <div class="draw-single-ticket__header">
-                    <div class="left">Ticket #3</div>
-                    <div class="right">Contest No:R9D</div>
-                  </div>
-                  <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
-                  <ul class="ticket-numbers-list">
-                    <li>23</li>
-                    <li>22</li>
-                    <li>19</li>
-                    <li>9</li>
-                    <li>50</li>
-                    <li>11</li>
-                    <li>12</li>
-                  </ul>
-                </div><!-- draw-single-ticket end -->
-              </div><!-- draw-ticket-slider end -->
-            </div><!-- upcoming-draw-wrapper end -->
-            <div class="past-draw-wrapper mt-4">
-              <h3 class="title">Past Draws</h3>
-              <div class="table-responsive-lg">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Draw</th>
-                      <th>Contest No</th>
-                      <th>Result</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let item of data | paginate:{
+          <br>
+          <h3 class="user-card__name">{{username}}</h3>
+          <!-- <span class="user-card__id">ID : 19535909</span> -->
+        </div><!-- user-card end -->
+        <div class="user-action-card">
+          <ul class="user-action-list">
+
+            <li class="active"><a href="" routerLink="/user-Draw/myticket">My Tickets <span class="badge">04</span></a>
+            </li>
+            <li><a href="" routerLink="/user-setting/accountsecurity">Account Security</a></li>
+            <li><a href="" routerLink="/user-setting/accountactivity">Account Activity</a></li>
+
+            <li><a href="" routerLink="/user-Draw/wallet">Wallet</a></li>
+            <li><a href="" routerLink="/user-Draw/trans">Transactions</a></li>
+            <!-- <li><a href="#">Referral Program</a></li> -->
+            <!-- <li><a href="#">Favorite Lotteries</a></li> -->
+            <!-- <li><a href="#">Help Center</a></li> -->
+            <!-- <li><a href="#">Log Out</a></li> -->
+          </ul>
+        </div><!-- user-action-card end -->
+      </div>
+      <div class="col-lg-8 mt-lg-0 mt-4">
+        <div class="upcoming-draw-wrapper">
+          <h3 class="title">Upcoming Draw</h3>
+          <div class="draw-ticket-slider">
+            <div class="draw-single-ticket">
+              <div class="draw-single-ticket__header">
+                <div class="left">Ticket #1</div>
+                <div class="right">Contest No:R9D</div>
+              </div>
+              <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
+              <ul class="ticket-numbers-list">
+                <li>23</li>
+                <li>22</li>
+                <li>19</li>
+                <li>9</li>
+                <li>50</li>
+                <li>11</li>
+                <li>12</li>
+              </ul>
+            </div><!-- draw-single-ticket end -->
+            <div class="draw-single-ticket">
+              <div class="draw-single-ticket__header">
+                <div class="left">Ticket #2</div>
+                <div class="right">Contest No:R9D</div>
+              </div>
+              <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
+              <ul class="ticket-numbers-list">
+                <li>23</li>
+                <li>22</li>
+                <li>19</li>
+                <li>9</li>
+                <li>50</li>
+                <li>11</li>
+                <li>12</li>
+              </ul>
+            </div><!-- draw-single-ticket end -->
+            <div class="draw-single-ticket">
+              <div class="draw-single-ticket__header">
+                <div class="left">Ticket #3</div>
+                <div class="right">Contest No:R9D</div>
+              </div>
+              <div class="circle-divider"><img src="assets/images/elements/circle-border.png" alt="image"></div>
+              <ul class="ticket-numbers-list">
+                <li>23</li>
+                <li>22</li>
+                <li>19</li>
+                <li>9</li>
+                <li>50</li>
+                <li>11</li>
+                <li>12</li>
+              </ul>
+            </div><!-- draw-single-ticket end -->
+          </div><!-- draw-ticket-slider end -->
+        </div><!-- upcoming-draw-wrapper end -->
+        <div class="past-draw-wrapper mt-4">
+          <h3 class="title">Past Draws</h3>
+          <div class="table-responsive-lg">
+            <table>
+              <thead>
+                <tr>
+                  <th>Draw</th>
+                  <th>Contest No</th>
+                  <th>Result</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data | paginate:{
                       itemsPerPage:5,
                        currentPage:p,
                        item:item,
                       totalitem:totalLength }">
-                      <td><span class="date">{{item['endtime']| date :'shortDate' }}</span></td>
-                      <td><span class="contest-no">{{item['drawname'] == "" ? 'NA':item['drawname']  }}</span></td>
-                      <td>
-                        <span *ngIf="item['Winning_status'] === false">
-                          <ul class="number-list">
-                            <li *ngFor="let values of seq">
-                            {{values}}
-                            </li>
-                            
-                              </ul>
-</span>
-<span *ngIf="item['Winning_status'] === true">
-  <ul class="number-list win-list">
-<li *ngFor="let values of seq">
-{{values}}
-</li>
+                  <td><span class="date">{{item['endtime']| date :'shortDate' }}</span></td>
+                  <td><span class="contest-no">{{item['drawname'] == "" ? 'NA':item['drawname'] }}</span></td>
+                  <td>
+                    <span *ngIf="item['Winning_status'] === false">
+                      <ul class="number-list">
+                        <li *ngFor="let values of seq">
+                          {{values}}
+                        </li>
 
-  </ul>
+                      </ul>
+                    </span>
+                    <span *ngIf="item['Winning_status'] === true">
+                      <ul class="number-list win-list">
+                        <li *ngFor="let values of seq">
+                          {{values}}
+                        </li>
 
-</span>
-                        
-                      </td>
-                      <td>
-                        <span *ngIf="item['Winning_status'] === true">
-                          <span class="fail">No Win</span>
-                          <!-- <a (click)="gotoview(item)" class="ml-3">No Win</a> -->
+                      </ul>
 
-                          <!-- <span class="fail">No Win</span> -->
-                              </span>
-                              <span *ngIf="item['Winning_status'] === false"
-                              >
-                              <div class="lottery-package-list-small">
-                                <a (click)="gotoview(item)" class="ml-3">Claim Prize</a>
-                                </div>                            
-                            </span>                      
-                      </td>
+                    </span>
 
-                      </tr>
-                 
-                  </tbody>
-                </table>
-              </div>
-              <!-- <div class="center" *ngIf="!showDatafound">
+                  </td>
+                  <td>
+                    <span *ngIf="item['Winning_status'] === true">
+                      <span class="fail">No Win</span>
+                      <!-- <a (click)="gotoview(item)" class="ml-3">No Win</a> -->
+
+                      <!-- <span class="fail">No Win</span> -->
+                    </span>
+                    <span *ngIf="item['Winning_status'] === false">
+                      <div class="lottery-package-list-small">
+                        <a (click)="gotoview(item)" class="ml-3">Claim Prize</a>
+                      </div>
+                    </span>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <!-- <div class="center" *ngIf="!showDatafound">
                 <span>NO DATA FOUND </span>
               </div> -->
-            <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
-          </div> 
-            </div><!-- past-draw-wrapper end -->
+          <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event" item:item>
+          </pagination-controls>
+        </div>
+      </div><!-- past-draw-wrapper end -->
 
 
 
-            <!-- <div class="past-draw-wrapper mt-4">
+      <!-- <div class="past-draw-wrapper mt-4">
               <h3 class="title">Past Draws</h3>
                 <div class="table-responsive-lg">
                   <table>
@@ -229,6 +228,6 @@
                 </div>
               <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
             </div> -->
-        </div>
-      </div>
     </div>
+  </div>
+</div>

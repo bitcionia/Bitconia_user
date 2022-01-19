@@ -338,7 +338,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             this.submitted = true;
         
             ////debugger
-            if(this.data =="false"|| this.data ==undefined){
+            // if(this.data =="false"|| this.data ==undefined){
             let JsonData = {
               "email":  this.email,
               "mobile": "",
@@ -349,6 +349,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             this.httpService.addsverify(JsonData).subscribe(res => {
               console.log(res)
               if (res['success'] == true) {
+                localStorage.setItem("Securityverf", JSON.stringify("true"));
+
                 // this.toastr.success("Password changed Successfully");
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
@@ -367,16 +369,16 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-          }
-          else if(this.data !="false"){
-            ////debugger
-               this.g2faverifyemail();
-          }
+          // }
+          // else if(this.data !="false"){
+          //   ////debugger
+          //      this.g2faverifyemail();
+          // }
           }
           verfaddmob() {
             debugger
             this.submitted = true;
-            if(this.data =="false" || this.data ==undefined){
+            // if(this.data =="false" || this.data ==undefined){
             ////debugger
             let JsonData = {
               "email": "",
@@ -388,6 +390,8 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             this.httpService.addsverify(JsonData).subscribe(res => {
               console.log(res)
               if (res['success'] == true) {
+                localStorage.setItem("Securityverf", JSON.stringify("true"));
+
                 // this.toastr.success("Password changed Successfully");
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
@@ -410,71 +414,72 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
               });
            })
-          } else if(this.data =="true"){
-             this.g2faverifymob();
           }
-          }
-          g2faverifymob() {
-            this.submitted = true;
+          // } else if(this.data =="true"){
+          //    this.g2faverifymob();
+          // }
+          // }
+          // g2faverifymob() {
+          //   this.submitted = true;
         
-            ////debugger
-            let JsonData = {
-              "email": "",
-              mobile: this.mobile,
-              country_code:this.countrycode,
-              "otp":this.mobileform.value.code,
-            }
-            this.httpService.g2fverify(JsonData).subscribe(res => {
-              // ////////debugger
-              if (res['success'] == true) {
-                this.routeTo.navigateByUrl('/index');
-                setTimeout(() => {
-                  document.location.reload();
+          //   ////debugger
+          //   let JsonData = {
+          //     "email": "",
+          //     mobile: this.mobile,
+          //     country_code:this.countrycode,
+          //     "otp":this.mobileform.value.code,
+          //   }
+          //   this.httpService.g2fverify(JsonData).subscribe(res => {
+          //     // ////////debugger
+          //     if (res['success'] == true) {
+          //       this.routeTo.navigateByUrl('/index');
+          //       setTimeout(() => {
+          //         document.location.reload();
                   
-                   }, 100);
-              }
-              // }, (err) => {
-              //   // this.httpService.toastr.error(err);
-              //   this.httpService.toastr.error("All field is mandatory",
-              //     '', {
-              //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-              //   });
-            })
-            {
-            }
-          }
+          //          }, 100);
+          //     }
+          //     // }, (err) => {
+          //     //   // this.httpService.toastr.error(err);
+          //     //   this.httpService.toastr.error("All field is mandatory",
+          //     //     '', {
+          //     //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          //     //   });
+          //   })
+          //   {
+          //   }
+          // }
           
-          g2faverifyemail() {
-            this.submitted = true;
-            let JsonData = {
-              "email":this.email,
-              "mobile":"",
-              "otp": this.loginForm.value.code,
+          // g2faverifyemail() {
+          //   this.submitted = true;
+          //   let JsonData = {
+          //     "email":this.email,
+          //     "mobile":"",
+          //     "otp": this.loginForm.value.code,
         
-            }
-            this.httpService.g2fverify(JsonData).subscribe(res => {
+          //   }
+          //   this.httpService.g2fverify(JsonData).subscribe(res => {
             
-              if (res['success'] == true) {
+          //     if (res['success'] == true) {
 
-                this.httpService.toastr.success("OTP Verified", '', {
-                  positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-                });
-                // this.routeTo.navigateByUrl('/index');
-                setTimeout(() => {
-                  document.location.reload();
+          //       this.httpService.toastr.success("OTP Verified", '', {
+          //         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          //       });
+          //       // this.routeTo.navigateByUrl('/index');
+          //       setTimeout(() => {
+          //         document.location.reload();
                   
-                   }, 100);
-              }
-              // }, (err) => {
-              //   // this.httpService.toastr.error(err);
-              //   this.httpService.toastr.error("All field is mandatory",
-              //     '', {
-              //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
-              //   });
-            })
-            {
-            }
-          }
+          //          }, 100);
+          //     }
+          //     // }, (err) => {
+          //     //   // this.httpService.toastr.error(err);
+          //     //   this.httpService.toastr.error("All field is mandatory",
+          //     //     '', {
+          //     //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+          //     //   });
+          //   })
+          //   {
+          //   }
+          // }
         //   verfaddmob() {
         //     ////debugger
           
@@ -512,4 +517,5 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         //    })
         //   }
    
+
 }

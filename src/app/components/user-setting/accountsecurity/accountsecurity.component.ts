@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AccountsecurityComponent implements OnInit {
   email2: any;
+  con: string;
   get nativeWindow() : any {
     return refresh();
  }
@@ -121,7 +122,8 @@ this.emailForm();
             this.email2 = res['data']['security_email']
 
             this.mob1 = res['data']['mobile']
-            console.log(this.mob1)
+            this.con = res['data']['country_code']
+            console.log(this.con)
             // localStorage.setItem("email", JSON.stringify(res['admin']['security_email']));
             // localStorage.setItem("mobile", JSON.stringify(res['admin']['security_mobile']));
             // localStorage.setItem("2fa", JSON.stringify(res['admin']['tfa_active']));
@@ -167,10 +169,10 @@ this.emailForm();
             this.mob1 = res['data']['mobile']
             this.email1 = res['data']['email']
             this.email2 = res['data']['security_email']
-
             // localStorage.setItem("secemail", JSON.stringify(this.email1));
             // localStorage.setItem("username", JSON.stringify(this.username));
-      
+            this.con = res['data']['country_code']
+            console.log(this.con)
             this.emailstatus = res['data']['security_email']
             this.mobstatus = res['data']['security_mobile']
             this.twofa = res['data']['tfa_active']
@@ -267,7 +269,7 @@ this.emailForm();
           this.httpService.toastr.success(res['message'], '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
-          this.routeTo.navigateByUrl('/index');
+          // this.routeTo.navigateByUrl('/index');
         }
         // }, (err) => {
         //   // this.httpService.toastr.error(err);
@@ -303,8 +305,8 @@ this.emailForm();
 
     ////debugger
     let JsonData = {
-      "mobile":"",
-      "email":this.email1,
+      // "mobile":"",
+      // "email":this.email1,
       "otp": this.g2faForm.value.otp,
 
     }
@@ -344,10 +346,11 @@ this.emailForm();
 
     this.submitted = true;
 
-    ////debugger
+    debugger
     let JsonData = {
-      "email":"",
-      "mobile":this.mob1,
+      // "email":"",
+      // "mobile":this.mob1,
+      // "country_code":this.con,
       "otp": this.g2faForm.value.otp,
 
     }
@@ -401,7 +404,7 @@ this.emailForm();
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
-        // window.location.reload();
+        window.location.reload();
         localStorage.removeItem('secret');
 
       }

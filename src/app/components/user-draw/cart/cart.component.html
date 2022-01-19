@@ -1,22 +1,22 @@
-  <!-- inner-hero-section start -->
-  <div class="inner-hero-section style--six">
-    <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape.png" alt="image"></div> -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="page-list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#0">Communities</a></li>
-             <li><a href="#0">My cart</a></li>
-             </ul>
-        </div>
+<!-- inner-hero-section start -->
+<div class="inner-hero-section style--six">
+  <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape.png" alt="image"></div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="page-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#0">Communities</a></li>
+          <li><a href="#0">My cart</a></li>
+        </ul>
       </div>
     </div>
   </div>
-  <!-- inner-hero-section end -->
+</div>
+<!-- inner-hero-section end -->
 
 <!-- cart section start -->
-<section class="pb-120 mt-minus-300" >
+<section class="pb-120 mt-minus-300">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -27,25 +27,27 @@
               <div class="ticket-wrapper">
                 <div class="ticket-wrapper__header">
                   <h3>Your tickets:</h3>
-                  <button type="button"(click)="delete()" >clear all</button>
+                  <button type="button" (click)="delete()">clear all</button>
                 </div>
                 <div class="ticket-wrapper__body">
                   <div class="single-row" *ngFor="let tikets of ticketsArray">
-                    <ul class="numbers"*ngFor="let values of tikets.values">
-                       
-                        <li >{{values}}</li>
-                        
-                      </ul>
+                    <ul class="numbers" *ngFor="let values of tikets.values">
+
+                      <li>{{values}}</li>
+
+                    </ul>
                     <div class="action-btns">
-                       <button type="button" class="edit-btn" (click)="editTicket(tikets)"><i class="las la-pen"></i></button>
-                       <button type="button" class="del-btn" (click)="deleteItem(tickets)"><i class="las la-trash-alt"></i></button>
+                      <button type="button" class="edit-btn" (click)="editTicket(tikets)"><i
+                          class="las la-pen"></i></button>
+                      <button type="button" class="del-btn" (click)="deleteItem(tickets)"><i
+                          class="las la-trash-alt"></i></button>
                     </div>
                   </div><!-- single-row end -->
-                 
-                 
-              
-                  
-                  
+
+
+
+
+
                 </div>
               </div>
             </div>
@@ -71,25 +73,25 @@
                         <h4 class="caption">Total</h4>
                       </div>
                       <div class="right">
-                        <span class="price"><i class="lab la-btc text-white"></i>{{ tickdata 
+                        <span class="price"><i class="lab la-btc text-white"></i>{{ tickdata
                           == "undefined" ? '0' : tickdata }}</span>
                       </div>
                     </li>
                   </ul>
-                  <div class="checkout-wrapper__btn"*ngIf="token!=null">
+                  <div class="checkout-wrapper__btn" *ngIf="token!=null">
                     <!-- <span *ngIf="balance>=tickdata">
                     <button type="submit" class="cmn-btn btn--sm" (click)="showWarningAlert()">Place Order</button></span> -->
-                      <button type="submit" class="cmn-btn btn--sm" (click)="cartadd()">Place Order</button>
+                    <button type="submit" class="cmn-btn btn--sm" (click)="cartadd()">Place Order</button>
                     <!-- <a href="#" class="cmn-btn btn--sm" type="sumbit" (click)="cartadd()">Place Order</a> -->
                   </div>
-                  <div class="checkout-wrapper__btn" *ngIf="token==null" >
-                    
+                  <div class="checkout-wrapper__btn" *ngIf="token==null">
+
                     <button type="submit" class="cmn-btn btn--sm" routerLink="/index">Place Order</button>
                     <!-- <a href="#" class="cmn-btn btn--sm" type="sumbit" (click)="cartadd()">Place Order</a> -->
                   </div>
                 </div>
               </div><!-- checkout-wrapper end -->
-      <div class="checkout-wrapper mt-5">
+              <div class="checkout-wrapper mt-5">
                 <div class="checkout-wrapper__header">
                   <h3>Ticket order summary:</h3>
                 </div>
@@ -112,7 +114,7 @@
                         <span class="price"><i class="lab la-btc text-whites"></i>{{tickdata}}</span>
                       </div>
                     </li>
-         <li>
+                    <li>
                       <div class="left">
                         <span class="caption">Wallet Balance</span>
                       </div>
@@ -120,7 +122,7 @@
                         <span class="price"><i class="lab la-btc text-whites"></i>{{balance}}</span>
                       </div>
                     </li>
-         <li>
+                    <li>
                       <div class="left">
                         <span class="caption">Remaining Balance</span>
                       </div>
@@ -129,14 +131,13 @@
                       </div>
                     </li>
                   </ul>
-                  
+
                 </div>
               </div><!-- checkout-wrapper end -->
+            </div>
           </div>
         </div>
       </div>
- </div>
     </div>
   </div>
 </section>
-  

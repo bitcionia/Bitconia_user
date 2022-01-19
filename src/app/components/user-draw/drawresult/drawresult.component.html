@@ -1,4 +1,3 @@
-
 <!--     
       <div class="inner-hero-section style--five">
         <h2 style="text-align: center;
@@ -123,27 +122,27 @@
 
 
 
-        <section class="inner-hero-section style--four">
-          <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape-2.png" alt="image"></div> -->
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="inner-page-content">
-                  <h2 class="title mt-5">Never miss a draw!</h2>
-                  <p>Easy way to buy tickets and win your lotteries</p>
-                  <p>many others anytime, anywhere</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- inner-hero-section end -->
-      
-        <!-- winner details section start -->
-        <section class="mt-minus-150 mb-80">
-          <div class="container">
-            <div class="row">
-              <!-- <div class="col-lg-12">
+<section class="inner-hero-section style--four">
+  <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape-2.png" alt="image"></div> -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="inner-page-content">
+          <h2 class="title mt-5">Never miss a draw!</h2>
+          <p>Easy way to buy tickets and win your lotteries</p>
+          <p>many others anytime, anywhere</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- inner-hero-section end -->
+
+<!-- winner details section start -->
+<section class="mt-minus-150 mb-80">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-12">
                 <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
                   <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
                   <div class="body">
@@ -164,24 +163,25 @@
                 
                 </div>
               </div> -->
-              <div class="col-lg-12">
-                <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
-                  <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5"></div>
-                  <div class="body">
-                    <p class="contest-number">{{name}}</p>
-                    <p class="contest-date mb-15"><span>Draw took place on :</span> {{time| date:'medium'}}</p>
+      <div class="col-lg-12">
+        <div class="winner-details-wrapper bg_img" data-background="assets/images/elements/winner-details.jpg">
+          <div class="left mt-none-30"><img src="assets/images/elements/currentdraw.png" alt="biconia" class="ml-5">
+          </div>
+          <div class="body">
+            <p class="contest-number">{{name}}</p>
+            <p class="contest-date mb-15"><span>Draw took place on :</span> {{time| date:'medium'}}</p>
             <p class="contest-date mb-15"><span>Sever Seed :</span> {{server}}</p>
             <p class="contest-date mb-15"><span>Server Seed Hash :</span>{{hash}}</p>
             <p class="contest-date mb-30"><span>Block Number:</span> {{block}}</p>
-                      <p>Last Winning Number</p>
-                      <!-- <p>{{seq}}</p> -->
-                      
-                      <ul  class="numbers mb-80" >
-                     
-                        <li class="active"  *ngFor="let values of seq">{{values}}</li>
-                        
-                      </ul>
-                    <!-- <ul class="numbers mb-80" style="text-align: center;">
+            <p>Last Winning Number</p>
+            <!-- <p>{{seq}}</p> -->
+
+            <ul class="numbers mb-80">
+
+              <li class="active" *ngFor="let values of seq">{{values}}</li>
+
+            </ul>
+            <!-- <ul class="numbers mb-80" style="text-align: center;">
                       <li>11</li>
                       <li>88</li>
                       <li>23</li>
@@ -190,155 +190,155 @@
                       <li>26</li>
                      
                     </ul> -->
-                    <!-- <div class="btn-grp"> -->
-                      <!-- <a href="#0" class="btn-border">Alerts</a> -->
-                      <!-- <a href="#0" class="btn-border">How to Claim</a> -->
-                    <!-- </div> -->
-                  </div>
-                
-                </div>
+            <!-- <div class="btn-grp"> -->
+            <!-- <a href="#0" class="btn-border">Alerts</a> -->
+            <!-- <a href="#0" class="btn-border">How to Claim</a> -->
+            <!-- </div> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="latest-winner-section position-relative pt-120 pb-120">
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- winner-card first start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
+            <div class="content-top">
+              <div class="left">
+                <h5>Match 1 6/6</h5>
+              </div>
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>{{time| date:'medium'}}</p>
+              </div>
+            </div>
+            <div class="content-bottom">
+              <div class="number-list-wrapper">
+                <p>Number of winners</p>
+                <ul class="number-list mt-2">
+                  <li>{{count1}}</li>
+
+                </ul><!-- number-list end -->
+              </div>
+              <div class="right">
+                <p>Contest No:</p>
+                <span class="contest-num">{{name}}</span>
               </div>
             </div>
           </div>
-        </section>
-        <section class="latest-winner-section position-relative pt-120 pb-120">
-          <div class="container">
-           
-                <div class="row justify-content-center">
-                     <div class="col-lg-8">
-             
-              <!-- winner-card first start -->
-                       <div class="winner-card mb-30">
-                         <div class="winner-card__thumb justify-content-center">
-                           <img src="assets/images/elements/winnercoin.png" alt="image">
-               </div>
-                <div class="winner-card__content">
-                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner1.png" alt="image"></div>
-                           <div class="content-top">
-                             <div class="left">
-                               <h5>Match 1 6/6</h5>
-                             </div>
-                             <div class="right">
-                               <span>Draw took place on</span>
-                               <p>{{time| date:'medium'}}</p>
-                             </div>
-                           </div>
-                           <div class="content-bottom">
-                             <div class="number-list-wrapper">
-                               <p>Number of winners</p>
-                               <ul class="number-list mt-2">
-                                 <li>{{count1}}</li>
-                                
-                               </ul><!-- number-list end -->
-                             </div>
-                             <div class="right">
-                               <p>Contest No:</p>
-                               <span class="contest-num">{{name}}</span>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-             <!-- winner-card first end -->
-              <!-- winner-card 2 start -->
-                       <div class="winner-card mb-30">
-                         <div class="winner-card__thumb justify-content-center">
-                           <img src="assets/images/elements/winnercoin.png" alt="image">
-               </div>
-                <div class="winner-card__content">
-                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner2.png" alt="image"></div>
-                           <div class="content-top">
-                             <div class="left">
-                               <h5>Match 2 5/6</h5>
-                             </div>
-                             <div class="right">
-                               <span>Draw took place on</span>
-                               <p>{{time| date:'medium'}}</p>
-                             </div>
-                           </div>
-                           <div class="content-bottom">
-                             <div class="number-list-wrapper">
-                               <p>Number of winners</p>
-                               <ul class="number-list mt-2">
-                                 <li>{{count2}}</li>
-                                
-                               </ul><!-- number-list end -->
-                             </div>
-                             <div class="right">
-                               <p>Contest No:</p>
-                               <span class="contest-num">{{name}}</span>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-             <!-- winner-card 2 end -->
-              <!-- winner-card 3 start -->
-                       <div class="winner-card mb-30">
-                         <div class="winner-card__thumb justify-content-center">
-                           <img src="assets/images/elements/winnercoin.png" alt="image">
-               </div>
-                <div class="winner-card__content">
-                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner3.png" alt="image"></div>
-                           <div class="content-top">
-                             <div class="left">
-                               <h5>Match 3 4/6</h5>
-                             </div>
-                             <div class="right">
-                               <span>Draw took place on</span>
-                               <p>{{time| date:'medium'}}</p>
-                             </div>
-                           </div>
-                           <div class="content-bottom">
-                             <div class="number-list-wrapper">
-                               <p>Number of winners</p>
-                               <ul class="number-list mt-2">
-                                 <li>{{count3}}</li>
-                                
-                               </ul><!-- number-list end -->
-                             </div>
-                             <div class="right">
-                               <p>Contest No:</p>
-                               <span class="contest-num">{{name}}</span>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-             <!-- winner-card 3 end -->
-              <!-- winner-card 4 start -->
-                       <div class="winner-card">
-                         <div class="winner-card__thumb justify-content-center">
-                           <img src="assets/images/elements/winnercoin.png" alt="image">
-               </div>
-                <div class="winner-card__content">
-                           <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner4.png" alt="image"></div>
-                           <div class="content-top">
-                             <div class="left">
-                               <h5>Match 4 3/6</h5>
-                             </div>
-                             <div class="right">
-                               <span>Draw took place on</span>
-                               <p>{{time| date:'medium'}}</p>
-                             </div>
-                           </div>
-                           <div class="content-bottom">
-                             <div class="number-list-wrapper">
-                               <p>Number of winners</p>
-                               <ul class="number-list mt-2">
-                                 <li>{{count4}}</li>
-                                
-                               </ul><!-- number-list end -->
-                             </div>
-                             <div class="right">
-                               <p>Contest No:</p>
-                               <span class="contest-num">{{name}}</span>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-             <!-- winner-card 4 end -->
-                     
-                     </div>
-                   </div>
-               
-             </div>
-           
-       </section>
+        </div>
+        <!-- winner-card first end -->
+        <!-- winner-card 2 start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner2.png" alt="image"></div>
+            <div class="content-top">
+              <div class="left">
+                <h5>Match 2 5/6</h5>
+              </div>
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>{{time| date:'medium'}}</p>
+              </div>
+            </div>
+            <div class="content-bottom">
+              <div class="number-list-wrapper">
+                <p>Number of winners</p>
+                <ul class="number-list mt-2">
+                  <li>{{count2}}</li>
+
+                </ul><!-- number-list end -->
+              </div>
+              <div class="right">
+                <p>Contest No:</p>
+                <span class="contest-num">{{name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- winner-card 2 end -->
+        <!-- winner-card 3 start -->
+        <div class="winner-card mb-30">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner3.png" alt="image"></div>
+            <div class="content-top">
+              <div class="left">
+                <h5>Match 3 4/6</h5>
+              </div>
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>{{time| date:'medium'}}</p>
+              </div>
+            </div>
+            <div class="content-bottom">
+              <div class="number-list-wrapper">
+                <p>Number of winners</p>
+                <ul class="number-list mt-2">
+                  <li>{{count3}}</li>
+
+                </ul><!-- number-list end -->
+              </div>
+              <div class="right">
+                <p>Contest No:</p>
+                <span class="contest-num">{{name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- winner-card 3 end -->
+        <!-- winner-card 4 start -->
+        <div class="winner-card">
+          <div class="winner-card__thumb justify-content-center">
+            <img src="assets/images/elements/winnercoin.png" alt="image">
+          </div>
+          <div class="winner-card__content">
+            <div class="winner-thumb"><img src="assets/images/elements/downloaded/winner4.png" alt="image"></div>
+            <div class="content-top">
+              <div class="left">
+                <h5>Match 4 3/6</h5>
+              </div>
+              <div class="right">
+                <span>Draw took place on</span>
+                <p>{{time| date:'medium'}}</p>
+              </div>
+            </div>
+            <div class="content-bottom">
+              <div class="number-list-wrapper">
+                <p>Number of winners</p>
+                <ul class="number-list mt-2">
+                  <li>{{count4}}</li>
+
+                </ul><!-- number-list end -->
+              </div>
+              <div class="right">
+                <p>Contest No:</p>
+                <span class="contest-num">{{name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- winner-card 4 end -->
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
