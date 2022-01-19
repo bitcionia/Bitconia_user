@@ -108,7 +108,7 @@
             </li>
           </ul>
         </div><!-- user-info-card end -->
-        <div class="user-info-card" *ngIf=' email1 == "" '>
+        <div class="user-info-card" *ngIf=' email1 == undefined '>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
 
@@ -125,7 +125,7 @@
             </li>
           </ul>
         </div>
-        <div class="user-info-card" *ngIf='email1 != " "'>
+        <div class="user-info-card" *ngIf='email1 != undefined'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
 
@@ -143,12 +143,12 @@
           </ul>
         </div><!-- user-info-card end -->
 
-        <div class="user-info-card" *ngIf='mob1 == " "'>
+        <div class="user-info-card" *ngIf='mob1 == undefined'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Phone</h3>
 
             <button type="button" data-toggle="modal" data-target="#phonenew"
-              style="    margin-bottom: 25px;">ADD</button>
+              style="margin-bottom: 25px;">ADD</button>
             <!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a> -->
           </div>
 
@@ -159,7 +159,7 @@
             </li>
           </ul>
         </div>
-        <div class="user-info-card" *ngIf='mob1 !=" " '>
+        <div class="user-info-card" *ngIf='mob1 != undefined '>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Phone</h3>
 
@@ -717,7 +717,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="phonenew" tabindex="1" role="dialog" aria-hidden="true" *ngIf='mob1 == " "'>
+<div class="modal fade" id="phonenew" tabindex="1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
