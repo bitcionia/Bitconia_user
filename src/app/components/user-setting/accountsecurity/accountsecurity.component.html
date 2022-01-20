@@ -108,14 +108,96 @@
             </li>
           </ul>
         </div><!-- user-info-card end -->
-        <div class="user-info-card" *ngIf=' email1 == undefined '>
+        <!-- <div class="user-info-card" *ngIf='email1 == undefined else templateName'>
+          <div *ngIf='email1 == "" '>
+    <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+
+            <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+            <button type="button" class="text-violet" data-toggle="modal"
+              data-target="#emailremoveconfirm">Remove</button>
+          </div>
+    <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Email</span>
+          <span class="value">{{email1}}</span>
+        </li>
+      </ul>
+    </div>
+     <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+          <div *ngIf='email1 != "" '>
+            <button type="button" data-toggle="modal" data-target="#emailnew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+    </div>
+        </div> -->
+
+        <div class="user-info-card" *ngIf='email1 == undefined else templateName'>
+          <div *ngIf='email1 == "" '>
+    <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+
+            <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+            <button type="button" class="text-violet" data-toggle="modal"
+              data-target="#emailremoveconfirm">Remove</button>
+          </div>
+    <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Email</span>
+          <span class="value">{{email1}}</span>
+        </li>
+      </ul>
+    </div>
+     <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+          <div *ngIf='email1 != "" '>
+            <button type="button" data-toggle="modal" data-target="#emailnew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+    </div>
+        </div>
+  
+  
+  <ng-template #templateName>
+          <div  class="user-info-card" *ngIf='email1 != "" '>
+      <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+
+            <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+            <button type="button" class="text-violet" data-toggle="modal"
+              data-target="#emailremoveconfirm">Remove</button>
+          </div>
+     <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Email</span>
+          <span class="value">{{email1}}</span>
+        </li>
+      </ul>
+    </div>
+          <div class="user-info-card" *ngIf='email1 == "" '>
+    <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+
+            <button type="button" data-toggle="modal" data-target="#emailnew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+    
+       <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Email</span>
+          <span class="value">{{email1}}</span>
+        </li>
+      </ul>
+  </div>
+        </ng-template>
+        <!-- <div class="user-info-card" *ngIf='  email1 == " "'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
 
 
             <button type="button" data-toggle="modal" data-target="#emailnew"
               style="    margin-bottom: 25px;">ADD</button>
-            <!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#emailremoveconfirm">Remove</a> -->
           </div>
 
           <ul class="user-info-card__list">
@@ -125,7 +207,7 @@
             </li>
           </ul>
         </div>
-        <div class="user-info-card" *ngIf='email1 != undefined'>
+        <div class="user-info-card" *ngIf='email1 != undefined || email1 != " " '>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
 
@@ -141,15 +223,15 @@
               <span class="value">{{email1}}</span>
             </li>
           </ul>
-        </div><!-- user-info-card end -->
+        </div> -->
+        <!-- user-info-card end -->
 
-        <div class="user-info-card" *ngIf='mob1 == undefined'>
+        <!-- <div class="user-info-card" *ngIf='mob1 == undefined && mob1 == " " '>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Phone</h3>
 
             <button type="button" data-toggle="modal" data-target="#phonenew"
               style="margin-bottom: 25px;">ADD</button>
-            <!-- <a href="#" class="text-violet" data-toggle="modal" data-target="#phoneremoveconfirm">Remove</a> -->
           </div>
 
           <ul class="user-info-card__list">
@@ -174,7 +256,69 @@
               <span class="value">{{mob1}}</span>
             </li>
           </ul>
-        </div><!-- user-info-card end -->
+        </div> -->
+        
+
+
+        <div class="user-info-card" *ngIf='mob1 == undefined else template'>
+          <div *ngIf='mob1 == "" '>
+    <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Phone</h3>
+
+            <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+            <button type="button" class="text-violet" data-toggle="modal"
+              data-target="#phoneremoveconfirm">Remove</button>
+          </div>
+    <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Phone</span>
+          <span class="value">{{mob1}}</span>
+        </li>
+      </ul>
+    </div>
+     <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Phone</h3>
+          <div *ngIf='mob1 != "" '>
+        <button type="button" data-toggle="modal" data-target="#phonenew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+    </div>
+        </div>
+  
+  
+  <ng-template #template>
+          <div  class="user-info-card" *ngIf='mob1 != "" '>
+      <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Phone</h3>
+
+            <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+            <button type="button" class="text-violet" data-toggle="modal"
+              data-target="#phoneremoveconfirm">Remove</button>
+          </div>
+     <ul class="user-info-card__list">
+        <li>
+          <span class="caption">Phone</span>
+          <span class="value">{{mob1}}</span>
+        </li>
+      </ul>
+    </div>
+          <div class="user-info-card" *ngIf='mob1 == "" '>
+    <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Phone</h3>
+
+        <button type="button" data-toggle="modal" data-target="#phonenew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+    
+       <ul class="user-info-card__list">
+        <li>
+              <span class="caption">Phone</span>
+          <span class="value">{{mob1}}</span>
+        </li>
+      </ul>
+  </div>
+        </ng-template>
+        <!-- user-info-card end -->
         <div class="user-info-card">
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Password</h3>
@@ -671,7 +815,7 @@
 
 
               </div>
-              <p>Note: User Please Enter the Mobile Number Only Country code Automatically Fetch</p>
+              <p class="errors">Note:  User Don't Enter the Country code</p>
               <div class="d-flex flex-wrap justify-content-lg-end mt-1">
                 <!-- <a href="#" class="link">Get code</a> -->
                 <a href="javascript:;" (click)="addmob()" class="link m-1">get Code </a>
@@ -750,7 +894,7 @@
 
 
               </div>
-              <p>Note: User Please Enter the Mobile Number Only Country code Automatically Fetch</p>
+              <p class="errors">Note:  User Don't Enter the Country code</p>
 
               <div class="d-flex flex-wrap justify-content-lg-end mt-1">
                 <!-- <a href="#" class="link">Get code</a> -->
