@@ -15,7 +15,8 @@ export class AppComponent {
 
   timeout;
   routerChanged = true;
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    ) {
     // this.subscription = router.events.subscribe((event) => {
     //     if (event instanceof NavigationStart) {
     //       browserRefresh = !router.navigated;

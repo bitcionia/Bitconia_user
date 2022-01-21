@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 function refresh() {
-  window .location.reload();
+ // window .location.reload();
 }
 @Component({
   selector: 'app-currentdraw',
@@ -88,7 +88,7 @@ export class CurrentdrawComponent implements OnInit {
     this.refresh();
   }
   upcomingdraw(){
-    ////debugger
+    //////debugger
     this.httpService.upcomdraw().subscribe((res: any) => {
       console.log(res['data'])
       console.log(res['data'])
@@ -150,7 +150,7 @@ export class CurrentdrawComponent implements OnInit {
     });
   }
   pervdraw(){
-    ////debugger
+    //////debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
       console.log(res['count'])
       this.count=res['count']
@@ -189,7 +189,7 @@ console.log(this.myArray)
     });
   }
   gototick(data){
-    ////debugger
+    //////debugger
     console.log(data)
     localStorage.setItem("tickid", JSON.stringify(data));
 

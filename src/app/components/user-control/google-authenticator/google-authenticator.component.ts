@@ -111,7 +111,7 @@ export class GoogleAuthenticatorComponent implements OnInit {
             g2faverifymob() {
               this.submitted = true;
           
-              ////debugger
+              //////debugger
               let JsonData = {
                 "email": "",
                 mobile: this.mobile,
@@ -119,7 +119,7 @@ export class GoogleAuthenticatorComponent implements OnInit {
                 "otp":this.mobileform.value.code,
               }
               this.httpService.g2fverify(JsonData).subscribe(res => {
-                // ////////debugger
+                // //////////debugger
                 if (res['success'] == true) {
                   localStorage.setItem("Securityverf", JSON.stringify("true"));
 
@@ -128,7 +128,7 @@ export class GoogleAuthenticatorComponent implements OnInit {
                   });
                   this.routeTo.navigateByUrl('/index');
                   setTimeout(() => {
-                    document.location.reload();
+                   document.location.reload();
                     
                      }, 100);
                 }
@@ -163,9 +163,9 @@ export class GoogleAuthenticatorComponent implements OnInit {
                   this.httpService.toastr.success("OTP Verified", '', {
                     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                   });
-                  // this.routeTo.navigateByUrl('/index');
+                  this.routeTo.navigateByUrl('/index');
                   setTimeout(() => {
-                    document.location.reload();
+                   document.location.reload();
                     
                      }, 100);
                 }

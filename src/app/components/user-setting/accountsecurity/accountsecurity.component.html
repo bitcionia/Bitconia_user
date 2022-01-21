@@ -133,33 +133,43 @@
     </div>
         </div> -->
 
-        <div class="user-info-card" *ngIf='email1 == undefined else templateName'>
-          <div *ngIf='email1 == "" '>
-    <div class="user-info-card__header">
-        <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
-
-            <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
-            <button type="button" class="text-violet" data-toggle="modal"
-              data-target="#emailremoveconfirm">Remove</button>
-          </div>
-    <ul class="user-info-card__list">
-        <li>
-          <span class="caption">Email</span>
-          <span class="value">{{email1}}</span>
-        </li>
-      </ul>
-    </div>
+        <!-- <div class="user-info-card" *ngIf='email1 == undefined' >
+    
+    
      <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
-          <div *ngIf='email1 != "" '>
+          <div>
             <button type="button" data-toggle="modal" data-target="#emailnew"
               style="margin-bottom: 25px;">ADD</button>
           </div>
-    </div>
         </div>
+          <ul class="user-info-card__list">
+            <li>
+              <span class="caption">Email</span>
+              <span class="value">{{email1}}</span>
+            </li>
+          </ul>
+    
+        </div> -->
+        <div class="user-info-card" *ngIf='email1 == " "' >
+    
+    
+          <div class="user-info-card__header">
+             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+               <div>
+                 <button type="button" data-toggle="modal" data-target="#emailnew"
+                   style="margin-bottom: 25px;">ADD</button>
+               </div>
+             </div>
+               <ul class="user-info-card__list">
+                 <li>
+                   <span class="caption">Email</span>
+                   <span class="value">{{email1}}</span>
+                 </li>
+               </ul>
+         
+             </div>
   
-  
-  <ng-template #templateName>
           <div  class="user-info-card" *ngIf='email1 != "" '>
       <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
@@ -175,7 +185,7 @@
         </li>
       </ul>
     </div>
-          <div class="user-info-card" *ngIf='email1 == "" '>
+          <!-- <div class="user-info-card" *ngIf='email1 == "" '>
     <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
 
@@ -189,8 +199,7 @@
           <span class="value">{{email1}}</span>
         </li>
       </ul>
-  </div>
-        </ng-template>
+  </div> -->
         <!-- <div class="user-info-card" *ngIf='  email1 == " "'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
@@ -260,33 +269,32 @@
         
 
 
-        <div class="user-info-card" *ngIf='mob1 == undefined else template'>
-          <div *ngIf='mob1 == "" '>
-    <div class="user-info-card__header">
-        <h3 class="user-info-card__title col-md-8">Phone</h3>
-
-            <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
-            <button type="button" class="text-violet" data-toggle="modal"
-              data-target="#phoneremoveconfirm">Remove</button>
-          </div>
-    <ul class="user-info-card__list">
-        <li>
-          <span class="caption">Phone</span>
-          <span class="value">{{mob1}}</span>
-        </li>
-      </ul>
-    </div>
+        <div class="user-info-card" *ngIf=' mob1 == undefined '>
+         
      <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>
-          <div *ngIf='mob1 != "" '>
+          <div >
         <button type="button" data-toggle="modal" data-target="#phonenew"
               style="margin-bottom: 25px;">ADD</button>
           </div>
+
+        
+    </div>
+        </div>
+        <div class="user-info-card" *ngIf='mob1 == " " '>
+    
+     <div class="user-info-card__header">
+        <h3 class="user-info-card__title col-md-8">Phone</h3>
+          <div >
+        <button type="button" data-toggle="modal" data-target="#phonenew"
+              style="margin-bottom: 25px;">ADD</button>
+          </div>
+
+         
     </div>
         </div>
   
-  
-  <ng-template #template>
+  <!-- <ng-template #template> -->
           <div  class="user-info-card" *ngIf='mob1 != "" '>
       <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>
@@ -302,7 +310,7 @@
         </li>
       </ul>
     </div>
-          <div class="user-info-card" *ngIf='mob1 == "" '>
+          <!-- <div class="user-info-card" *ngIf='mob1 == "" '>
     <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>
 
@@ -316,8 +324,8 @@
           <span class="value">{{mob1}}</span>
         </li>
       </ul>
-  </div>
-        </ng-template>
+  </div> -->
+        <!-- </ng-template> -->
         <!-- user-info-card end -->
         <div class="user-info-card">
           <div class="user-info-card__header">
@@ -337,7 +345,7 @@
     </div>
   </div>
 </div>
- <div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'>
+ <div class="modal fade" id="#gogleverify" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'>
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -368,7 +376,7 @@
         </div>
       </div>
     </div> 
-<div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "mobile"'>
+<div class="modal fade" id="#gogleverify" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "mobile"'>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
@@ -399,6 +407,66 @@
               </div>
             </form>
 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "mobile"'  >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+          <h3 class="title">Security Verification</h3>
+          <div class="account-form-wrapper">
+            <form [formGroup]="mobileform">
+           
+           <div class="form-group">
+                <label class="mb-3">SMS Verification code <sup>*</sup></label>
+                <input type="text" name="signup_pass" id="signup_pass"formControlName="code" placeholder="Verification Code" required>
+              </div>
+      <div class="d-flex flex-wrap justify-content-end mt-3">
+           <a href="javascript:;" class="link" (click)="towfactormob()">Get code</a>
+       </div>
+      
+               <div class="form-group text-center">
+                 <button class="cmn-btn style--three btn--sm centered m-2" (click)="veraddmob()"  >Next</button>
+                 <!-- <button class="cmn-btn style--three btn--sm centered m-2"data-toggle="modal" data-target="#gogleverify" data-dismiss="modal"  >Next</button> -->
+
+                </div>
+            </form>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="googleauth" tabindex="1" role="dialog" aria-hidden="true"*ngIf='type == "email"'  >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="account-form-area">
+          <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+          <h3 class="title">Security Verification</h3>
+          <div class="account-form-wrapper">
+            <form [formGroup]="loginForm">
+           
+           <div class="form-group">
+                <label class="mb-3">Email Verification code <sup>*</sup></label>
+                <input type="text" name="signup_pass" id="signup_pass" formControlName="code" placeholder="Email Code" required>
+              </div>
+      <div class="d-flex flex-wrap justify-content-end mt-3">
+           <a href="javascript:;" class="link" (click)="twofactoremail()">Get code</a>
+       </div>
+      
+               <div class="form-group text-center">
+                 <button class="cmn-btn style--three btn--sm centered m-2" [disabled]="!loginForm.valid"(click)="veraddemail()" data-toggle="modal" data-target="#gogleverify" data-dismiss="modal">Next</button>
+        </div>
+            </form>
+           
           </div>
         </div>
       </div>
@@ -580,7 +648,7 @@
               class="las la-times"></i></button>
           <h3 class="title">Change password</h3>
           <div class="account-form-wrapper">
-            <form action="#" [formGroup]="loginForm" (ngSubmit)="changepassword()" method="post"
+            <form action="#" [formGroup]="loginForm" method="post"
               data-parsley-validate="" novalidate="">
 
               <div class="form-group">
@@ -644,7 +712,7 @@
                 </div>
               </div>
               <div class="form-group text-center mt-5">
-                <button type="submit" [disabled]="!loginForm.valid" class="cmn-btn style--three btn--sm ">Change
+                <button type="submit" [disabled]="!loginForm.valid"data-dismiss="modal" aria-label="Close" class="cmn-btn style--three btn--sm " (click)="changepassword()">Change
                   Password</button>
               </div>
             </form>
@@ -683,7 +751,7 @@
 
               <div class="form-group">
                 <label class="mb-1">New Email Verification code <sup>*</sup></label>
-                <input type="text" name="signup_pass" placeholder="SMS code" formControlName="code" required>
+                <input type="text" name="signup_pass" placeholder="Email code" formControlName="code" required>
               </div>
 
 
@@ -745,7 +813,7 @@
 
               <div class="form-group">
                 <label class="mb-1"> Email Verification code <sup>*</sup></label>
-                <input type="text" name="signup_pass" placeholder="SMS code" formControlName="code" required>
+                <input type="text" name="signup_pass" placeholder=" code" formControlName="code" required>
               </div>
 
 
@@ -815,7 +883,7 @@
 
 
               </div>
-              <p class="errors">Note:  User Don't Enter the Country code</p>
+              <p ><span class="errors"> Note's:</span>Please Don't Enter the Country code</p>
               <div class="d-flex flex-wrap justify-content-lg-end mt-1">
                 <!-- <a href="#" class="link">Get code</a> -->
                 <a href="javascript:;" (click)="addmob()" class="link m-1">get Code </a>
@@ -894,7 +962,7 @@
 
 
               </div>
-              <p class="errors">Note:  User Don't Enter the Country code</p>
+              <p ><span class="errors"> Note's:</span>Please Don't Enter the Country code</p>
 
               <div class="d-flex flex-wrap justify-content-lg-end mt-1">
                 <!-- <a href="#" class="link">Get code</a> -->

@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 // function refresh() {
-//   window .location.reload();
+//  // window .location.reload();
 // }
 @Component({
   selector: 'app-accountactivity',
@@ -40,7 +40,7 @@ export class AccountactivityComponent implements OnInit {
   }
  
   getUser(){
-    ////debugger
+    //////debugger
     this.httpService.getUser().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -48,7 +48,7 @@ export class AccountactivityComponent implements OnInit {
         if (this.data.length > 0) {
       if (res['success'] == true) {
         this.showDatafound = true;
-        // window.location.reload();
+      //  window.location.reload();
         // this.searchuser();
 
         // this.httpService.toastr.success(res['message'], '', {

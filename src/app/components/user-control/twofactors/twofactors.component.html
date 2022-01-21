@@ -54,7 +54,7 @@
 
                   <!-- Phone tab -->
                   <div class="tab-pane fade show active" id="sv_phone" role="tabpanel" aria-labelledby="sv_phone-tab"
-                   >
+                  *ngIf='type =="mobile"' >
                     <div class="row mb-none-30">
                       <div class="col-lg-12 mb-30">
                         <div class="account-form-wrapper">
@@ -127,7 +127,9 @@
                               <span class="checkbox"></span>
                             </div>
                             <div class="form-group text-center mt-2">
-                              <a href="" class="cmn-btn btn--sm" (click)="verfaddemail()">Submit</a>
+                              <button type="submit" class="cmn-btn btn--sm" (click)="verfaddemail()">Submit</button>
+
+                              <!-- <a href="" class="cmn-btn btn--sm"  (click)="verfaddemail()">Submit</a> -->
                               <!-- <button type="submit" class="cmn-btn btn--sm"  >Submit</button> -->
 
                             </div>
@@ -140,7 +142,7 @@
 
                     </div>
                   </div>
-                  <div class="tab-pane fade show active" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab"
+                  <!-- <div class="tab-pane fade show active" id="qrcode" role="tabpanel" aria-labelledby="qrcode-tab"
                   *ngIf='act == "true"  '>
                     <div class="row mb-none-30">
                       <div class="col-lg-12 mb-30">
@@ -174,7 +176,7 @@
                     </div>
 
 
-                  </div>
+                  </div> -->
 
 
 

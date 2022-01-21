@@ -77,7 +77,7 @@ export class ForgetpasswordComponent implements OnInit {
     });
   }
   onSubmit() {
-    ////debugger
+    //////debugger
       this.submitted=true;
       let jsonData = {
         email: this.loginForm.value.email,
@@ -125,7 +125,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     }
    
     openphone(){
-      ////debugger
+      //////debugger
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log( this.code['phone']);
@@ -137,7 +137,7 @@ this.phoneNumber=this.code['phone']
       
         console.log( this.countrycode);
         console.log( this.mobile);
-      ////debugger
+      //////debugger
       this.submitted=true;
       let jsonData = {
         mobile: this.mobile,
@@ -184,7 +184,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     }
     twofactemailotp() {
            
-      ////debugger
+      //////debugger
         this.submitted=true;
         let jsonData = {
           email: this.loginForm.value.email,
@@ -230,7 +230,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       }
       twofactmobotp() {
          
-        ////debugger
+        //////debugger
         this.submitted=true;
         let jsonData = {
           email:"",

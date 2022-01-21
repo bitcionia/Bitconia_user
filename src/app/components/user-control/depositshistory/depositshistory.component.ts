@@ -62,7 +62,7 @@ export class DepositshistoryComponent implements OnInit {
   }
   
   deposithistory(){
-    ////debugger
+    //////debugger
     this.httpService.deposithis().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -92,7 +92,7 @@ export class DepositshistoryComponent implements OnInit {
     // console.log(this.modeOfPayment.value);
     console.log( this.selectedExch);
 
-////debugger
+//////debugger
 if( this.selectedExch== 'Active'){
 
 
@@ -102,7 +102,7 @@ if( this.selectedExch== 'Active'){
   }
 
    
-    ////debugger
+    //////debugger
     this.httpService.depositsearch(jsonData).subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
@@ -141,7 +141,7 @@ depositpending(){
     }
   
      
-      ////debugger
+      //////debugger
       this.httpService.depositsearch(jsonData).subscribe((res: any) => {
         console.log(res['data'])
         this.data = res['data']
@@ -172,7 +172,7 @@ depositpending(){
       }
     
        
-        ////debugger
+        //////debugger
         this.httpService.depositsearch(jsonData).subscribe((res: any) => {
           console.log(res['data'])
           this.data = res['data']

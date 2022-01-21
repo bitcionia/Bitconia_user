@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 import { PasswordStrengthService } from '../../service/password-strength.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-twofactors',
   templateUrl: './twofactors.component.html',
@@ -47,6 +48,7 @@ export class TwofactorsComponent implements OnInit {
     private controlService: ControlService,
     public sharedata:CommondataService,
     public httpService: HttpService,
+    private loader:NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -122,7 +124,7 @@ console.log("92",this.email)
     });
   }
   twofactoremail() {
-    ////debugger
+    //////debugger
       // localStorage.clear();
       this.submitted=true;
       let jsonData = {
@@ -170,9 +172,9 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   
     }
     towfactormob() {
-      ////debugger
+      //////debugger
         this.submitted=true;
-        ////debugger
+        //////debugger
     //     console.log(this.mobileform.value);
     //     this.code = this.mobileform.value;
     //     console.log( this.code['phone']);
@@ -184,7 +186,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           
     //         console.log( this.countrycode);
     //         console.log( this.mobile);
-          ////debugger
+          //////debugger
           this.submitted=true;
           let jsonData = {
             email:"",
@@ -232,7 +234,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
      
     //   twofactemailotp() {
            
-    //     ////debugger
+    //     //////debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email: this.email,
@@ -255,7 +257,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //           // this.router.navigate(['/index']);
     //           // this.router.navigate(['/dashboard/dashboard']);
     //      setTimeout(() => {
-    //       document.location.reload();
+    //      // document.location.reload();
     //       this.router.navigate(['/index']);
 
     //     }, 100);
@@ -282,7 +284,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //     }
     //     twofactmobotp() {
            
-    //       ////debugger
+    //       //////debugger
     //       this.submitted=true;
     //       let jsonData = {
     //         email:"",
@@ -306,7 +308,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //             this.router.navigate(['/index']);
 
     //             setTimeout(() => {
-    //               document.location.reload();
+    //              // document.location.reload();
         
     //             }, 100);                // this.router.navigate(['/dashboard/dashboard']);
         
@@ -334,10 +336,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //       }
   
           verfaddemail() {
-          debugger
+          //debugger
             this.submitted = true;
         
-            ////debugger
+            //////debugger
             // if(this.data =="false"|| this.data ==undefined){
             let JsonData = {
               "email":  this.email,
@@ -345,17 +347,22 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               "country_code":"",
               "pin":this.loginForm.value.code,
               // "oldpin": this.mobileform.value.oldcode,
-            }
-            this.httpService.addsverify(JsonData).subscribe(res => {
+            }         
+               this.httpService.addsverify(JsonData).subscribe(res => {
               console.log(res)
               if (res['success'] == true) {
+
                 localStorage.setItem("Securityverf", JSON.stringify("true"));
 
-                // this.toastr.success("Password changed Successfully");
+
                 this.httpService.toastr.success(res['message'], '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
                 this.routeTo.navigateByUrl('/index');
+                setTimeout(() => {
+                  document.location.reload();
+                   
+                    }, 100);
               }
          
             }, (error) => {                              //Error callback
@@ -371,15 +378,15 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
            })
           // }
           // else if(this.data !="false"){
-          //   ////debugger
+          //   //////debugger
           //      this.g2faverifyemail();
           // }
           }
           verfaddmob() {
-            debugger
+            //debugger
             this.submitted = true;
             // if(this.data =="false" || this.data ==undefined){
-            ////debugger
+            //////debugger
             let JsonData = {
               "email": "",
               mobile: this.mobile,
@@ -398,7 +405,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
                 });
                 this.routeTo.navigateByUrl('/index');
                 setTimeout(() => {
-                  document.location.reload();
+                 document.location.reload();
                   
                    }, 100);
               }
@@ -422,7 +429,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           // g2faverifymob() {
           //   this.submitted = true;
         
-          //   ////debugger
+          //   //////debugger
           //   let JsonData = {
           //     "email": "",
           //     mobile: this.mobile,
@@ -430,11 +437,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           //     "otp":this.mobileform.value.code,
           //   }
           //   this.httpService.g2fverify(JsonData).subscribe(res => {
-          //     // ////////debugger
+          //     // //////////debugger
           //     if (res['success'] == true) {
           //       this.routeTo.navigateByUrl('/index');
           //       setTimeout(() => {
-          //         document.location.reload();
+          //        // document.location.reload();
                   
           //          }, 100);
           //     }
@@ -466,7 +473,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           //       });
           //       // this.routeTo.navigateByUrl('/index');
           //       setTimeout(() => {
-          //         document.location.reload();
+          //        // document.location.reload();
                   
           //          }, 100);
           //     }
@@ -481,11 +488,11 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
           //   }
           // }
         //   verfaddmob() {
-        //     ////debugger
+        //     //////debugger
           
         //     this.submitted = true;
         
-        //     ////debugger
+        //     //////debugger
         //     let JsonData = {
         //       "email": "",
         //       mobile: this.mobile,

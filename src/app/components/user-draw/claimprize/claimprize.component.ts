@@ -84,7 +84,7 @@ this.iddata=history['draw_id']
     Swal.fire('Welcome!', ' Please Wait After 24 hours cerdit in your wallet!', 'success')
   }
   // pervdraw(){
-  //   ////debugger
+  //   //////debugger
   //   this.httpService.perviousdraw().subscribe((res: any) => {
   //     console.log(res['count'])
   //     this.count=res['count']
@@ -123,7 +123,7 @@ this.iddata=history['draw_id']
   // }
 
   // last_draw(){
-  //   ////debugger
+  //   //////debugger
   //   this.httpService.last_draw().subscribe((res: any) => {
   //     console.log(res['data'])
   //     this.data=res['data']
@@ -161,7 +161,7 @@ this.iddata=history['draw_id']
   // }
 
   mydraw(){
-    ////debugger
+    //////debugger
     let jsonData={
       // id:this.id
       // id:'612480f7288d443094dca546',
@@ -226,7 +226,7 @@ this.iddata=history['draw_id']
   }
   
   claimwin(){
-    ////debugger
+    //////debugger
     let jsonData={
       // id:this.id
       // id:'612480f7288d443094dca546',

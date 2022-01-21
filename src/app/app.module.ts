@@ -7,6 +7,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 // import { NgxCaptchaModule } from 'ngx-captcha';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NavigationService } from './components/service/navigation.service';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,14 @@ import { NavigationService } from './components/service/navigation.service';
     MatTabsModule,
     HttpClientModule,
     MatIconModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot(
+      {
+        showForeground:true
+      }
+    ),
     NgxIntlTelInputModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot(
       {
         timeOut: 1000

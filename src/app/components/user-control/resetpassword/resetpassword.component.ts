@@ -55,7 +55,7 @@ this.email=history.state.data.value1
   }
  
   onSubmit() {
-    debugger
+    //debugger
       this.submitted=true;
       let jsonData = {
         mobile:this.mobile,

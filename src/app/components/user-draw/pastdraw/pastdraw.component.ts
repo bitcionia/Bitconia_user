@@ -31,7 +31,7 @@ export class PastdrawComponent implements OnInit {
   }
   
   pervdraw(){
-    ////debugger
+    //////debugger
     this.httpService.perviousdraw().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']

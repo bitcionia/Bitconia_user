@@ -6,6 +6,7 @@ import { AccountsecurityComponent } from './accountsecurity/accountsecurity.comp
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
+import { GooglesecurityComponent } from './googlesecurity/googlesecurity.component';
 import { HowtoaddcerditComponent } from './howtoaddcerdit/howtoaddcerdit.component';
 import { HowtoplayComponent } from './howtoplay/howtoplay.component';
 import { HowtoplaydetailsComponent } from './howtoplaydetails/howtoplaydetails.component';
@@ -49,6 +50,8 @@ const routes: Routes = [
   { path: 'pirvacy', component:PirvacyComponent},
    { path: 'terms', component:TermsComponent},
   { path: 'contactus', component:ContactusComponent},
+  { path: 'googlesecurity', component: GooglesecurityComponent},
+
     ]
   }
 ];

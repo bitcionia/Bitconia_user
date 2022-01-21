@@ -12,6 +12,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { TwofactorsComponent } from './twofactors/twofactors.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { GoogleAuthenticatorComponent } from './google-authenticator/google-authenticator.component';
+import { GooglesecurityComponent } from '../user-setting/googlesecurity/googlesecurity.component';
 
 const routes: Routes = [ 
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'deposithistory', component: DepositshistoryComponent},
   { path: 'lotteryhistory', component: LotteryhistoryComponent},
   { path: 't2fa', component: GoogleAuthenticatorComponent},
+
 
     ]
   }

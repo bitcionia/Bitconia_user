@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 // function refresh() {
-//   window .location.reload();
+//  // window .location.reload();
 // }
 @Component({
   selector: 'app-transcation',
@@ -42,14 +42,14 @@ export class TranscationComponent implements OnInit {
   }
 
   withdrawhistory(){
-    ////debugger
+    //////debugger
     this.httpService.withdrawhistory().subscribe((res: any) => {
       console.log(res['data'])
       this.data = res['data']
       if (this.data) {
         if (this.data.length > 0) {
       if (res['success'] == true) {
-        // document.location.reload();
+        //// document.location.reload();
         this.showDatafound = true;
         // this.searchuser();
 

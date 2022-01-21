@@ -19,6 +19,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GooglesecurityComponent } from './googlesecurity/googlesecurity.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
           ContactusComponent,
           PirvacyComponent,
           TermsComponent,
+          GooglesecurityComponent,
   ],
   imports: [
     CommonModule,

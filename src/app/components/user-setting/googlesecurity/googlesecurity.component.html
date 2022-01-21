@@ -1,0 +1,191 @@
+<div class="inner-hero-section style--six">
+    <!-- <div class="bg-shape"><img src="assets/images/elements/inner-hero-shape-2.png" alt="image"></div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="page-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#0">Pages</a></li>
+            <li class="active">Security Verification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- inner-hero-section end -->
+  
+  <!-- contact section start -->
+  <section class="mt-minus-270 pb-120">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="section-header text-center">
+            <h2 class="section-title">Security Verification</h2>
+            <p>To ensure that this login is perfomed by you</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+  
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-sm-12">
+              <div class="account-form-area">
+                <!-- <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button> -->
+                
+  
+                  <div class="tab-content mt-15 mb-15" id="winnerTabContent">
+  
+                    <!-- Phone tab -->
+                    <div class="tab-pane fade show active" id="sv_phone" role="tabpanel" aria-labelledby="sv_phone-tab"
+                     >
+                      <div class="row mb-none-30">
+                        <div class="col-lg-12 mb-30">
+                            <h3 class="title">2-FA Verification</h3>
+                            <div class="account-form-wrapper">
+                              <form [formGroup]="g2faForm">
+                              <div class="text-white">For more information, please refer to instructions for<span><a href="#" class="m-2" data-toggle="modal" data-target="#authinst" data-dismiss="modal"> <u>Google Verification.</u></a></span></div>
+                              <div class="sub-title text-white mt-4">Google QR code and Keys:</div>
+                          <div class="row mt-2">
+                          <div class="col-md-5"><img src="{{qrcode}}"></div>
+                          <div class="col-md-7 mt-5 pt-3"> <p class="c">{{secret}} </p></div>
+                               
+                               
+                               </div>
+                             <div class="form-group">
+                                  <label class="my-3">2-FA Code: <sup>*</sup></label>
+                                  <input type="text" name="getCode" id="getCode" formControlName="otp" placeholder="Enter 2FA Code" required>
+                                </div>
+                                        
+                                 <div class="form-group text-center">
+                                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"(click)="g2faenabled()" data-dismiss="modal">Activate</a>
+                                  </div>
+                              </form>
+                             
+                            </div>
+                          <!--account - form-wrapper end -->
+                        </div>
+  
+                      </div>
+  
+  
+                    </div>
+                    
+                   
+                  </div><!-- tab-content end -->
+                </div>
+  
+              </div> <!--  account- form- area -->
+  
+            </div>
+          </div>
+        </div>
+      </div>
+   
+    
+  </section>
+
+
+<!-- <div class="modal fade"  *ngIf='type == "email"'>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+		  
+		  
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+            <h3 class="title">2-FA Verification</h3>
+            <div class="account-form-wrapper">
+              <form>
+			  <div class="text-white">For more information, please refer to instructions for<span><a href="#" class="m-2" data-toggle="modal" data-target="#authinst" data-dismiss="modal"> <u>Google Verification.</u></a></span></div>
+              <div class="sub-title text-white mt-4">Google QR code and Keys:</div>
+		  <div class="row mt-2">
+		  <div class="col-md-5"><img src="{{qrcode}}"></div>
+		  <div class="col-md-7 mt-5 pt-3"> <p>{{secret}} </p></div>
+               
+			   
+			   </div>
+             <div class="form-group">
+                  <label class="my-3">2-FA Code: <sup>*</sup></label>
+                  <input type="text" name="getCode" id="getCode" placeholder="Enter 2FA Code" required>
+                </div>
+						
+                 <div class="form-group text-center">
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"(click)="g2faenabled()" data-dismiss="modal">Activate</a>
+				  </div>
+              </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade"  *ngIf='type == "mobile"'>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+		  
+		  
+            <h3 class="title">2-FA Verification</h3>
+            <div class="account-form-wrapper">
+              <form>
+			  <div class="text-white">For more information, please refer to instructions for<span><a href="#" class="m-2" data-toggle="modal" data-target="#authinst" data-dismiss="modal"> <u>Google Verification.</u></a></span></div>
+              <div class="sub-title text-white mt-4">Google QR code and Keys:</div>
+		  <div class="row mt-2">
+		  <div class="col-md-5">  <img src="{{qrcode}}">
+          </div>
+		  <div class="col-md-7 mt-5 pt-3"> <p>{{secret}} </p></div>
+               
+			   
+			   </div>
+             <div class="form-group">
+                  <label class="my-3">2-FA Code: <sup>*</sup></label>
+                  <input type="text" name="getCode" id="getCode" placeholder="Enter 2FA Code" required>
+                </div>
+						
+                 <div class="form-group text-center">
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2"(click)="gm2faenabled()" data-dismiss="modal">Activate</a>
+				  </div>
+              </form>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal fade" id="authinst" tabindex="1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="account-form-area">
+		  
+		  <h4 class="sub-title text-white my-2">1. Step:
+		  <div class="text-white">Please download and install Google Authenticator.</div>
+		  <div class="justify-content-between mt-2">
+              <ul class="appbtn" style="flex-wrap:flex;">
+            <li class="mx-3"><a href="#"><img src="assets/images/gplay.png" alt="image"></a></li>
+            <li class="mx-3"><a href="#"><img src="assets/images/app.png" alt="image"></a></li>
+          </ul>
+			   </div>
+		  
+            </h4>
+		   <h4 class="sub-title text-white mt-5">2. Step:
+		  <div class="text-red">Please record or back up the 2-step verification key on paper and the mobile terminal.</div>
+		  <br/>
+		  <div  class="text-white">When you lose, damage, change your phone or accidentally uninstall Google Authenticator, you can reset Google 2FA for your Bitconia
+		  account ONLY through the key provided here, neither Google nor Bitconia store a copy of the key shown now,
+		  loss of this key means your funds risk becoming unrecoverable.</div>
+          </h4>
+		   <h4 class="sub-title text-white mt-5">3. Step:
+		  <div class="text-white">Please scan the QR code or copy the secret key to Google Authenticator.</div>
+           </h4>
+          
+          <div class="form-group text-center">
+                  <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-toggle="modal" data-target="#gogleverify" data-dismiss="modal">Confirm</a>
+				  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

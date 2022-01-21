@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as SecureLS from 'secure-ls';
 import { HttpService } from '../../service/http.service';
 function refresh() {
-  window .location.reload();
+ // window .location.reload();
 }
 @Component({
   selector: 'app-drawresult',
@@ -95,7 +95,7 @@ this.name=history['name']
     this.refresh();
   }
   draw(){
-    ////debugger
+    //////debugger
     let jsonData={
       // id:this.id
       // id:'612480f7288d443094dca546',
