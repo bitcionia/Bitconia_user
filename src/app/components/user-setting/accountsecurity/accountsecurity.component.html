@@ -151,7 +151,7 @@
           </ul>
     
         </div> -->
-        <div class="user-info-card" *ngIf='email1 == " "' >
+        <!-- <div class="user-info-card" *ngIf='email1 == " "' >
     
     
           <div class="user-info-card__header">
@@ -184,7 +184,7 @@
           <span class="value">{{email1}}</span>
         </li>
       </ul>
-    </div>
+    </div> -->
           <!-- <div class="user-info-card" *ngIf='email1 == "" '>
     <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
@@ -267,7 +267,48 @@
           </ul>
         </div> -->
         
-
+        <div class="user-info-card" *ngIf='email1 == undefined else templateName'>
+          <div class="user-info-card__header">
+            <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+            <div *ngIf='email1 == "" '>
+              <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+              <button type="button" class="text-violet" data-toggle="modal"
+                data-target="#emailremoveconfirm">Remove</button>
+            </div>
+            <div *ngIf='email1 != "" '>
+              <button type="button" data-toggle="modal" data-target="#emailnew"
+                style="margin-bottom: 25px;">ADD</button>
+            </div>
+          </div>
+          <ul class="user-info-card__list">
+            <li>
+              <span class="caption">Email</span>
+              <span class="value">{{email1}}</span>
+            </li>
+          </ul>
+        </div>
+        <ng-template #templateName>
+          <div class="user-info-card">
+            <div class="user-info-card__header">
+              <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
+              <div *ngIf='email1 != "" '>
+                <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
+                <button type="button" class="text-violet" data-toggle="modal"
+                  data-target="#emailremoveconfirm">Remove</button>
+              </div>
+              <div *ngIf='email1 == "" '>
+                <button type="button" data-toggle="modal" data-target="#emailnew"
+                  style="margin-bottom: 25px;">ADD</button>
+              </div>
+            </div>
+            <ul class="user-info-card__list">
+              <li>
+                <span class="caption">Email</span>
+                <span class="value">{{email1}}</span>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
 
         <div class="user-info-card" *ngIf=' mob1 == undefined '>
          
