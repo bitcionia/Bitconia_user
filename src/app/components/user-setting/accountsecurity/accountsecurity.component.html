@@ -96,7 +96,7 @@
 
             <!-- <button type="button"><i class="far fa-edit"></i> Edit</button> -->
             <a href="#" class="text-violet" data-toggle="modal" data-target="#googleauth" (click)="g2faathu()"
-              *ngIf="twofa ==false">Enable</a>
+              *ngIf="twofa == false">Enable</a>
           </div>
           <div class="m-3 text-white" style="text-align: center;">Enable to protect your account and transactions</div>
           <!-- <img [style.height]="'100px'" [style.width]="'100px'" [style.margin-left]="'42%'" src="{{qrcode}}"> -->
@@ -267,15 +267,15 @@
           </ul>
         </div> -->
         
-        <div class="user-info-card" *ngIf='email1 == undefined else templateName'>
+        <div class="user-info-card" *ngIf='email1 === undefined else templateName'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
-            <div *ngIf='email1 == "" '>
+            <div *ngIf='email1 != "" '>
               <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
               <button type="button" class="text-violet" data-toggle="modal"
                 data-target="#emailremoveconfirm">Remove</button>
             </div>
-            <div *ngIf='email1 != "" '>
+            <div *ngIf='email1 === "" '>
               <button type="button" data-toggle="modal" data-target="#emailnew"
                 style="margin-bottom: 25px;">ADD</button>
             </div>
@@ -283,7 +283,7 @@
           <ul class="user-info-card__list">
             <li>
               <span class="caption">Email</span>
-              <span class="value">{{email1}}</span>
+              <span class="value">{{user}}</span>
             </li>
           </ul>
         </div>
@@ -296,7 +296,7 @@
                 <button type="button" class="text-violet" data-toggle="modal"
                   data-target="#emailremoveconfirm">Remove</button>
               </div>
-              <div *ngIf='email1 == "" '>
+              <div *ngIf='email1 === "" '>
                 <button type="button" data-toggle="modal" data-target="#emailnew"
                   style="margin-bottom: 25px;">ADD</button>
               </div>
@@ -304,13 +304,79 @@
             <ul class="user-info-card__list">
               <li>
                 <span class="caption">Email</span>
-                <span class="value">{{email1}}</span>
+                <span class="value">{{user}}</span>
               </li>
             </ul>
           </div>
         </ng-template>
+        <div class="user-info-card" *ngIf='(mob1 | keyvalue)?.length || mob1== "" else templateNamee'>
+          <div class="user-info-card__header">
+            <h3 class="user-info-card__title col-md-8">phone</h3>
+            <div *ngIf='mob1 != "" '>
+              <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+              <button type="button" class="text-violet" data-toggle="modal"
+                data-target="#emailremoveconfirm">Remove</button>
+            </div>
+            <div *ngIf='mob1 == "" '>
+              <button type="button" data-toggle="modal" data-target="#phonenew"
+                style="margin-bottom: 25px;">ADD</button>
+            </div>
+          </div>
+          <ul class="user-info-card__list">
+            <li>
+              <span class="caption">Phone</span>
+              <span class="value">{{mob1}}</span>
+            </li>
+          </ul>
+        </div>
+        <ng-template #templateNamee>
+          <div class="user-info-card">
+            <div class="user-info-card__header">
+              <h3 class="user-info-card__title col-md-8">Phomesd</h3>
+              <div *ngIf='mob1 != "" '>
+                <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+                <button type="button" class="text-violet" data-toggle="modal"
+                  data-target="#emailremoveconfirm">Remove</button>
+              </div>
+              <div *ngIf='mob1 == "" '>
+                <button type="button" data-toggle="modal" data-target="#phonenew"
+                  style="margin-bottom: 25px;">ADD</button>
+              </div>
+            </div>
+            <ul class="user-info-card__list">
+              <li>
+                <span class="caption">Phone</span>
+                <span class="value">{{mob1}}</span>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+        <!-- <ng-template [ngIf]="isRead === undefined" [ngIfElse]="isRead"> -->
 
-        <div class="user-info-card" *ngIf=' mob1 == undefined '>
+       
+        <!-- <ng-template #isRead>
+          <div class="user-info-card">
+            <div class="user-info-card__header">
+              <h3 class="user-info-card__title col-md-8">Phone</h3>
+              <div *ngIf='mob1 != "" ' >
+                <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+                <button type="button" class="text-violet" data-toggle="modal"
+                  data-target="#phoneremoveconfirm">Remove</button>
+              </div>
+              <div *ngIf='mob1 == "" '>
+                <button type="button" data-toggle="modal" data-target="#phonenew"
+              style="margin-bottom: 25px;">ADweweD</button>
+              </div>
+            </div>
+            <ul class="user-info-card__list">
+              <li>
+                <span class="caption">Mobile</span>
+                <span class="value">{{mob1}}</span>
+              </li>
+            </ul>
+          </div>
+        </ng-template> -->
+        <!-- <div class="user-info-card" *ngIf=' mob1 == undefined '>
          
      <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>
@@ -333,10 +399,10 @@
 
          
     </div>
-        </div>
+        </div> -->
   
   <!-- <ng-template #template> -->
-          <div  class="user-info-card" *ngIf='mob1 != "" '>
+          <!-- <div  class="user-info-card" *ngIf='mob1 != "" '>
       <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>
 
@@ -350,7 +416,7 @@
           <span class="value">{{mob1}}</span>
         </li>
       </ul>
-    </div>
+    </div> -->
           <!-- <div class="user-info-card" *ngIf='mob1 == "" '>
     <div class="user-info-card__header">
         <h3 class="user-info-card__title col-md-8">Phone</h3>

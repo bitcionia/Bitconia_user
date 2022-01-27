@@ -92,6 +92,9 @@ export class CurrentdrawComponent implements OnInit {
     this.httpService.upcomdraw().subscribe((res: any) => {
       console.log(res['data'])
       console.log(res['data'])
+      this.data = res['data']
+      if (this.data) {
+        if (res['data'].length > 0) {
       this.count1 = res['count']
       this.name=res['data'][0]['name']
       this.time=res['data'][0]['end_time']
@@ -130,11 +133,9 @@ export class CurrentdrawComponent implements OnInit {
       this.id3=res['data'][3]['_id']
       this.id4=res['data'][4]['_id']
       this.id5=res['data'][5]['_id']
-      this.data = res['data']
-      if (this.data) {
-        if (this.data.length > 0) {
+      this.showDatafound = true;
+
       if (res['success'] == true) {
-        this.showDatafound = true;
         // this.searchuser();
 
         // this.httpService.toastr.success(res['message'], '', {

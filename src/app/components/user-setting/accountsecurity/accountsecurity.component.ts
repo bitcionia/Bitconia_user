@@ -19,6 +19,9 @@ import { ToastrService } from 'ngx-toastr';
 export class AccountsecurityComponent implements OnInit {
   email2: any;
   con: string;
+  mobdata: any;
+  isRead: false;
+  emaildata: any=[];
   get nativeWindow() : any {
     return refresh();
  }
@@ -46,17 +49,19 @@ export class AccountsecurityComponent implements OnInit {
   preferredCountries: CountryISO[] = [CountryISO.UnitedArabEmirates, CountryISO.India];
   code: any;
   phoneNumber: any;
+  mobile1: any;
   mobile: any;
+
   countrycode: any;
   email: any;
   typemob: any;
   type:any;
   example = { email: ""};
   num:number=0;
-  email1: any;
+  email1: string;
   emailstatus: any;
   mobstatus: any;
-  mob1:string;
+  mob1:any;
   sec: any;
   secemail: any;
   user:any;
@@ -109,7 +114,8 @@ this.emailForm();
           this.httpService.secuemail().subscribe(res => {
             // //////////debugger
             this.loader.start();
-
+            this.emaildata=res['data']
+            console.log(this.isRead)
             console.log(res['data'])
             console.log(res['data']['username'])
             console.log(res['data']['dob'])
@@ -123,6 +129,8 @@ this.emailForm();
             this.email2 = res['data']['security_email']
 
             this.mob1 = res['data']['mobile']
+            // this.isRead = this.emaildata.read.find(r => r.mobile == this.mob1 );
+
             this.con = res['data']['country_code']
             console.log(this.con)
             // localStorage.setItem("email", JSON.stringify(res['admin']['security_email']));
@@ -160,6 +168,8 @@ this.emailForm();
       
           this.httpService.secumob().subscribe(res => {
             // //////////debugger
+            this.mobdata = res['data'];
+        console.log(this.isRead)
             console.log(res['data'])
             if(res['data']['security_mobile']== true){
             console.log(res['data']['username'])
@@ -169,6 +179,8 @@ this.emailForm();
             this.dob = res['data']['dob']
             this.address = res['data']['address']
             this.mob1 = res['data']['mobile']
+            // this.isRead = res['data'].read.find(r => r.mobile == this.mob1 );
+
             this.email1 = res['data']['email']
             this.email2 = res['data']['security_email']
             // localStorage.setItem("secemail", JSON.stringify(this.email1));

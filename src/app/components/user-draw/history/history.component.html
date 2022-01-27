@@ -121,15 +121,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of list">
+                        <tr *ngFor="let item of list | paginate:{
+                          itemsPerPage:5,
+                           currentPage:p,
+                           item:item,
+                          totalitem:totalLength }">
                           <td><span class="date">{{item['end_time'] | date:'shortDate'}}</span></td>
 
                           <!-- <td><div class="text-white">{{item['name']}}</div></td> -->
                           <td><span class="contest-no">
                               <a class="contest-no" style="cursor: pointer;" data-toggle="tooltip" data-placement="top"
-                                data-html="true" title="<div>SERVER SEED:&nbsp; {{item['server_seed']}}
-                     <br/>SERVER SEED HASH:&nbsp; {{item['hash_server_seed']}}
-                     <br/>CLIENT SEED:&nbsp; {{item['block_hash']}}">{{item['name']}}</a>
+                                data-html="true" title="SERVER SEED:&nbsp; {{item['server_seed']}}
+                     SERVER SEED HASH:&nbsp; {{item['hash_server_seed']}}
+                     CLIENT SEED:&nbsp; {{item['block_hash']}}">{{item['name']}}</a>
                             </span></td>
                           <!-- <td><div class="text-white">{{item['server_seed'] == "" ? 'NA':item['server_seed']  }}</div></td> -->
                           <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
@@ -175,7 +179,7 @@
                   <!-- <div class="center" *ngIf="!showDatafound">
                         <span>NO DATA FOUND </span>
                       </div> -->
-                  <!-- <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls> -->
+                  <pagination-controls class="pagination mt-4 mb-0 float-right page-item" (pageChange)="p = $event"   item:item></pagination-controls>
                 </div>
                 <!-- <div class="past-draw-wrapper">
               <h3 class="title">Past Draws</h3>

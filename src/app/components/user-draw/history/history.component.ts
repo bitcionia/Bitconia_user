@@ -24,7 +24,9 @@ export class HistoryComponent implements OnInit {
   seq: any;
   data1: any;
   showDatafound: boolean;
-
+  p: number[] = [];
+  totalLength: any;
+  item: any[];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
