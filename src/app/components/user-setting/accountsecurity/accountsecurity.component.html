@@ -304,20 +304,20 @@
             <ul class="user-info-card__list">
               <li>
                 <span class="caption">Email</span>
-                <span class="value">{{user}}</span>
+                <span class="value">{{email1}}</span>
               </li>
             </ul>
           </div>
         </ng-template>
-        <div class="user-info-card" *ngIf='(mob1 | keyvalue)?.length || mob1== "" else templateNamee'>
+        <div class="user-info-card" *ngIf='(mob1 | keyvalue)?.length || mob1== " " else templateNamee'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">phone</h3>
-            <div *ngIf='mob1 != "" '>
+            <div *ngIf='mob1 != " " '>
               <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
               <button type="button" class="text-violet" data-toggle="modal"
                 data-target="#emailremoveconfirm">Remove</button>
             </div>
-            <div *ngIf='mob1 == "" '>
+            <div *ngIf='mob1 == " " '>
               <button type="button" data-toggle="modal" data-target="#phonenew"
                 style="margin-bottom: 25px;">ADD</button>
             </div>
@@ -332,16 +332,17 @@
         <ng-template #templateNamee>
           <div class="user-info-card">
             <div class="user-info-card__header">
-              <h3 class="user-info-card__title col-md-8">Phomesd</h3>
-              <div *ngIf='mob1 != "" '>
-                <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
-                <button type="button" class="text-violet" data-toggle="modal"
-                  data-target="#emailremoveconfirm">Remove</button>
-              </div>
-              <div *ngIf='mob1 == "" '>
+              <h3 class="user-info-card__title col-md-8">Phone</h3>
+              <div *ngIf='mob1 == " " '>
                 <button type="button" data-toggle="modal" data-target="#phonenew"
                   style="margin-bottom: 25px;">ADD</button>
               </div>
+              <div *ngIf='mob1 != " " '>
+                <button type="button" data-toggle="modal" data-target="#phonechange">Change</button>
+                <button type="button" class="text-violet" data-toggle="modal"
+                  data-target="#phoneremoveconfirm">Remove</button>
+              </div>
+              
             </div>
             <ul class="user-info-card__list">
               <li>
