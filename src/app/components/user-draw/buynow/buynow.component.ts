@@ -183,7 +183,7 @@ export class BuynowComponent implements OnInit {
     this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
   }
   naviGateCardPage(){
-
+debugger
     if(history.state.data == 'edit'){
       for(let item of this.sharedata.ticketsArray){
         for (let idex of this.generateTicketsArray){
@@ -208,6 +208,12 @@ for(let item of this.generateTicketsArray){
 }
 if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
   this.router.navigateByUrl('user-Draw/cart')
+}
+else{
+
+  this.httpService.toastr.error('Please Select All Tickets Number', '', {
+    positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
+  });
 }
     
 
