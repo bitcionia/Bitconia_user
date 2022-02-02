@@ -13,6 +13,7 @@ import { PastdrawComponent } from './pastdraw/pastdraw.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { bitcoinToFiat } from 'bitcoin-conversion';
 
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { ClaimprizeComponent } from './claimprize/claimprize.component';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgbModule,
+    
         FormsModule, ReactiveFormsModule,
 
   ],

@@ -24,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@ng-select/ng-select": "^6.1.0",
     "angular-confirmation-popover": "^6.0.0",
+    "bitcoin-conversion": "^0.2.0",
     "bootstrap": "^4.5.3",
     "google-libphonenumber": "^3.2.25",
     "intl-tel-input": "^17.0.3",

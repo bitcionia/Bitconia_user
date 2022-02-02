@@ -1157,7 +1157,7 @@ console.log(res['data']['pin'])
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
   
-          this.router.navigate(['/user-control/twofactor']);
+          // this.router.navigate(['/user-control/twofactor']);
           // this.router.navigate(['/dashboard/dashboard']);
   
   
@@ -1243,7 +1243,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     
       }
       veraddemail() {
-        //debugger
+        debugger
           this.submitted = true;
       
           //////debugger
@@ -1252,7 +1252,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
             "email":  this.email1,
             "mobile": "",
             "country_code":"",
-            "pin":this.loginForm.value.code,
+            "pin":this.emailform.value.code,
             // "oldpin": this.mobileform.value.oldcode,
           }
           this.httpService.addsverify(JsonData).subscribe(res => {
@@ -1264,7 +1264,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
               this.httpService.toastr.success(res['message'], '', {
                 positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
               });
-              this.routeTo.navigateByUrl('/index');
+              this.routeTo.navigateByUrl('/user-setting/googlesecurity');
             }
        
           }, (error) => {                              //Error callback

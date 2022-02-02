@@ -94,10 +94,10 @@
                               </td>
                               <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                               <td>
-                                <div class="text-green"> {{item['text']}}</div>
+                                <div class="text-green"> {{item['text'] == undefined ? 'NA' : item['text']}}</div>
                               </td>
                               <td>
-                                <div class="text-white"> {{item['ip']}}</div>
+                                <div class="text-white"> {{item['ip'] == undefined ? 'NA':item['ip']}}</div>
                               </td>
                             </tr>
                             <tr>

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 import { DespoitcoinComponent } from '../../user-popup/despoitcoin/despoitcoin.component';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { bitcoinToFiat } from 'bitcoin-conversion';
 
 // function refresh() {
 //  // window .location.reload();
@@ -26,6 +27,10 @@ export class WalletComponent implements OnInit {
   errorMessage: any;
   aval: any;
   username: any;
+  paymentInUsd: number;
+   usd:any;
+
+  // usd: number;
   constructor(
     public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -133,10 +138,12 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
 
   balance(){
     //////debugger
-    this.httpService.balancebtc().subscribe((res: any) => {
+    this.httpService.balancebtc().subscribe(async (res: any) => {
       console.log(res['BTC_fees']['BTC_fees']);
       this.aval = res['BTC_fees']['BTC_fees']
-      
+       this.paymentInUsd = await bitcoinToFiat(this.aval, 'USD'); // needs await since calling CoinDesk API
+console.log(this.paymentInUsd.toFixed(2))
+this.usd= this.paymentInUsd.toFixed(0)
       localStorage.setItem("BTC", JSON.stringify(res['BTC_fees']['BTC_fees']));
       // localStorage.setItem("BTC", JSON.stringify('100'));
 

@@ -60,7 +60,7 @@ export class BuynowComponent implements OnInit {
 
 
   IncOrDecTickets(key){
-    
+    debugger
     // if (key == 0) {
     
 
@@ -209,7 +209,7 @@ for(let item of this.generateTicketsArray){
 if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
   this.router.navigateByUrl('user-Draw/cart')
 }
-else{
+else if (isvaild == this.generateTicketsArray.length){
 
   this.httpService.toastr.error('Please Select All Tickets Number', '', {
     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
@@ -218,8 +218,16 @@ else{
     
 
   }
-  packagePick(length){
-    if(length !== 'all'){
+  packagePick(length,key){
+    debugger
+  this.IncOrDecTickets(key)
+ 
+  // key == 'dec' && this.ticketCounts >= 0 ? this.ticketCounts-- : key == 'inc' &&  this.ticketCounts < 20 ? this.ticketCounts++ : '';
+  //   var tempData = {
+  //     index:this.ticketCounts,
+  //     values:[]
+  //   }
+   if(length !== 'all'){
       this.sharedata.countick(length)
 
     for(var i = 1; i<=length; i++){

@@ -484,6 +484,7 @@ console.log(userNumber );
       // this.loader.stop();
       let jsonObj = {
         userid: userNumber,
+        ip:'162.198.5.46',
       };
       this.httpService.logoutSession(jsonObj).subscribe((resp) => {
         localStorage.clear();
