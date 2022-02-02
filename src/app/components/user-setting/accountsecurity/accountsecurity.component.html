@@ -270,12 +270,12 @@
         <div class="user-info-card" *ngIf='email1 === undefined else templateName'>
           <div class="user-info-card__header">
             <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
-            <div *ngIf='email1 != "" '>
+            <div *ngIf='email1 != " " '>
               <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
               <button type="button" class="text-violet" data-toggle="modal"
                 data-target="#emailremoveconfirm">Remove</button>
             </div>
-            <div *ngIf='email1 === "" '>
+            <div *ngIf='email1 === " " '>
               <button type="button" data-toggle="modal" data-target="#emailnew"
                 style="margin-bottom: 25px;">ADD</button>
             </div>
@@ -291,12 +291,12 @@
           <div class="user-info-card">
             <div class="user-info-card__header">
               <h3 class="user-info-card__title col-md-8">Email Addresses</h3>
-              <div *ngIf='email1 != "" '>
+              <div *ngIf='email1 != " " '>
                 <button type="button" data-toggle="modal" data-target="#emailchange">Change</button>
                 <button type="button" class="text-violet" data-toggle="modal"
                   data-target="#emailremoveconfirm">Remove</button>
               </div>
-              <div *ngIf='email1 === "" '>
+              <div *ngIf='email1 === " " '>
                 <button type="button" data-toggle="modal" data-target="#emailnew"
                   style="margin-bottom: 25px;">ADD</button>
               </div>
@@ -328,7 +328,7 @@
           <ul class="user-info-card__list">
             <li>
               <span class="caption">Phone</span>
-              <span class="value">{{mob1}}</span>
+              <span class="value">{{con}}{{mob1}}</span>
             </li>
           </ul>
         </div>
@@ -350,7 +350,7 @@
             <ul class="user-info-card__list">
               <li>
                 <span class="caption">Phone</span>
-                <span class="value">{{mob1}}</span>
+                <span class="value">{{con}}{{mob1}}</span>
               </li>
             </ul>
           </div>
@@ -535,7 +535,7 @@
             <form [formGroup]="mobileform">
            
            <div class="form-group">
-                <label class="mb-3">Google authenticator OTP <sup>*</sup></label>
+                <label class="mb-3">SMS Verification  <sup>*</sup></label>
                 <input type="text" name="signup_pass" id="signup_pass"formControlName="code" placeholder="Verification Code" required>
               </div>
       <div class="d-flex flex-wrap justify-content-end mt-3">
@@ -566,7 +566,7 @@
             <form [formGroup]="emailform">
            
            <div class="form-group">
-                <label class="mb-3">Google authenticator OTP <sup>*</sup></label>
+                <label class="mb-3">Email Verification  <sup>*</sup></label>
                 <input type="text" name="signup_pass" id="signup_pass" formControlName="code" placeholder="Verification Code" required>
               </div>
       <div class="d-flex flex-wrap justify-content-end mt-3">

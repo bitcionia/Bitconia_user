@@ -128,11 +128,11 @@
                       totalitem:totalLength }">
                   <td><span class="date">{{item['endtime']| date :'shortDate' }}</span></td>
                   <td><span class="contest-no">{{item['drawname'] == "" ? 'NA':item['drawname'] }}</span></td>
-                  <td>
+                  <!-- <td>
                     <span *ngIf="item['Winning_status'] === false">
                       <ul class="number-list">
                         <li *ngFor="let values of seq">
-                          {{values}}
+                          {{values == undefined ? 'NA':values}}
                         </li>
 
                       </ul>
@@ -140,14 +140,22 @@
                     <span *ngIf="item['Winning_status'] === true">
                       <ul class="number-list win-list">
                         <li *ngFor="let values of seq">
-                          {{values}}
+                          {{values == undefined ? 'NA':values}}
                         </li>
 
                       </ul>
 
                     </span>
 
-                  </td>
+                  </td> -->
+                  <td >
+                    <span *ngIf="item['Winning_status'] === true"
+                   [class]="item['Winning_status'] === true ? 'text-danger':''">
+                   {{item['Winning_status'] === true ? 'No Win':item['Winning_status']}}</span>
+                   <span *ngIf="item['Winning_status'] === false"
+                   [class]="item['Winning_status'] === false ? 'text-success' : ''">
+                   {{item['Winning_status'] === false ? 'Win':item['Winning_status']}}</span>
+               </td> 
                   <td>
                     <span *ngIf="item['Winning_status'] === true">
                       <span class="fail">No Win</span>

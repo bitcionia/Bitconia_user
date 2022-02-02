@@ -144,7 +144,7 @@
                            </td> -->
                           <td>
                             <ul class="number-list">
-                              <li *ngFor="let values of seq">{{values}}</li>
+                              <li *ngFor="let values of seq">{{values == undefined ? 'NA':values}}</li>
                             </ul>
 
                           </td>

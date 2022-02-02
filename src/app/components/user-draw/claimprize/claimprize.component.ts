@@ -68,7 +68,7 @@ this.iddata=history['draw_id']
   this.time=history['endtime']
     this.name=history['drawname']
     this.price=history['price']
-    this.seq=history['winning_sequence'].split(',');
+    // this.seq=history['winning_sequence'].split(',');
     console.log(this.seq)
   
 
