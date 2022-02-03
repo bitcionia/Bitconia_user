@@ -685,7 +685,7 @@ this.phoneNumber=this.code['phone']
                 // ls.set('userPass', { data: this.loginForm.value.password });
                 console.log(res);
                
-                this.httpService.toastr.success(res['message'], '', {
+                this.httpService.toastr.success('Code Sent', '', {
                   positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                 });
                 
@@ -733,7 +733,7 @@ this.phoneNumber=this.code['phone']
                   // ls.set('userPass', { data: this.loginForm.value.password });
                   console.log(res);
                  
-                  this.httpService.toastr.success(res['message'], '', {
+                  this.httpService.toastr.success('Code Sent', '', {
                     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
                   });
                   // this.router.navigate(['/user-control/twofactor']);

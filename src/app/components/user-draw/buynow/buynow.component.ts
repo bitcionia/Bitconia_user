@@ -209,7 +209,7 @@ for(let item of this.generateTicketsArray){
 if(isvaild == this.generateTicketsArray.length || history.state.data == 'edit'){
   this.router.navigateByUrl('user-Draw/cart')
 }
-else if (isvaild == this.generateTicketsArray.length){
+else if (isvaild != this.generateTicketsArray.length){
 
   this.httpService.toastr.error('Please Select All Tickets Number', '', {
     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000

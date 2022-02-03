@@ -269,7 +269,7 @@ this.emailForm();
 
     this.submitted = true;
 
-    //debugger
+    debugger
     if (this.loginForm.value.newPass == this.loginForm.value.confirmPass) {
       let JsonData = {
         "old_password": this.loginForm.value.oldPass,
@@ -300,7 +300,7 @@ this.emailForm();
 
           this.errorMessage = error.error.message;
           console.log(this.errorMessage)
-          this.httpService.toastr.error(this.errorMessage, '', {
+          this.httpService.toastr.error('Old password entered is incorrect', '', {
             positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
           });
         });
@@ -767,7 +767,7 @@ this.email=this.emailform.value.email
       
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
-        this.httpService.toastr.success(res['message'], '', {
+        this.httpService.toastr.success('Code Sent', '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
@@ -822,7 +822,7 @@ this.email=this.emailform.value.email
       
       if (res['success'] == true) {
         // this.toastr.success("Password changed Successfully");
-        this.httpService.toastr.success(res['message'], '', {
+        this.httpService.toastr.success('Code Sent', '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
 
@@ -1274,7 +1274,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       
             this.errorMessage = error.error.message;
             console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+      this.httpService.toastr.error('Pin no. entered is wrong','Status:400',  {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })
@@ -1320,7 +1320,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       
             this.errorMessage = error.error.message;
             console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+      this.httpService.toastr.error('Pin no. entered is wrong','Status:400',  {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })

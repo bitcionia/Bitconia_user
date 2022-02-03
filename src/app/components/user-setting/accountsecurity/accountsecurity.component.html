@@ -823,7 +823,7 @@
                 </div>
               </div>
               <div class="form-group text-center mt-5">
-                <button type="submit" [disabled]="!loginForm.valid"data-dismiss="modal" aria-label="Close" class="cmn-btn style--three btn--sm " (click)="changepassword()">Change
+                <button type="submit" data-dismiss="modal" aria-label="Close" class="cmn-btn style--three btn--sm " (click)="changepassword()">Change
                   Password</button>
               </div>
             </form>
@@ -886,7 +886,7 @@
 				 </div> -->
               <!-- <a href="#" class="link my-2">Security Verification Unavailable?</a> -->
               <div class="form-group text-center">
-                <a href="#" class="cmn-btn style--three btn--sm centered m-2" data-toggle="modal"
+                <a href="#" class="cmn-btn style--three btn--sm centered m-2 "  [disabled]="emailform.valid" data-toggle="modal"
                   data-target="#emailchange" data-dismiss="modal" (click)="verfiyemailmob()">Submit</a>
 
               </div>
@@ -1027,7 +1027,7 @@
 				 </div>
 				 <a href="#" class="link my-1">Security Verification Unavailable?</a> -->
               <div class="form-group text-center">
-                <a href="" class="cmn-btn style--three btn--sm centered m-2" data-toggle="modal"
+                <a href="" class="cmn-btn style--three btn--sm centered m-2 "  [disabled]="mobileform.valid" data-toggle="modal"
                   data-target="#enableconfirm" data-dismiss="modal" (click)="verfiymob()">Submit</a>
 
               </div>

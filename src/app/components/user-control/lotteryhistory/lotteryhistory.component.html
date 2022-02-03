@@ -10,13 +10,14 @@
       <div class="col-lg-4">
         <div class="user-card">
           <div class="avatar-upload">
-            <div class="obj-el"><img src="assets/images/elements/team-obj.png" alt="image"></div>
-            <div class="avatar-edit">
-              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-              <label for="imageUpload"></label>
-            </div>
+
+            <div class="obj-el"><img src="assets/user.png" alt="image"></div>
+            <!-- <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"></label>
+                </div> -->
             <div class="avatar-preview">
-              <div id="imagePreview" style="background-image: url(assets/images/elements/downloaded/pp.png);">
+              <div id="imagePreview">
               </div>
             </div>
           </div>
@@ -95,14 +96,14 @@
                       </td>
 
                       <td>
-                        <div class="text-white">{{item['type']}}</div>
+                        <div class="text-white">{{item['type'] == undefined ? 'NA' :item['type']}}</div>
                       </td>
                       <!-- <td><div class="text-white"> {{item['location']}}</div></td> -->
                       <td>
-                        <div class="text-green"> {{item['text']}}</div>
+                        <div class="text-green"> {{item['text']== undefined ? 'NA' :item['text']}}</div>
                       </td>
                       <td>
-                        <div class="text-white"> {{item['ip']}}</div>
+                        <div class="text-white"> {{item['ip']== undefined ? 'NA' :item['ip']}}</div>
                       </td>
                     </tr>
                     <tr>
