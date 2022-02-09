@@ -24,6 +24,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "bitcoin-conversion.esm.js"
+            ],
             "outputPath": "dist/Bitconia-user",
             "index": "src/index.html",
             "main": "src/main.ts",

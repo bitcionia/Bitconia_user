@@ -265,6 +265,9 @@ this.emailForm();
     return this.changepass.controls;
   }
 
+  get mobileFormControl() {
+    return this.mobileform.controls;
+  }
   changepassword() {
 
     this.submitted = true;
@@ -349,7 +352,7 @@ this.emailForm();
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -392,7 +395,7 @@ this.emailForm();
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -436,7 +439,7 @@ this.emailForm();
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -576,7 +579,7 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -634,7 +637,7 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -664,7 +667,7 @@ this.email=this.emailform.value.email
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
-       // document.location.reload();
+       document.location.reload();
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
       }
     // }, (err) => {
@@ -680,13 +683,19 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
   }
 
-  verfiymob() {
+  verfiymob() {  
+    debugger
+    this.submitted = true;
+
+
+    // if(this.mobileform.value.length>0){
+
     console.log(this.mobileform.value);
     this.code = this.mobileform.value;
     console.log(this.code['phone']);
@@ -699,9 +708,10 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     // localStorage.setItem("mobile", JSON.stringify(this.mobile));
     console.log(this.countrycode);
     console.log(this.mobile);
-    this.submitted = true;
 
-    //////debugger
+    debugger
+
+    
     let JsonData = {
       // "email": "",
       "mobile": this.mobile,
@@ -723,7 +733,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
         this.httpService.toastr.success(res['message'], '', {
           positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
         });
-        window.location.reload();
+        document.location.reload();
         // this.refresh();
 
         // this.routeTo.navigateByUrl('/user-setting/accountsecurity');
@@ -734,17 +744,19 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
     //     '', {
     //     positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
     //   });
-    }, (error) => {                              //Error callback
+    },
+     (error) => {                              //Error callback
       console.log(error)
       this.error = error.status;
       console.log(this.error)
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
+  
   }
   addemail() {
     // this.submitted = true;
@@ -785,7 +797,7 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -841,7 +853,7 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-      this.httpService.toastr.error(this.errorMessage, 'Status:400', {
+      this.httpService.toastr.error(this.errorMessage, ' ', {
         positionClass: 'toast-bottom-right', closeButton: true, timeOut: 5000
       });
     })
@@ -901,7 +913,7 @@ this.email=this.emailform.value.email
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
@@ -960,7 +972,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
@@ -1023,7 +1035,7 @@ if(this.emailstatus!=false || this.mob1!=null ){
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
@@ -1035,7 +1047,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
 
 //       this.errorMessage = error.error.message;
 //       console.log(this.errorMessage)
-// this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+// this.httpService.toastr.error(this.errorMessage,' ',  {
 //         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
 //       });
 //    })
@@ -1073,7 +1085,7 @@ if(this.mobstatus!=false || this.email1!=null ){
 
       this.errorMessage = error.error.message;
       console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
       });
    })
@@ -1085,7 +1097,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
 
 //       this.errorMessage = error.error.message;
 //       console.log(this.errorMessage)
-// this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+// this.httpService.toastr.error(this.errorMessage,' ',  {
 //         positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
 //       });
 //    })
@@ -1175,7 +1187,7 @@ console.log(res['data']['pin'])
 
         this.errorMessage = error.error.message;
         console.log(this.errorMessage)
-this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+this.httpService.toastr.error(this.errorMessage,' ',  {
           positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
         });
      })
@@ -1235,7 +1247,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
   
           this.errorMessage = error.error.message;
           console.log(this.errorMessage)
-  this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+  this.httpService.toastr.error(this.errorMessage,' ',  {
             positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
           });
        })
@@ -1274,7 +1286,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       
             this.errorMessage = error.error.message;
             console.log(this.errorMessage)
-      this.httpService.toastr.error('Pin no. entered is wrong','Status:400',  {
+      this.httpService.toastr.error('Pin no. entered is wrong',' ',  {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })
@@ -1320,7 +1332,7 @@ this.httpService.toastr.error(this.errorMessage,'Status:400',  {
       
             this.errorMessage = error.error.message;
             console.log(this.errorMessage)
-      this.httpService.toastr.error('Pin no. entered is wrong','Status:400',  {
+      this.httpService.toastr.error('Pin no. entered is wrong',' ',  {
               positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
             });
          })

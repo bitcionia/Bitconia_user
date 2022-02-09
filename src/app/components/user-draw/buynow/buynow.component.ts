@@ -80,7 +80,6 @@ export class BuynowComponent implements OnInit {
     this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
       }
   // }
-  this.sharedata.countick(this.ticketCounts)
 
   localStorage.setItem("tickarry", JSON.stringify(this.ticketCounts));
 
@@ -183,6 +182,8 @@ export class BuynowComponent implements OnInit {
     this.amountOfTickets=((this.ticketCounts*4.99).toFixed(2))
   }
   naviGateCardPage(){
+    this.sharedata.countick(this.ticketCounts)
+
 debugger
     if(history.state.data == 'edit'){
       for(let item of this.sharedata.ticketsArray){

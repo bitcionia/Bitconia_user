@@ -85,7 +85,7 @@ export class BalancepopupComponent implements OnInit {
     
           this.errorMessage = error.error.message;
           console.log(this.errorMessage)
-    this.httpService.toastr.error(this.errorMessage,'Status:400',  {
+    this.httpService.toastr.error(this.errorMessage,' ',  {
             positionClass: 'toast-bottom-right',  closeButton: true, timeOut:5000
           });
        })

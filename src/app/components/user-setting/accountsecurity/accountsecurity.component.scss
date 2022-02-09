@@ -184,6 +184,18 @@ p.c {
 .errors{
   color:#870208;
 }
-.disabled{
-  cursor: not-allowed !important;
-}
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.25);
+  }
+  button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+
+  a:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }

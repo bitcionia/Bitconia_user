@@ -65,7 +65,7 @@ export class HistoryComponent implements OnInit {
       this.win=res['data'][0]['winning_price']
       this.price=res['data'][0]['price']
 
-      this.seq=res['data'][0]['winning_sequence'].split(',');
+      // this.seq=res['data'][0]['winning_sequence'].split(',');
      
       // this.myArray = this.seq.split(',');
 

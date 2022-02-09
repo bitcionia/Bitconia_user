@@ -142,12 +142,20 @@
                               <li>{{item['winning_sequence']}}</li>
                               </ul>
                            </td> -->
-                          <td>
+                          <!-- <td>
                             <ul class="number-list">
                               <li *ngFor="let values of seq">{{values == undefined ? 'NA':values}}</li>
                             </ul>
 
-                          </td>
+                          </td> -->
+                          <td >
+                                    <span *ngIf="item['status'] === true"
+                                   [class]="item['status'] === true ? 'text-danger':''">
+                                   {{item['status'] === true ? 'No Win':item['status']}}</span>
+                                   <span *ngIf="item['status'] === false"
+                                   [class]="item['status'] === false ? 'text-success' : ''">
+                                   {{item['status'] === false ? 'Win':item['status']}}</span>
+                               </td> 
                           <!-- <td>
                             
                                   <div class="text-white"> {{item['winning_price']}}</div>
